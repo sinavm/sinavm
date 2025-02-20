@@ -90,6 +90,19 @@
         .sublink:hover {
             background-color: #0056b3;
         }
+        /* استایل شمارنده بازدید */
+        .visit-counter {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
     </style>
 </head>
 <body>
@@ -171,7 +184,7 @@
         لینک دانلود برنامه‌های آیفون
     </div>
     
-<a class="download-link" href="sing-box://import-remote-profile?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1egCuzWlTFk1cmT0wQd1N74SWA7EDklKE%26export%3Dview">
+<a class="download-link" href="https://apps.apple.com/app/id6673731168">
    <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
    دانلود برنامه سینگ باکس Sing-Box
 </a>
@@ -196,6 +209,19 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="24">
         <a href="https://T.me/SinaVM" style="text-decoration: none; color: #0088cc;">کانال تلگرام رو دنبال کن</a>
     </div>
+
+    <!-- شمارنده بازدید -->
+    <div class="visit-counter">
+        بازدید: <span id="visit-count">0</span>
+    </div>
+
+    <script>
+        // بررسی مقدار ذخیره‌شده در localStorage
+        let visits = localStorage.getItem("visitCount") || 0;
+        visits++; // افزایش تعداد بازدیدها
+        localStorage.setItem("visitCount", visits); // ذخیره مقدار جدید
+        document.getElementById("visit-count").innerText = visits; // نمایش تعداد بازدیدها
+    </script>
 
 </body>
 </html>
