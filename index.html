@@ -91,16 +91,45 @@
             background-color: #0056b3;
         }
         /* استایل شمارنده بازدید */
-        .visit-counter {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
+        .visit-container {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column; /* نمایش به صورت عمودی */
+    gap: 5px;
+}
+
+.visit-box {
+    background: rgba(0, 0, 0, 0.7); /* پس‌زمینه نیمه‌شفاف */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px; /* هم اندازه متن تلگرام */
+    font-weight: bold;
+    text-align: center;
+    width: 80px; /* هم اندازه با باکس تلگرام */
+}
+.telegram-box {
+    background: rgba(0, 136, 204, 0.9); /* رنگ آبی تلگرام */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    text-decoration: none;
+    gap: 5px;
+}
+
+.telegram-box img {
+    width: 16px;
+    height: 16px;
+}
         }
     </style>
     </style>
@@ -209,19 +238,44 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="24">
         <a href="https://T.me/SinaVM" style="text-decoration: none; color: #0088cc;">کانال تلگرام رو دنبال کن</a>
     </div>
+    
+<div class="visit-container">
+    <!-- باکس ورود به کانال تلگرام -->
+    <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+         کانال تلگرام
+    </a>
 
     <!-- شمارنده بازدید -->
-    <div class="visit-counter">
-        بازدید: <span id="visit-count">0</span>
+    <div class="visit-box">
+        بازدید شما: <span id="user-visit-count">0</span>
     </div>
+    <div class="visit-box">
+        بازدید کل: <span id="total-visit-count">7582</span>
+    </div>
+</div>
 
     <script>
-        // بررسی مقدار ذخیره‌شده در localStorage
-        let visits = localStorage.getItem("visitCount") || 0;
-        visits++; // افزایش تعداد بازدیدها
-        localStorage.setItem("visitCount", visits); // ذخیره مقدار جدید
-        document.getElementById("visit-count").innerText = visits; // نمایش تعداد بازدیدها
-    </script>
+// بررسی مقدار ذخیره‌شده در localStorage برای بازدید کاربر
+let visits = localStorage.getItem("visitCount") || 0;
+visits++; // افزایش تعداد بازدیدها
+localStorage.setItem("visitCount", visits); // ذخیره مقدار جدید
+document.getElementById("user-visit-count").innerText = visits; // نمایش تعداد بازدیدها
+
+// مقدار اولیه بازدید کل (میتونی مقدار اولیه رو تغییر بدی)
+let totalVisits = localStorage.getItem("totalVisitCount") || 4360; 
+document.getElementById("total-visit-count").innerText = totalVisits;
+
+// تابع افزایش بازدید کل هر دو دقیقه
+function increaseTotalVisits() {
+    totalVisits++; // افزایش بازدید کل
+    localStorage.setItem("totalVisitCount", totalVisits); // ذخیره مقدار جدید در localStorage
+    document.getElementById("total-visit-count").innerText = totalVisits; // نمایش مقدار جدید
+}
+
+// تنظیم تایمر برای افزایش بازدید ١ دقیقه (۶٠٠٠۰ میلی‌ثانیه)
+setInterval(increaseTotalVisits, 60000);
+</script>
 
 </body>
 </html>
