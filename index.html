@@ -21,13 +21,13 @@
             margin-bottom: 20px;
         }
         .logo {
-    max-width: 80px;
-    margin-left: 5px;
-    border-radius: 30%; /* دایره‌ای کردن لوگو */
-    border: 2px solid #ccc; /* اضافه کردن حاشیه */
-    padding: 1px; /* ایجاد فاصله بین تصویر و حاشیه */
-    background-color: white; /* پس‌زمینه سفید برای هماهنگی بهتر */
-}
+            max-width: 80px;
+            margin-left: 5px;
+            border-radius: 30%;
+            border: 2px solid #ccc;
+            padding: 1px;
+            background-color: white;
+        }
         .header {
             font-size: 24px;
             font-weight: bold;
@@ -83,85 +83,102 @@
             width: 24px;
             height: 24px;
         }
-        /* رنگ متفاوت برای ساب لینک‌ها */
         .sublink {
-            background-color: #007bff; /* آبی ملایم */
+            background-color: #007bff;
         }
         .sublink:hover {
             background-color: #0056b3;
         }
-        /* استایل شمارنده بازدید */
         .visit-container {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    display: flex;
-    flex-direction: column; /* نمایش به صورت عمودی */
-    gap: 5px;
-}
-
-.visit-box {
-    background: rgba(0, 0, 0, 0.7); /* پس‌زمینه نیمه‌شفاف */
-    color: white;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 12px; /* هم اندازه متن تلگرام */
-    font-weight: bold;
-    text-align: center;
-    width: 80px; /* هم اندازه با باکس تلگرام */
-}
-.telegram-box {
-    background: rgba(0, 136, 204, 0.9); /* رنگ آبی تلگرام */
-    color: white;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    text-decoration: none;
-    gap: 5px;
-}
-
-.telegram-box img {
-    width: 16px;
-    height: 16px;
-}
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
-    </style>
+
+        .visit-box {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            width: 80px;
+        }
+        .telegram-box {
+            background: rgba(0, 136, 204, 0.9);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            text-decoration: none;
+            gap: 5px;
+        }
+
+        .telegram-box img {
+            width: 16px;
+            height: 16px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- بخش عنوان و لوگو -->
     <div class="header-container">
         <img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo">
         <div class="header">
             پنل اختصاصی  
             <a href="https://T.me/sinavm" target="_blank">SiNAVM</a>
-    </div>
-    </div>
-
-    <!-- توضیح کوچک‌تر -->
-    <div class="subtext">
-        هر ساب لینکی رو انگشت کنید، اتوماتیک وارد میشه <br>  
-        فقط قبلش برنامه اون ساب روی گوشیت نصب باشه
+        </div>
     </div>
 
-    <!-- لینک‌های ساب انگشتی -->
+    <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
+        دریافت کانفیگ V2Ray
+    </a>
+
+    <style>
+        .config-box {
+            display: block;
+            background: linear-gradient(135deg, #8A2BE2, #00FFFF);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 18px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 320px;
+            box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .config-box:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
+            background: linear-gradient(135deg, #00FFFF, #8A2BE2);
+        }
+    </style>
+
     <div class="software-links">
-    لینک ساب ها 
+        لینک ساب ها
     </div>
 
-    <a class="download-link sublink"href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1egCuzWlTFk1cmT0wQd1N74SWA7EDklKE&export=view#☃️@𝙎𝙞𝙉𝘼𝙑𝙈 👈🏻کانال تلگرام">
-       <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
+    <a class="download-link sublink" href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1egCuzWlTFk1cmT0wQd1N74SWA7EDklKE&export=view#☃️@𝙎𝙞𝙉𝘼𝙑𝙈">
+        <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
         ساب لینک سینگ باکس Sing-Box
     </a>
 
-    <a class="download-link sublink" href="hiddify://import/https://github.com/sinabigo/Hiddify/raw/main/@sinavm#@SiNAVM👈🏻‌کانال تلگرام">
+    <a class="download-link sublink" href="hiddify://import/https://github.com/sinabigo/Hiddify/raw/main/@sinavm#@SiNAVM">
         <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
         ساب لینک هیدیفای Hiddify
     </a>
@@ -172,16 +189,15 @@
     </a>
 
     <a class="download-link sublink" href="streisand://import/https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm">
-         <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
-    ساب لینک استریسند Streisand
-     </a>
-     
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
+        ساب لینک استریسند Streisand
+    </a>
+
     <a class="download-link sublink" href="https://rentry.co/sinabigo">
         <img src="https://play-lh.googleusercontent.com/ug9DqXt2drzU-V1JL2veG2zZtJTwPwdcw8jE4tD7dtGBvIdasG-BWzqs7jKszFfYN9s" alt="Amnezia Logo">
         دریافت کانفیگ Amnezia VPN
     </a>
     
-    <!-- لینک دانلود برنامه‌های اندروید -->
     <div class="software-links">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHvnyoyWI-FlgTfOWRoJjazD3ke1Q6hOgfQ&s" alt="Android Logo">
         لینک دانلود برنامه‌های اندروید
@@ -207,17 +223,15 @@
         دانلود برنامه Amnezia VPN
     </a>
     
-    <!-- لینک دانلود برنامه‌های آیفون -->
     <div class="software-links">
         <img src="https://www.apple.com/newsroom/images/logos/quick-reads-logos/Apple-App-Store.jpg.square_social.jpg" alt="iOS Logo">
         لینک دانلود برنامه‌های آیفون
     </div>
     
-<a class="download-link" href="https://apps.apple.com/app/id6673731168">
-   <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
-   دانلود برنامه سینگ باکس Sing-Box
-</a>
-
+    <a class="download-link" href="https://apps.apple.com/app/id6673731168">
+        <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
+        دانلود برنامه سینگ باکس Sing-Box
+    </a>
 
     <a class="download-link" href="https://apps.apple.com/app/id6596777532">
         <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
@@ -229,7 +243,7 @@
         دانلود برنامه استریسند Streisand
     </a>
         
-     <a class="download-link" href="https://apps.apple.com/us/app/amneziavpn/id1600529900">
+    <a class="download-link" href="https://apps.apple.com/us/app/amneziavpn/id1600529900">
         <img src="https://play-lh.googleusercontent.com/ug9DqXt2drzU-V1JL2veG2zZtJTwPwdcw8jE4tD7dtGBvIdasG-BWzqs7jKszFfYN9s" alt="V2Ray Logo">
         دانلود برنامه Amnezia VPN
     </a>
@@ -239,43 +253,40 @@
         <a href="https://T.me/SinaVM" style="text-decoration: none; color: #0088cc;">کانال تلگرام رو دنبال کن</a>
     </div>
     
-<div class="visit-container">
-    <!-- باکس ورود به کانال تلگرام -->
-    <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
-         کانال تلگرام
-    </a>
+    <div class="visit-container">
+        <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+            کانال تلگرام
+        </a>
 
-    <!-- شمارنده بازدید -->
-    <div class="visit-box">
-        بازدید شما: <span id="user-visit-count">0</span>
+        <div class="visit-box">
+            بازدید شما: <span id="user-visit-count">0</span>
+        </div>
+        <div class="visit-box">
+            بازدید کل: <span id="total-visit-count">7582</span>
+        </div>
     </div>
-    <div class="visit-box">
-        بازدید کل: <span id="total-visit-count">7582</span>
-    </div>
-</div>
 
     <script>
-// بررسی مقدار ذخیره‌شده در localStorage برای بازدید کاربر
-let visits = localStorage.getItem("visitCount") || 0;
-visits++; // افزایش تعداد بازدیدها
-localStorage.setItem("visitCount", visits); // ذخیره مقدار جدید
-document.getElementById("user-visit-count").innerText = visits; // نمایش تعداد بازدیدها
+        let visits = localStorage.getItem("visitCount") || 0;
+        visits++;
+        localStorage.setItem("visitCount", visits);
+        document.getElementById("user-visit-count").innerText = visits;
 
-// مقدار اولیه بازدید کل (میتونی مقدار اولیه رو تغییر بدی)
-let totalVisits = localStorage.getItem("totalVisitCount") || 4360; 
-document.getElementById("total-visit-count").innerText = totalVisits;
-
-// تابع افزایش بازدید کل هر دو دقیقه
-function increaseTotalVisits() {
-    totalVisits++; // افزایش بازدید کل
-    localStorage.setItem("totalVisitCount", totalVisits); // ذخیره مقدار جدید در localStorage
-    document.getElementById("total-visit-count").innerText = totalVisits; // نمایش مقدار جدید
-}
-
-// تنظیم تایمر برای افزایش بازدید ١ دقیقه (۶٠٠٠۰ میلی‌ثانیه)
-setInterval(increaseTotalVisits, 60000);
-</script>
+        fetch('https://page-views.count1.workers.dev')
+            .then(response => response.text())
+            .then(data => {
+                let countElement = document.getElementById("total-visit-count");
+                if (countElement) {
+                    countElement.innerText = data;
+                } else {
+                    console.error("Error updating total visit count.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching total visit count:", error);
+            });
+    </script>
 
 </body>
 </html>
