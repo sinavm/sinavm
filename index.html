@@ -50,8 +50,16 @@
             color: #ffd700;
         }
 
-        /* استایل باکس اتفاق روز */
-        .daily-event {
+        /* استایل پست‌های تلگرام */
+        .telegram-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 80%;
+            margin: 10px auto;
+        }
+
+        .telegram-post {
             display: flex;
             align-items: center;
             background: rgba(255, 255, 255, 0.2);
@@ -60,18 +68,16 @@
             font-size: 18px;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            max-width: 80%;
-            margin: 10px auto;
             box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .daily-event:hover {
+        .telegram-post:hover {
             transform: translateY(-5px);
             box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.3);
         }
 
-        .event-image {
+        .post-image {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -79,8 +85,20 @@
             border: 2px solid #fff;
         }
 
-        .event-text {
+        .post-text {
             line-height: 1.6;
+        }
+
+        /* استایل لینک‌های توی پست‌ها */
+        .post-text a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .post-text a:hover {
+            text-decoration: underline;
+            color: #ffd700;
         }
 
         /* استایل دکمه‌ها */
@@ -112,24 +130,25 @@
             height: 28px;
             margin-left: 10px;
         }
-/* تغییر رنگ همه باکس‌های ساب لینک به بنفش تیره */
-.sublink {
-    background: linear-gradient(135deg, #8e2de2, #4a00e0); /* بنفش تیره */
-    color: white;
-    font-weight: bold;
-    border-radius: 15px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
 
-.sublink:hover {
-    transform: scale(1.08);
-    box-shadow: 0px 8px 20px rgba(142, 45, 226, 0.6);
-}
+        /* تغییر رنگ همه باکس‌های ساب لینک به بنفش تیره */
+        .sublink {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: white;
+            font-weight: bold;
+            border-radius: 15px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sublink:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 8px 20px rgba(142, 45, 226, 0.6);
+        }
 
         /* استایل کادر لینک‌ها */
         .software-links {
@@ -137,27 +156,28 @@
             font-weight: bold;
             margin-top: 30px;
         }
-   .software-links img {
-    width: 32px; /* افزایش اندازه آیکون */
-    height: auto;
-    vertical-align: middle;
-    margin-left: 8px;
+
+        .software-links img {
+            width: 32px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
         }
-/* استایل مخصوص لینک‌های دانلود اندروید */
-.android {
-    background: linear-gradient(135deg, #34a853, #0f9d58); /* ترکیب رنگ سبز گوگل */
-}
 
-/* استایل مخصوص لینک‌های دانلود آیفون */
-.ios {
-    background: linear-gradient(135deg, #007aff, #0040ff); /* ترکیب رنگ آبی اپل */
-}
+        /* استایل مخصوص لینک‌های دانلود اندروید و آیفون */
+        .android {
+            background: linear-gradient(135deg, #34a853, #0f9d58);
+        }
 
-/* افکت هاور برای هر دو */
-.android-download:hover, .ios-download:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
-}
+        .ios {
+            background: linear-gradient(135deg, #007aff, #0040ff);
+        }
+
+        .android:hover, .ios:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
         /* باکس تلگرام */
         .telegram-box {
             background: #0088cc;
@@ -202,10 +222,42 @@
             width: 120px;
         }
 
+        /* استایل کانفیگ باکس */
+        .config-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #8A2BE2, #00FFFF);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px 18px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 320px;
+            box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .config-box:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
+            background: linear-gradient(135deg, #00FFFF, #8A2BE2);
+        }
+
+        .config-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
-
     <div class="header-container">
         <img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo">
         <div class="header">
@@ -214,60 +266,15 @@
         </div>
     </div>
 
-    <!-- بخش اتفاقات روز -->
-    <div class="daily-event">
-        <img src="https://radiobimeh.com/files/ef4470df-5436-4d8f-901a-fdced982cd74.jpg" alt="سال نو مبارک" class="event-image">
-        <div class="event-text">
-            <p>
- امیدوارم در سال جدید 
-                <br>قلب هاتون سرشار از عشق و مهر  
-                <br>و هر روز تون بهتر از دیروز باشه
-                <br>سال نو مبارک - سینا
-            </p>
-        </div>
+    <!-- پست‌های تلگرام -->
+    <div class="telegram-posts" id="telegram-posts">
+        <p>در حال بارگذاری پست‌های کانال...</p>
     </div>
-    
-</style>
+
     <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
-    <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
-    دریافت کانفیگ V2Ray
-</a>
-
-<style>
-    .config-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #8A2BE2, #00FFFF);
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 12px 18px;
-        border-radius: 20px;
-        text-align: center;
-        text-decoration: none;
-        margin: 20px auto;
-        width: 80%;
-        max-width: 320px;
-        box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    }
-
-    .config-box:hover {
-        transform: scale(1.08);
-        box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
-        background: linear-gradient(135deg, #00FFFF, #8A2BE2);
-    }
-
-    .config-box img {
-        width: 40px; 
-        height: 40px; 
-        border-radius: 50%;
-        margin-right: 10px;
-        object-fit: cover; 
-    }
-</style>
-
+        <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
+        دریافت کانفیگ V2Ray
+    </a>
 
     <div class="software-links">
         لینک ساب ها
@@ -308,8 +315,7 @@
         دانلود برنامه Sing-Box
     </a>
 
-    <a class="download-link android" 
-href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
+    <a class="download-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
         <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
         دانلود برنامه Hiddify
     </a>
@@ -369,6 +375,7 @@ href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
     </div>
 
     <script>
+        // شمارش بازدید
         let visits = localStorage.getItem("visitCount") || 0;
         visits++;
         localStorage.setItem("visitCount", visits);
@@ -387,7 +394,17 @@ href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
             .catch(error => {
                 console.error("Error fetching total visit count:", error);
             });
-    </script>
 
+        // لود پست‌های تلگرام
+        fetch('telegram-posts.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('telegram-posts').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading Telegram posts:', error);
+                document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
+            });
+    </script>
 </body>
 </html>
