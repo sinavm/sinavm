@@ -1,8 +1,8 @@
-name: Fetch Telegram Posts
+name: Fetch Telegram Channel Posts
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # هر دو ساعت
+    - cron: '0 */2 * * *'  # هر ۲ ساعت اجرا می‌شود
   push:
 
 jobs:
@@ -15,32 +15,25 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Fetch Telegram Posts
+      - name: Fetch Telegram Channel Posts
+        env:
+          YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
         run: |
-          # دریافت پیام‌ها
-          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getUpdates" > posts.json
-
-          # چاپ پاسخ API برای دیباگ
+          echo "Fetching updates with channel posts..."
+          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?allowed_updates=[\"channel_post\"]&limit=5" > posts.json
           echo "API Response:"
           cat posts.json
-
-          # استخراج دو پست آخر و تبدیل به HTML
-          jq '[.result[] 
-               | select(.message.chat.username == (env.TELEGRAM_CHAT_ID | ltrimstr("@"))) 
-               | .message 
-               | {
-                   text: (.text // .caption // "بدون محتوا"),
-                   date: .date,
-                   link: ("https://t.me/" + (.chat.username // ""))
-                 }
-              ] | reverse | .[:2]' posts.json > posts_formatted.json
+          
+          jq '[.result[] | select(.channel_post) | .channel_post | {
+            text: (.text // .caption // "بدون محتوا"),
+            date: .date,
+            link: ("https://t.me/" + (.chat.username // ""))
+          }] | reverse | .[:2]' posts.json > posts_formatted.json
 
       - name: Update Telegram Posts HTML
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          
-          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><br><span class=\"post-date\">" + (.date | todate) + "</span></div>"' posts_formatted.json >> telegram-posts.html
-          
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\">" + .text + "</a><br><small>" + (.date | todate) + "</small></div>"' posts_formatted.json >> telegram-posts.html
           echo '</div>' >> telegram-posts.html
 
       - name: Commit Changes
@@ -50,7 +43,3 @@ jobs:
           git add telegram-posts.html
           git commit -m 'Update Telegram posts' || echo "No changes to commit"
           git push
-
-    env:
-      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
