@@ -267,9 +267,21 @@
     </div>
 
     <!-- پست‌های تلگرام -->
-    <div class="telegram-posts" id="telegram-posts">
-        <p>در حال بارگذاری پست‌های کانال...</p>
-    </div>
+    <div id="telegram-posts">
+    <p>در حال بارگذاری پست‌ها...</p>
+</div>
+
+<script>
+    fetch('telegram-posts.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('telegram-posts').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading Telegram posts:', error);
+            document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
+        });
+</script>
 
     <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
         <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
