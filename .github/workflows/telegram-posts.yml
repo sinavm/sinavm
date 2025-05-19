@@ -2,44 +2,44 @@ name: Fetch Telegram Channel Posts
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # هر ۲ ساعت اجرا می‌شود
-  push:
+    - cron: '0 */2 * * *' # هر ۲ ساعت اجرا می‌شود
+  push: # برای اجرای دستی
 
 jobs:
   fetch-posts:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Install jq
-        run: sudo apt-get install -y jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Fetch Telegram Channel Posts
         env:
           YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
         run: |
-          echo "Fetching updates with channel posts..."
-          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?allowed_updates=[\"channel_post\"]&limit=5" > posts.json
+          echo "Fetching channel posts..."
+          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?allowed_updates=[\"channel_post\"]&limit=10" > posts.json
           echo "API Response:"
           cat posts.json
-          
           jq '[.result[] | select(.channel_post) | .channel_post | {
             text: (.text // .caption // "بدون محتوا"),
             date: .date,
-            link: ("https://t.me/" + (.chat.username // ""))
+            link: "https://t.me/YourChannelUsername"
           }] | reverse | .[:2]' posts.json > posts_formatted.json
 
-      - name: Update Telegram Posts HTML
+      - name: Generate HTML from Posts
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\">" + .text + "</a><br><small>" + (.date | todate) + "</small></div>"' posts_formatted.json >> telegram-posts.html
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + (.text|@html) + "</a><br><small>" + (.date | todate) + "</small></div>"' posts_formatted.json >> telegram-posts.html
           echo '</div>' >> telegram-posts.html
 
-      - name: Commit Changes
+      - name: Commit and Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add telegram-posts.html
-          git commit -m 'Update Telegram posts' || echo "No changes to commit"
+          git commit -m "Update Telegram posts" || echo "No changes to commit"
           git push
