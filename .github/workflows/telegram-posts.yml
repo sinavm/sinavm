@@ -1,11 +1,13 @@
 name: Fetch Telegram Posts
 on:
   schedule:
-    - cron: '0 */2 * * *'
-  push:
+    - cron: '0 */2 * * *' # هر ۲ ساعت
+  workflow_dispatch:
+
 jobs:
   fetch-posts:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -13,25 +15,28 @@ jobs:
         run: sudo apt-get install -y jq
 
       - name: Fetch Telegram Posts
+        env:
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
         run: |
           curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates" > posts.json
 
           echo "API Response:"
           cat posts.json
 
-          # استخراج دو پست آخر و تبدیل به HTML
+          # استخراج دو پست آخر
           jq '[.result[] | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) | .message | {
             text: (.text // .caption // "بدون محتوا"),
-            date: .date,
+            date: (.date | todate),
             link: ("https://t.me/" + (.chat.username // ""))
           }] | reverse | .[:2]' posts.json > posts_formatted.json
 
       - name: Update Telegram Posts HTML
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          
-          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><span class=\"post-date\">" + (.date | todate) + "</span></div>"' posts_formatted.json >> telegram-posts.html
-          
+
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><span class=\"post-date\">" + .date + "</span></div>"' posts_formatted.json >> telegram-posts.html
+
           echo '</div>' >> telegram-posts.html
 
       - name: Commit Changes
@@ -41,7 +46,3 @@ jobs:
           git add telegram-posts.html
           git commit -m 'Update Telegram posts' || echo "No changes to commit"
           git push
-
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
