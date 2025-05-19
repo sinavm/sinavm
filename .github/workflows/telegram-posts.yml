@@ -1,0 +1,32 @@
+name: Fetch Telegram Posts
+on:
+  schedule:
+    - cron: '0 */2 * * *' # هر ۲ ساعت
+  push: # برای تست دستی
+jobs:
+  fetch-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      - name: Fetch Telegram Posts
+        run: |
+          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getChatHistory?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&limit=2" > posts.json
+          jq '[.result.messages[] | {text: (.text // "بدون متن"), date: .date}]' posts.json > posts_formatted.json
+      - name: Update HTML
+        run: |
+          echo '<!DOCTYPE html><html lang="fa"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>پنل کانال تلگرامی SiNAVM</title><style>' > index.html
+          cat style.css >> index.html
+          echo '</style></head><body><div class="header-container"><img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo"><div class="header">پنل اختصاصی <a href="https://T.me/sinavm" target="_blank">SiNAVM</a></div></div><div class="telegram-posts">' >> index.html
+          jq -r '.[] | "<div class=\"telegram-post\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg\" alt=\"Telegram Logo\" class=\"post-image\"><div class=\"post-text\"><p>\(.text)<br>\(.date)</p></div></div>"' posts_formatted.json >> index.html
+          echo '</div>' >> index.html
+          cat remaining.html >> index.html
+          echo '</body></html>' >> index.html
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add index.html
+          git commit -m 'Update HTML with latest Telegram posts' || echo "No changes to commit"
+          git push
