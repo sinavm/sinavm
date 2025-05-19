@@ -12,14 +12,33 @@ jobs:
         run: sudo apt-get install -y jq
       - name: Fetch Telegram Posts
         run: |
-          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getChatHistory?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&limit=2" > posts.json
+          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getUpdates?limit=2&allowed_updates=[\"channel_post\"]" > posts.json
+          # چاپ پاسخ API برای دیباگ
+          echo "API Response:"
+          cat posts.json
           # چک کردن پاسخ API
-          if jq -e '.ok == true and .result.messages' posts.json >/dev/null; then
-            jq '[.result.messages[] | {text: (.text // "بدون متن"), date: .date, entities: (.entities // [])}]' posts.json > posts_formatted.json
+          if jq -e '.ok == true and .result' posts.json >/dev/null; then
+            jq '[.result[] | select(.channel_post) | .channel_post | {
+              text: (
+                if .text then .text
+                elif .caption then .caption
+                elif .photo then "عکس بدون کپشن"
+                elif .document then ("فایل: " + .document.file_name)
+                else "بدون محتوا"
+                end
+              ),
+              date: .date,
+              entities: (
+                if .entities then .entities
+                elif .caption_entities then .caption_entities
+                else []
+                end
+              )
+            }]' posts.json > posts_formatted.json
           else
             echo "Error: Invalid or empty response from Telegram API"
             echo '[]' > posts_formatted.json
-            exit 0 # ادامه دادن workflow
+            exit 0
           fi
       - name: Update Telegram Posts HTML
         run: |
