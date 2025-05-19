@@ -2,50 +2,55 @@ name: Fetch Telegram Posts
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # هر ۲ ساعت اجرا میشه
+    - cron: '0 */2 * * *' # هر دو ساعت
   push:
 
 jobs:
   fetch-posts:
     runs-on: ubuntu-latest
-    env:
-      YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      PROXY: ${{ secrets.PROXY }}
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: نصب jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Install jq
+        run: sudo apt-get install -y jq
 
-      - name: دریافت آخرین پست‌های تلگرام با پروکسی
+      - name: Fetch Telegram Posts
         run: |
-          echo "Fetching posts using proxy $PROXY"
-          curl -x "$PROXY" -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?limit=10" > posts.json
+          # دریافت پیام‌ها
+          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getUpdates" > posts.json
 
+          # چاپ پاسخ API برای دیباگ
           echo "API Response:"
           cat posts.json
 
-          jq '[.result[]
-            | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber))
-            | .message
-            | {
-                text: (.text // .caption // "بدون محتوا"),
-                date: .date,
-                link: ("https://t.me/" + (.chat.username // ""))
-              }
-          ] | reverse | .[:2]' posts.json > posts_formatted.json
+          # استخراج دو پست آخر و تبدیل به HTML
+          jq '[.result[] 
+               | select(.message.chat.username == (env.TELEGRAM_CHAT_ID | ltrimstr("@"))) 
+               | .message 
+               | {
+                   text: (.text // .caption // "بدون محتوا"),
+                   date: .date,
+                   link: ("https://t.me/" + (.chat.username // ""))
+                 }
+              ] | reverse | .[:2]' posts.json > posts_formatted.json
 
-      - name: ساخت فایل HTML پست‌ها
+      - name: Update Telegram Posts HTML
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><br><small>" + (.date | todate) + "</small></div>"' posts_formatted.json >> telegram-posts.html
+          
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><br><span class=\"post-date\">" + (.date | todate) + "</span></div>"' posts_formatted.json >> telegram-posts.html
+          
           echo '</div>' >> telegram-posts.html
 
-      - name: Commit و Push تغییرات
+      - name: Commit Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add telegram-posts.html
           git commit -m 'Update Telegram posts' || echo "No changes to commit"
           git push
+
+    env:
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
