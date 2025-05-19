@@ -19,23 +19,29 @@ jobs:
           YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
         run: |
           # دریافت دو پست آخر
-          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?offset=-2" > posts.json
+          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates" > posts.json
 
           # چاپ برای دیباگ
           echo "API Response:"
           cat posts.json
 
-          # استخراج دو پست آخر و تبدیل به HTML
-          jq '[.result[] | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) | .message | {
-            text: (.text // .caption // "بدون محتوا"),
-            date: .date,
-            link: "https://t.me/" + (.chat.username // "")
-          }] | reverse | .[:2]' posts.json > posts_formatted.json
+          # استخراج دو پست آخر از کانال و تبدیل به HTML
+          jq '[.result[] 
+              | select(.message.chat.type == "channel" and .message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) 
+              | .message 
+              | {
+                  text: (.text // .caption // "بدون محتوا"),
+                  date: .date,
+                  link: (if .chat.username then "https://t.me/" + .chat.username else "https://t.me/" end)
+                }
+              ] | reverse | .[:2]' posts.json > posts_formatted.json
 
       - name: Update Telegram Posts HTML
         run: |
+          # ساخت فایل HTML
           echo '<div class="telegram-posts">' > telegram-posts.html
 
+          # ایجاد HTML پست‌ها
           jq -r '.[] | "<div class=\"telegram-post\">
             <a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">
               <div class=\"post-text\">" + .text + "</div>
