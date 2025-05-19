@@ -3,52 +3,52 @@ on:
   schedule:
     - cron: '0 */2 * * *' # هر ۲ ساعت
   push: # برای تست دستی
+
 jobs:
   fetch-posts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install jq
         run: sudo apt-get install -y jq
-      - name: Fetch Telegram Posts
+
+      - name: Fetch Last 2 Posts from Telegram Channel
+        env:
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
         run: |
-          curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getUpdates?limit=2&allowed_updates=[\"channel_post\"]" > posts.json
-          # چاپ پاسخ API برای دیباگ
+          # دریافت دو پست آخر
+          curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?offset=-2" > posts.json
+
+          # چاپ برای دیباگ
           echo "API Response:"
           cat posts.json
-          # چک کردن پاسخ API
-          if jq -e '.ok == true and .result' posts.json >/dev/null; then
-            jq '[.result[] | select(.channel_post) | .channel_post | {
-              text: (
-                if .text then .text
-                elif .caption then .caption
-                elif .photo then "عکس بدون کپشن"
-                elif .document then ("فایل: " + .document.file_name)
-                else "بدون محتوا"
-                end
-              ),
-              date: .date,
-              entities: (
-                if .entities then .entities
-                elif .caption_entities then .caption_entities
-                else []
-                end
-              )
-            }]' posts.json > posts_formatted.json
-          else
-            echo "Error: Invalid or empty response from Telegram API"
-            echo '[]' > posts_formatted.json
-            exit 0
-          fi
+
+          # استخراج دو پست آخر و تبدیل به HTML
+          jq '[.result[] | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) | .message | {
+            text: (.text // .caption // "بدون محتوا"),
+            date: .date,
+            link: "https://t.me/" + (.chat.username // "")
+          }] | reverse | .[:2]' posts.json > posts_formatted.json
+
       - name: Update Telegram Posts HTML
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          jq -r '.[] | . as $msg | .text as $text | .entities | map(select(.type == "url") | {offset: .offset, length: .length, url: .url}) | reduce .[] as $entity ($text; $entity.offset as $o | $entity.length as $l | $entity.url as $u | .[:$o] + "<a href=\"" + $u + "\">" + .[$o:$o+$l] + "</a>" + .[$o+$l:]) | "<div class=\"telegram-post\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg\" alt=\"Telegram Logo\" class=\"post-image\"><div class=\"post-text\"><p>" + . + "<br><small>" + ($msg.date | todate) + "</small></p></div></div>"' posts_formatted.json >> telegram-posts.html
+
+          jq -r '.[] | "<div class=\"telegram-post\">
+            <a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">
+              <div class=\"post-text\">" + .text + "</div>
+              <small class=\"post-date\">" + (.date | todate) + "</small>
+            </a>
+          </div>"' posts_formatted.json >> telegram-posts.html
+
           echo '</div>' >> telegram-posts.html
-      - name: Commit Changes
+
+      - name: Commit and Push
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add telegram-posts.html
-          git commit -m 'Update Telegram posts with clickable links' || echo "No changes to commit"
+          git commit -m 'Update Telegram posts' || echo "No changes to commit"
           git push
