@@ -15,11 +15,6 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Debug Environment
-        run: |
-          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}"
-          echo "YOUR_BOT_TOKEN=${{ secrets.YOUR_BOT_TOKEN }}"
-
       - name: Fetch Telegram Posts
         run: |
           # دریافت پیام‌ها
@@ -30,11 +25,15 @@ jobs:
           cat posts.json
 
           # استخراج دو پست آخر و تبدیل به HTML
-          jq '[.result[] | select(.message.chat.username == env.TELEGRAM_CHAT_ID) | .message | {
-            text: (.text // .caption // "بدون محتوا"),
-            date: .date,
-            link: "https://t.me/" + (.chat.username // "")
-          }] | reverse | .[:2]' posts.json > posts_formatted.json
+          jq '[.result[] 
+               | select(.message.chat.username == (env.TELEGRAM_CHAT_ID | ltrimstr("@"))) 
+               | .message 
+               | {
+                   text: (.text // .caption // "بدون محتوا"),
+                   date: .date,
+                   link: ("https://t.me/" + (.chat.username // ""))
+                 }
+              ] | reverse | .[:2]' posts.json > posts_formatted.json
 
       - name: Update Telegram Posts HTML
         run: |
