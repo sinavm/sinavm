@@ -1,9 +1,8 @@
 name: Fetch Telegram Posts
 on:
   schedule:
-    - cron: '0 */2 * * *' # هر ۲ ساعت
-  push: # برای تست دستی
-
+    - cron: '0 */2 * * *'
+  push:
 jobs:
   fetch-posts:
     runs-on: ubuntu-latest
@@ -13,48 +12,36 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Fetch Last 2 Posts from Telegram Channel
-        env:
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
+      - name: Fetch Telegram Posts
         run: |
-          # دریافت دو پست آخر
           curl -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates" > posts.json
 
-          # چاپ برای دیباگ
           echo "API Response:"
           cat posts.json
 
-          # استخراج دو پست آخر از کانال و تبدیل به HTML
-          jq '[.result[] 
-              | select(.message.chat.type == "channel" and .message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) 
-              | .message 
-              | {
-                  text: (.text // .caption // "بدون محتوا"),
-                  date: .date,
-                  link: (if .chat.username then "https://t.me/" + .chat.username else "https://t.me/" end)
-                }
-              ] | reverse | .[:2]' posts.json > posts_formatted.json
+          # استخراج دو پست آخر و تبدیل به HTML
+          jq '[.result[] | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) | .message | {
+            text: (.text // .caption // "بدون محتوا"),
+            date: .date,
+            link: ("https://t.me/" + (.chat.username // ""))
+          }] | reverse | .[:2]' posts.json > posts_formatted.json
 
       - name: Update Telegram Posts HTML
         run: |
-          # ساخت فایل HTML
           echo '<div class="telegram-posts">' > telegram-posts.html
-
-          # ایجاد HTML پست‌ها
-          jq -r '.[] | "<div class=\"telegram-post\">
-            <a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">
-              <div class=\"post-text\">" + .text + "</div>
-              <small class=\"post-date\">" + (.date | todate) + "</small>
-            </a>
-          </div>"' posts_formatted.json >> telegram-posts.html
-
+          
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><span class=\"post-date\">" + (.date | todate) + "</span></div>"' posts_formatted.json >> telegram-posts.html
+          
           echo '</div>' >> telegram-posts.html
 
-      - name: Commit and Push
+      - name: Commit Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add telegram-posts.html
           git commit -m 'Update Telegram posts' || echo "No changes to commit"
           git push
+
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
