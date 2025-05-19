@@ -1,0 +1,28 @@
+name: Fetch Telegram Posts
+on:
+  schedule:
+      - cron: '0 */2 * * *' # هر ۲ ساعت
+        push: # برای تست دستی
+        jobs:
+          fetch-posts:
+              runs-on: ubuntu-latest
+                  steps:
+                        - uses: actions/checkout@v4
+                              - name: Install jq
+                                      run: sudo apt-get install -y jq
+                                            - name: Fetch Telegram Posts
+                                                    run: |
+                                                              curl -s "https://api.telegram.org/bot${{ secrets.YOUR_BOT_TOKEN }}/getChatHistory?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&limit=2" > posts.json
+                                                                        jq '[.result.messages[] | {text: (.text // "بدون متن"), date: .date, entities: (.entities // [])}]' posts.json > posts_formatted.json
+                                                                              - name: Update Telegram Posts HTML
+                                                                                      run: |
+                                                                                                echo '<div class="telegram-posts">' > telegram-posts.html
+                                                                                                          jq -r '.[] | . as $msg | .text as $text | .entities | map(select(.type == "url") | {offset: .offset, length: .length, url: .url}) | reduce .[] as $entity ($text; $entity.offset as $o | $entity.length as $l | $entity.url as $u | .[:$o] + "<a href=\"" + $u + "\">" + .[$o:$o+$l] + "</a>" + .[$o+$l:]) | "<div class=\"telegram-post\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg\" alt=\"Telegram Logo\" class=\"post-image\"><div class=\"post-text\"><p>" + . + "<br>" + $msg.date + "</p></div></div>"' posts_formatted.json >> telegram-posts.html
+                                                                                                                    echo '</div>' >> telegram-posts.html
+                                                                                                                          - name: Commit Changes
+                                                                                                                                  run: |
+                                                                                                                                            git config --global user.name 'GitHub Action'
+                                                                                                                                                      git config --global user.email 'action@github.com'
+                                                                                                                                                                git add telegram-posts.html
+                                                                                                                                                                          git commit -m 'Update Telegram posts with clickable links' || echo "No changes to commit"
+                                                                                                                                                                                    git push
