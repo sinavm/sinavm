@@ -3,7 +3,7 @@ name: Fetch Telegram Posts
 on:
   schedule:
     - cron: '0 */2 * * *' # هر ۲ ساعت اجرا میشه
-  push: # برای اجرای دستی
+  push:
 
 jobs:
   fetch-posts:
@@ -11,24 +11,24 @@ jobs:
     env:
       YOUR_BOT_TOKEN: ${{ secrets.YOUR_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      PROXY: http://YOUR_PROXY_IP:PORT  # اینجا پروکسی رایگان یا خودت رو بذار
-
+      PROXY: ${{ secrets.PROXY }}
     steps:
       - uses: actions/checkout@v4
 
       - name: نصب jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: دریافت پست‌ها از تلگرام با پروکسی
+      - name: دریافت آخرین پست‌های تلگرام با پروکسی
         run: |
-          echo "Fetching Telegram posts using proxy $PROXY"
-          curl -x $PROXY -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?limit=5" > posts.json
+          echo "Fetching posts using proxy $PROXY"
+          curl -x "$PROXY" -s "https://api.telegram.org/bot${YOUR_BOT_TOKEN}/getUpdates?limit=10" > posts.json
+
           echo "API Response:"
           cat posts.json
 
-          jq '[.result[] 
-            | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber)) 
-            | .message 
+          jq '[.result[]
+            | select(.message.chat.id == (env.TELEGRAM_CHAT_ID | tonumber))
+            | .message
             | {
                 text: (.text // .caption // "بدون محتوا"),
                 date: .date,
@@ -39,10 +39,10 @@ jobs:
       - name: ساخت فایل HTML پست‌ها
         run: |
           echo '<div class="telegram-posts">' > telegram-posts.html
-          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><span class=\"post-date\">" + (.date | todate) + "</span></div>"' posts_formatted.json >> telegram-posts.html
+          jq -r '.[] | "<div class=\"telegram-post\"><a href=\"" + .link + "\" target=\"_blank\" class=\"post-link\">" + .text + "</a><br><small>" + (.date | todate) + "</small></div>"' posts_formatted.json >> telegram-posts.html
           echo '</div>' >> telegram-posts.html
 
-      - name: ذخیره تغییرات
+      - name: Commit و Push تغییرات
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
