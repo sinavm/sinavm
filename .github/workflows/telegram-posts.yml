@@ -3,7 +3,7 @@ name: Update Telegram Posts
 on:
   schedule:
     - cron: '0 * * * *'  # هر ساعت اجرا میشه
-  workflow_dispatch:     # امکان اجرای دستی هم میده
+  workflow_dispatch:     # امکان اجرای دستی
 
 jobs:
   update-posts:
