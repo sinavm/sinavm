@@ -1,0 +1,8 @@
+# Ignore Telegram session file
+session.session
+
+# Ignore environment variables file
+.env
+
+# Ignore Python cache folders
+__pycache__/
