@@ -50,43 +50,46 @@
             color: #ffd700;
         }
 
-        /* استایل پست‌های تلگرام */
-        .telegram-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 80%;
-            margin: 10px auto;
-        }
+.telegram-posts {
+    display: flex;
+    flex-direction: row; /* تغییر به ردیف */
+    gap: 15px;
+    max-width: 90vw;
+    margin: 10px auto;
+    overflow-x: auto; /* اسکرول افقی */
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #ffcc00 transparent;
+}
 
-        .telegram-post {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 18px;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+.telegram-posts::-webkit-scrollbar {
+    height: 8px;
+}
 
-        .telegram-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.3);
-        }
+.telegram-posts::-webkit-scrollbar-thumb {
+    background-color: #ffcc00;
+    border-radius: 4px;
+}
 
-        .post-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-left: 15px;
-            border: 2px solid #fff;
-        }
+.telegram-post {
+    flex: 0 0 auto; /* جلوی فشرده شدن */
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px; /* کوچکتر */
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+    max-width: 300px;
+    min-width: 220px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-        .post-text {
-            line-height: 1.6;
+.telegram-post:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
+}
         }
 
         /* استایل لینک‌های توی پست‌ها */
@@ -266,11 +269,37 @@
         </div>
     </div>
 
-    <!-- پست‌های تلگرام -->
-    <div id="telegram-posts">
+<!-- پست‌های تلگرام -->
+<div id="telegram-posts">
     <p>در حال بارگذاری پست‌ها...</p>
 </div>
 
+<script>
+    let scrollAmount = 0;
+    let telegramPosts; // تعریف متغیر برای بعد از بارگذاری محتوا
+
+    function autoScroll() {
+        if (!telegramPosts) return;
+        scrollAmount += 1;
+        if (scrollAmount >= telegramPosts.scrollWidth - telegramPosts.clientWidth) {
+            scrollAmount = 0;
+        }
+        telegramPosts.scrollLeft = scrollAmount;
+        requestAnimationFrame(autoScroll);
+    }
+
+    fetch('telegram-posts.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('telegram-posts').innerHTML = data;
+            telegramPosts = document.getElementById('telegram-posts');
+            autoScroll();
+        })
+        .catch(error => {
+            console.error('Error loading Telegram posts:', error);
+            document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
+        });
+</script>
 <script>
     fetch('telegram-posts.html')
         .then(response => response.text())
