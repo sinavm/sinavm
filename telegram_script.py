@@ -16,7 +16,13 @@ async def main():
     count = 0
     async for message in client.iter_messages(channel_username, limit=20):
         if message.message and message.message.strip():
-            text = html.escape(message.message.strip())
+            # محدود کردن به 25 کلمه اول
+            words = message.message.strip().split()
+            short_text = ' '.join(words[:25])
+            if len(words) > 25:
+                short_text += '...'
+
+            text = html.escape(short_text)
             link = f'https://t.me/{channel_username}/{message.id}'
             date_str = message.date.strftime('%Y-%m-%d %H:%M')  # فرمت تاریخ خوانا
 
@@ -28,7 +34,7 @@ async def main():
             })
 
             count += 1
-            if count == 2:
+            if count == 4:  # فقط 4 پست بخوان
                 break
 
     if count == 0:
