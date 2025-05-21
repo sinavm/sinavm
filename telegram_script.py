@@ -18,7 +18,7 @@ async def main():
         if message.message and message.message.strip():
             # محدود کردن به 5 کلمه اول
             words = message.message.strip().split()
-            short_text = ' '.join(words[:25])
+            short_text = ' '.join(words[:5])
             if len(words) > 5:
                 short_text += '...'
 
