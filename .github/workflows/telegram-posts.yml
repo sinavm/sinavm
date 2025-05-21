@@ -49,7 +49,7 @@ jobs:
           git config --global user.name 'sinavm'
           git config --global user.email 'sinabb.2006@gmail.com'
           git add telegram-posts.html posts_formatted.json || echo "No files to add"
-          git commit -m "Update Telegram posts" || echo "No changes to commit"
+          git commit -m "Telegram posts" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
