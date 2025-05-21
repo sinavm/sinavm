@@ -9,7 +9,7 @@ client = TelegramClient("anon", api_id, api_hash)
 
 async def main():
     html_output = '<div class="telegram-posts">\n'
-    async for message in client.iter_messages('@sinavm', limit=5):
+    async for message in client.iter_messages('sinavm', limit=5):
         if message.message:
             message_text = html.escape(message.message)
             html_output += f'<div class="telegram-post"><a href="https://t.me/sinavm/{message.id}" target="_blank" class="post-link">{message_text}</a><br><small>{message.date}</small></div>\n'
