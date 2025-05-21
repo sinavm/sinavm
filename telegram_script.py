@@ -16,10 +16,10 @@ async def main():
     count = 0
     async for message in client.iter_messages(channel_username, limit=20):
         if message.message and message.message.strip():
-            # محدود کردن به 25 کلمه اول
+            # محدود کردن به 10 کلمه اول
             words = message.message.strip().split()
             short_text = ' '.join(words[:25])
-            if len(words) > 25:
+            if len(words) > 10:
                 short_text += '...'
 
             text = html.escape(short_text)
@@ -34,7 +34,7 @@ async def main():
             })
 
             count += 1
-            if count == 4:  # فقط 4 پست بخوان
+            if count == 5:  # فقط 5 پست بخوان
                 break
 
     if count == 0:
