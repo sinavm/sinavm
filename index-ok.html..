@@ -50,128 +50,37 @@
             color: #ffd700;
         }
 
-        .telegram-posts {
+        /* استایل باکس اتفاق روز */
+        .daily-event {
             display: flex;
-            flex-direction: row;
-            gap: 15px;
-            max-width: 90vw;
-            margin: 10px auto;
-            overflow-x: auto;
-            padding: 10px 0;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #ffcc00 transparent;
-        }
-
-        .telegram-posts::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .telegram-posts::-webkit-scrollbar-thumb {
-            background-color: #ffcc00;
-            border-radius: 4px;
-        }
-
-        .telegram-post {
-            flex: 0 0 auto;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            padding: 15px 20px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 18px;
             color: #fff;
-            border: 1px solid rgba(255, 204, 0, 0.4);
-            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
-            max-width: 320px;
-            min-width: 240px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            font-weight: 400;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 80%;
+            margin: 10px auto;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* رنگ‌های یکی‌درمیون */
-        .telegram-post:nth-child(odd) {
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(0, 123, 255, 0.1));
-            border: 1px solid rgba(255, 204, 0, 0.5);
+        .daily-event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.3);
         }
 
-        .telegram-post:nth-child(even) {
-            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(255, 204, 0, 0.1));
-            border: 1px solid rgba(0, 123, 255, 0.5);
+        .event-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-left: 15px;
+            border: 2px solid #fff;
         }
 
-        /* افکت hover */
-        .telegram-post:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-        }
-
-        /* افکت شعاع */
-        .telegram-post::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .telegram-post:hover::before {
-            opacity: 0.5;
-        }
-
-        /* افکت کلیک */
-        .telegram-post.clicked {
-            animation: clickEffect 0.4s ease;
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.3), rgba(0, 123, 255, 0.2));
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes clickEffect {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .telegram-post > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* لینک داخل پست */
-        .telegram-post a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: 400;
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
-        }
-
-        /* استایل لینک‌های توی پست‌ها */
-        .post-text a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: 400;
-        }
-
-        .post-text a:hover {
-            text-decoration: underline;
-            color: #ffd700;
+        .event-text {
+            line-height: 1.6;
         }
 
         /* استایل دکمه‌ها */
@@ -203,25 +112,24 @@
             height: 28px;
             margin-left: 10px;
         }
+/* تغییر رنگ همه باکس‌های ساب لینک به بنفش تیره */
+.sublink {
+    background: linear-gradient(135deg, #8e2de2, #4a00e0); /* بنفش تیره */
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-        /* تغییر رنگ همه باکس‌های ساب لینک به بنفش تیره */
-        .sublink {
-            background: linear-gradient(135deg, #8e2de2, #4a00e0);
-            color: white;
-            font-weight: bold;
-            border-radius: 15px;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .sublink:hover {
-            transform: scale(1.08);
-            box-shadow: 0px 8px 20px rgba(142, 45, 226, 0.6);
-        }
+.sublink:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 8px 20px rgba(142, 45, 226, 0.6);
+}
 
         /* استایل کادر لینک‌ها */
         .software-links {
@@ -229,28 +137,27 @@
             font-weight: bold;
             margin-top: 30px;
         }
-
-        .software-links img {
-            width: 32px;
-            height: auto;
-            vertical-align: middle;
-            margin-left: 8px;
+   .software-links img {
+    width: 32px; /* افزایش اندازه آیکون */
+    height: auto;
+    vertical-align: middle;
+    margin-left: 8px;
         }
+/* استایل مخصوص لینک‌های دانلود اندروید */
+.android {
+    background: linear-gradient(135deg, #34a853, #0f9d58); /* ترکیب رنگ سبز گوگل */
+}
 
-        /* استایل مخصوص لینک‌های دانلود اندروید و آیفون */
-        .android {
-            background: linear-gradient(135deg, #34a853, #0f9d58);
-        }
+/* استایل مخصوص لینک‌های دانلود آیفون */
+.ios {
+    background: linear-gradient(135deg, #007aff, #0040ff); /* ترکیب رنگ آبی اپل */
+}
 
-        .ios {
-            background: linear-gradient(135deg, #007aff, #0040ff);
-        }
-
-        .android:hover, .ios:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
-        }
-
+/* افکت هاور برای هر دو */
+.android-download:hover, .ios-download:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
+}
         /* باکس تلگرام */
         .telegram-box {
             background: #0088cc;
@@ -295,42 +202,10 @@
             width: 120px;
         }
 
-        /* استایل کانفیگ باکس */
-        .config-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #8A2BE2, #00FFFF);
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 12px 18px;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 320px;
-            box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        }
-
-        .config-box:hover {
-            transform: scale(1.08);
-            box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
-            background: linear-gradient(135deg, #00FFFF, #8A2BE2);
-        }
-
-        .config-box img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-            object-fit: cover;
-        }
     </style>
 </head>
 <body>
+
     <div class="header-container">
         <img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo">
         <div class="header">
@@ -339,21 +214,66 @@
         </div>
     </div>
 
-    <!-- پست‌های تلگرام -->
-    <div id="telegram-posts">
-        <p>در حال بارگذاری پست‌ها...</p>
+    <!-- بخش اتفاقات روز -->
+    <div class="daily-event">
+        <img src="https://radiobimeh.com/files/ef4470df-5436-4d8f-901a-fdced982cd74.jpg" alt="سال نو مبارک" class="event-image">
+        <div class="event-text">
+            <p>
+ امیدوارم در سال جدید 
+                <br>قلب هاتون سرشار از عشق و مهر  
+                <br>و هر روز تون بهتر از دیروز باشه
+                <br>سال نو مبارک - سینا
+            </p>
+        </div>
     </div>
-
+    
+</style>
     <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
-        <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
-        دریافت کانفیگ V2Ray
-    </a>
+    <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
+    دریافت کانفیگ V2Ray
+</a>
+
+<style>
+    .config-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #8A2BE2, #00FFFF);
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 12px 18px;
+        border-radius: 20px;
+        text-align: center;
+        text-decoration: none;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 320px;
+        box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .config-box:hover {
+        transform: scale(1.08);
+        box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
+        background: linear-gradient(135deg, #00FFFF, #8A2BE2);
+    }
+
+    .config-box img {
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%;
+        margin-right: 10px;
+        object-fit: cover; 
+    }
+</style>
+
 
     <div class="software-links">
         لینک ساب ها
     </div>
 
-    <a class="download-link sublink" href="sing-box://import-remote-profile?url=https://github.com/sinavm/sing-box/raw/main/@SiNAVM#1️⃣@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+    <a class="download-link sublink" href="sing-box://import-remote-profile?url=https://github.com/sinavm/sing-box/raw/main/@SiNAVM#🤱🏻@𝙎𝙞𝙉𝘼𝙑𝙈 👈🏻کانال تلگرام">
         <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
         ساب لینک Sing-Box
     </a>
@@ -363,10 +283,9 @@
         ساب لینک Hiddify
     </a>
 
-    <a class="download-link sublink" href="v2rayng://install-config?url=https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm#%40sinavm">
-    <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
-    ساب لینک V2Ray
-        
+    <a class="download-link sublink" href="v2ray://import/https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm">
+        <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
+        ساب لینک V2Ray
     </a>
 
     <a class="download-link sublink" href="streisand://import/https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm">
@@ -389,7 +308,8 @@
         دانلود برنامه Sing-Box
     </a>
 
-    <a class="download-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
+    <a class="download-link android" 
+href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
         <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
         دانلود برنامه Hiddify
     </a>
@@ -449,7 +369,6 @@
     </div>
 
     <script>
-        // شمارش بازدید
         let visits = localStorage.getItem("visitCount") || 0;
         visits++;
         localStorage.setItem("visitCount", visits);
@@ -468,63 +387,7 @@
             .catch(error => {
                 console.error("Error fetching total visit count:", error);
             });
-
-        // انیمیشن و افکت برای پست‌ها
-        document.addEventListener("DOMContentLoaded", () => {
-            const posts = document.querySelectorAll(".telegram-post");
-
-            // انیمیشن Fade-in برای پست‌ها
-            posts.forEach((post, index) => {
-                post.style.opacity = "0";
-                post.style.transform = "translateY(20px)";
-                setTimeout(() => {
-                    post.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-                    post.style.opacity = "1";
-                    post.style.transform = "translateY(0)";
-                }, index * 200);
-            });
-
-            // انیمیشن کلیک و هدایت به لینک
-            posts.forEach(post => {
-                const link = post.querySelector("a");
-                if (link) {
-                    post.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        post.classList.remove("clicked");
-                        void post.offsetWidth;
-                        post.classList.add("clicked");
-                        setTimeout(() => {
-                            window.location.href = link.href;
-                        }, 400);
-                    });
-                }
-            });
-
-            // اسکرول خودکار
-            let scrollAmount = 0;
-            let telegramPosts = document.getElementById('telegram-posts');
-
-            function autoScroll() {
-                if (!telegramPosts) return;
-                scrollAmount += 1;
-                if (scrollAmount >= telegramPosts.scrollWidth - telegramPosts.clientWidth) {
-                    scrollAmount = 0;
-                }
-                telegramPosts.scrollLeft = scrollAmount;
-                requestAnimationFrame(autoScroll);
-            }
-
-            fetch('telegram-posts.html')
-                .then(response => response.text())
-                .then(data => {
-                    telegramPosts.innerHTML = data;
-                    autoScroll();
-                })
-                .catch(error => {
-                    console.error('Error loading Telegram posts:', error);
-                    telegramPosts.innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
-                });
-        });
     </script>
+
 </body>
 </html>
