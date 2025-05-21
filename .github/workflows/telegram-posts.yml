@@ -32,8 +32,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config --global user.name 'sinavm'
+          git config --global user.email 'sinavm3@gmail.com'
           git add telegram-posts.html
           git commit -m "Update Telegram posts" || echo "No changes to commit"
           git push
+          
