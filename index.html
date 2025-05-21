@@ -50,46 +50,101 @@
             color: #ffd700;
         }
 
-.telegram-posts {
-    display: flex;
-    flex-direction: row; /* تغییر به ردیف */
-    gap: 15px;
-    max-width: 90vw;
-    margin: 10px auto;
-    overflow-x: auto; /* اسکرول افقی */
-    padding: 10px 0;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: #ffcc00 transparent;
-}
+        .telegram-posts {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            max-width: 90vw;
+            margin: 10px auto;
+            overflow-x: auto;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ffcc00 transparent;
+        }
 
-.telegram-posts::-webkit-scrollbar {
-    height: 8px;
-}
+        .telegram-posts::-webkit-scrollbar {
+            height: 8px;
+        }
 
-.telegram-posts::-webkit-scrollbar-thumb {
-    background-color: #ffcc00;
-    border-radius: 4px;
-}
+        .telegram-posts::-webkit-scrollbar-thumb {
+            background-color: #ffcc00;
+            border-radius: 4px;
+        }
 
-.telegram-post {
-    flex: 0 0 auto; /* جلوی فشرده شدن */
-    background: rgba(255, 255, 255, 0.15);
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 14px; /* کوچکتر */
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
-    max-width: 300px;
-    min-width: 220px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+        .telegram-post {
+            flex: 0 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #fff;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+            max-width: 320px;
+            min-width: 240px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
 
-.telegram-post:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
-}
+        /* رنگ‌های یکی‌درمیون */
+        .telegram-post:nth-child(odd) {
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(0, 123, 255, 0.1));
+            border: 1px solid rgba(255, 204, 0, 0.5);
+        }
+
+        .telegram-post:nth-child(even) {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(255, 204, 0, 0.1));
+            border: 1px solid rgba(0, 123, 255, 0.5);
+        }
+
+        /* افکت hover */
+        .telegram-post:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+        }
+
+        /* افکت شعاع */
+        .telegram-post::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .telegram-post:hover::before {
+            opacity: 0.5;
+        }
+
+        /* افکت کلیک */
+        .telegram-post.clicked {
+            animation: clickEffect 0.4s ease;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.3), rgba(0, 123, 255, 0.2));
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes clickEffect {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .telegram-post > * {
+            position: relative;
+            z-index: 1;
         }
 
         /* استایل لینک‌های توی پست‌ها */
@@ -269,48 +324,10 @@
         </div>
     </div>
 
-<!-- پست‌های تلگرام -->
-<div id="telegram-posts">
-    <p>در حال بارگذاری پست‌ها...</p>
-</div>
-
-<script>
-    let scrollAmount = 0;
-    let telegramPosts; // تعریف متغیر برای بعد از بارگذاری محتوا
-
-    function autoScroll() {
-        if (!telegramPosts) return;
-        scrollAmount += 1;
-        if (scrollAmount >= telegramPosts.scrollWidth - telegramPosts.clientWidth) {
-            scrollAmount = 0;
-        }
-        telegramPosts.scrollLeft = scrollAmount;
-        requestAnimationFrame(autoScroll);
-    }
-
-    fetch('telegram-posts.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('telegram-posts').innerHTML = data;
-            telegramPosts = document.getElementById('telegram-posts');
-            autoScroll();
-        })
-        .catch(error => {
-            console.error('Error loading Telegram posts:', error);
-            document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
-        });
-</script>
-<script>
-    fetch('telegram-posts.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('telegram-posts').innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error loading Telegram posts:', error);
-            document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
-        });
-</script>
+    <!-- پست‌های تلگرام -->
+    <div id="telegram-posts">
+        <p>در حال بارگذاری پست‌ها...</p>
+    </div>
 
     <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
         <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
@@ -436,16 +453,55 @@
                 console.error("Error fetching total visit count:", error);
             });
 
-        // لود پست‌های تلگرام
-        fetch('telegram-posts.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('telegram-posts').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading Telegram posts:', error);
-                document.getElementById('telegram-posts').innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
+        // انیمیشن و افکت برای پست‌ها
+        document.addEventListener("DOMContentLoaded", () => {
+            const posts = document.querySelectorAll(".telegram-post");
+
+            // انیمیشن Fade-in برای پست‌ها
+            posts.forEach((post, index) => {
+                post.style.opacity = "0";
+                post.style.transform = "translateY(20px)";
+                setTimeout(() => {
+                    post.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                    post.style.opacity = "1";
+                    post.style.transform = "translateY(0)";
+                }, index * 200);
             });
+
+            // انیمیشن کلیک
+            posts.forEach(post => {
+                post.addEventListener("click", () => {
+                    post.classList.remove("clicked");
+                    void post.offsetWidth; // بازنشانی انیمیشن
+                    post.classList.add("clicked");
+                });
+            });
+
+            // اسکرول خودکار
+            let scrollAmount = 0;
+            let telegramPosts = document.getElementById('telegram-posts');
+
+            function autoScroll() {
+                if (!telegramPosts) return;
+                scrollAmount += 1;
+                if (scrollAmount >= telegramPosts.scrollWidth - telegramPosts.clientWidth) {
+                    scrollAmount = 0;
+                }
+                telegramPosts.scrollLeft = scrollAmount;
+                requestAnimationFrame(autoScroll);
+            }
+
+            fetch('telegram-posts.html')
+                .then(response => response.text())
+                .then(data => {
+                    telegramPosts.innerHTML = data;
+                    autoScroll();
+                })
+                .catch(error => {
+                    console.error('Error loading Telegram posts:', error);
+                    telegramPosts.innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
+                });
+        });
     </script>
 </body>
 </html>
