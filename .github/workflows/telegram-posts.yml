@@ -34,6 +34,6 @@ jobs:
         run: |
           git config --global user.name 'sinavm'
           git config --global user.email 'sinavm3@gmail.com'
-          git add telegram-posts.html
+          git add telegram-posts.html posts_formatted.json
           git commit -m "Update Telegram posts" || echo "No changes to commit"
           git push
