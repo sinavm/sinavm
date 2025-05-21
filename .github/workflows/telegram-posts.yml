@@ -37,4 +37,3 @@ jobs:
           git add telegram-posts.html
           git commit -m "Update Telegram posts" || echo "No changes to commit"
           git push
-          
