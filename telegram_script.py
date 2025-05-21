@@ -1,19 +1,13 @@
 import os
 import html
 import json
-import re
 from telethon import TelegramClient
 
 api_id = int(os.getenv("TELEGRAM_API_ID"))
 api_hash = os.getenv("TELEGRAM_API_HASH")
-channel_username = 'sinavm'
+channel_username = 'sinavm'  # نام کانال شما
 
-client = TelegramClient("session.session", api_id, api_hash)
-
-def split_into_sentences(text):
-    # تقسیم متن بر اساس پایان جملات (نقطه، علامت سوال، تعجب و ...)
-    sentence_endings = re.compile(r'(?<=[.!؟])\s+')
-    return sentence_endings.split(text)
+client = TelegramClient("session.session", api_id, api_hash)  # نام فایل سشن شما
 
 async def main():
     posts_html = '<div class="telegram-posts">\n'
@@ -22,15 +16,15 @@ async def main():
     count = 0
     async for message in client.iter_messages(channel_username, limit=20):
         if message.message and message.message.strip():
-            sentences = split_into_sentences(message.message.strip())
-            short_sentences = sentences[:20]
-            short_text = ' '.join(short_sentences)
-            if len(sentences) > 20:
+            # محدود کردن به 5 کلمه اول
+            words = message.message.strip().split()
+            short_text = ' '.join(words[:25])
+            if len(words) > 5:
                 short_text += '...'
 
             text = html.escape(short_text)
             link = f'https://t.me/{channel_username}/{message.id}'
-            date_str = message.date.strftime('%Y-%m-%d %H:%M')
+            date_str = message.date.strftime('%Y-%m-%d %H:%M')  # فرمت تاریخ خوانا
 
             posts_html += f'<div class="telegram-post"><a href="{link}" target="_blank" class="post-link">{text}</a><br><small>{date_str}</small></div>\n'
             posts_json.append({
@@ -40,7 +34,7 @@ async def main():
             })
 
             count += 1
-            if count == 6:
+            if count == 5:  # فقط 5 پست بخوان
                 break
 
     if count == 0:
