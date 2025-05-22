@@ -1,0 +1,26 @@
+name: Generate GitHub Profile 3D Image
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # هر روز ساعت 00:00 اجرا میشه
+  workflow_dispatch: # می‌تونی دستی هم اجراش کنی
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate 3D Profile
+        uses: jaywcjlove/github-profile-3d-contrib@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update 3D profile image"
+          git push
