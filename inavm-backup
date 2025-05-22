@@ -1,0 +1,197 @@
+[33mcommit e63de7e48f8662c83cf766d9a2ba68edb4ff7e48[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Thu May 22 00:37:41 2025 +0000
+
+    Add session.session to .gitignore
+
+[33mcommit c1ad41faea2e74e9f0ab96388ef4941b18084fc3[m[33m ([m[1;31morigin/codespace-musical-waffle-pj7pxrjxx66p2gg7[m[33m)[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Wed May 21 17:02:41 2025 +0000
+
+    remove sensitive session.session file
+
+[33mcommit ff31c1caee2d5aabe379ab3560600f1b7bd6c7b5[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Mon May 19 03:35:27 2025 +0000
+
+    Add clickable Telegram post links
+
+[33mcommit 5d283d962d0559b71b4b8c7edb8baf8dc523dd44[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Mon May 19 03:29:12 2025 +0000
+
+    Add files with clickable Telegram post links
+
+[33mcommit f364ef2627bd5f5d9866369e170bcec825067427[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Sat May 17 20:13:39 2025 +0330
+
+    Update index.html
+
+[33mcommit d4034225425ca2eaa00fe8011016572688e0c096[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Sat May 17 20:12:15 2025 +0330
+
+    Update index.html
+
+[33mcommit 017e62377dec7229be72017fa556c48ef6458288[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Fri May 16 05:54:23 2025 +0330
+
+    Update index.html
+
+[33mcommit 58afdb2e2902e3c8a3fa897836706c9e92a9492d[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Sun Apr 27 12:53:36 2025 +0330
+
+    Create google090db501bc493713.html
+
+[33mcommit bc2f06f4a2755161d36a8336f254129acddfea63[m
+Author: sina <163084137+sinavm@users.noreply.github.com>
+Date:   Sun Apr 27 12:47:49 2025 +0330
+
+    Create sitemap.xml
+
+[33mcommit 6275dc74db83e4ab406ecc8afd6cf541961a2141[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Mon Apr 7 11:53:34 2025 +0330
+
+    Update index.html
+
+[33mcommit feb699cd3b48e7dc2692009adaa9a91a1580a830[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Mon Mar 31 23:59:19 2025 +0330
+
+    Update index.html
+
+[33mcommit 8179e1db7b741e16c334a41b6357096374420903[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Mon Mar 31 23:55:46 2025 +0330
+
+    Update index.html
+
+[33mcommit 85957c0f6b7c6c9e182dafe86effceb74c83ce23[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Fri Mar 21 07:27:15 2025 +0330
+
+    Update index.html
+
+[33mcommit da1d439dee04d7c479063d745f62ef61ea2acad6[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Fri Mar 21 07:09:47 2025 +0330
+
+    Update index.html
+
+[33mcommit 47a114954d5c26b156d4e7ef6f80475a909ee859[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Fri Mar 21 06:54:56 2025 +0330
+
+    Update index.html
+
+[33mcommit 0ddada8e6d52d4ed400e62ebdc3203234cfa83bd[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Thu Mar 20 22:41:00 2025 +0330
+
+    Update index.html
+
+[33mcommit b4d5a4e9ff2c6eed466b81ef3c0e9d3c1b02c0dc[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Thu Mar 20 17:44:15 2025 +0330
+
+    Update index.html
+
+[33mcommit 7e6f4dcfa111ee29947a6ba3159da4ba22aec8ad[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Mon Mar 10 13:43:42 2025 +0330
+
+    Update index.html
+
+[33mcommit 462116d728c60e4f30dfe579f1b615a03f731897[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Mon Mar 10 13:25:04 2025 +0330
+
+    Update index.html
+
+[33mcommit e971945e2b195c444f04aeeea2569a14168e1c9a[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Thu Mar 6 23:00:03 2025 +0330
+
+    Update index.html
+
+[33mcommit a9c4e376bd8a112d9bfec17580e9408af4b9c22a[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Mar 5 23:28:42 2025 +0330
+
+    Update index.html
+
+[33mcommit 1ede32e43ee8a6c7737fc3df407f0d456a2ddbbe[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Mar 5 23:23:59 2025 +0330
+
+    Update index.html
+
+[33mcommit a20353200b60bd73204febcceb72313c2db524c2[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Mar 5 19:55:05 2025 +0330
+
+    Update index.html
+
+[33mcommit b1bb96caf4359565185ebdb21f719f1f95146fa3[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Sat Feb 22 20:09:48 2025 +0330
+
+    Update index.html
+
+[33mcommit 06df8926ddea03b189add87dff3d5f12c44fe412[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Thu Feb 20 19:37:08 2025 +0330
+
+    Update index.html
+
+[33mcommit e0e64b5502d6cc2bf98196a9c15cdef1849107ad[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 10:04:27 2025 +0330
+
+    Update index.html
+
+[33mcommit d9c3905a93ec8271f0fa77af25ff059d5bf67892[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 09:23:03 2025 +0330
+
+    SinaVM logo
+
+[33mcommit ed7af158af45bced49412a948516fd7a77bdf553[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 09:22:25 2025 +0330
+
+    Delete IMG_7428.jpeg
+
+[33mcommit f87eedc17b1e48d37a820ab790284f33e5bd9c3f[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 09:20:53 2025 +0330
+
+    Logo SinaVM
+
+[33mcommit c8e1b2762e9cec658a09066bfcf95f1cc691528f[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 09:20:25 2025 +0330
+
+    Delete IMG_7428.jpeg
+
+[33mcommit fc1e4ee79fcddd484372309365a02c75f8a8dcc6[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Wed Feb 19 09:17:50 2025 +0330
+
+    Logo SiNAVM
+
+[33mcommit 35e389ac286030e200f21737aed7a6e38e7957f3[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Tue Feb 18 13:48:23 2025 +0330
+
+    Update index.html
+
+[33mcommit 9caca31233ccd17f40f706c303937930e91290f0[m
+Author: SiNAVM <163084137+sinavm@users.noreply.github.com>
+Date:   Tue Feb 18 13:24:04 2025 +0330
+
+    Create index.html
