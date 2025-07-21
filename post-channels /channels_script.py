@@ -14,7 +14,8 @@ telegram_session = os.getenv("TELEGRAM_SESSION")
 
 # بررسی متغیرهای محیطی
 if not api_id or not api_hash or not telegram_session:
-    raise ValueError("TELEGRAM_API_ID, TELEGRAM_API_HASH, or TELEGRAM_SESSION not set")
+    print("Error: TELEGRAM_API_ID, TELEGRAM_API_HASH, or TELEGRAM_SESSION not set")
+    exit(1)
 
 # ایجاد کلاینت
 client = TelegramClient(StringSession(telegram_session), int(api_id), api_hash)
@@ -27,7 +28,7 @@ def extract_config(message_text):
         "ss": r"ss://[^\s]+",
         "trojan": r"trojan://[^\s]+"
     }
- configs = []
+    configs = []
     for config_type, pattern in config_patterns.items():
         matches = re.findall(pattern, message_text)
         for match in matches:
@@ -41,13 +42,19 @@ def extract_proxy(message_text):
 
 async def main():
     try:
-        # اتصال به تلگرام
-        await client.start()
-        print("Connected to Telegram successfully")
+        # بررسی وجود فایل channels_name.json
+        if not os.path.exists('post-channels/channels_name.json'):
+            print("Error: channels_name.json not found in post-channels/")
+            return
 
         # خواندن لیست کانال‌ها
         with open('post-channels/channels_name.json', 'r') as f:
             channels = json.load(f)
+        print(f"Loaded {len(channels)} channels: {channels}")
+
+        # اتصال به تلگرام
+        await client.start()
+        print("Connected to Telegram successfully")
 
         posts = []
         configs = []
@@ -55,29 +62,37 @@ async def main():
 
         # جمع‌آوری پست‌ها از هر کانال/گروه
         for channel in channels:
-            async for message in client.iter_messages(channel, limit=50):
-                if message.message and message.message.strip():
-                    # استخراج متن کوتاه
-                    words = message.message.strip().split()
-                    short_text = ' '.join(words[:5])
-                    if len(words) > 5:
-                        short_text += '...'
+            try:
+                print(f"Fetching messages from channel: {channel}")
+                async for message in client.iter_messages(channel, limit=30):
+                    await asyncio.sleep(1)  # تأخیر برای جلوگیری از FloodWaitError
+                    if message.message and message.message.strip():
+                        # استخراج متن کوتاه
+                        words = message.message.strip().split()
+                        short_text = ' '.join(words[:5])
+                        if len(words) > 5:
+                            short_text += '...'
 
-                    link = f'https://t.me/{channel}/{message.id}'
-                    date_str = message.date.strftime('%Y-%m-%d %H:%M')
+                        link = f'https://t.me/{channel}/{message.id}'
+                        date_str = message.date.strftime('%Y-%m-%d %H:%M')
 
-                    posts.append({
-                        "text": message.message.strip(),
-                        "date": int(message.date.timestamp()),
-                        "link": link,
-                        "channel": channel
-                    })
+                        posts.append({
+                            "text": message.message.strip(),
+                            "date": int(message.date.timestamp()),
+                            "link": link,
+                            "channel": channel
+                        })
 
-                    # استخراج کانفیگ‌ها
-                    configs.extend(extract_config(message.message))
+                        # استخراج کانفیگ‌ها
+                        configs.extend(extract_config(message.message))
 
-                    # استخراج پروکسی‌ها
-                    proxies.extend(extract_proxy(message.message))
+                        # استخراج پروکسی‌ها
+                        proxies.extend(extract_proxy(message.message))
+            except Exception as e:
+                print(f"Error fetching messages from {channel}: {str(e)}")
+                continue
+
+        print(f"Collected {len(posts)} posts, {len(configs)} configs, {len(proxies)} proxies")
 
         # نام‌گذاری کانفیگ‌ها
         for i, config in enumerate(configs[:10], 1):
