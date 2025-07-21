@@ -24,6 +24,11 @@ jobs:
           pip install telethon
           pip list
 
+      - name: Create post-channels directory
+        run: |
+          mkdir -p post-channels
+          echo "post-channels directory created or already exists"
+
       - name: Check files before running scripts
         run: |
           ls -la
@@ -55,6 +60,7 @@ jobs:
           python post-channels/channels_script.py 2>&1 | tee post-channels/script_output.log
           echo "channels_script.py execution finished."
           cat post-channels/script_output.log
+        continue-on-error: true  # ادامه دادن حتی در صورت خطا
 
       - name: Check files after running scripts
         run: |
