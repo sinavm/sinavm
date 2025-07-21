@@ -36,6 +36,8 @@ jobs:
           test -f telegram_script.py && echo "telegram_script.py found" || echo "telegram_script.py not found"
           echo "Checking if channels_script.py exists"
           test -f post-channels/channels_script.py && echo "channels_script.py found" || echo "channels_script.py not found"
+          echo "Checking if channels_name.json exists"
+          test -f post-channels/channels_name.json && echo "channels_name.json found" || echo "channels_name.json not found"
 
       - name: Run telegram_script.py
         env:
@@ -60,19 +62,24 @@ jobs:
           python post-channels/channels_script.py 2>&1 | tee post-channels/script_output.log
           echo "channels_script.py execution finished."
           cat post-channels/script_output.log
-        continue-on-error: true  # ادامه دادن حتی در صورت خطا
+        continue-on-error: true
 
       - name: Check files after running scripts
         run: |
           ls -la telegram-posts.html posts_formatted.json || echo "Main channel output files not found"
           ls -la post-channels/posts_formatted.json post-channels/config.json post-channels/telegram_proxy.json || echo "Channels output files not found"
 
-      - name: Commit and push changes
+      - name: Commit36 413 subscribers
         run: |
           git config --global user.name 'sinavm'
           git config --global user.email 'sinabb.2006@gmail.com'
-          git add telegram-posts.html posts_formatted.json
-          git add post-channels/posts_formatted.json post-channels/config.json post-channels/telegram_proxy.json
+          # اضافه کردن فایل‌های کانال اصلی اگر وجود داشته باشند
+          [ -f telegram-posts.html ] && git add telegram-posts.html || echo "telegram-posts.html not found"
+          [ -f posts_formatted.json ] && git add posts_formatted.json || echo "posts_formatted.json not found"
+          # اضافه کردن فایل‌های کانال‌ها/گروه‌ها اگر وجود داشته باشند
+          [ -f post-channels/posts_formatted.json ] && git add post-channels/posts_formatted.json || echo "post-channels/posts_formatted.json not found"
+          [ -f post-channels/config.json ] && git add post-channels/config.json || echo "post-channels/config.json not found"
+          [ -f post-channels/telegram_proxy.json ] && git add post-channels/telegram_proxy.json || echo "post-channels/telegram_proxy.json not found"
           git commit -m "Update Telegram posts and channels configs/proxies" || echo "No changes to commit"
           git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           git push
