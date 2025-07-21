@@ -45,6 +45,14 @@ async def main():
         # بررسی وجود فایل channels_name.json
         if not os.path.exists('post-channels/channels_name.json'):
             print("Error: channels_name.json not found in post-channels/")
+            # تولید فایل‌های خالی در صورت نبود داده
+            with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
+            with open('post-channels/config.json', 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
+            with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
+            print("Empty output files created")
             return
 
         # خواندن لیست کانال‌ها
@@ -64,9 +72,11 @@ async def main():
         for channel in channels:
             try:
                 print(f"Fetching messages from channel: {channel}")
+                message_count = 0
                 async for message in client.iter_messages(channel, limit=30):
                     await asyncio.sleep(1)  # تأخیر برای جلوگیری از FloodWaitError
                     if message.message and message.message.strip():
+                        message_count += 1
                         # استخراج متن کوتاه
                         words = message.message.strip().split()
                         short_text = ' '.join(words[:5])
@@ -88,6 +98,7 @@ async def main():
 
                         # استخراج پروکسی‌ها
                         proxies.extend(extract_proxy(message.message))
+                print(f"Found {message_count} valid messages in {channel}")
             except Exception as e:
                 print(f"Error fetching messages from {channel}: {str(e)}")
                 continue
@@ -115,9 +126,25 @@ async def main():
 
     except FloodWaitError as e:
         print(f"Flood wait error: Please wait {e.seconds} seconds")
+        # تولید فایل‌های خالی در صورت خطا
+        with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        with open('post-channels/config.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        print("Empty output files created due to FloodWaitError")
         raise
     except Exception as e:
         print(f"Error occurred: {str(e)}")
+        # تولید فایل‌های خالی در صورت خطا
+        with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        with open('post-channels/config.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        print("Empty output files created due to error")
         raise
     finally:
         await client.disconnect()
