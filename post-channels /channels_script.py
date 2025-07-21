@@ -31,6 +31,8 @@ def extract_config(message_text):
     configs = []
     for config_type, pattern in config_patterns.items():
         matches = re.findall(pattern, message_text)
+        if matches:
+            print(f"Found {len(matches)} {config_type} configs: {matches}")
         for match in matches:
             configs.append({"type": config_type, "link": match})
     return configs
@@ -38,21 +40,16 @@ def extract_config(message_text):
 # تابع بررسی و استخراج پروکسی‌ها
 def extract_proxy(message_text):
     proxy_pattern = r"https://t\.me/proxy\?server=[^\s]+"
-    return re.findall(proxy_pattern, message_text)
+    proxies = re.findall(proxy_pattern, message_text)
+    if proxies:
+        print(f"Found {len(proxies)} proxies: {proxies}")
+    return proxies
 
 async def main():
     try:
         # بررسی وجود فایل channels_name.json
         if not os.path.exists('post-channels/channels_name.json'):
             print("Error: channels_name.json not found in post-channels/")
-            # تولید فایل‌های خالی در صورت نبود داده
-            with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
-                json.dump([], f, ensure_ascii=False, indent=2)
-            with open('post-channels/config.json', 'w', encoding='utf-8') as f:
-                json.dump([], f, ensure_ascii=False, indent=2)
-            with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
-                json.dump([], f, ensure_ascii=False, indent=2)
-            print("Empty output files created")
             return
 
         # خواندن لیست کانال‌ها
@@ -73,10 +70,11 @@ async def main():
             try:
                 print(f"Fetching messages from channel: {channel}")
                 message_count = 0
-                async for message in client.iter_messages(channel, limit=30):
-                    await asyncio.sleep(1)  # تأخیر برای جلوگیری از FloodWaitError
+                async for message in client.iter_messages(channel, limit=50):
+                    await asyncio.sleep(0.5)  # تأخیر برای جلوگیری از FloodWaitError
                     if message.message and message.message.strip():
                         message_count += 1
+                        print(f"Processing message {message.id} from {channel}: {message.message[:50]}...")
                         # استخراج متن کوتاه
                         words = message.message.strip().split()
                         short_text = ' '.join(words[:5])
@@ -110,41 +108,34 @@ async def main():
             config["name"] = f"@sinavm-{i}"
 
         # ذخیره پست‌ها
-        with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
-            json.dump(posts, f, ensure_ascii=False, indent=2)
-        print("posts_formatted.json saved")
+        if posts:
+            with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
+                json.dump(posts, f, ensure_ascii=False, indent=2)
+            print("posts_formatted.json saved")
+        else:
+            print("No posts collected, skipping posts_formatted.json")
 
         # ذخیره کانفیگ‌ها
-        with open('post-channels/config.json', 'w', encoding='utf-8') as f:
-            json.dump(configs[:10], f, ensure_ascii=False, indent=2)
-        print("config.json saved")
+        if configs:
+            with open('post-channels/config.json', 'w', encoding='utf-8') as f:
+                json.dump(configs[:10], f, ensure_ascii=False, indent=2)
+            print("config.json saved")
+        else:
+            print("No configs collected, skipping config.json")
 
         # ذخیره پروکسی‌ها
-        with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
-            json.dump(proxies[:10], f, ensure_ascii=False, indent=2)
-        print("telegram_proxy.json saved")
+        if proxies:
+            with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
+                json.dump(proxies[:10], f, ensure_ascii=False, indent=2)
+            print("telegram_proxy.json saved")
+        else:
+            print("No proxies collected, skipping telegram_proxy.json")
 
     except FloodWaitError as e:
         print(f"Flood wait error: Please wait {e.seconds} seconds")
-        # تولید فایل‌های خالی در صورت خطا
-        with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        with open('post-channels/config.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        print("Empty output files created due to FloodWaitError")
         raise
     except Exception as e:
         print(f"Error occurred: {str(e)}")
-        # تولید فایل‌های خالی در صورت خطا
-        with open('post-channels/posts_formatted.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        with open('post-channels/config.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        with open('post-channels/telegram_proxy.json', 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
-        print("Empty output files created due to error")
         raise
     finally:
         await client.disconnect()
