@@ -6,3 +6,4 @@ session.session
 
 # Ignore Python cache folders
 __pycache__/session.session
+session.session
