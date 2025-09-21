@@ -352,25 +352,27 @@
     <div class="software-links">
         لینک ساب ها
     </div>
+    <div class="sublinks-instruction">بعد از کپی در برنامه خود لینک را وارد کنید</div>
 
-    <a class="download-link sublink" href="sing-box://import-remote-profile?url=https://github.com/sinavm/sing-box/raw/main/@SiNAVM#1️⃣@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-        <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
-        ساب لینک Sing-Box
-    </a>
+<div class="download-link sublink" data-link="https://github.com/sinavm/sing-box/raw/main/@SiNAVM#1️⃣@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+    <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
+    ساب لینک Sing-Box
+</div>
 
-    <a class="download-link sublink" href="hiddify://import/https://raw.githubusercontent.com/sinabigo/Xray/main/@sinavm#@SiNAVM">
-        <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
-        ساب لینک Hiddify
-    </a>
+<div class="download-link sublink" data-link="https://raw.githubusercontent.com/sinabigo/Xray/main/@sinavm#@SiNAVM">
+    <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
+    ساب لینک Hiddify
+</div>
 
-    <a class="download-link sublink" href="v2rayng://install-config?url=https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm#@sinavm">
-        <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
-        ساب لینک V2Ray
-    </a>
+<div class="download-link sublink" data-link="https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm#@sinavm">
+    <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
+    ساب لینک V2Ray
+</div>
 
-    <a class="download-link sublink" href="streisand://import/https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
-        ساب لینک Streisand
+<div class="download-link sublink" data-link="https://raw.githubusercontent.com/sinabigo/Xray/main/%40sinavm">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
+    ساب لینک Streisand
+</div>
     </a>
 
     <a class="download-link sublink" href="https://rentry.co/sinabigo">
@@ -448,6 +450,17 @@
     </div>
 
     <script>
+    // کپی کردن لینک‌های ساب
+document.querySelectorAll(".sublink").forEach(el => {
+    el.addEventListener("click", () => {
+        let link = el.getAttribute("data-link");
+        navigator.clipboard.writeText(link).then(() => {
+            alert("لینک کپی شد ✅\n" + link);
+        }).catch(err => {
+            console.error("خطا در کپی:", err);
+        });
+    });
+});
         // شمارش بازدید
         let visits = localStorage.getItem("visitCount") || 0;
         visits++;
