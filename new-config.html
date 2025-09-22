@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دریافت کانفیگ V2Ray</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+        body {
+            text-align: center;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin: 20px;
+            direction: rtl;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 80px;
+            border-radius: 30%;
+            border: 2px solid #fff;
+            padding: 1px;
+            background-color: white;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .separator {
+            width: 50%;
+            height: 2px;
+            background-color: white;
+            margin: 10px auto;
+        }
+
+        .telegram-link {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .telegram-link a {
+            color: #00aced;
+            text-decoration: none;
+        }
+
+        .telegram-link a:hover {
+            text-decoration: underline;
+        }
+
+        .config-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .config-box {
+            width: 80%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #007bff;
+            text-align: center;
+            color: black;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            font-size: 14px;
+            direction: ltr;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 10px;
+            resize: none;
+            background: white;
+        }
+
+        .copy-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .copy-button:hover {
+            background-color: #e64a19;
+        }
+
+        .left-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .telegram-box {
+            background: #00aced;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            text-decoration: none;
+            gap: 5px;
+        }
+
+        .telegram-box img {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+        }
+
+        .visit-box {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            width: 100px;
+        }
+
+        .follow-telegram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .follow-telegram a {
+            color: #00aced;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .follow-telegram a:hover {
+            text-decoration: underline;
+        }
+
+        .follow-telegram img {
+            width: 24px;
+            height: 24px;
+            margin-top: 4px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo">
+        <div class="header">دریافت کانفیگ V2Ray</div>
+        <div class="separator"></div>
+        <div class="telegram-link">
+            کانال تلگرامی <a href="https://T.me/sinavm" target="_blank">SinaVM</a>
+        </div>
+    </div>
+
+    <div class="config-container">
+
+        <div class="config-box">
+            <p>کانفیگ شماره ۱</p>
+            <textarea id="configText1" readonly>
+vless://53fa8faf-ba4b-4322-9c69-a3e5b1555049@104.21.56.44:80?type=ws&host=REEdfREe8MahSaNg2.rEDOrG.IR&path=sinavm-sinavm&security=none#@%F0%9D%97%A6%F0%9D%97%B6%F0%9D%97%A1%F0%9D%97%94%F0%9D%97%A9%F0%9D%97%A0%F0%9F%91%88%F0%9F%8F%BB%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%DB%8C
+            </textarea>
+            <br>
+            <button class="copy-button" onclick="copyConfig('configText1')">📋 کپی کانفیگ</button>
+        </div>
+
+        <div class="config-box">
+            <p>کانفیگ شماره ۲</p>
+            <textarea id="configText2" readonly>
+vless://3536e1fa-0850-44d1-b123-925ce12476cf@kavir.lnmarketplace.net:443?type=xhttp&mode=stream-one&host=kavir.lnmarketplace.net&path=/kavir&security=tls&sni=kavir.lnmarketplace.net&alpn=h3&fragment=10-20,1-2,1-2#%F0%9F%87%A9%F0%9F%87%AA@%F0%9D%97%A6%F0%9D%97%B6%F0%9D%97%A1%F0%9D%97%94%F0%9D%97%A9%F0%9D%97%A0%F0%9F%91%88%F0%9F%8F%BB%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%DB%8C
+            </textarea>
+            <br>
+            <button class="copy-button" onclick="copyConfig('configText2')">📋 کپی کانفیگ</button>
+        </div>
+<div class="config-box">
+    <p>کانفیگ شماره ۳</p>
+    <textarea id="configText3" readonly>
+vless://6ec52bc7-fcd7-4841-ab69-70d6e03a6eda@104.17.148.22:8880?type=ws&host=www.speedtest.net.zula.ir.cfw1.afhudvbhgfnet.ddns-ip.nEt.&path=sinavm-sinavm/?ed%3D2560&security=none#%5B%F0%9F%87%A8%F0%9F%87%A6%5Dt.me/SiNAVM
+            </textarea>
+    <br>
+    <button class="copy-button" onclick="copyConfig('configText3')">📋 کپی کانفیگ</button>
+</div>
+
+<div class="config-box">
+    <p>کانفیگ شماره ۴</p>
+    <textarea id="configText4" readonly>
+vless://53fa8faf-ba4b-4322-9c69-a3e5b1555049@104.129.165.20:8880?type=ws&host=reedfree8mahsang2.redorg.ir&path=sinavm-sinavm&security=none#%F0%9F%83%8F@%F0%9D%97%A6%F0%9D%97%B6%F0%9D%97%A1%F0%9D%97%94%F0%9D%97%A9%F0%9D%97%A0%F0%9F%91%88%F0%9F%8F%BB+%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85
+    </textarea>
+    
+    <br>
+    <button class="copy-button" onclick="copyConfig('configText4')">📋 کپی کانفیگ</button>
+</div>
+    <div class="left-container">
+        <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+            کانال تلگرام
+        </a>
+        <div class="visit-box">
+            بازدید شما: <span id="user-visit-count">0</span>
+        </div>
+        <div class="visit-box">
+            بازدید کل: <span id="total-visit-count">...</span>
+        </div>
+    </div>
+
+    <div class="follow-telegram">
+        <a href="https://T.me/sinavm" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+            کاری از کانال تلگرام SinaVM
+        </a>
+    </div>
+
+    <script>
+        function copyConfig(id) {
+            var configText = document.getElementById(id);
+            configText.select();
+            document.execCommand("copy");
+            alert("کانفیگ کپی شد!");
+        }
+                let visits = localStorage.getItem("visitCount") || 0;
+        visits++; 
+        localStorage.setItem("visitCount", visits);
+        document.getElementById("user-visit-count").innerText = visits;
+
+
+        fetch('https://page-views.count1.workers.dev')
+            .then(response => response.text())
+            .then(data => {
+                let countElement = document.getElementById("total-visit-count");
+                if (countElement) {
+                    countElement.innerText = data;
+                } else {
+                    console.error("عنصر total-visit-count یافت نشد!");
+                }
+            })
+            .catch(error => console.error("Fetch error:", error));
+    </script>
+</body>
+</html>
