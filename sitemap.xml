@@ -3,11 +3,13 @@
 
   <url>
     <loc>https://sinavm.github.io/sinavm/</loc>
+    <lastmod>2025-09-22</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://sinavm.github.io/sinavm/new-config</loc>
+    <lastmod>2025-09-22</lastmod>
     <priority>0.8</priority>
   </url>
 
