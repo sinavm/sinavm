@@ -1,91 +1,88 @@
-# پنل اختصاصی SiNAVM
+<p align="center">
+  <a href="https://sinavm.github.io/sinavm/">
+    <img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM Logo" width="120">
+  </a>
+</p>
 
-![Logo](https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg)
+# [پنل اختصاصی SiNAVM](https://sinavm.github.io/sinavm/)
 
-پنل وب حرفه‌ای برای دسترسی به محتوای کانال تلگرام SiNAVM و دریافت کانفیگ‌ها و برنامه‌های VPN.  
-این پنل طراحی مدرن، واکنش‌گرا و کاربرپسند دارد.
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/sinavm/sinavm?color=1e90ff&style=flat-square" alt="Top Language">
+  <img src="https://img.shields.io/github/license/sinavm/sinavm?color=2ecc71&style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/stars/sinavm/sinavm?color=ffca28&style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/commit-activity/t/sinavm/sinavm?color=ff4757&style=flat-square" alt="Commit Activity">
+</p>
 
-⭐ اگر از این پروژه خوشتان آمد، لطفاً **ستاره بدهید و دنبال کنید** تا حمایت کنید.
-
----
-
-## 🌟 ویژگی‌های اصلی
-
-- نمایش پست‌های کانال تلگرام با افکت‌های جذاب و اسکرول خودکار
-- دریافت کانفیگ‌های VPN شامل:
-  - V2Ray
-  - Sing-Box
-  - Hiddify
-  - Streisand
-  - Amnezia VPN
-- لینک دانلود برنامه‌ها برای **اندروید و iOS**
-- رابط کاربری فارسی و راست‌چین
-- شمارش بازدید کل کاربران
+<p align="center">
+  <a href="#🇮🇷-فارسی">🇮🇷 فارسی</a> | <a href="#🇬🇧-english">🇬🇧 English</a>
+</p>
 
 ---
 
-## 🌐 دسترسی بدون VPN
+## 🇮🇷 فارسی
+<div dir="rtl">
 
-برخی بخش‌ها بدون نیاز به VPN قابل استفاده هستند:
+### 🌟 درباره پنل SiNAVM
+🎯 این پنل وب امکان دسترسی به محتوای کانالهای تلگرامی و مدیریت کانفیگ‌ها و نصب برنامه‌ها را فراهم می‌کند.  
+💡 **ویژگی ویژه:** حتی در مواقعی که اینترنت ملی و محدود است، بدون نیاز به وی پی ان می‌توانید به محتوای کانال‌ها و کانفیگ‌های فیلترشکن دسترسی پیدا کنید.
 
-| بخش | توضیح |
-|-----|-------|
-| کانال تلگرام | مشاهده پست‌ها و دنبال کردن کانال |
-| لینک دانلود برنامه‌ها | دانلود برنامه‌ها برای موبایل بدون محدودیت |
-| لینک‌های عمومی کانفیگ‌ها | لینک‌های موجود در پنل که نیاز به VPN ندارند برای مشاهده و دریافت |
+### 🔗 دسترسی سریع
+- [💻 ورود به پنل SiNAVM](https://sinavm.github.io/sinavm/)
+- [📱 دنبال کردن کانال تلگرام](https://T.me/SinaVM)
 
-> ⚠️ برخی کانفیگ‌های VPN ممکن است نیازمند اتصال آزاد یا VPN باشند.
+### 🛠️ امکانات اصلی
+- مشاهده پست‌های کانال تلگرام بدون VPN
+- ورود به پنل و دسترسی به کانفیگ‌ها و برنامه‌ها
+- لینک‌های دانلود برنامه‌ها:
+  - اندروید
+  - آیفون (iOS)
 
----
+> ⚠️ جزئیات کانفیگ‌ها و دانلودها داخل پنل موجود است و کاربران می‌توانند بر اساس نیاز خود استفاده کنند.
 
-## 📂 محتوای موجود در پنل
+### 🤝 حمایت از پروژه
+- 🌟 لطفاً ریپو را ستاره دهید و دنبال کنید
+- 💬 ایده‌ها یا مشکلات را در [GitHub Issues](https://github.com/sinavm/sinavm/issues) مطرح کنید
+- 🔍 بررسی و Pull Request دهید تا پروژه بهتر شود
 
-### 1. پست‌های تلگرام
-- اسکرول افقی خودکار
-- افکت hover و کلیک برای زیبایی بیشتر
+### 📜 مجوز
+این پروژه تحت مجوز **MIT** منتشر شده است. برای جزئیات بیشتر، فایل [LICENSE](LICENSE) را ببینید.
 
-### 2. کانفیگ‌های VPN
-- [دریافت کانفیگ V2Ray](https://sinavm.github.io/new-config/)
-- ساب لینک‌های:
-  - Sing-Box
-  - Hiddify
-  - V2Ray
-  - Streisand
-- [دریافت کانفیگ Amnezia VPN](https://rentry.co/sinabigo)
+### 📞 تماس با ما
+تلگرام: 👉🏻 [t.me/sinavm](https://t.me/sinavm)
 
-### 3. لینک دانلود برنامه‌ها
-#### اندروید
-- [Sing-Box](https://play.google.com/store/apps/details?id=io.nekohasekai.sfa&pcampaignid=web_share)
-- [Hiddify](https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en)
-- [V2Ray](https://play.google.com/store/apps/details?id=com.v2ray.ang)
-- [Amnezia](https://play.google.com/store/apps/details?id=org.amnezia.vpn)
-
-#### iOS
-- [Sing-Box](https://apps.apple.com/app/id6673731168)
-- [Hiddify](https://apps.apple.com/app/id6596777532)
-- [Streisand](https://apps.apple.com/app/id6450534064)
-- [Amnezia](https://apps.apple.com/us/app/amneziavpn/id1600529900)
+</div>
 
 ---
 
-## 🔗 کانال تلگرام
-[دنبال کردن کانال SiNAVM](https://T.me/SinaVM)  
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="24" alt="Telegram Logo">
+## 🇬🇧 English
+<div dir="ltr">
 
----
+### 🌟 About SiNAVM Panel
+🎯 This professional web panel provides access to the **SiNAVM Telegram Channel** content and VPN configs.  
+💡 **Special Feature:** Even during national internet restrictions, users can access channel content and VPN configs **without using a VPN**.
 
-## 🛠️ استفاده و نصب
+### 🔗 Quick Access
+- [💻 Enter SiNAVM Panel](https://sinavm.github.io/sinavm/)
+- [📱 Follow Telegram Channel](https://T.me/SinaVM)
 
-1. برنامه‌های اندروید یا iOS را دانلود کنید.
-2. کانفیگ مورد نظر را از پنل یا ساب لینک‌ها وارد برنامه کنید.
-3. بدون نیاز به VPN برخی بخش‌ها و مشاهده کانال تلگرام در دسترس است.
+### 🛠️ Main Features
+- View Telegram posts without VPN
+- Access VPN configs and programs inside the panel
+- Download links for apps:
+  - Android
+  - iOS
 
----
+> ⚠️ Details for configs and downloads are inside the panel for users to access as needed.
 
-## ❤️ حمایت از پروژه
-اگر این پروژه برای شما مفید بود، لطفاً:
-- ستاره بدهید ⭐
-- ریپوزیتوری را دنبال کنید
-- کانال تلگرام را دنبال کنید
+### 🤝 Support the Project
+- 🌟 Star the repo and follow
+- 💬 Report ideas or issues via [GitHub Issues](https://github.com/sinavm/sinavm/issues)
+- 🔍 Review code and submit Pull Requests
 
-این کار به ما انگیزه می‌دهد تا امکانات بیشتری اضافه کنیم.
+### 📜 License
+This project is released under **MIT License**. See [LICENSE](LICENSE) for details.
+
+### 📞 Contact
+Telegram: 👉🏻 [t.me/sinavm](https://t.me/sinavm)
+
+</div>
