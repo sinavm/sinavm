@@ -1,23 +1,10 @@
-<p align="center">
-  <a href="https://sinavm.github.io/sinavm/">
-    <img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM Logo" width="120">
-  </a>
-</p>
+<img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=sinavm&hide_border=true" />
 
 # [پنل اختصاصی SiNAVM](https://sinavm.github.io/sinavm/)
 
 <p align="center">
-  <img src="https://img.shields.io/github/languages/top/sinavm/sinavm?color=1e90ff&style=flat-square" alt="Top Language">
-  <img src="https://img.shields.io/github/license/sinavm/sinavm?color=2ecc71&style=flat-square" alt="License">
-  <img src="https://img.shields.io/github/stars/sinavm/sinavm?color=ffca28&style=flat-square" alt="Stars">
-  <img src="https://img.shields.io/github/commit-activity/t/sinavm/sinavm?color=ff4757&style=flat-square" alt="Commit Activity">
-</p>
-
-<p align="center">
   <a href="#🇮🇷-فارسی">🇮🇷 فارسی</a> | <a href="#🇬🇧-english">🇬🇧 English</a>
 </p>
-
----
 
 ## 🇮🇷 فارسی
 <div dir="rtl">
@@ -44,17 +31,23 @@
 - 💬 ایده‌ها یا مشکلات را در [GitHub Issues](https://github.com/sinavm/sinavm/issues) مطرح کنید
 - 🔍 بررسی و Pull Request دهید تا پروژه بهتر شود
 
-### 📜 مجوز
-این پروژه تحت مجوز **MIT** منتشر شده است. برای جزئیات بیشتر، فایل [LICENSE](LICENSE) را ببینید.
+---
+
+‏<div align="center">
+‏  <img align="center" src="https://github-readme-stats.vercel.app/api?username=sinavm&include_all_commits=true&count_private=true&show_icons=true&line_height=20&title_color=7A7ADB&icon_color=2234AE&text_color=D3D3D3&bg_color=0,000000,130F40" alt="GitHub Stats">
+‏  <br><br>
+‏  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sinavm&show_icons=true&hide_border=true&layout=compact&langs_count=8"/>
+‏</div>
+
+---
+
 
 ### 📞 تماس با ما
 تلگرام: 👉🏻 [t.me/sinavm](https://t.me/sinavm)
 
-</div>
 
----
-
-## 🇬🇧 English
+<details>
+<summary>🇬🇧 English</summary>
 <div dir="ltr">
 
 ### 🌟 About SiNAVM Panel
@@ -79,10 +72,5 @@
 - 💬 Report ideas or issues via [GitHub Issues](https://github.com/sinavm/sinavm/issues)
 - 🔍 Review code and submit Pull Requests
 
-### 📜 License
-This project is released under **MIT License**. See [LICENSE](LICENSE) for details.
-
-### 📞 Contact
-Telegram: 👉🏻 [t.me/sinavm](https://t.me/sinavm)
-
 </div>
+</details>
