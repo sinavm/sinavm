@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فیلتر شکن SiNAVM</title>
+    <title>پنل کانال تلگرامی SiNAVM</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
-
+        /* استایل کلی صفحه */
         body {
             text-align: center;
             font-family: 'Vazirmatn', Arial, sans-serif;
@@ -21,7 +21,7 @@
             flex-direction: column;
         }
 
-
+        /* استایل هدر */
         .header-container {
             display: flex;
             align-items: center;
@@ -394,7 +394,7 @@
 </head>
 <body>
     <div class="header-container">
-        <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="Logo">
+        <img class="logo" src="https://github.com/sinavm/sinavm/raw/refs/heads/main/IMG_7428.jpeg" alt="Logo">
         <div class="header">
             پنل اختصاصی  
             <a href="https://T.me/sinavm" target="_blank">SiNAVM</a>
@@ -406,7 +406,7 @@
         <p>در حال بارگذاری پست‌ها...</p>
     </div>
 
-    <a class="config-box" href="https://sinavm.github.io/sinavm/new-config" target="_blank">
+    <a class="config-box" href="https://sinavm.github.io/new-config/" target="_blank">
         <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
         دریافت کانفیگ V2Ray
     </a>
@@ -415,12 +415,12 @@
         لینک ساب ها
     </div>
 
-    <a class="download-link sublink" href="https://sinavm.github.io/sing-box" target="_blank">
+    <a class="download-link sublink copy-link" data-clipboard-text="https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM">
         <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
         ساب لینک Sing-Box
     </a>
 
-    <a class="download-link sublink" href="https://sinavm.github.io/Hiddify/" target="_blank">
+    <a class="download-link sublink copy-link" data-clipboard-text="https://github.com/sinavm/Hiddify/raw/refs/heads/main/@sinavm#@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻|Hiddify">
         <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
         ساب لینک Hiddify
     </a>
@@ -471,7 +471,7 @@
     </div>
     
     <a class="download-link ios" href="https://apps.apple.com/app/id6673731168">
-        <img src="https://play-lh.googleusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
+        <img src="https://play-lh.githubusercontent.com/9hC1t0lYNRlFHt2N2NJCWYMe_M6vJh580XHdC0JeEW14AJJFZGDbgj_meooXAXHbWJ1_" alt="Sing-Box Logo">
         دانلود برنامه Sing-Box
     </a>
 
@@ -560,7 +560,7 @@
                 }
             });
 
-            // کپی لینک برای V2Ray و Streisand
+            // کپی لینک برای ساب‌لینک‌ها
             const copyLinks = document.querySelectorAll(".copy-link");
             const copyMessage = document.getElementById("copy-message");
 
