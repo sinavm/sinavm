@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="راهنمای کانفیگ‌های امن V2Ray از SinaVM">
     <meta name="keywords" content="V2Ray, VPN, secure connection, SinaVM, configuration">
-    <title>دریافت کانفیگ V2Ray</title>
+    <title>دریافت کانفیگ v2ray</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
@@ -168,11 +168,12 @@
 
         .left-container {
             position: fixed;
-            bottom: 70px;
-            left: 10px;
+            top: 50%;
+            left: 10px; /* Adjusted to position slightly from the left edge */
+            transform: translateY(-50%); /* Centers vertically */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start; /* Align items to the left */
             gap: 10px;
             z-index: 10;
         }
@@ -390,10 +391,10 @@
     <div class="content">
         <div class="header-container">
             <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg" alt="Logo">
-            <div class="header">دریافت کانفیگ V2Ray</div>
+            <div class="header">دریافت کانفیگ v2ray</div>
             <div class="separator"></div>
             <div class="telegram-link">
-                کانال تلگرامی <a href="https://t.me/sinavm" target="_blank">SinaVM</a>
+                کانال تلگرام <a href="https://t.me/sinavm" target="_blank">sinavm</a>
             </div>
         </div>
 
@@ -403,7 +404,7 @@
             <button class="download-button vless" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vless', 'vless')">کپی Vless</button>
             <button class="download-button vmess" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vmess', 'vmess')">کپی Vmess</button>
             <button class="download-button reality" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/reality', 'reality')">کپی Reality</button>
-            <button class="download-button ss" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/ss', 'ss')">کپی SS</button>
+            <button class="download-button ss" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/ss', 'ss')">کپی Shadowsocks</button>
 
             <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">صفحه اصلی</a>
         </div>
@@ -411,7 +412,7 @@
         <div class="follow-telegram">
             <a href="https://t.me/sinavm" target="_blank">
                 <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
-                کاری از کانال تلگرام SinaVM
+                کاری از کانال تلگرام sinavm
             </a>
         </div>
 
@@ -455,37 +456,37 @@
             </a>
             <div class="install-sub-links" id="androidLinks" style="display: none;">
                 <a class="install-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
-                    <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
                     برنامه Hiddify
                 </a>
                 <a class="install-link android" href="https://github.com/2dust/v2rayNG/releases/tag/1.10.23">
-                    <img src="https://play-lh.googleusercontent.com/x3RFim6Fb-bgRd-HnV9VNrdqBRueyOuUjvu7ZNv7eRYC5Idl3WU_GSxa7bpx5yyUT30" alt="V2Ray Logo">
-                    برنامه V2Ray
+                    <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="v2ray Logo">
+                    برنامه v2ray
                 </a>
             </div>
             <div class="install-sub-links" id="iphoneLinks" style="display: none;">
                 <a class="install-link iphone" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
                     برنامه Hiddify
                 </a>
                 <a class="install-link iphone" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
                     برنامه Streisand
                 </a>
             </div>
             <div class="install-sub-links" id="windowsLinks" style="display: none;">
                 <a class="install-link windows" href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/#_2">
-                    <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
                     برنامه Hiddify
                 </a>
             </div>
             <div class="install-sub-links" id="macLinks" style="display: none;">
                 <a class="install-link mac" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://play-lh.googleusercontent.com/Dm_6ugf7Wwib_A3AFFdtkktufYGGOamhb072Ii46zYyb__qZHSocnJGErEUWxp7UWaGG" alt="Hiddify Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
                     برنامه Hiddify
                 </a>
                 <a class="install-link mac" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/56/f5/bc56f5df-8a23-3a31-d5ac-a951ab3b3552/AppIcon-0-0-1x_U007epad-0-0-0-1-0-85-220.png/1200x600wa.png" alt="Streisand Logo">
+                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
                     برنامه Streisand
                 </a>
             </div>
