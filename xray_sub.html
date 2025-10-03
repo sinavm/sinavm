@@ -537,6 +537,20 @@
                 allSubLinks.forEach(link => link.style.display = 'none');
             }
         }
+                // شمارش بازدید
+        fetch('https://page-views.count1.workers.dev')
+            .then(response => response.text())
+            .then(data => {
+                let countElement = document.getElementById("total-visit-count");
+                if (countElement) {
+                    countElement.innerText = data;
+                } else {
+                    console.error("Error updating total visit count.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching total visit count:", error);
+            });
     </script>
 </body>
 </html>
