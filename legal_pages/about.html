@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="درباره پروژه SiNAVM، ارائه‌دهنده کانفیگ‌های امن VPN و ابزارهای متن‌باز">
+    <meta name="keywords" content="SiNAVM, VPN, V2Ray, open-source, secure connection">
+    <title>درباره ما</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            text-align: center;
+            direction: rtl;
+            background: linear-gradient(135deg, #0d0d0d, #121212);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 80px;
+            border-radius: 30%;
+            border: 3px solid #fff;
+            padding: 1px;
+            background-color: white;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeSlideIn 1s forwards 0.4s;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeSlideIn 1s forwards 0.2s;
+        }
+
+        .telegram-link {
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeSlideIn 1s forwards 0.6s;
+        }
+
+        .telegram-link a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        .telegram-link a:hover {
+            text-decoration: underline;
+            color: #ffd700;
+        }
+
+        .separator {
+            width: 50%;
+            height: 2px;
+            background-color: white;
+            margin: 10px auto;
+        }
+
+        .about-content {
+            max-width: 600px;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 20px auto;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeSlideIn 1s forwards 0.8s;
+        }
+
+        .home-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(270deg, #ff416c, #ff4b2b, #ff416c);
+            background-size: 600% 600%;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 15px;
+            text-decoration: none;
+            margin: 20px auto;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(255, 75, 43, 0.6), 0 0 20px rgba(255, 65, 108, 0.3);
+            animation: pulseGradient 3s ease infinite;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInOnce 1s forwards 1.6s;
+        }
+
+        .home-button:hover {
+            transform: scale(1.12) rotate(-2deg);
+            box-shadow: 0 0 25px rgba(255, 75, 43, 1), 0 0 50px rgba(255, 65, 108, 0.8);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .left-container {
+            position: fixed;
+            top: 79%;
+            left: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .telegram-box, .github-box, .visit-box {
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            width: 140px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
+            background-size: 600% 600%;
+            color: white;
+            animation: pulseGradient 3s ease infinite;
+            box-shadow: 0 0 10px rgba(0,217,255,0.6), 0 0 20px rgba(0,136,204,0.3);
+        }
+        .telegram-box img { width: 22px; height: 22px; margin-left: 5px; }
+        .telegram-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,0.8); }
+
+        .github-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(270deg, #6e5494, #9b59b6, #6e5494);
+            background-size: 600% 600%;
+            color: white;
+            animation: pulseGradient 3s ease infinite;
+            box-shadow: 0 0 10px rgba(155,89,182,0.6),0 0 20px rgba(110,84,148,0.3);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .github-box img { width: 22px; height: 22px; margin-left: 5px; }
+        .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
+
+        .visit-box {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 6px 12px;
+            font-size: 14px;
+            box-shadow: 0 0 5px rgba(0,255,255,0.3);
+            animation: pulseGradient 4s ease infinite;
+        }
+        .visit-box:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.7); }
+
+        .follow-telegram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInOnce 1s forwards 1.8s;
+        }
+
+        .follow-telegram a {
+            color: #00d9ff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .follow-telegram a:hover {
+            text-decoration: underline;
+        }
+
+        .follow-telegram img {
+            width: 24px;
+            height: 24px;
+            margin-top: 4px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInOnce { to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 768px) {
+            .header { font-size: 20px; }
+            .logo { max-width: 60px; }
+            .telegram-box, .github-box, .visit-box { width: 120px; font-size: 13px; }
+            .telegram-box img, .github-box img { width: 18px; height: 18px; }
+            .home-button { font-size: 16px; width: 180px; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .header { font-size: 18px; }
+            .logo { max-width: 50px; }
+            .telegram-box, .github-box, .visit-box { width: 110px; font-size: 12px; padding: 6px; }
+            .home-button { font-size: 14px; width: 160px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header-container">
+            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg" alt="Logo">
+            <div class="header">درباره ما</div>
+            <div class="separator"></div>
+            <div class="telegram-link">
+                کانال تلگرام <a href="https://t.me/sinavm" target="_blank">sinavm</a>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <p>پروژه SiNAVM توسط یک توسعه‌دهنده مستقل به نام سینا راه‌اندازی شده است. هدف ما ارائه ابزارهای متن‌باز و کانفیگ‌های امن VPN برای کمک به کاربران در دسترسی آزاد و امن به اینترنت است. ما با تمرکز بر شفافیت، امنیت و تجربه کاربری، ابزارهایی مانند V2Ray، Sing-Box، Hiddify و Streisand را پشتیبانی می‌کنیم.</p>
+            <p>SiNAVM نه تنها کانفیگ‌های رایگان ارائه می‌دهد، بلکه اپلیکیشن‌های پریمیوم مودشده را نیز با جامعه به اشتراک می‌گذارد. ما به جای جادوگری، با کد و خلاقیت به کاربران کمک می‌کنیم تا در برابر محدودیت‌های اینترنتی مقاومت کنند.</p>
+            <p>برای به‌روزرسانی‌ها و ایده‌های جدید، ما را در <a href="https://t.me/sinavm" target="_blank">کانال تلگرام</a> و <a href="https://github.com/sinavm" target="_blank">گیت‌هاب</a> دنبال کنید!</p>
+        </div>
+
+        <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">خانه</a>
+
+        <div class="follow-telegram">
+            <a href="https://t.me/sinavm" target="_blank">
+                <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
+                کاری از کانال تلگرام sinavm
+            </a>
+        </div>
+
+        <div class="footer">
+            <a href="https://sinavm.github.io/sinavm/legal_pages/about.html">درباره ما</a> |
+            <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html">سیاست حریم خصوصی</a> |
+            <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html">شرایط استفاده</a>
+        </div>
+    </div>
+
+    <div class="left-container">
+        <a class="telegram-box" href="https://t.me/sinavm" target="_blank">
+            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
+            کانال تلگرام
+        </a>
+        <a class="github-box" href="https://github.com/sinavm" target="_blank">
+            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="Github Logo">
+            Github
+        </a>
+        <div class="visit-box">
+            بازدید کل: <span id="total-visit-count">...</span>
+        </div>
+    </div>
+
+    <script>
+        // شمارش بازدید
+        fetch('https://page-views.count1.workers.dev')
+            .then(response => response.text())
+            .then(data => {
+                let countElement = document.getElementById("total-visit-count");
+                if (countElement) {
+                    countElement.innerText = data;
+                } else {
+                    console.error("Error updating total visit count.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching total visit count:", error);
+            });
+    </script>
+</body>
+</html>

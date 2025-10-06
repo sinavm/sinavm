@@ -1,12 +1,12 @@
-name: Update Telegram Posts
+name: Update Channels Posts
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # اجرا هر دو ساعت در دقیقه صفر
+    - cron: '0 */1 * * *'  # اجرا هر ۱ ساعت
   workflow_dispatch:     # امکان اجرای دستی
 
 jobs:
-  update-posts:
+  update-channels-posts:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,31 +26,30 @@ jobs:
 
       - name: Check files before running script
         run: |
-          ls -la
-          echo "Checking if telegram_script.py exists"
-          test -f telegram_script.py && echo "Script found" || echo "Script not found"
+          ls -la post-channels/
+          echo "Checking if channels_script.py exists"
+          test -f post-channels/channels_script.py && echo "Script found" || echo "Script not found"
 
       - name: Run script
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
           TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }} # در صورت استفاده از bot
         run: |
           echo "Starting script execution..."
-          python telegram_script.py 2>&1 | tee script_output.log
+          python post-channels/channels_script.py 2>&1 | tee post-channels/script_output.log
           echo "Script execution finished."
-          cat script_output.log
+          cat post-channels/script_output.log
 
       - name: Check files after running script
         run: |
-          ls -la telegram-posts.html posts_formatted.json || echo "Output files not found"
+          ls -la post-channels/posts_formatted.json post-channels/config.json post-channels/telegram_proxy.json || echo "Output files not found"
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'sinavm'
           git config --global user.email 'sinabb.2006@gmail.com'
-          git add telegram-posts.html posts_formatted.json || echo "No files to add"
-          git commit -m "Update Telegram posts" || echo "No changes to commit"
+          git add post-channels/posts_formatted.json post-channels/config.json post-channels/telegram_proxy.json || echo "No files to add"
+          git commit -m "Update channels posts and configs" || echo "No changes to commit"
           git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           git push
