@@ -12,5 +12,29 @@
     <lastmod>2025-10-04</lastmod>
     <priority>0.8</priority>
   </url>
+  
+  <url>
+    <loc>https://sinavm.github.io/sinavm/legal_pages/about.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <priority>1.0</priority>
+  </url>
 
+  <url>
+    <loc>https://sinavm.github.io/sinavm/legal_pages/privacy.html</loc>
+    <lastmod>2025-10-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+    <url>
+    <loc>https://sinavm.github.io/sinavm/legal_pages/terms.html</loc>
+    <lastmod>2025-10-12</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://sinavm.github.io/sinavm/new-config.html</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
 </urlset>
