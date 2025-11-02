@@ -3,416 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="راهنمای کانفیگ‌های امن V2Ray از SinaVM">
-    <meta name="keywords" content="V2Ray, VPN, secure connection, SinaVM, configuration">
-    <title>دریافت کانفیگ v2ray</title>
+    <title>دریافت کانفیگ V2Ray رایگان | ساب لینک VLESS, VMess, Reality, Shadowsocks | بروزرسانی هر 3 ساعت | SiNAVM</title>
+    <meta name="description" content="کانفیگ‌های رایگان و امن V2Ray (VLESS, VMess, Reality, Shadowsocks) از کانال تلگرام SiNAVM | بروزرسانی خودکار هر 3 ساعت | ساب لینک مستقیم برای V2RayNG, Hiddify, Streisand | فیلترشکن رایگان و امن">
+    <meta name="keywords" content="کانفیگ v2ray,ساب لینک v2ray,vless config,vmess config,reality config,shadowsocks config,کانفیگ رایگان v2ray,فیلترشکن رایگان,vpn رایگان,سینا وی ام,sinavm,v2rayng config,hiddify config,streisand config,دور زدن فیلترینگ,اینترنت آزاد,کانفیگ بروز هر 3 ساعت,بهترین کانفیگ v2ray,کانفیگ امن v2ray">
+    <meta property="og:title" content="دریافت کانفیگ V2Ray رایگان | ساب لینک VLESS, VMess, Reality, Shadowsocks | SiNAVM">
+    <meta property="og:description" content="کانفیگ‌های رایگان V2Ray با بروزرسانی هر 3 ساعت | ساب لینک مستقیم برای V2RayNG, Hiddify, Streisand | از کانال تلگرام SiNAVM">
+    <meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
+    <meta property="og:url" content="https://sinavm.github.io/sinavm/xray_sub.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="دریافت کانفیگ V2Ray رایگان | ساب لینک VLESS, VMess, Reality, Shadowsocks | SiNAVM">
+    <meta name="twitter:description" content="کانفیگ‌های رایگان V2Ray با بروزرسانی هر 3 ساعت | ساب لینک مستقیم برای V2RayNG, Hiddify, Streisand | از کانال تلگرام SiNAVM">
+    <meta name="twitter:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
+    <link rel="canonical" href="https://sinavm.github.io/sinavm/xray_sub.html">
+    <link rel="icon" href="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" type="image/jpeg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "دریافت کانفیگ V2Ray رایگان | SiNAVM",
+      "url": "https://sinavm.github.io/sinavm/xray_sub.html",
+      "image": "https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg",
+      "logo": "https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg",
+      "description": "کانفیگ‌های رایگان و امن V2Ray (VLESS, VMess, Reality, Shadowsocks) با بروزرسانی هر 3 ساعت | ساب لینک مستقیم از کانال تلگرام SiNAVM"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
-        body {
-            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
-            text-align: center;
-            direction: rtl;
-            background: linear-gradient(135deg, #0d0d0d, #121212);
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .header-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            max-width: 80px;
-            border-radius: 30%;
-            border: 3px solid #fff;
-            padding: 1px;
-            background-color: white;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.4s;
-        }
-
-        .header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 10px;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.2s;
-        }
-
-        .telegram-link {
-            font-size: 16px;
-            font-weight: bold;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.6s;
-        }
-
-        .telegram-link a {
-            color: #ffcc00;
-            text-decoration: none;
-        }
-
-        .telegram-link a:hover {
-            text-decoration: underline;
-            color: #ffd700;
-        }
-
-        .separator {
-            width: 50%;
-            height: 2px;
-            background-color: white;
-            margin: 10px auto;
-        }
-
-        .config-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .download-button {
-            color: white;
-            padding: 10px 20px;
-            font-size: 14px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .download-button.vless { background: linear-gradient(135deg, #1e90ff, #00b7eb); }
-        .download-button.vmess { background: linear-gradient(135deg, #ff69b4, #ff1493); }
-        .download-button.reality { background: linear-gradient(135deg, #32cd32, #228b22); }
-        .download-button.ss { background: linear-gradient(135deg, #ffa500, #ff4500); }
-
-        .download-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
-        }
-
-        .popup {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: white;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1001;
-        }
-
-        .popup.vless { background: #1e90ff; }
-        .popup.vmess { background: #ff69b4; }
-        .popup.reality { background: #32cd32; }
-        .popup.ss { background: #ffa500; }
-
-        .popup.show {
-            opacity: 1;
-        }
-
-        .home-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #ff416c, #ff4b2b, #ff416c);
-            background-size: 600% 600%;
-            color: white;
-            padding: 12px 24px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 15px;
-            text-decoration: none;
-            margin: 20px auto;
-            width: 200px;
-            box-shadow: 0 0 10px rgba(255, 75, 43, 0.6), 0 0 20px rgba(255, 65, 108, 0.3);
-            animation: pulseGradient 3s ease infinite;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: slideInOnce 1s forwards 1.6s;
-        }
-
-        .home-button:hover {
-            transform: scale(1.12) rotate(-2deg);
-            box-shadow: 0 0 25px rgba(255, 75, 43, 1), 0 0 50px rgba(255, 65, 108, 0.8);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        .left-container {
-            position: fixed;
-            top: 50%;
-            left: 10px; /* Adjusted to position slightly from the left edge */
-            transform: translateY(-50%); /* Centers vertically */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align items to the left */
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .right-container {
-            position: fixed;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .telegram-box, .github-box, .install-box, .visit-box {
-            border-radius: 10px;
-            font-weight: bold;
-            text-align: center;
-            width: 140px;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .install-box {
-            width: 120px;
-        }
-
-        .telegram-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(0,217,255,0.6), 0 0 20px rgba(0,136,204,0.3);
-        }
-        .telegram-box img { width: 22px; height: 22px; margin-left: 5px; }
-        .telegram-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,0.8); }
-
-        .github-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #6e5494, #9b59b6, #6e5494);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(155,89,182,0.6),0 0 20px rgba(110,84,148,0.3);
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .github-box img { width: 22px; height: 22px; margin-left: 5px; }
-        .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
-
-        .install-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #ff4500, #ff8c00, #ff4500);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(255,69,0,0.6), 0 0 20px rgba(255,140,0,0.3);
-            cursor: pointer;
-            position: relative;
-        }
-        .install-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(255,69,0,1),0 0 50px rgba(255,140,0,0.8); }
-
-        .install-dropdown {
-            display: none;
-            flex-direction: row;
-            gap: 10px;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .install-dropdown.show {
-            display: flex;
-        }
-
-        .install-link {
-            border-radius: 10px;
-            font-weight: bold;
-            text-align: center;
-            width: 140px;
-            padding: 10px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .install-link.android { background: linear-gradient(270deg, #00cc00, #009900, #00cc00); }
-        .install-link.iphone { background: linear-gradient(270deg, #1e90ff, #00b7eb, #1e90ff); }
-        .install-link.windows { background: linear-gradient(270deg, #6a0dad, #4b0082, #6a0dad); }
-        .install-link.mac { background: linear-gradient(270deg, #ff8c00, #ff4500, #ff8c00); }
-
-        .install-link img { width: 22px; height: 22px; margin-left: 5px; }
-        .install-link:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(255,255,255,0.6); }
-
-        .install-sub-links {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .install-sub-links.show {
-            display: flex;
-        }
-
-        .visit-box {
-            background: rgba(0,0,0,0.5);
-            color: white;
-            padding: 6px 12px;
-            font-size: 14px;
-            box-shadow: 0 0 5px rgba(0,255,255,0.3);
-            animation: pulseGradient 4s ease infinite;
-        }
-        .visit-box:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.7); }
-
-        .follow-telegram {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: slideInOnce 1s forwards 1.8s;
-        }
-
-        .follow-telegram a {
-            color: #00d9ff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .follow-telegram a:hover {
-            text-decoration: underline;
-        }
-
-        .follow-telegram img {
-            width: 24px;
-            height: 24px;
-            margin-top: 4px;
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #ccc;
-        }
-
-        .footer a {
-            color: #ffcc00;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideInOnce { to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulseGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @media (max-width: 768px) {
-            .header { font-size: 20px; }
-            .logo { max-width: 60px; }
-            .telegram-box, .github-box, .install-box, .visit-box, .install-link { width: 120px; font-size: 13px; }
-            .telegram-box img, .github-box img { width: 18px; height: 18px; }
-            .download-button { font-size: 13px; }
-            .home-button { font-size: 16px; width: 180px; }
-            .install-dropdown, .install-sub-links { flex-direction: column; top: 100%; }
-        }
-
-        @media (max-width: 480px) {
-            body { padding: 10px; }
-            .header { font-size: 18px; }
-            .logo { max-width: 50px; }
-            .telegram-box, .github-box, .install-box, .visit-box, .install-link { width: 110px; font-size: 12px; padding: 6px; }
-            .download-button { font-size: 12px; }
-            .home-button { font-size: 14px; width: 160px; }
-            .install-dropdown, .install-sub-links { flex-direction: column; top: 100%; }
-        }
+        body {text-align:center;font-family:'Vazirmatn',Arial,sans-serif;direction:rtl;background:linear-gradient(135deg,#0d0d0d,#121212);color:#fff;margin:0;padding:20px;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;}
+        .content {flex:1;display:flex;flex-direction:column;align-items:center;}
+        .header-container {display:flex;flex-direction:column;align-items:center;margin-bottom:20px;}
+        .logo {max-width:80px;border-radius:30%;border:3px solid #fff;padding:1px;background-color:white;opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .4s;}
+        .header {font-size:24px;font-weight:bold;margin-top:10px;opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .2s;}
+        .telegram-link {font-size:16px;font-weight:bold;opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .6s;}
+        .telegram-link a {color:#ffcc00;text-decoration:none;}
+        .telegram-link a:hover {text-decoration:underline;color:#ffd700;}
+        .separator {width:50%;height:2px;background-color:white;margin:10px auto;}
+        .config-container {display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:20px;}
+        .download-button {color:white;padding:10px 20px;font-size:14px;border:none;border-radius:10px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;}
+        .download-button.vless {background:linear-gradient(135deg,#1e90ff,#00b7eb);}
+        .download-button.vmess {background:linear-gradient(135deg,#ff69b4,#ff1493);}
+        .download-button.reality {background:linear-gradient(135deg,#32cd32,#228b22);}
+        .download-button.ss {background:linear-gradient(135deg,#ffa500,#ff4500);}
+        .download-button:hover {transform:scale(1.05);box-shadow:0px 6px 20px rgba(255,255,255,.4);}
+        .popup {position:fixed;top:20px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:5px;color:white;font-size:14px;opacity:0;transition:opacity .5s ease;z-index:1001;}
+        .popup.vless {background:#1e90ff;}
+        .popup.vmess {background:#ff69b4;}
+        .popup.reality {background:#32cd32;}
+        .popup.ss {background:#ffa500;}
+        .popup.show {opacity:1;}
+        .home-button {display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#ff416c,#ff4b2b,#ff416c);background-size:600% 600%;color:white;padding:12px 24px;font-size:18px;font-weight:bold;border-radius:15px;text-decoration:none;margin:20px auto;width:200px;box-shadow:0 0 10px rgba(255,75,43,.6),0 0 20px rgba(255,65,108,.3);animation:pulseGradient 3s ease infinite;transition:all .3s ease;opacity:0;transform:translateY(-50px);animation:slideInOnce 1s forwards 1.6s;}
+        .home-button:hover {transform:scale(1.12) rotate(-2deg);box-shadow:0 0 25px rgba(255,75,43,1),0 0 50px rgba(255,65,108,.8);text-shadow:0 0 10px rgba(255,255,255,.8);}
+        .left-container {position:fixed;top:50%;left:10px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start;gap:10px;z-index:10;}
+        .right-container {position:fixed;top:50%;right:10px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:10;}
+        .telegram-box,.github-box,.install-box,.visit-box {border-radius:10px;font-weight:bold;text-align:center;width:140px;padding:10px;transition:all .3s ease;}
+        .install-box {width:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#ff4500,#ff8c00,#ff4500);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(255,69,0,.6),0 0 20px rgba(255,140,0,.3);cursor:pointer;position:relative;}
+        .install-box:hover {transform:scale(1.12) rotate(-2deg);box-shadow:0 0 25px rgba(255,69,0,1),0 0 50px rgba(255,140,0,.8);}
+        .install-dropdown {display:none;flex-direction:row;gap:10px;position:absolute;top:100%;right:0;z-index:1001;background:rgba(255,255,255,.1);padding:10px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.5);}
+        .install-dropdown.show {display:flex;}
+        .install-link {border-radius:10px;font-weight:bold;text-align:center;width:140px;padding:10px;transition:all .3s ease;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;position:relative;}
+        .install-link.android {background:linear-gradient(270deg,#00cc00,#009900,#00cc00);}
+        .install-link.iphone {background:linear-gradient(270deg,#1e90ff,#00b7eb,#1e90ff);}
+        .install-link.windows {background:linear-gradient(270deg,#6a0dad,#4b0082,#6a0dad);}
+        .install-link.mac {background:linear-gradient(270deg,#ff8c00,#ff4500,#ff8c00);}
+        .install-link img {width:22px;height:22px;margin-left:5px;}
+        .install-link:hover {transform:scale(1.12) rotate(2deg);box-shadow:0 0 25px rgba(255,255,255,.6);}
+        .install-sub-links {display:none;flex-direction:column;gap:10px;position:absolute;top:100%;right:0;z-index:1001;background:rgba(255,255,255,.1);padding:10px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.5);}
+        .install-sub-links.show {display:flex;}
+        .telegram-box {display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#00d9ff,#0088cc,#00d9ff);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(0,217,255,.6),0 0 20px rgba(0,136,204,.3);}
+        .telegram-box img {width:22px;height:22px;margin-left:5px;}
+        .telegram-box:hover {transform:scale(1.12) rotate(-2deg);box-shadow:0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,.8);}
+        .github-box {display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#6e5494,#9b59b6,#6e5494);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(155,89,182,.6),0 0 20px rgba(110,84,148,.3);cursor:pointer;text-decoration:none;}
+        .github-box img {width:22px;height:22px;margin-left:5px;}
+        .github-box:hover {transform:scale(1.12) rotate(2deg);box-shadow:0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,.8);}
+        .visit-box {background:rgba(0,0,0,.5);color:white;padding:6px 12px;font-size:14px;box-shadow:0 0 5px rgba(0,255,255,.3);animation:pulseGradient 4s ease infinite;}
+        .visit-box:hover {transform:scale(1.05);box-shadow:0 0 15px rgba(0,255,255,.7);}
+        .follow-telegram {display:flex;align-items:center;justify-content:center;margin-top:30px;font-size:16px;font-weight:bold;opacity:0;transform:translateY(-50px);animation:slideInOnce 1s forwards 1.8s;}
+        .follow-telegram a {color:#00d9ff;text-decoration:none;font-size:16px;}
+        .follow-telegram a:hover {text-decoration:underline;}
+        .follow-telegram img {width:24px;height:24px;margin-top:4px;}
+        .footer {margin-top:30px;font-size:14px;color:#ccc;}
+        .footer a {color:#ffcc00;text-decoration:none;margin:0 10px;}
+        .footer a:hover {text-decoration:underline;}
+        @keyframes fadeSlideIn {to{opacity:1;transform:translateY(0)}}
+        @keyframes slideInOnce {to{opacity:1;transform:translateY(0)}}
+        @keyframes pulseGradient {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        @media (max-width:768px){.header{font-size:20px}.logo{max-width:60px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:120px;font-size:13px}.telegram-box img,.github-box img{width:18px;height:18px}.download-button{font-size:13px}.home-button{font-size:16px;width:180px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
+        @media (max-width:480px){body{padding:10px}.header{font-size:18px}.logo{max-width:50px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:110px;font-size:12px;padding:6px}.download-button{font-size:12px}.home-button{font-size:14px;width:160px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
     </style>
 </head>
 <body onclick="closeDropdown(event)">
     <div class="content">
         <div class="header-container">
-            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg" alt="Logo">
-            <div class="header">دریافت کانفیگ v2ray</div>
+            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM">
+            <div class="header">دریافت کانفیگ V2Ray</div>
             <div class="separator"></div>
             <div class="telegram-link">
-                کانال تلگرام <a href="https://t.me/sinavm" target="_blank">sinavm</a>
+                کانال تلگرام <a href="https://t.me/sinavm" target="_blank">SiNAVM</a>
             </div>
         </div>
 
         <div class="config-container">
-            <p>کانفیگها‌ به‌ صورت ساب لینک ارائه ‌و هر ٣ ساعت بروز میشوند</p>
+            <p>کانفیگ‌ها به‌ صورت ساب لینک ارائه و هر ۳ ساعت بروز می‌شوند</p>
 
-            <button class="download-button vless" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vless', 'vless')">کپی Vless</button>
-            <button class="download-button vmess" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vmess', 'vmess')">کپی Vmess</button>
+            <button class="download-button vless" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vless', 'vless')">کپی VLESS</button>
+            <button class="download-button vmess" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vmess', 'vmess')">کپی VMess</button>
             <button class="download-button reality" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/reality', 'reality')">کپی Reality</button>
             <button class="download-button ss" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/ss', 'ss')">کپی Shadowsocks</button>
 
-            <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">صفحه اصلی</a>
+            <a class="home-button" href="https://sinavm.github.io/sinavm/">صفحه اصلی</a>
         </div>
 
         <div class="follow-telegram">
             <a href="https://t.me/sinavm" target="_blank">
-                <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
-                کاری از کانال تلگرام sinavm
+                <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="لوگو تلگرام">
+                کاری از کانال تلگرام SiNAVM
             </a>
         </div>
 
@@ -425,69 +136,48 @@
 
     <div class="left-container">
         <a class="telegram-box" href="https://t.me/sinavm" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
-            کانال تلگرام
+            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="کانال تلگرام SiNAVM"> کانال تلگرام
         </a>
         <a class="github-box" href="https://github.com/sinavm" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="Github Logo">
-            Github
+            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="گیت‌هاب سینا وی ام"> Github
         </a>
-        <div class="visit-box">
-            بازدید کل: <span id="total-visit-count">...</span>
-        </div>
+        <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
     </div>
 
     <div class="right-container">
-        <div class="install-box" onclick="toggleDropdown(event)">
-            نصب برنامه
-        </div>
+        <div class="install-box" onclick="toggleDropdown(event)">نصب برنامه</div>
         <div class="install-dropdown" id="installDropdown">
-            <a class="install-link android" href="#" onclick="toggleAppLinks('androidLinks', event)">
-                اندروید
-            </a>
-            <a class="install-link iphone" href="#" onclick="toggleAppLinks('iphoneLinks', event)">
-                آیفون
-            </a>
-            <a class="install-link windows" href="#" onclick="toggleAppLinks('windowsLinks', event)">
-                ویندوز
-            </a>
-            <a class="install-link mac" href="#" onclick="toggleAppLinks('macLinks', event)">
-                مک
-            </a>
-            <div class="install-sub-links" id="androidLinks" style="display: none;">
+            <a class="install-link android" href="#" onclick="toggleAppLinks('androidLinks', event)">اندروید</a>
+            <a class="install-link iphone" href="#" onclick="toggleAppLinks('iphoneLinks', event)">آیفون</a>
+            <a class="install-link windows" href="#" onclick="toggleAppLinks('windowsLinks', event)">ویندوز</a>
+            <a class="install-link mac" href="#" onclick="toggleAppLinks('macLinks', event)">مک</a>
+            <div class="install-sub-links" id="androidLinks">
                 <a class="install-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                    برنامه Hiddify
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
                 </a>
                 <a class="install-link android" href="https://github.com/2dust/v2rayNG/releases/tag/1.10.23">
-                    <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="v2ray Logo">
-                    برنامه v2ray
+                    <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray"> برنامه V2RayNG
                 </a>
             </div>
-            <div class="install-sub-links" id="iphoneLinks" style="display: none;">
+            <div class="install-sub-links" id="iphoneLinks">
                 <a class="install-link iphone" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                    برنامه Hiddify
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
                 </a>
                 <a class="install-link iphone" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
-                    برنامه Streisand
+                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand
                 </a>
             </div>
-            <div class="install-sub-links" id="windowsLinks" style="display: none;">
+            <div class="install-sub-links" id="windowsLinks">
                 <a class="install-link windows" href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/#_2">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                    برنامه Hiddify
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
                 </a>
             </div>
-            <div class="install-sub-links" id="macLinks" style="display: none;">
+            <div class="install-sub-links" id="macLinks">
                 <a class="install-link mac" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                    برنامه Hiddify
+                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
                 </a>
                 <a class="install-link mac" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
-                    برنامه Streisand
+                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand
                 </a>
             </div>
         </div>
@@ -512,23 +202,18 @@
                 alert('کپی کردن با خطا مواجه شد!');
             });
         }
-
         function toggleDropdown(event) {
             event.stopPropagation();
             const dropdown = document.getElementById('installDropdown');
             dropdown.classList.toggle('show');
         }
-
         function toggleAppLinks(id, event) {
             event.stopPropagation();
             const subLinks = document.getElementById(id);
             const allSubLinks = document.querySelectorAll('.install-sub-links');
-            allSubLinks.forEach(link => {
-                if (link.id !== id) link.style.display = 'none';
-            });
+            allSubLinks.forEach(link => { if (link.id !== id) link.style.display = 'none'; });
             subLinks.style.display = subLinks.style.display === 'none' ? 'flex' : 'none';
         }
-
         function closeDropdown(event) {
             const dropdown = document.getElementById('installDropdown');
             const allSubLinks = document.querySelectorAll('.install-sub-links');
@@ -537,20 +222,10 @@
                 allSubLinks.forEach(link => link.style.display = 'none');
             }
         }
-                // شمارش بازدید
         fetch('https://page-views.count1.workers.dev')
-            .then(response => response.text())
-            .then(data => {
-                let countElement = document.getElementById("total-visit-count");
-                if (countElement) {
-                    countElement.innerText = data;
-                } else {
-                    console.error("Error updating total visit count.");
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching total visit count:", error);
-            });
+            .then(r => r.text())
+            .then(d => { const e = document.getElementById('total-visit-count'); if (e) e.innerText = d; })
+            .catch(() => {});
     </script>
 </body>
 </html>
