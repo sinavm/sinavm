@@ -3,531 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="پنل اختصاصی کانال تلگرامی SiNAVM برای دریافت کانفیگ‌های امن V2Ray">
-    <meta name="keywords" content="V2Ray, VPN, secure connection, SinaVM, configuration">
-    <title>پنل کانال تلگرامی SiNAVM</title>
+    <title>کانال تلگرام سینا وی ام | کانفیگ رایگان V2Ray و Sing-Box | فیلترشکن رایگان</title>
+    <meta name="description" content="کانال تلگرام SiNAVM با بیش از 33 هزار عضو | کانفیگ رایگان V2Ray، Sing-Box، Hiddify | فیلترشکن رایگان و امن | بروزرسانی هر 3 ساعت | سینا وی ام">
+    <meta name="keywords" content="کانال تلگرام سینا وی ام,سینا وی ام,سیناوی ام,سینا‌وی‌ام,کانفیگ رایگان v2ray,کانفیگ v2ray,ساب لینک v2ray,کانفیگ رایگان سینگ باکس,ساب لینک سینگ باکس,sing-box config,فیلترشکن رایگان,فیلترشکن,vpn رایگان,وی پی ان رایگان,کانفیگ hiddify,hiddify config,streisand config,amnezia vpn,دور زدن فیلترینگ,اینترنت آزاد,سینا وی ام تلگرام,@sinavm,SiNAVM,کانفیگ بروز,کانفیگ هر 3 ساعت,بهترین کانفیگ رایگان,کانفیگ امن">
+    <meta property="og:title" content="کانال تلگرام سینا وی ام | کانفیگ رایگان V2Ray و Sing-Box">
+    <meta property="og:description" content="کانفیگ‌های رایگان و امن V2Ray، Sing-Box، Hiddify | بروزرسانی هر 3 ساعت | سینا وی ام">
+    <meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
+    <meta property="og:url" content="https://sinavm.github.io/sinavm/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="کانال تلگرام سینا وی ام | کانفیگ رایگان V2Ray و Sing-Box">
+    <meta name="twitter:description" content="کانفیگ‌های رایگان و امن V2Ray، Sing-Box، Hiddify | بروزرسانی هر 3 ساعت | سینا وی ام">
+    <meta name="twitter:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
+    <link rel="canonical" href="https://sinavm.github.io/sinavm/">
+    <link rel="icon" href="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" type="image/jpeg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SiNAVM | کانال تلگرام سینا وی ام",
+      "url": "https://sinavm.github.io/sinavm/",
+      "image": "https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg",
+      "logo": "https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg",
+      "description": "کانال تلگرام SiNAVM با بیش از 33 هزار عضو | کانفیگ رایگان V2Ray، Sing-Box، Hiddify | فیلترشکن رایگان و امن | بروزرسانی هر 3 ساعت"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
-        body {
-            text-align: center;
-            font-family: 'Vazirmatn', Arial, sans-serif;
-            direction: rtl;
-            background: linear-gradient(135deg, #0d0d0d, #121212);
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.2s;
-        }
-
-        .logo {
-            max-width: 80px;
-            margin-left: 10px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.4s;
-        }
-
-        .header {
-            font-size: 26px;
-            font-weight: bold;
-            color: #fff;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeSlideIn 1s forwards 0.6s;
-        }
-
-        .header a {
-            text-decoration: none;
-            color: #ffcc00;
-        }
-
-        .header a:hover {
-            text-decoration: underline;
-            color: #ffd700;
-        }
-
-        .telegram-posts {
-            display: flex;
-            flex-direction: row;
-            gap: 15px;
-            max-width: 90vw;
-            margin: 10px auto;
-            overflow-x: auto;
-            padding: 10px 0;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #ffcc00 transparent;
-        }
-
-        .telegram-posts::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .telegram-posts::-webkit-scrollbar-thumb {
-            background-color: #ffcc00;
-            border-radius: 4px;
-        }
-
-        .telegram-post {
-            flex: 0 0 auto;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            color: #fff;
-            border: 1px solid rgba(255, 204, 0, 0.4);
-            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
-            max-width: 320px;
-            min-width: 240px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            font-weight: 400;
-        }
-
-        .telegram-post:nth-child(odd) {
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(0, 123, 255, 0.1));
-            border: 1px solid rgba(255, 204, 0, 0.5);
-        }
-
-        .telegram-post:nth-child(even) {
-            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(255, 204, 0, 0.1));
-            border: 1px solid rgba(0, 123, 255, 0.5);
-        }
-
-        .telegram-post:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-        }
-
-        .telegram-post::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .telegram-post:hover::before {
-            opacity: 0.5;
-        }
-
-        .telegram-post.clicked {
-            animation: clickEffect 0.4s ease;
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.3), rgba(0, 123, 255, 0.2));
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes clickEffect {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideInOnce { to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulseGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .telegram-post > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .telegram-post a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: 400;
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
-        }
-
-        .post-text a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: 400;
-        }
-
-        .post-text a:hover {
-            text-decoration: underline;
-            color: #ffd700;
-        }
-
-        .config-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #8A2BE2, #00FFFF);
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 12px 18px;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 320px;
-            box-shadow: 0px 4px 20px rgba(138, 43, 226, 0.8);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: slideInOnce 1s forwards 0.8s;
-        }
-
-        .config-box:hover {
-            transform: scale(1.08);
-            box-shadow: 0px 6px 30px rgba(0, 255, 255, 0.8);
-            background: linear-gradient(135deg, #00FFFF, #8A2BE2);
-        }
-
-        .config-box img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-            object-fit: cover;
-        }
-
-        .download-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
-            padding: 12px;
-            margin: 10px auto;
-            border-radius: 25px;
-            width: 75%;
-            max-width: 350px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: slideInOnce 1s forwards 1s;
-        }
-
-        .download-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.4);
-        }
-
-        .download-link img {
-            width: 28px;
-            height: 28px;
-            margin-left: 10px;
-        }
-
-        .sublink {
-            background: linear-gradient(135deg, #8e2de2, #4a00e0);
-            color: white;
-            font-weight: bold;
-            border-radius: 15px;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .sublink:hover {
-            transform: scale(1.08);
-            box-shadow: 0px 8px 20px rgba(142, 45, 226, 0.6);
-        }
-
-        .left-container {
-            position: fixed;
-            bottom: 70px;
-            left: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .right-container {
-            position: fixed;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .telegram-box, .github-box, .visit-box, .install-box {
-            border-radius: 10px;
-            font-weight: bold;
-            text-align: center;
-            width: 140px;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .install-box {
-            width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #ff4500, #ff8c00, #ff4500);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(255,69,0,0.6), 0 0 20px rgba(255,140,0,0.3);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .install-box:hover {
-            transform: scale(1.12) rotate(-2deg);
-            box-shadow: 0 0 25px rgba(255,69,0,1), 0 0 50px rgba(255,140,0,0.8);
-        }
-
-        .install-box img {
-            width: 22px;
-            height: 22px;
-            margin-left: 5px;
-        }
-
-        .install-dropdown {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .install-dropdown.show {
-            display: flex;
-        }
-
-        .install-link {
-            border-radius: 10px;
-            font-weight: bold;
-            text-align: center;
-            width: 140px;
-            padding: 10px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-        }
-
-        .install-link.android { background: linear-gradient(270deg, #00cc00, #009900, #00cc00); }
-        .install-link.ios { background: linear-gradient(270deg, #1e90ff, #00b7eb, #1e90ff); }
-
-        .install-link img { width: 22px; height: 22px; margin-left: 5px; }
-        .install-link:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(255,255,255,0.6); }
-
-        .telegram-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(0,217,255,0.6), 0 0 20px rgba(0,136,204,0.3);
-        }
-
-        .telegram-box img { width: 22px; height: 22px; margin-left: 5px; }
-        .telegram-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,0.8); }
-
-        .github-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(270deg, #6e5494, #9b59b6, #6e5494);
-            background-size: 600% 600%;
-            color: white;
-            animation: pulseGradient 3s ease infinite;
-            box-shadow: 0 0 10px rgba(155,89,182,0.6),0 0 20px rgba(110,84,148,0.3);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .github-box img { width: 22px; height: 22px; margin-left: 5px; }
-        .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
-
-        .visit-box {
-            background: rgba(0,0,0,0.5);
-            color: white;
-            padding: 6px 12px;
-            font-size: 14px;
-            box-shadow: 0 0 5px rgba(0,255,255,0.3);
-            animation: pulseGradient 4s ease infinite;
-        }
-
-        .visit-box:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.7); }
-
-        .copy-message {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #00ff00;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 16px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1000;
-        }
-
-        .copy-message.show {
-            opacity: 1;
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #ccc;
-        }
-
-        .footer a {
-            color: #ffcc00;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .header { font-size: 22px; }
-            .logo { max-width: 60px; }
-            .telegram-box, .github-box, .visit-box, .install-box, .install-link { width: 120px; font-size: 13px; }
-            .telegram-box img, .github-box img, .install-box img, .install-link img { width: 18px; height: 18px; }
-            .config-box { font-size: 18px; }
-            .download-link { font-size: 16px; width: 80%; }
-            .install-dropdown { flex-direction: column; top: 100%; }
-        }
-
-        @media (max-width: 480px) {
-            body { padding: 10px; }
-            .header { font-size: 20px; }
-            .logo { max-width: 50px; }
-            .telegram-box, .github-box, .visit-box, .install-box, .install-link { width: 110px; font-size: 12px; padding: 6px; }
-            .telegram-box img, .github-box img, .install-box img, .install-link img { width: 16px; height: 16px; }
-            .config-box { font-size: 16px; }
-            .download-link { font-size: 14px; width: 85%; }
-            .install-dropdown { flex-direction: column; top: 100%; }
-        }
+        body {text-align:center;font-family:'Vazirmatn',Arial,sans-serif;direction:rtl;background:linear-gradient(135deg,#0d0d0d,#121212);color:#fff;margin:0;padding:20px;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;}
+        .content {flex:1;display:flex;flex-direction:column;align-items:center;}
+        .header-container {display:flex;align-items:center;justify-content:center;margin-bottom:20px;opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .2s;}
+        .logo {max-width:80px;margin-left:10px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.3);opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .4s;}
+        .header {font-size:26px;font-weight:bold;color:#fff;opacity:0;transform:translateY(-30px);animation:fadeSlideIn 1s forwards .6s;}
+        .header a {text-decoration:none;color:#ffcc00;}
+        .header a:hover {text-decoration:underline;color:#ffd700;}
+        .telegram-posts {display:flex;flex-direction:row;gap:15px;max-width:90vw;margin:10px auto;overflow-x:auto;padding:10px 0;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#ffcc00 transparent;}
+        .telegram-posts::-webkit-scrollbar {height:8px;}
+        .telegram-posts::-webkit-scrollbar-thumb {background:#ffcc00;border-radius:4px;}
+        .telegram-post {flex:0 0 auto;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.05));padding:15px 20px;border-radius:12px;font-size:16px;color:#fff;border:1px solid rgba(255,204,0,.4);box-shadow:0 4px 12px rgba(26,115,232,.2);max-width:320px;min-width:240px;transition:transform .3s,box-shadow .3s,background .3s;position:relative;overflow:hidden;cursor:pointer;font-weight:400;}
+        .telegram-post:nth-child(odd) {background:linear-gradient(135deg,rgba(255,204,0,.2),rgba(0,123,255,.1));border:1px solid rgba(255,204,0,.5);}
+        .telegram-post:nth-child(even) {background:linear-gradient(135deg,rgba(0,123,255,.2),rgba(255,204,0,.1));border:1px solid rgba(0,123,255,.5);}
+        .telegram-post:hover {transform:scale(1.08);box-shadow:0 8px 25px rgba(255,204,0,.4);background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.08));}
+        .telegram-post::before {content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,204,0,.1) 0%,transparent 70%);animation:rotate 10s linear infinite;z-index:0;opacity:.3;}
+        .telegram-post:hover::before {opacity:.5;}
+        .telegram-post.clicked {animation:clickEffect .4s;background:linear-gradient(135deg,rgba(255,204,0,.3),rgba(0,123,255,.2));}
+        @keyframes rotate {0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+        @keyframes clickEffect {0%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}100%{transform:scale(1);opacity:1}}
+        @keyframes fadeSlideIn {to{opacity:1;transform:translateY(0)}}
+        @keyframes slideInOnce {to{opacity:1;transform:translateY(0)}}
+        @keyframes pulseGradient {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .telegram-post > * {position:relative;z-index:1;}
+        .telegram-post a {color:#ffcc00;text-decoration:none;font-weight:400;display:block;width:100%;height:100%;position:absolute;top:0;left:0;z-index:2;}
+        .post-text a {color:#ffcc00;text-decoration:none;font-weight:400;}
+        .post-text a:hover {text-decoration:underline;color:#ffd700;}
+        .config-box {display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#8A2BE2,#00FFFF);color:white;font-size:20px;font-weight:bold;padding:12px 18px;border-radius:20px;text-align:center;text-decoration:none;margin:20px auto;width:80%;max-width:320px;box-shadow:0 4px 20px rgba(138,43,226,.8);transition:transform .3s,box-shadow .3s,background .3s;opacity:0;transform:translateY(-50px);animation:slideInOnce 1s forwards .8s;}
+        .config-box:hover {transform:scale(1.08);box-shadow:0 6px 30px rgba(0,255,255,.8);background:linear-gradient(135deg,#00FFFF,#8A2BE2);}
+        .config-box img {width:40px;height:40px;border-radius:50%;margin-right:10px;object-fit:cover;}
+        .download-link {display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:white;padding:12px;margin:10px auto;border-radius:25px;width:75%;max-width:350px;text-decoration:none;font-size:18px;font-weight:bold;box-shadow:0 4px 15px rgba(255,255,255,.2);transition:transform .2s,box-shadow .2s;opacity:0;transform:translateY(-50px);animation:slideInOnce 1s forwards 1s;}
+        .download-link:hover {transform:scale(1.05);box-shadow:0 6px 20px rgba(255,255,255,.4);}
+        .download-link img {width:28px;height:28px;margin-left:10px;}
+        .sublink {background:linear-gradient(135deg,#8e2de2,#4a00e0);color:white;font-weight:bold;border-radius:15px;padding:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+        .sublink:hover {transform:scale(1.08);box-shadow:0 8px 20px rgba(142,45,226,.6);}
+        .left-container {position:fixed;bottom:70px;left:10px;display:flex;flex-direction:column;align-items:center;gap:10px;z-index:10;}
+        .right-container {position:fixed;top:50%;right:10px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:10;}
+        .telegram-box,.github-box,.visit-box,.install-box {border-radius:10px;font-weight:bold;text-align:center;width:140px;padding:10px;transition:all .3s;}
+        .install-box {width:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#ff4500,#ff8c00,#ff4500);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(255,69,0,.6),0 0 20px rgba(255,140,0,.3);cursor:pointer;position:relative;}
+        .install-box:hover {transform:scale(1.12) rotate(-2deg);box-shadow:0 0 25px rgba(255,69,0,1),0 0 50px rgba(255,140,0,.8);}
+        .install-box img {width:22px;height:22px;margin-left:5px;}
+        .install-dropdown {display:none;flex-direction:column;gap:10px;position:absolute;top:100%;right:0;z-index:1001;background:rgba(255,255,255,.1);padding:10px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.5);}
+        .install-dropdown.show {display:flex;}
+        .install-link {border-radius:10px;font-weight:bold;text-align:center;width:140px;padding:10px;transition:all .3s;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;}
+        .install-link.android {background:linear-gradient(270deg,#00cc00,#009900,#00cc00);}
+        .install-link.ios {background:linear-gradient(270deg,#1e90ff,#00b7eb,#1e90ff);}
+        .install-link img {width:22px;height:22px;margin-left:5px;}
+        .install-link:hover {transform:scale(1.12) rotate(2deg);box-shadow:0 0 25px rgba(255,255,255,.6);}
+        .telegram-box {display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#00d9ff,#0088cc,#00d9ff);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(0,217,255,.6),0 0 20px rgba(0,136,204,.3);}
+        .telegram-box img {width:22px;height:22px;margin-left:5px;}
+        .telegram-box:hover {transform:scale(1.12) rotate(-2deg);box-shadow:0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,.8);}
+        .github-box {display:flex;align-items:center;justify-content:center;background:linear-gradient(270deg,#6e5494,#9b59b6,#6e5494);background-size:600% 600%;color:white;animation:pulseGradient 3s ease infinite;box-shadow:0 0 10px rgba(155,89,182,.6),0 0 20px rgba(110,84,148,.3);cursor:pointer;text-decoration:none;}
+        .github-box img {width:22px;height:22px;margin-left:5px;}
+        .github-box:hover {transform:scale(1.12) rotate(2deg);box-shadow:0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,.8);}
+        .visit-box {background:rgba(0,0,0,.5);color:white;padding:6px 12px;font-size:14px;box-shadow:0 0 5px rgba(0,255,255,.3);animation:pulseGradient 4s ease infinite;}
+        .visit-box:hover {transform:scale(1.05);box-shadow:0 0 15px rgba(0,255,255,.7);}
+        .copy-message {position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#00ff00;padding:10px 20px;border-radius:10px;font-size:16px;opacity:0;transition:opacity .5s;z-index:1000;}
+        .copy-message.show {opacity:1;}
+        .footer {margin-top:30px;font-size:14px;color:#ccc;}
+        .footer a {color:#ffcc00;text-decoration:none;margin:0 10px;}
+        .footer a:hover {text-decoration:underline;}
+        @media (max-width:768px){.header{font-size:22px}.logo{max-width:60px}.telegram-box,.github-box,.visit-box,.install-box,.install-link{width:120px;font-size:13px}.telegram-box img,.github-box img,.install-box img,.install-link img{width:18px;height:18px}.config-box{font-size:18px}.download-link{font-size:16px;width:80%}.install-dropdown{flex-direction:column;top:100%}}
+        @media (max-width:480px){body{padding:10px}.header{font-size:20px}.logo{max-width:50px}.telegram-box,.github-box,.visit-box,.install-box,.install-link{width:110px;font-size:12px;padding:6px}.telegram-box img,.github-box img,.install-box img,.install-link img{width:16px;height:16px}.config-box{font-size:16px}.download-link{font-size:14px;width:85%}.install-dropdown{flex-direction:column;top:100%}}
     </style>
 </head>
 <body onclick="closeDropdown(event)">
     <div class="content">
         <div class="header-container">
-            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="Logo">
-            <div class="header">
-                پنل اختصاصی  
-                <a href="https://t.me/sinavm" target="_blank">SiNAVM</a>
-            </div>
+            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM">
+            <div class="header">پنل اختصاصی <a href="https://t.me/sinavm" target="_blank">SiNAVM</a></div>
         </div>
 
-        <div id="telegram-posts">
-            <p>در حال بارگذاری پست‌ها...</p>
-        </div>
+        <div id="telegram-posts"><p>در حال بارگذاری پست‌ها...</p></div>
 
-        <a class="config-box" href="https://sinavm.github.io/sinavm/xray_sub.html" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray Logo">
+        <a class="config-box" href="https://sinavm.github.io/sinavm/xray_sub.html">
+            <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="لوگو V2Ray">
             دریافت کانفیگ V2Ray
         </a>
 
-        <div class="software-links">
-            لینک ساب‌ها
-        </div>
+        <div class="software-links">لینک ساب‌ها</div>
 
         <a class="download-link sublink copy-link" data-clipboard-text="https://sinavm.github.io/SVM/subscriptions/singbox/mix.json">
-            <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box Logo">
-            ساب لینک Sing-Box
+            <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box"> ساب لینک Sing-Box
         </a>
 
         <a class="download-link sublink copy-link" data-clipboard-text="https://github.com/sinavm/Hiddify/raw/refs/heads/main/@sinavm#@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻|Hiddify">
-            <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-            ساب لینک Hiddify
+            <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> ساب لینک Hiddify
         </a>
 
         <a class="download-link sublink copy-link" data-clipboard-text="https://sinavm.github.io/SVM/subscriptions/xray/normal/mix">
-            <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray Logo">
-            ساب لینک V2Ray
+            <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray"> ساب لینک V2Ray
         </a>
 
         <a class="download-link sublink copy-link" data-clipboard-text="https://sinavm.github.io/SVM/subscriptions/xray/normal/mix">
-            <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
-            ساب لینک Streisand
+            <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> ساب لینک Streisand
         </a>
 
         <a class="download-link sublink" href="https://rentry.co/sinabigo" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia Logo">
-            کانفیگ Amnezia VPN
+            <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia"> کانفیگ Amnezia VPN
         </a>
 
         <div class="software-links">
-            <a href="https://t.me/SinaVM" style="text-decoration: none; color: #0088cc;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="24">
-                کانال تلگرام رو دنبال کن
+            <a href="https://t.me/SinaVM" style="text-decoration:none;color:#0088cc;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="24" alt="تلگرام"> کانال تلگرام رو دنبال کن
             </a>
         </div>
 
@@ -540,194 +151,59 @@
 
     <div class="left-container">
         <a class="telegram-box" href="https://t.me/sinavm" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
-            کانال تلگرام
+            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="کانال تلگرام SiNAVM"> کانال تلگرام
         </a>
         <a class="github-box" href="https://github.com/sinavm" target="_blank">
-            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="Github Logo">
-            Github
+            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="گیت‌هاب سینا وی ام"> Github
         </a>
-        <div class="visit-box">
-            بازدید کل: <span id="total-visit-count">...</span>
-        </div>
+        <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
     </div>
 
     <div class="right-container">
-        <div class="install-box android" onclick="toggleDropdown('androidDropdown', event)">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHvnyoyWI-FlgTfOWRoJjazD3ke1Q6hOgfQ&s" alt="Android Logo">
-            برنامه‌های اندروید
+        <div class="install-box android" onclick="toggleDropdown('androidDropdown',event)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHvnyoyWI-FlgTfOWRoJjazD3ke1Q6hOgfQ&s" alt="اندروید"> برنامه‌های اندروید
         </div>
         <div class="install-dropdown" id="androidDropdown">
             <a class="install-link android" href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa&pcampaignid=web_share">
-                <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box Logo">
-                دانلود Sing-Box
+                <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box"> دانلود Sing-Box
             </a>
             <a class="install-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
-                <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                دانلود Hiddify
+                <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> دانلود Hiddify
             </a>
             <a class="install-link android" href="https://github.com/2dust/v2rayNG/releases/tag/1.10.23">
-                <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray Logo">
-                دانلود V2Ray
+                <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray"> دانلود V2Ray
             </a>
             <a class="install-link android" href="https://play.google.com/store/apps/details?id=org.amnezia.vpn">
-                <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia Logo">
-                دانلود Amnezia
+                <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia"> دانلود Amnezia
             </a>
         </div>
-        <div class="install-box ios" onclick="toggleDropdown('iosDropdown', event)">
-            <img src="https://www.apple.com/newsroom/images/logos/quick-reads-logos/Apple-App-Store.jpg.square_social.jpg" alt="iOS Logo">
-            برنامه‌های آیفون
+        <div class="install-box ios" onclick="toggleDropdown('iosDropdown',event)">
+            <img src="https://www.apple.com/newsroom/images/logos/quick-reads-logos/Apple-App-Store.jpg.square_social.jpg" alt="آیفون"> برنامه‌های آیفون
         </div>
         <div class="install-dropdown" id="iosDropdown">
             <a class="install-link ios" href="https://apps.apple.com/app/id6673731168">
-                <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box Logo">
-                دانلود Sing-Box
+                <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box"> دانلود Sing-Box
             </a>
             <a class="install-link ios" href="https://apps.apple.com/app/id6596777532">
-                <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify Logo">
-                دانلود Hiddify
+                <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> دانلود Hiddify
             </a>
             <a class="install-link ios" href="https://apps.apple.com/app/id6450534064">
-                <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand Logo">
-                دانلود Streisand
+                <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> دانلود Streisand
             </a>
             <a class="install-link ios" href="https://apps.apple.com/us/app/amneziavpn/id1600529900">
-                <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia Logo">
-                دانلود Amnezia
+                <img src="https://sinavm.github.io/sinavm/logo/amnezia.png" alt="Amnezia"> دانلود Amnezia
             </a>
         </div>
     </div>
 
-    <div class="copy-message" id="copy-message">✅ با موفقیت کپی شد، وارد برنامه کنید</div>
+    <div class="copy-message" id="copy-message">با موفقیت کپی شد، وارد برنامه کنید</div>
 
     <script>
-        function copyConfig(url, type) {
-            navigator.clipboard.writeText(url).then(() => {
-                const popup = document.createElement('div');
-                popup.className = `popup ${type}`;
-                popup.textContent = 'کانفیگ‌ها کپی شدند! لطفاً آنها را در برنامه مورد نظر خود وارد کنید.';
-                document.body.appendChild(popup);
-                setTimeout(() => {
-                    popup.classList.add('show');
-                    setTimeout(() => {
-                        popup.classList.remove('show');
-                        setTimeout(() => popup.remove(), 500);
-                    }, 3000);
-                }, 100);
-            }).catch(err => {
-                console.error('خطا در کپی کردن: ', err);
-                alert('کپی کردن با خطا مواجه شد!');
-            });
-        }
-
-        function toggleDropdown(id, event) {
-            event.stopPropagation();
-            const dropdown = document.getElementById(id);
-            const allDropdowns = document.querySelectorAll('.install-dropdown');
-            allDropdowns.forEach(link => {
-                if (link.id !== id) link.classList.remove('show');
-            });
-            dropdown.classList.toggle('show');
-        }
-
-        function closeDropdown(event) {
-            const dropdowns = document.querySelectorAll('.install-dropdown');
-            if (!event.target.closest('.install-box') && !event.target.closest('.install-dropdown')) {
-                dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
-            }
-        }
-
-        // شمارش بازدید
-        fetch('https://page-views.count1.workers.dev')
-            .then(response => response.text())
-            .then(data => {
-                let countElement = document.getElementById("total-visit-count");
-                if (countElement) {
-                    countElement.innerText = data;
-                } else {
-                    console.error("Error updating total visit count.");
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching total visit count:", error);
-            });
-
-        // انیمیشن و افکت برای پست‌ها
-        document.addEventListener("DOMContentLoaded", () => {
-            const posts = document.querySelectorAll(".telegram-post");
-
-            // انیمیشن Fade-in برای پست‌ها
-            posts.forEach((post, index) => {
-                post.style.opacity = "0";
-                post.style.transform = "translateY(20px)";
-                setTimeout(() => {
-                    post.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-                    post.style.opacity = "1";
-                    post.style.transform = "translateY(0)";
-                }, index * 200);
-            });
-
-
-            posts.forEach(post => {
-                const link = post.querySelector("a");
-                if (link) {
-                    post.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        post.classList.remove("clicked");
-                        void post.offsetWidth;
-                        post.classList.add("clicked");
-                        setTimeout(() => {
-                            window.location.href = link.href;
-                        }, 400);
-                    });
-                }
-            });
-
-            // کپی لینک برای ساب‌لینک‌ها
-            const copyLinks = document.querySelectorAll(".copy-link");
-            const copyMessage = document.getElementById("copy-message");
-
-            copyLinks.forEach(link => {
-                link.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    const textToCopy = link.getAttribute("data-clipboard-text");
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        copyMessage.classList.add("show");
-                        setTimeout(() => {
-                            copyMessage.classList.remove("show");
-                        }, 2000);
-                    }).catch(err => {
-                        console.error("Failed to copy: ", err);
-                    });
-                });
-            });
-
-
-            let scrollAmount = 0;
-            let telegramPosts = document.getElementById('telegram-posts');
-
-            function autoScroll() {
-                if (!telegramPosts) return;
-                scrollAmount += 1;
-                if (scrollAmount >= telegramPosts.scrollWidth - telegramPosts.clientWidth) {
-                    scrollAmount = 0;
-                }
-                telegramPosts.scrollLeft = scrollAmount;
-                requestAnimationFrame(autoScroll);
-            }
-
-            fetch('telegram-posts.html')
-                .then(response => response.text())
-                .then(data => {
-                    telegramPosts.innerHTML = data;
-                    autoScroll();
-                })
-                .catch(error => {
-                    console.error('Error loading Telegram posts:', error);
-                    telegramPosts.innerHTML = '<p>خطا در بارگذاری پست‌ها</p>';
-                });
-        });
+        function toggleDropdown(id,event){event.stopPropagation();const d=document.getElementById(id);document.querySelectorAll('.install-dropdown').forEach(x=>{if(x.id!==id)x.classList.remove('show')});d.classList.toggle('show');}
+        function closeDropdown(event){if(!event.target.closest('.install-box')&&!event.target.closest('.install-dropdown'))document.querySelectorAll('.install-dropdown').forEach(d=>d.classList.remove('show'));}
+        fetch('https://page-views.count1.workers.dev').then(r=>r.text()).then(d=>document.getElementById('total-visit-count').innerText=d).catch(()=>{});
+        document.querySelectorAll('.copy-link').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const t=l.getAttribute('data-clipboard-text');navigator.clipboard.writeText(t).then(()=>{const m=document.getElementById('copy-message');m.classList.add('show');setTimeout(()=>m.classList.remove('show'),2000)}).catch(()=>{console.error('کپی نشد')})})});
+        document.addEventListener('DOMContentLoaded',()=>{const c=document.getElementById('telegram-posts');fetch('telegram-posts.html').then(r=>r.text()).then(d=>{c.innerHTML=d;let s=0;function a(){if(!c)return;s+=1;if(s>=c.scrollWidth-c.clientWidth)s=0;c.scrollLeft=s;requestAnimationFrame(a)}a()}).catch(()=>{c.innerHTML='<p>خطا در بارگذاری پست‌ها</p>'})});
     </script>
 </body>
 </html>
