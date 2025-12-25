@@ -129,7 +129,7 @@
         .soon-btn { cursor: not-allowed; opacity: 0.4; border-style: dashed; }
         .soon-btn:hover { transform: none; border-color: var(--glass-border); box-shadow: none; }
         .soon-btn small { color: var(--yellow) !important; font-weight: bold; }
-        .new-badge, .updating-badge {
+        .new-badge {
             position: absolute;
             top: 8px;
             left: 8px;
@@ -139,15 +139,8 @@
             font-weight: 900;
             z-index: 1;
             white-space: nowrap;
-        }
-        .new-badge {
             background: var(--yellow);
             color: #000;
-        }
-        .updating-badge {
-            background: var(--primary);
-            color: #fff;
-            font-size: 0.65rem;
         }
         .telegram-posts { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
         .telegram-posts::-webkit-scrollbar { display: none; }
@@ -239,7 +232,6 @@
                 </a>
 
                 <a href="https://sinavm.github.io/wireguard/" class="action-btn wireguard-btn">
-                    <span class="updating-badge">در حال بروز رسانی</span>
                     <i class="fas fa-network-wired"></i>
                     <span>پنل وایرگارد</span>
                     <small>ورود به پنل</small>
