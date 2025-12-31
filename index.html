@@ -75,7 +75,8 @@
             border-radius: 50%; box-shadow: 0 0 10px #10b981;
             animation: pulse 2s infinite;
         }
-        h1 { font-size: 1.8rem; font-weight: 900; margin: 0; background: linear-gradient(135deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+        h1, h2 { margin: 0; }
+        h1 { font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
         .subtitle { font-size: 0.9rem; color: var(--accent); margin-top: 5px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .subtitle::before, .subtitle::after { content: ""; display: block; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
         .card {
@@ -95,6 +96,7 @@
             padding-right: 10px; border-right: 3px solid var(--primary);
             display: flex; justify-content: space-between; align-items: center;
         }
+        .section-title h2 { font-size: 1rem; font-weight: 500; display: inline-flex; align-items: center; color: var(--text-mute); }
         .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .action-btn {
             background: rgba(255,255,255,0.03);
@@ -114,6 +116,10 @@
         .action-btn:hover i.fa-shield-alt { color: #f97316; text-shadow: 0 0 10px #f97316; }
         .action-btn:hover i.fa-paper-plane { color: #d946ef; text-shadow: 0 0 10px #d946ef; }
         .action-btn:hover i.fa-ghost { color: #8b5cf6; text-shadow: 0 0 10px #8b5cf6; }
+        .v2ray-btn { border-color: rgba(251, 191, 36, 0.3); background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent); }
+        .v2ray-btn:hover { border-color: var(--gold); box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        .v2ray-btn i { color: var(--gold); }
+        .v2ray-btn small { color: var(--gold); }
         .anyconnect-btn { border-color: rgba(139, 92, 246, 0.3); background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent); }
         .anyconnect-btn:hover { border-color: var(--purple); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
         .anyconnect-btn i { color: var(--purple); }
@@ -163,8 +169,6 @@
         .dl-android { background: rgba(16, 185, 129, 0.15); color: #10b981; } .dl-android:hover { background: #10b981; color: #fff; }
         .dl-ios { background: rgba(59, 130, 246, 0.15); color: #3b82f6; } .dl-ios:hover { background: #3b82f6; color: #fff; }
         .dl-desktop { background: rgba(255, 255, 255, 0.1); color: #cbd5e1; } .dl-desktop:hover { background: #e2e8f0; color: #0f172a; }
-        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(16, 185, 129, 0.95); backdrop-filter: blur(10px); color: #fff; padding: 12px 24px; border-radius: 50px; font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000; display: flex; align-items: center; gap: 10px; width: max-content; pointer-events: none; }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .faq-header { width: 100%; text-align: right; background: rgba(255,255,255,0.03); border: none; padding: 15px; color: var(--text-main); font-family: inherit; font-weight: 500; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; margin-bottom: 8px; }
         .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-mute); font-size: 0.9rem; line-height: 1.6; }
         .faq-body p { padding: 10px 15px; margin: 0; }
@@ -191,12 +195,98 @@
         }
         .scroll-top-btn.visible { display: flex; opacity: 1; }
         .scroll-top-btn:hover { transform: scale(1.1); background: var(--primary); }
-        @keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
         footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: var(--text-mute); }
         footer a { color: var(--text-mute); margin: 0 8px; text-decoration: none; transition: color 0.3s; }
         footer a:hover { color: var(--accent); }
+        @keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Custom Modal Styles */
+        .custom-modal {
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .custom-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .custom-modal.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content p {
+            margin: 0 0 15px 0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .modal-content p:first-child {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--green);
+        }
+        .modal-content p:last-child {
+            margin-bottom: 0;
+        }
+        .modal-suggestion {
+            font-size: 0.85rem;
+            color: var(--text-mute);
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 12px;
+        }
+        .modal-suggestion strong {
+            color: var(--yellow);
+            font-weight: 500;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.9);
+            color: #e5e7eb;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 3000;
+        }
+        .toast i {
+            color: #22c55e;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
     </style>
 </head>
 <body>
@@ -212,60 +302,52 @@
         </header>
 
         <div class="card">
-            <div class="section-title" style="border-color: #229ED9;"><span><i class="fab fa-telegram-plane" style="color: #229ED9; margin-left: 8px;"></i>اخبار و آپدیت‌های لحظه‌ای</span></div>
+            <div class="section-title" style="border-color: #229ED9;">
+                <h2><i class="fab fa-telegram-plane" style="color: #229ED9; margin-left: 8px;"></i>اخبار و آپدیت‌های لحظه‌ای</h2>
+            </div>
             <div id="telegram-posts" class="telegram-posts"><p style="width: 100%; text-align: center; color: var(--text-mute);">در حال بارگذاری اخبار...</p></div>
         </div>
+        
 
         <div>
             <div class="section-title">
-                <span><i class="fas fa-bolt" style="color: var(--gold); margin-left: 8px;"></i>دسترسی به سرویس‌ها</span>
-                <span style="font-size: 0.7rem; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 6px;">ضربه بزنید تا کپی شود</span>
+                <h2><i class="fas fa-bolt" style="color: var(--primary); margin-left: 8px;"></i>دسترسی به سرویس‌ها</h2>
+                <span style="font-size: 0.7rem; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 6px;">ضربه بزنید تا کپی یا وارد شوید</span>
             </div>
             <div class="link-grid">
 
-                <a href="https://sinavm.github.io/sinavm/amnezia" class="action-btn amnezia-btn">
+                <div id="smart-config-btn" class="action-btn v2ray-btn" data-link="https://github.com/sinavm/SVM/raw/refs/heads/main/subscriptions/xray/base64/reality" role="button" tabindex="0">
+                    <span class="new-badge">جدید</span>
+                    <i class="fas fa-link"></i>
+                    <span>کانفیگ هوشمند V2Ray</span>
+                    <small>هر ۳ ساعت بروز رسانی</small>
+                </div>
+
+                <a href="https://sinavm.github.io/sinavm/amnezia" class="action-btn amnezia-btn" target="_blank" rel="noopener noreferrer">
                     <span class="new-badge">جدید</span>
                     <i class="fas fa-fingerprint"></i>
                     <span>پنل آمنیزیا</span>
                     <small>ورود به پنل</small>
                 </a>
 
-                <a href="https://sinavm.github.io/sinavm/wireguard" class="action-btn wireguard-btn">
+                <a href="https://sinavm.github.io/sinavm/wireguard" class="action-btn wireguard-btn" target="_blank" rel="noopener noreferrer">
                     <span class="new-badge">جدید</span>
                     <i class="fas fa-network-wired"></i>
                     <span>پنل وایرگارد</span>
                     <small>ورود به پنل</small>
                 </a>
 
-                <a href="https://sinavm.github.io/anyconnect/" class="action-btn anyconnect-btn">
+                <a href="https://sinavm.github.io/anyconnect/" class="action-btn anyconnect-btn" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-shield-alt"></i>
                     <span>پنل Anyconnect</span>
                     <small>ورود به پنل</small>
                 </a>
 
-                <div class="action-btn copy-link" data-link="https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM">
+                <a href="https://t.me/sinavm/4714" class="action-btn" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-rocket"></i>
                     <span>Sing-Box</span>
-                    <small>پیشنهادی (پایدار)</small>
-                </div>
-
-                <div class="action-btn copy-link" data-link="https://github.com/sinavm/Hiddify/raw/refs/heads/main/@sinavm#@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻|Hiddify">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Hiddify</span>
-                    <small>هوشمند</small>
-                </div>
-
-                <div class="action-btn copy-link" data-link="https://sinavm.github.io/SVM/subscriptions/xray/normal/mix">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>V2Ray</span>
-                    <small>کلاسیک</small>
-                </div>
-
-                <div class="action-btn copy-link" data-link="https://sinavm.github.io/SVM/subscriptions/xray/normal/mix">
-                    <i class="fas fa-ghost"></i>
-                    <span>Streisand</span>
-                    <small>مخصوص iOS</small>
-                </div>
+                    <small>گزینه اصلی برای سرعت و پایداری</small>
+                </a>
 
                 <div class="action-btn soon-btn">
                     <i class="fas fa-key"></i>
@@ -284,81 +366,171 @@
                 <div><i class="fas fa-check-circle" style="color:var(--gold)"></i> ۶۰ سرور</div>
                 <div><i class="fas fa-check-circle" style="color:var(--gold)"></i> پینگ پایین</div>
             </div>
-            <a href="https://t.me/sinvt" class="vip-btn" target="_blank"><span>خرید اشتراک ویژه</span><i class="fas fa-arrow-left"></i></a>
+            <a href="https://t.me/sinvt" class="vip-btn" target="_blank" rel="noopener noreferrer"><span>خرید اشتراک ویژه</span><i class="fas fa-arrow-left"></i></a>
         </div>
 
-        <div class="card">
-            <div class="section-title" style="border: none; padding: 0; margin-bottom: 15px;"><span><i class="fas fa-download" style="color: var(--accent); margin-left: 8px;"></i>دانلود اپلیکیشن‌ها</span></div>
+        <div id="app-downloads-card" class="card">
+            <div class="section-title" style="border: none; padding: 0; margin-bottom: 15px;">
+                <h2><i class="fas fa-download" style="color: var(--accent); margin-left: 8px;"></i>دانلود اپلیکیشن‌ها</h2>
+            </div>
             <ul class="app-list">
                  <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--yellow);"><i class="fas fa-laugh-beam"></i></div><div><div style="font-weight: bold;">Happ</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید و پرسرعت</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" title="Android & Android TV" target="_blank"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" title="Windows & Linux" target="_blank"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" title="Android & Android TV" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" title="Windows & Linux" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
+                </li>
+                 <li class="app-item">
+                    <div class="app-info"><div class="app-icon" style="color: var(--primary);"><i class="fas fa-rocket"></i></div><div><div style="font-weight: bold;">V2RayTun</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید</div></div></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6476628951" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://storage.v2raytun.com/v2RayTun_Setup.exe" class="dl-btn dl-desktop" title="Windows" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #f97316;"><i class="fas fa-box"></i></div><div><div style="font-weight: bold;">Sing-Box</div><div style="font-size: 0.75rem; color: var(--text-mute);">بهترین عملکرد</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" class="dl-btn dl-android" target="_blank"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6673731168" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6673731168" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #06b6d4;"><i class="fas fa-shield-virus"></i></div><div><div style="font-weight: bold;">Hiddify</div><div style="font-size: 0.75rem; color: var(--text-mute);">همه پلتفرم‌ها</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="dl-btn dl-android" target="_blank"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6596777532" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a><a href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6596777532" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--green);"><i class="fas fa-fingerprint"></i></div><div><div style="font-weight: bold;">Amnezia</div><div style="font-size: 0.75rem; color: var(--text-mute);">امنیت بالا</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" class="dl-btn dl-android" target="_blank"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/amneziavpn/id1600529900" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a><a href="https://github.com/amnezia-vpn/amnezia-client/releases" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/amneziavpn/id1600529900" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://github.com/amnezia-vpn/amnezia-client/releases" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--purple);"><i class="fas fa-shield-alt"></i></div><div><div style="font-weight: bold;">AnyConnect</div><div style="font-size: 0.75rem; color: var(--text-mute);">سرویس سیسکو</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf" class="dl-btn dl-android" target="_blank"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #8b5cf6;"><i class="fas fa-mask"></i></div><div><div style="font-weight: bold;">Streisand</div><div style="font-size: 0.75rem; color: var(--text-mute);">مخصوص iOS</div></div></div>
-                    <div class="dl-group"><a href="https://apps.apple.com/app/id6450534064" class="dl-btn dl-ios" target="_blank"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://apps.apple.com/app/id6450534064" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
             </ul>
         </div>
         
         <div class="card">
-            <div class="section-title" style="border: none; padding: 0;"><span>سوالات متداول</span></div>
+            <div class="section-title" style="border: none; padding: 0;"><h2>سوالات متداول</h2></div>
             <div style="margin-top: 15px;">
                 <div class="faq-item"><button class="faq-header"><span>چرا کانفیگ کار نمیکنه؟</span><i class="fas fa-chevron-down"></i></button><div class="faq-body"><p>کانفیگ‌ها هر ۳ ساعت به صورت خودکار آپدیت میشن. اگر کار نکرد، لینک رو دوباره کپی و در برنامه Import کن.</p></div></div>
                 <div class="faq-item"><button class="faq-header"><span>فرق VIP با رایگان چیه؟</span><i class="fas fa-chevron-down"></i></button><div class="faq-body"><p>سرویس VIP دارای سرورهای اختصاصی، آی‌پی ثابت (مناسب ترید) و پینگ بسیار پایین‌تر برای گیمینگ هست.</p></div></div>
             </div>
         </div>
         <footer>
-             <div style="margin-bottom: 10px;"><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" target="_blank">درباره ما</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" target="_blank">سیاست حریم خصوصی</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" target="_blank">شرایط استفاده</a></div>
-             <div><a href="https://t.me/sinavm">Design & Config by SiNAVM</a><br><div style="margin-top: 5px; font-size: 0.7rem;">بازدید کل: <span id="visit-count">...</span></div></div>
+             <div style="margin-bottom: 10px;"><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" target="_blank" rel="noopener noreferrer">درباره ما</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" target="_blank" rel="noopener noreferrer">سیاست حریم خصوصی</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" target="_blank" rel="noopener noreferrer">شرایط استفاده</a></div>
+             <div><a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer">Design & Config by SiNAVM</a><br><div style="margin-top: 5px; font-size: 0.7rem;">بازدید کل: <span id="visit-count">...</span></div></div>
         </footer>
     </div>
     
-    <div id="toast" class="toast"><i class="fas fa-check-circle"></i>لینک با موفقیت کپی شد!</div>
+
+    <div id="custom-modal" class="custom-modal">
+        <div class="modal-content">
+            <p>ساب لینک با موفقیت کپی شد!</p>
+            <p>این ساب لینک را مانند کانفیگ معمولی در تمامی برنامه‌های اجرای کانفیگ v2ray میتوان اجرا کرد.</p>
+            <p class="modal-suggestion">پیشنهاد میشه از اپلیکیشن <strong>Happ</strong>, <strong>V2RayTun</strong>, <strong>Hiddify</strong> استفاده کنید.</p>
+        </div>
+    </div>
     
 
     <a href="#" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا"><i class="fas fa-angle-double-up"></i></a>
-    <a href="https://t.me/sinavm" target="_blank" class="floating-tg-btn" title="کانال تلگرام"><i class="fab fa-telegram-plane"></i></a>
+    <a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام"><i class="fab fa-telegram-plane"></i></a>
+
     <script>
 
-        function showToast() { const toast = document.getElementById('toast'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
-        function copyToClipboard(text) {
-            if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(showToast); } 
-            else {
-                var textArea = document.createElement("textarea"); textArea.value = text;
-                textArea.style.position = "fixed"; textArea.style.top = "-9999px"; document.body.appendChild(textArea);
-                textArea.focus(); textArea.select();
-                try { document.execCommand('copy'); showToast(); } catch (err) { alert('خطا در کپی کردن لینک'); }
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => document.body.removeChild(toast), 500);
+                }, 2500);
+            }, 10);
+        }
+
+
+        function copyToClipboard(text, callback) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(callback);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.top = "-9999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    callback();
+                } catch (err) {
+                    alert('خطا در کپی کردن لینک');
+                }
                 document.body.removeChild(textArea);
             }
         }
-        document.querySelectorAll('.copy-link').forEach(btn => {
-            btn.addEventListener('click', (e) => { e.preventDefault(); const link = btn.getAttribute('data-link'); if(link) { copyToClipboard(link); } });
-        });
+        
         document.addEventListener('DOMContentLoaded', () => {
+            const smartConfigBtn = document.getElementById('smart-config-btn');
+            const customModal = document.getElementById('custom-modal');
+
+
+            if (smartConfigBtn) {
+                const action = (e) => {
+                    e.preventDefault();
+                    const link = smartConfigBtn.getAttribute('data-link');
+                    
+                    copyToClipboard(link, () => {
+
+                        customModal.classList.add('show');
+
+
+                        setTimeout(() => {
+                            customModal.classList.remove('show');
+                        }, 6000);
+
+
+                        document.getElementById('app-downloads-card').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    });
+                };
+                smartConfigBtn.addEventListener('click', action);
+                smartConfigBtn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        action(e);
+                    }
+                });
+            }
+
+
+            if (customModal) {
+                customModal.addEventListener('click', (e) => {
+                    if (e.target === customModal) {
+                        customModal.classList.remove('show');
+                    }
+                });
+            }
+            
+
+            document.querySelectorAll('.copy-link').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const link = btn.getAttribute('data-link');
+                    const message = btn.getAttribute('data-toast-message');
+                    if (link) {
+                        copyToClipboard(link, () => showToast(message));
+                    }
+                });
+            });
+
 
             document.querySelectorAll('.faq-header').forEach(header => {
                 header.addEventListener('click', () => {
                     const body = header.nextElementSibling;
                     const isActive = header.classList.contains('active');
                     document.querySelectorAll('.faq-header.active').forEach(h => { if (h !== header) { h.classList.remove('active'); h.nextElementSibling.style.maxHeight = null; } });
-                    if (!isActive) { header.classList.add('active'); body.style.maxHeight = body.scrollHeight + "px"; } 
+                    if (!isActive) { header.classList.add('active'); body.style.maxHeight = body.scrollHeight + "px"; }
                     else { header.classList.remove('active'); body.style.maxHeight = null; }
                 });
             });
@@ -370,11 +542,12 @@
             if (postsContainer) {
                 fetch('telegram-posts.html').then(response => { if (!response.ok) throw new Error('Network response was not ok.'); return response.text(); }).then(html => { postsContainer.innerHTML = html; }).catch(error => { postsContainer.innerHTML = `<p style="width: 100%; text-align: center; color: var(--red);">خطا در بارگذاری اخبار</p>`; console.error('Error fetching telegram posts:', error); });
             }
+            
 
             const scrollTopBtn = document.getElementById('scrollTopBtn');
             if (scrollTopBtn) {
                 window.onscroll = function() {
-                    if (window.scrollY > 300) { scrollTopBtn.classList.add('visible'); } 
+                    if (window.scrollY > 300) { scrollTopBtn.classList.add('visible'); }
                     else { scrollTopBtn.classList.remove('visible'); }
                 };
                 scrollTopBtn.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); });
