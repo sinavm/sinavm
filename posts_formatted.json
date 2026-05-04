@@ -1,5 +1,15 @@
 [
   {
+    "text": "کانفیگ اختصاصی Slip Net 🇫🇮\nمتصل در سیمکارت آپتل\nباقی نت ها خودتون براساس نت و\nمنطقه DNS Resolve تغییر بدید\nنصب SlipNet مخصوص شبکه داخلی\n\nوقتی برنامه نصب شد: \nکانفیگ زیر رو کپی کنید\nبرید داخل برنامه SlipNet\nروی بعلاوه + و بعد import رو بزن\n\nنکته : در تنظیمات برنامه گزینه VPN MTU \nروی Custom با عدد 512 بزارید\nسپس compression  رو روشن\nو Max channel روی 10 بزارید\nدیگه دست ب هیچی نزنید. \n\nوقتی کانفیگ رو روشن میکنید\nحدود یک دقیقه صبر کنید.\nاگر در حال استفاده قطع شد یک دقیقه بمونید اگر نه کانفیگ رو خاموش و روشن کنید\nslipnet-enc://AQUuy+se8mT59F0SpJ8RP9QJD45uBtuki5V2DWi0FqzRWO8BwF71DE+eIxO5ef/CsjCfYb5Mfv8BBjDwX0VubmlJ5y0Jhrnw2jlAGydn5TcuuzJP3OeT7Ln1vupsX7NdEtkWvQofEhf0GqCls6y5mDfqZGvcp6XKJTuC2orJSmtoZRBzpCmglpzVh/JXPyorW2lEnxL/KpBDjDXXuc3JPWpOPw9gqyUoZD8WeqoKtUD6Au4C2MAaY7gd0iGt09imL12rr/B26gw0YGI2dtcl6yLse8J2u7wxXtbTovgIgoeYqmrb9fgv79RHy1jK3PEeg/HCkn8kgEuooe9QKUNv13CLPtpkpf5EiiRsodsk0uyGbR3BSKmWZQG8egIeKeiHLNGLgYDs23ciWLw81c8nLLeh9cAlJ8ov5dUBKYFjhkpeHXLvIlwdPAJtFiMszMMdK3m5E8HVwsc6r7PndhWWlNQhYKvEa165hKtocokgsIRzu19w6QfOsGmcMZC+CUE4kK99Nx0gxLt6WS5HFWWqpjyT6eK51HcGBeiV2WiexUH2QHZr8qACr9V7/QWyHQSWFMU0JjBh5bJwzjPpaL54rQmRQZITO1jIRSipfjf2jC5IXeBTUFrvOcJTpPipHWNycB5sKQ==\n\nslipnet-enc://AQmJOngAXerOM6hMI/439B90Zf+u7GxuEwZbxvE5BaMU1PLLyqxIt/P81MPPTFxXpXH4OMu5RW5dVrNKBO9E9s/+7vNvafP/tOgN6vpi1SK/05m0RahN7LCGCQRMHQZJYG3lc3v5i6DvqmfENto+NHp/BvoTU3WBYESFSeWish5+LWIP82MForLHS2SHkJymJZRFiveuu/mHfZoYYN0LdCbsG+cZo5MtvbDZTxJu8ugvfolktNeR+u75lcYu6VxK6m4cXX0BkTMIhw7zeASwcukxNb5joOu4HBrHoH5znN0PhV0USI4wNQGPWRL3MiGFqrGGH5hrdFt7An5XsUOCmtKLIiVknNc05ZM9cz9KNJVjy/E99kH5VHFBW0CEqyl+Q/rXnvKP35wbLH45VubRHT39jvNsX3ArknBDWM0sJKoOrqLgJKlXGhngeAOGgmeLPwCujt25aEAbN6bIdSsvQO79byCXr7HbyZfIci5UkTKSbTSVGlCNR1+LeZYOaFXySCyMQQVzy0/kuYmKwJ66o4wD3MbF/EE1XjD7WjlbI5Dt7D0jACBlvkVHkLnMlxd8e2BbrCO9I9fh4IShhlY/SGvpGv+qGvn39DmadoXdL4tdMlSkdN1VZ22lfuHcZRI3rCtPbw==\n➖➖➖➖➖➖➖\nنصب SlipNet بدون وی پی ان\n➖➖➖➖➖➖➖\n𝑪𝒉𝒂𝒏𝒏𝒆𝒍: @SINAVM🎉",
+    "date": 1777904406,
+    "link": "https://t.me/sinavm/4926"
+  },
+  {
+    "text": "کانفیگ اختصاصی Slip Net 🇩🇪\nمتصل در سیمکارت آپتل\nنصب SlipNet بدون وی پی ان\n\nوقتی برنامه نصب شد: \nکانفیگ زیر رو کپی کنید\nبرید داخل برنامه SlipNet\nروی بعلاوه + و بعد import رو بزن\n\nنکته : در تنظیمات برنامه گزینه VPN MTU \nروی Custom با عدد 512 بزارید\nسپس compression  رو روشن\nو Max channel روی 10 بزارید\nدیگه دست ب هیچی نزنید. \n\nوقتی کانفیگ رو روشن میکنید\nحدود یک دقیقه صبر کنید.\nاگر در حال استفاده قطع شد کانفیگ رو خاموش\nو روشن کنید یا روی حالت پرواز بزارید و خارج کنید\n\nslipnet-enc://Aes80rMFhVK+KnEAX1D8yxii/T9zrKtntjyhWDmJIDsgRg1TXP22iVaELd+t+7suD9H99NtFYosQXD+l5itr9WK3Cg5LB6yrobuHgJODVQMvCP7Ul8mnn7pxkweJt2Lh+/7AYzCKGJcfk9/FS9ReP91RQG54GiRbjrek1A4UW4+HrFJzWJyAs2JYPwPb9ogrT8Yw1kyIF2mEzlou0zkp2r1EoDJfIYNuQ8BOh3Ybeb1w1hptRpyqCsVJ1knmv3bnKR77OzVVJ4L3QkzB2voO6IXp7iNhBCVyCJFBHjsi7NDaGRMY4Km0ssQSGfLGW5iz7O5WUkwlz9VppBjBreHcighrcJyXmaVw121qyxTC13GykaRkzRi6nc1BjWqe5shqySNJMFy4eV7e4m0SL3G6mFNOqq5TGPfdsz55c3rJeC4K2X+RoQBH72PMIymo0C/VR/P0f3f2L3Dp2y5RDqPDxZWH/cnZFuE+C/hcdcgDy/FCb2rx1biAa9zKE9XJeDWaSn5pOY6pfy/f+04i+8D1dRkLitWvp7zP7djuckfoR5kI2ID7Z1gvmFtzidUMj7MSSugsMxKiHu7G/jT2cMo1btSFvijRUklIJ+wBs58oNVm63dITOSg0wnRBOoYzp2pi7WNYGg==\n\n➖➖➖➖➖➖➖\nدانلود SlipNet بدون وی پی ان\n➖➖➖➖➖➖➖\n𝑪𝒉𝒂𝒏𝒏𝒆𝒍: @SINAVM🎉",
+    "date": 1777901409,
+    "link": "https://t.me/sinavm/4925"
+  },
+  {
     "text": "تکمیل ظرفیت",
     "date": 1777855529,
     "link": "https://t.me/sinavm/4924"
@@ -13,15 +23,5 @@
     "text": "کانفیگ ترکیبی شیر و خورشید تست شده ایرانسل و اپتل - باقی نتها تست کنید\n📥  نصب شیروخورشید\n\nhysteria2://DBUklcvOyH@45.81.19.251:443?security=tls&insecure=1&sni=web.bale.ai#%40SiNAVM%20%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%DB%8C\n\nبا شیرو خورشید وصل شدم لوکیشن هند\n\n📥 دانلود شیروخورشید شبکه داخلی\n\n➖➖➖➖➖➖➖\n𝑪𝒉𝒂𝒏𝒏𝒆𝒍: @SINAVM🎉",
     "date": 1777764296,
     "link": "https://t.me/sinavm/4922"
-  },
-  {
-    "text": "کسب و کار انلاین وقتی جواب میده که مردم عادی نت داشته باشن وگرنه با تخماشون باید تجارت کنن؟!\n\n@sinavm",
-    "date": 1777758776,
-    "link": "https://t.me/sinavm/4921"
-  },
-  {
-    "text": "کانفیگ اختصاصی Slip Net 🇩🇪\nمتصل در سیمکارت آپتل\nنصب SlipNet بدون وی پی ان\n\nوقتی برنامه نصب شد: \nکانفیگ زیر رو کپی کنید\nبرید داخل برنامه SlipNet\nروی بعلاوه + و بعد import رو بزن\n\nنکته : در تنظیمات برنامه گزینه VPN MTU \nروی Custom با عدد 512 بزارید\nسپس compression  رو روشن\nو Max channel روی 11 بزارید\nدیگه دست ب هیچی نزنید. \n\nوقتی کانفیگ رو روشن میکنید\nحدود یک دقیقه صبر کنید.\nاگر در حال استفاده قطع شد کانفیگ رو خاموش\nو روشن کنید یا روی حالت پرواز بزارید و خارج کنید\nslipnet-enc://AaUj/XkEb/pmPtwSfcaOvpETBWQH4dznOg6h3FEqMA96orXh64WoBX2SM3Lvw2zVKQUV69e0N0lJxYMhUi5ulkOAfxVXS4Q2xbkCHpMjWzIJEDcQhah58Uo+L0bJBHv1tUsWH/bv3HMeD55IqHRkHYDld+fxbdVJYsUUUNwUbxEDKHPE9JisDsmJMKVoNB9cchXOAKCst1Nc/d8R3rpVAM+mHsJDzsvukgJvENy+Lo5IUDK8mC1uxy54q/JHkokXoNBRjJ3Zpev/3LUGR3O7i3z/pqWVzmpqF3rpcVGh/K+pUi5YHIC9DLsWI1oO777hLI4zljIXLJWQYLN5VVCvkqEJEAiYHa+C8qPsL3RR7t4ZA6CfZ9aaYIGUlg8K6+V4cZ4uDgbI8i+mFQ6hxNJm6vpIQ5y9W84rn7gz+4gwWIlm5NuDjIRr2NzUg6NKVS9oc2TXDkCx64D2ZI3VTseuWXaJkrc0tZfMp5JDkDAbC9VneNrd6c+NbZ3mq5bNTSCFLuD/9cRi8KpAiSHJtw+FK4EDdzeBi1JjGbdFtSqM3A9HX/tYRTIUMacQFXNnVWPnCA/vVj8zgrT0gZ50qz/wIzu1fy/xw7F1pGk3mWnTjSzBXZ0kyQ8DmTvDRREOq+WjqwInZQ==\n➖➖➖➖➖➖➖\nدانلود SlipNet بدون وی پی ان\n➖➖➖➖➖➖➖\n𝑪𝒉𝒂𝒏𝒏𝒆𝒍: @SINAVM🎉",
-    "date": 1777722350,
-    "link": "https://t.me/sinavm/4920"
   }
 ]
