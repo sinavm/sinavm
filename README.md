@@ -1,66 +1,60 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2800&pause=800&color=8B8CF8&center=true&vCenter=true&width=620&lines=%D8%B3%DB%8C%D9%86%D8%A7+%7C+sinavm;Open+Source+Builder;VPN+Tools+%26+Subscription+Platforms" alt="typing" />
+  <img src="logo/sinavm_logo.jpg" width="110" alt="sinavm"/>
 
-  <br/>
+  <h1>سینا</h1>
+  <h3>Sina · sinavm</h3>
 
-  **سازنده ابزارهای متن‌باز برای دسترسی پایدار به اینترنت**
-  <br/>
-  <sub>Open-source tools for reliable connectivity · Iran-focused · 1.7k+ stars</sub>
+  <p><strong>سازنده ابزارهای متن‌باز برای دسترسی پایدار به اینترنت</strong></p>
+  <p>Open-source tools for reliable connectivity · 1.7k+ stars</p>
 
-  <br/><br/>
+  <p>
+    <a href="https://t.me/sinavm"><img src="https://img.shields.io/badge/Telegram-@sinavm-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/></a>
+    <a href="https://sinavm.github.io/sinavm/"><img src="https://img.shields.io/badge/Website-sinavm.github.io-8B8CF8?style=for-the-badge&logo=github&logoColor=white" alt="Website"/></a>
+    <a href="https://instagram.com/sinabigo"><img src="https://img.shields.io/badge/Instagram-sinabigo-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+  </p>
 
-  <a href="https://t.me/sinavm"><img src="https://img.shields.io/badge/Telegram-@sinavm-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/></a>
-  <a href="https://sinavm.github.io/sinavm/"><img src="https://img.shields.io/badge/Website-sinavm.github.io-8B8CF8?style=for-the-badge&logo=github&logoColor=white" alt="Website"/></a>
-  <a href="https://instagram.com/sinabigo"><img src="https://img.shields.io/badge/Instagram-sinabigo-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
-  <a href="https://github.com/sinavm?tab=followers"><img src="https://img.shields.io/github/followers/sinavm?style=for-the-badge&logo=github&color=130F40" alt="Followers"/></a>
-
-  <br/>
-
-  <img src="https://komarev.com/ghpvc/?username=sinavm&style=flat-square&color=7A7ADB&label=Profile+views" alt="profile views"/>
+  <p>
+    <img src="https://img.shields.io/github/followers/sinavm?style=flat-square&color=7A7ADB&label=followers" alt="followers"/>
+    <img src="https://img.shields.io/github/stars/sinavm?affiliations=OWNER&style=flat-square&color=8B8CF8&label=stars" alt="stars"/>
+    <img src="https://img.shields.io/github/directory-file-count/sinavm/sinavm?style=flat-square&color=26A5E4&label=profile" alt="profile"/>
+  </p>
 </div>
 
 ---
-
-<div dir="rtl">
 
 ### درباره من
 
-سینا هستم؛ روی ابزارهایی کار می‌کنم که کانفیگ‌ها، سابسکریپشن‌ها و کلاینت‌های مختلف را در یک جریان ساده جمع می‌کنند. تمرکز اصلی‌ام محصول‌هایی است که در شرایط محدودیت شبکه هم قابل استفاده بمانند.
+سینا هستم. روی ابزارهایی کار می‌کنم که کانفیگ‌ها، سابسکریپشن‌ها و کلاینت‌های مختلف را در یک جریان ساده جمع می‌کنند. تمرکز اصلی‌ام محصول‌هایی است که در شرایط محدودیت شبکه هم قابل استفاده بمانند.
 
 - نگهداری پروژه‌های عمومی با بیش از **۱٬۷۰۰ ستاره** و حدود **۱٬۴۰۰ دنبال‌کننده**
-- توسعه مبدل و جمع‌آور کانفیگ (`SVM`) به‌همراه صفحات و لینک‌های آماده برای کلاینت‌های رایج
-- انتشار منظم آپدیت از طریق گیتهاب و کانال تلگرام [@sinavm](https://t.me/sinavm)
-
-</div>
+- توسعه مبدل و جمع‌آور کانفیگ (`SVM`) به‌همراه صفحات آماده برای کلاینت‌های رایج
+- انتشار منظم آپدیت از طریق گیتهاب و کانال تلگرام [t.me/sinavm](https://t.me/sinavm)
 
 ### About
 
-I build and maintain public tooling around proxy subscriptions, config conversion, and client-ready pages. Most of the work is shipped in Persian for users who need something that stays reachable when the network is restricted.
+I build public tooling around subscriptions, config conversion, and client-ready pages. Most of the work ships in Persian for people who need something that stays reachable when the network is restricted.
 
 ---
 
-### پروژه‌های شاخص · Featured
+### پروژه‌های شاخص
 
-| پروژه | نقش | وضعیت |
-| :--- | :--- | :--- |
-| **[sinavm](https://github.com/sinavm/sinavm)** | هاب عمومی + GitHub Pages برای دسترسی به محتوا و لینک‌ها وقتی شبکه محدود است | ★ 838 · HTML |
-| **[SVM](https://github.com/sinavm/SVM)** | جمع‌آوری و تبدیل کانفیگ به پروتگل‌ها و فرمت‌های مختلف کلاینت | ★ 431 · PHP |
-| **[melishekan](https://github.com/sinavm/melishekan)** | فایل بک‌آپ آماده برای VPN Client Pro | ★ 247 |
-| **[sing-box](https://github.com/sinavm/sing-box)** | کانفیگ آماده سینگ‌باکس با بروزرسانی خودکار | ★ 176 · HTML |
-| **[Hiddify](https://github.com/sinavm/Hiddify)** | صفحه و منابع مرتبط با هیدیفای | ★ 44 · HTML |
+| پروژه | توضیح | ستاره |
+| :--- | :--- | :---: |
+| [sinavm](https://github.com/sinavm/sinavm) | هاب عمومی و GitHub Pages | 838 |
+| [SVM](https://github.com/sinavm/SVM) | جمع‌آوری و تبدیل کانفیگ به فرمت کلاینت‌ها · PHP | 431 |
+| [melishekan](https://github.com/sinavm/melishekan) | فایل بک‌آپ آماده برای VPN Client Pro | 247 |
+| [sing-box](https://github.com/sinavm/sing-box) | کانفیگ آماده سینگ‌باکس با بروزرسانی خودکار | 176 |
+| [Hiddify](https://github.com/sinavm/Hiddify) | صفحه و منابع هیدیفای | 44 |
 
-<p align="center">
-  <a href="https://github.com/sinavm/sinavm"><img src="https://github-readme-stats.vercel.app/api/pin/?username=sinavm&repo=sinavm&theme=radical&hide_border=true&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3" alt="sinavm"/></a>
-  <a href="https://github.com/sinavm/SVM"><img src="https://github-readme-stats.vercel.app/api/pin/?username=sinavm&repo=SVM&theme=radical&hide_border=true&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3" alt="SVM"/></a>
-</p>
-<p align="center">
-  <a href="https://github.com/sinavm/melishekan"><img src="https://github-readme-stats.vercel.app/api/pin/?username=sinavm&repo=melishekan&theme=radical&hide_border=true&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3" alt="melishekan"/></a>
-  <a href="https://github.com/sinavm/sing-box"><img src="https://github-readme-stats.vercel.app/api/pin/?username=sinavm&repo=sing-box&theme=radical&hide_border=true&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3" alt="sing-box"/></a>
+<p>
+  <a href="https://github.com/sinavm/sinavm"><img src="https://img.shields.io/github/stars/sinavm/sinavm?style=for-the-badge&label=sinavm&color=8B8CF8" alt="sinavm stars"/></a>
+  <a href="https://github.com/sinavm/SVM"><img src="https://img.shields.io/github/stars/sinavm/SVM?style=for-the-badge&label=SVM&color=7A7ADB" alt="SVM stars"/></a>
+  <a href="https://github.com/sinavm/melishekan"><img src="https://img.shields.io/github/stars/sinavm/melishekan?style=for-the-badge&label=melishekan&color=26A5E4" alt="melishekan stars"/></a>
 </p>
 
 ---
 
-### استک · Stack
+### استک
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"/>
@@ -75,23 +69,16 @@ I build and maintain public tooling around proxy subscriptions, config conversio
 
 ---
 
-### آمار · Stats
+### مشارکت
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sinavm&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&theme=radical&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3&ring_color=7A7ADB" alt="GitHub stats"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sinavm&theme=radical&hide_border=true&background=0D0B1A&ring=7A7ADB&fire=8B8CF8&currStreakLabel=8B8CF8" alt="streak"/>
-  <br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sinavm&layout=compact&hide_border=true&theme=radical&bg_color=0D0B1A&title_color=8B8CF8&text_color=D3D3D3" alt="top languages"/>
-</div>
+![github contribution snake](https://raw.githubusercontent.com/sinavm/sinavm/output/github-snake-dark.svg)
 
----
+اگر از پروژه‌ها استفاده می‌کنید، ستاره بزنید تا از آپدیت‌ها باخبر شوید.
 
-<div align="center">
+<p align="center">
+  <a href="https://t.me/sinavm">تلگرام</a> ·
+  <a href="https://sinavm.github.io/sinavm/">وب‌سایت</a> ·
+  <a href="https://instagram.com/sinabigo">اینستاگرام</a>
+</p>
 
-**اگر از پروژه‌ها استفاده می‌کنید، ستاره بزنید تا از آپدیت‌ها باخبر شوید.**
-
-[تلگرام](https://t.me/sinavm) · [وب‌سایت](https://sinavm.github.io/sinavm/) · [اینستاگرام](https://instagram.com/sinabigo)
-
-<sub>Built in public · Maintained by sina (@sinavm)</sub>
-
-</div>
+<p align="center"><sub>Built in public · Maintained by sina (@sinavm)</sub></p>
