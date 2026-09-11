@@ -43,12 +43,10 @@
 | **[Hiddify](https://github.com/sinavm/Hiddify)** | صفحه و منابع مرتبط با هیدیفای | ★ 44 · HTML |
 
 <p align="center">
-  <a href="https://github.com/sinavm/sinavm"><img src="https://raw.githubusercontent.com/sinavm/sinavm/output/pin-sinavm.svg" alt="sinavm"/></a>
-  <a href="https://github.com/sinavm/SVM"><img src="https://raw.githubusercontent.com/sinavm/sinavm/output/pin-svm.svg" alt="SVM"/></a>
-</p>
-<p align="center">
-  <a href="https://github.com/sinavm/melishekan"><img src="https://raw.githubusercontent.com/sinavm/sinavm/output/pin-melishekan.svg" alt="melishekan"/></a>
-  <a href="https://github.com/sinavm/sing-box"><img src="https://raw.githubusercontent.com/sinavm/sinavm/output/pin-singbox.svg" alt="sing-box"/></a>
+  <a href="https://github.com/sinavm/sinavm"><img src="https://img.shields.io/github/stars/sinavm/sinavm?style=for-the-badge&label=sinavm&color=8B8CF8" alt="sinavm"/></a>
+  <a href="https://github.com/sinavm/SVM"><img src="https://img.shields.io/github/stars/sinavm/SVM?style=for-the-badge&label=SVM&color=7A7ADB" alt="SVM"/></a>
+  <a href="https://github.com/sinavm/melishekan"><img src="https://img.shields.io/github/stars/sinavm/melishekan?style=for-the-badge&label=melishekan&color=26A5E4" alt="melishekan"/></a>
+  <a href="https://github.com/sinavm/sing-box"><img src="https://img.shields.io/github/stars/sinavm/sing-box?style=for-the-badge&label=sing-box&color=1C1C1C" alt="sing-box"/></a>
 </p>
 
 ---
@@ -70,19 +68,22 @@
 
 ### آمار · Stats
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/sinavm/sinavm/output/stats.svg" alt="GitHub stats"/>
-  <img src="https://raw.githubusercontent.com/sinavm/sinavm/output/streak.svg" alt="streak"/>
-  <br/>
-  <img src="https://raw.githubusercontent.com/sinavm/sinavm/output/langs.svg" alt="top languages"/>
-</div>
+<p align="center">
+  <img src="https://img.shields.io/github/followers/sinavm?style=for-the-badge&color=7A7ADB&label=followers" alt="followers"/>
+  <img src="https://img.shields.io/github/stars/sinavm?affiliations=OWNER&style=for-the-badge&color=8B8CF8&label=stars" alt="stars"/>
+  <img src="https://img.shields.io/github/directory-file-count/sinavm/SVM?style=for-the-badge&color=26A5E4&label=SVM%20files" alt="files"/>
+</p>
 
 ---
 
 ### مشارکت
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/sinavm/sinavm/output/github-snake-dark.svg" alt="contribution snake"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/sinavm/sinavm/raw/output/github-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/sinavm/sinavm/raw/output/github-snake.svg">
+    <img alt="contribution snake" src="https://github.com/sinavm/sinavm/raw/output/github-snake-dark.svg">
+  </picture>
 </div>
 
 <div align="center">
