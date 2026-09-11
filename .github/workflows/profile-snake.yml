@@ -1,4 +1,4 @@
-name: Profile snake
+name: Profile assets
 
 on:
   schedule:
@@ -26,6 +26,21 @@ jobs:
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
             dist/github-snake-light.svg?palette=github-light
+
+      - name: Fetch stats cards
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          BASE_STATS="https://github-readme-stats.vercel.app/api"
+          THEME="theme=radical&hide_border=true&bg_color=0D0B1A&title_color=8B8CF8&icon_color=7A7ADB&text_color=D3D3D3"
+
+          curl -fsSL "${BASE_STATS}?username=sinavm&show_icons=true&include_all_commits=true&count_private=true&ring_color=7A7ADB&${THEME}" -o dist/stats.svg
+          curl -fsSL "${BASE_STATS}/top-langs/?username=sinavm&layout=compact&${THEME}" -o dist/langs.svg
+          curl -fsSL "${BASE_STATS}/pin/?username=sinavm&repo=sinavm&${THEME}" -o dist/pin-sinavm.svg
+          curl -fsSL "${BASE_STATS}/pin/?username=sinavm&repo=SVM&${THEME}" -o dist/pin-svm.svg
+          curl -fsSL "${BASE_STATS}/pin/?username=sinavm&repo=melishekan&${THEME}" -o dist/pin-melishekan.svg
+          curl -fsSL "${BASE_STATS}/pin/?username=sinavm&repo=sing-box&${THEME}" -o dist/pin-singbox.svg
+          curl -fsSL "https://streak-stats.demolab.com/?user=sinavm&theme=radical&hide_border=true&background=0D0B1A&ring=7A7ADB&fire=8B8CF8&currStreakLabel=8B8CF8" -o dist/streak.svg
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
