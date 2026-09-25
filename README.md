@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=800&color=8B8CF8&center=true&vCenter=true&width=520&lines=sinavm;Open+Source+Builder;SVM+%26+Subscription+Tools" alt="sinavm" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=800&color=8B8CF8&center=true&vCenter=true&width=560&lines=sinavm;Open-source+builder;Access+%26+automation+tools" alt="sinavm" />
 
-  **سازنده ابزارهای متن‌باز برای دسترسی پایدار به اینترنت**
+  **سازنده ابزارهای متن‌باز برای دسترسی، اتوماسیون و شرایط اینترنت ایران**
 
   <a href="https://t.me/sinavm"><img src="https://img.shields.io/badge/Telegram-@sinavm-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram"></a>
   <a href="https://sinavm.github.io/sinavm/"><img src="https://img.shields.io/badge/Website-sinavm.github.io-8B8CF8?style=flat-square&logo=github&logoColor=white" alt="Website"></a>
@@ -16,34 +16,31 @@
 
 ### درباره من
 
-سینا هستم، هرکاری از دستم بربیاید می‌کنم که با هم عبور کنیم از هرچی محدودیت هست.
+سینا هستم. ابزار متن‌باز می‌سازم تا مردم در شرایط قطعی یا محدودیت بتوانند به اطلاعات، مستندات و ابزارها برسند.
 
-باشد که هیچ‌یک از هموطنان ما در سرتاسر ایران
-بی‌نیاز از حق طبیعی خود، یعنی اینترنت آزاد باشند.
+این پروفایل فقط مرکز توزیع کانفیگ نیست. قسمت از کار جمع‌آوری و تبدیل اشتراک است، قسمت بزرگ‌تر مستند، آینه، وضعیت شبکه و اتوماسیون گیتهاب است.
 
-انتشار منظم آپدیت از طریق گیتهاب و کانال تلگرام [t.me/sinavm](https://t.me/sinavm)
+بروزرسانی از طریق [تلگرام](https://t.me/sinavm) و گیتهاب.
 
 </div>
 
 ---
 
-### پروژه‌های شاخص
+### پروژه‌های اصلی
 
-| پروژه | نقش | ستاره |
-| :--- | :--- | ---: |
-| **[sinavm](https://github.com/sinavm/sinavm)** | هاب عمومی + GitHub Pages | 838 |
-| **[SVM](https://github.com/sinavm/SVM)** | جمع‌آوری و تبدیل کانفیگ | 431 |
-| **[melishekan](https://github.com/sinavm/melishekan)** | فایل بک‌آپ VPN Client Pro | 247 |
-| **[sing-box](https://github.com/sinavm/sing-box)** | کانفیگ آماده سینگ‌باکس | 176 |
-| **[Hiddify](https://github.com/sinavm/Hiddify)** | صفحه و منابع هیدیفای | 44 |
-
-<p align="center">
-  <a href="https://github.com/sinavm/sinavm"><img src="https://img.shields.io/github/stars/sinavm/sinavm?style=flat-square&label=sinavm&color=8B8CF8" alt="sinavm"></a>
-  <a href="https://github.com/sinavm/SVM"><img src="https://img.shields.io/github/stars/sinavm/SVM?style=flat-square&label=SVM&color=7A7ADB" alt="SVM"></a>
-  <a href="https://github.com/sinavm/melishekan"><img src="https://img.shields.io/github/stars/sinavm/melishekan?style=flat-square&label=melishekan&color=26A5E4" alt="melishekan"></a>
-  <a href="https://github.com/sinavm/sing-box"><img src="https://img.shields.io/github/stars/sinavm/sing-box?style=flat-square&label=sing-box&color=444444" alt="sing-box"></a>
-  <a href="https://github.com/sinavm/Hiddify"><img src="https://img.shields.io/github/stars/sinavm/Hiddify?style=flat-square&label=Hiddify&color=1C1C1C" alt="Hiddify"></a>
-</p>
+| پروژه | کار | وضعیت |
+| :--- | :--- | :--- |
+| **[SVM](https://github.com/sinavm/SVM)** | جمع‌آوری و تبدیل اشتراک | فعال |
+| **[sinavm](https://github.com/sinavm/sinavm)** | هاب + GitHub Pages | فعال |
+| **[net-status-ir](https://github.com/sinavm/net-status-ir)** | وضعیت دسترسی سرویس‌های عمومی | جدید |
+| **[fa-devtools](https://github.com/sinavm/fa-devtools)** | آینه و ابزار مفید برای نت محدود | جدید |
+| **[channel-mirror](https://github.com/sinavm/channel-mirror)** | آرشیو کانال روی Pages | جدید |
+| **[php-actions-kit](https://github.com/sinavm/php-actions-kit)** | قالب Actions برای PHP | جدید |
+| **[fa-readme](https://github.com/sinavm/fa-readme)** | قالب README فارسی | جدید |
+| **[sing-box-docs-fa](https://github.com/sinavm/sing-box-docs-fa)** | مستند فارسی کلاینت | جدید |
+| **[ir-oss-list](https://github.com/sinavm/ir-oss-list)** | فهرست پروژه‌های متن‌باز ایرانی | جدید |
+| **[melishekan](https://github.com/sinavm/melishekan)** | بک‌آپ کلاینت | نگهداری |
+| **[sing-box](https://github.com/sinavm/sing-box)** | صفحه قدیمی کلاینت | نگهداری |
 
 ---
 
@@ -55,9 +52,6 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="GitHub Pages">
-  <img src="https://img.shields.io/badge/sing--box-1C1C1C?style=flat-square" alt="sing-box">
-  <img src="https://img.shields.io/badge/Xray-0D0B1A?style=flat-square" alt="Xray">
-  <img src="https://img.shields.io/badge/Clash-1A1A2E?style=flat-square" alt="Clash">
 </p>
 
 ---
@@ -73,5 +67,7 @@
   ·
   <a href="https://sinavm.github.io/sinavm/">وب‌سایت</a>
   ·
-  <a href="https://instagram.com/sinavmx">اینستاگرام</a>
+  <a href="./ROADMAP.md">نقشه راه</a>
+  ·
+  <a href="./SECURITY.md">امنیت</a>
 </p>

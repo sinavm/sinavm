@@ -1,0 +1,14 @@
+name: گزارش مشکل
+description: صفحه، لینک یا ورک‌فلو خراب است
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: چه اتفاقی افتاده
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: آدرس صفحه یا ریپو
