@@ -31,6 +31,10 @@ jobs:
             dist/github-snake-dark.svg?palette=github-dark
             dist/github-snake-light.svg?palette=github-light
 
+      # Platane/snk runs in Docker as root and leaves dist owned by root.
+      - name: Fix dist permissions
+        run: sudo chown -R "$USER:$USER" dist && chmod -R u+rwX dist
+
       - name: Generate stats cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
