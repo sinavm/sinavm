@@ -1,0 +1,29 @@
+name: Restore original index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Restore original homepage design
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://raw.githubusercontent.com/sinavm/sinavm/1c5d54be6fa622fba3638e931ab23a80bc94d3dd/index.html" -o index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+          t = t.replace(
+              'data-link="https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main/subscriptions/xray/normal/vless"',
+              'data-link="https://raw.githubusercontent.com/sinavm/SVM/main/subscriptions/xray/normal/mix"'
+          )
+          p.write_text(t, encoding='utf-8')
+          PY
+          git config user.name sinavm
+          git config user.email sina.bb2006@gmail.com
+          git add index.html
+          git commit -m "revert: restore original index.html design" || echo nochange
+          git push
