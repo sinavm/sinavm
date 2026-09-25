@@ -1,1 +1,71 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiNAVM | اینترنت آزاد</title>
+<meta name="description" content="پنل SiNAVM با وضعیت زنده SVM، اخبار تلگرام و لینک کامل/لایت">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Vazirmatn,sans-serif;background:#0f172a;color:#f8fafc}
+.wrap{max-width:520px;margin:auto;padding:20px 16px 80px}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:16px;margin:14px 0}
+h1{margin:8px 0}
+a{color:#67e8f9;text-decoration:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;text-align:center;cursor:pointer}
+.muted{color:#94a3b8;font-size:.85rem}
+.post{background:rgba(255,255,255,.03);border-radius:14px;padding:10px;margin:8px 0}
+header{text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" width="72" height="72" style="border-radius:50%" alt="SiNAVM">
+  <h1>SiNAVM Panel</h1>
+  <p class="muted">سریع · امن · بدون محدودیت</p>
+</header>
+<div class="card">
+  <strong>وضعیت زنده SVM</strong>
+  <p id="svm-status" class="muted">در حال خواندن…</p>
+  <div class="grid">
+    <div class="btn" data-link="https://raw.githubusercontent.com/sinavm/SVM/main/subscriptions/xray/normal/mix">ساب کامل</div>
+    <div class="btn" data-link="https://raw.githubusercontent.com/sinavm/SVM/main/lite/subscriptions/xray/normal/alive-fast">ساب لایت سریع</div>
+    <a class="btn" href="https://cdn.jsdelivr.net/gh/sinavm/SVM@main/subscriptions/xray/normal/mix">jsDelivr کامل</a>
+    <a class="btn" href="https://cdn.jsdelivr.net/gh/sinavm/SVM@main/lite/subscriptions/xray/normal/alive-fast">jsDelivr لایت</a>
+  </div>
+</div>
+<div class="card">
+  <strong>اخبار تلگرام</strong>
+  <div id="telegram-posts" class="muted">در حال بارگذاری…</div>
+</div>
+<div class="card">
+  <strong>سرویس‌ها</strong>
+  <div class="grid">
+    <a class="btn" href="amnezia.html">Amnezia</a>
+    <a class="btn" href="wireguard.html">WireGuard</a>
+    <a class="btn" href="https://sinavm.github.io/anyconnect/">AnyConnect</a>
+    <a class="btn" href="https://t.me/sinavm">کانال تلگرام</a>
+  </div>
+</div>
+<p class="muted" style="text-align:center"><a href="legal_pages/about.html">درباره</a> · <a href="https://t.me/sinavm">SiNAVM</a></p>
+</div>
+<script>
+function copyLink(text){
+  if(navigator.clipboard){navigator.clipboard.writeText(text);alert('کپی شد');}
+  else {prompt('کپی کن', text);}
+}
+document.querySelectorAll('[data-link]').forEach(btn=>btn.addEventListener('click',()=>copyLink(btn.getAttribute('data-link'))));
+fetch('https://raw.githubusercontent.com/sinavm/SVM/main/reports/test.json').then(r=>r.json()).then(j=>{
+  document.getElementById('svm-status').textContent='زنده '+ (j.kept||'?') +' از '+ (j.input||'?') +' · '+ (j.tested_at||'');
+}).catch(()=>{document.getElementById('svm-status').textContent='وضعیت در دسترس نیست';});
+function renderPosts(items){
+  const box=document.getElementById('telegram-posts');
+  box.innerHTML=items.slice(0,5).map(it=>'<div class="post"><a href="'+it.link+'" target="_blank">'+(it.text||'').slice(0,90)+'...</a></div>').join('');
+}
+fetch('posts_formatted.json').then(r=>r.json()).then(renderPosts).catch(()=>{
+  fetch('telegram-posts.html').then(r=>r.text()).then(html=>{document.getElementById('telegram-posts').innerHTML=html;});
+});
+</script>
+</body></html>
