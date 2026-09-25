@@ -1,4 +1,5 @@
 import os
+import re
 import html
 import json
 import shutil
@@ -26,27 +27,41 @@ def original_name(message):
             return attr.file_name
     return None
 
+def safe_filename(name, fallback):
+    name = os.path.basename(name or '') or fallback
+    name = name.replace('/', '-').replace('\\', '-').replace('..', '.')
+    name = re.sub(r'[\x00-\x1f]', '', name).strip() or fallback
+    root, ext = os.path.splitext(name)
+    if ext.lower() not in ('.npvs', '.nvps', '.conf', '.txt', '.json'):
+        name = root + '.npvs'
+    return name
+
 def looks_like_nv(message, filename):
     blob = ((message.message or '') + ' ' + (filename or '')).lower()
     return any(token in blob for token in ('nv', 'npvs', 'nvps', 'کانفیگ'))
 
 async def save_document(message):
     os.makedirs('media', exist_ok=True)
-    filename = original_name(message) or f'{message.id}.npvs'
-    ext = os.path.splitext(filename)[1].lower()
-    if ext not in ('.npvs', '.nvps', '.conf', '.txt', '.json'):
-        ext = '.npvs'
-    local = f'media/{message.id}{ext}'
+    raw_name = original_name(message) or f'{message.id}.npvs'
+    filename = safe_filename(raw_name, f'{message.id}.npvs')
+    local = os.path.join('media', filename)
     path = await message.download_media(file=local)
     if not path:
         return None
     path = path.replace('\\', '/')
+    # also keep id copy for stability
+    id_copy = f'media/{message.id}.npvs'
+    if os.path.abspath(path) != os.path.abspath(id_copy):
+        try:
+            shutil.copyfile(path, id_copy)
+        except Exception:
+            pass
     return {
         "type": "document",
         "filename": os.path.basename(path),
+        "original_name": raw_name,
         "url": path,
-        "download_url": f'{PAGES}/{path}',
-        "original_name": filename
+        "download_url": f'{PAGES}/{path}'
     }
 
 async def main():
@@ -66,18 +81,17 @@ async def main():
             media_info = None
 
             if message.document and getattr(message.document, 'size', 0) and message.document.size <= 8_000_000:
-                if looks_like_nv(message, filename) or True:
-                    try:
-                        media_info = await save_document(message)
-                        if media_info and looks_like_nv(message, filename):
-                            nv_files.append({
-                                "id": message.id,
-                                "text": text_raw,
-                                "link": f'https://t.me/{channel_username}/{message.id}',
-                                **media_info
-                            })
-                    except Exception as media_err:
-                        print(f"media skip {message.id}: {media_err}")
+                try:
+                    media_info = await save_document(message)
+                    if media_info and looks_like_nv(message, filename):
+                        nv_files.append({
+                            "id": message.id,
+                            "text": text_raw,
+                            "link": f'https://t.me/{channel_username}/{message.id}',
+                            **media_info
+                        })
+                except Exception as media_err:
+                    print(f"media skip {message.id}: {media_err}")
             elif message.photo:
                 try:
                     path = await message.download_media(file=f'media/{message.id}.jpg')
@@ -101,6 +115,7 @@ async def main():
                     "preview": short_text,
                     "date": int(message.date.timestamp()),
                     "link": link,
+                    "password": "@sinavm",
                     "media": media_info
                 })
                 shown += 1

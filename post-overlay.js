@@ -1,6 +1,7 @@
 (function () {
   const overlayId = 'sinavm-post-overlay';
   const pages = 'https://sinavm.github.io/sinavm/';
+  const PASSWORD = '@sinavm';
 
   function absUrl(url) {
     if (!url) return '';
@@ -8,17 +9,32 @@
     return pages + url.replace(/^\/+/, '');
   }
 
+  function cleanText(text) {
+    return (text || '')
+      .split('\n')
+      .filter(function (line) {
+        var t = line.trim();
+        if (!t) return true;
+        if (t.indexOf('رمز عبور') !== -1) return false;
+        if (t === '@sinavm' || t === 'sinavm@') return false;
+        return true;
+      })
+      .join('\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
   function ensureOverlay() {
     if (document.getElementById(overlayId)) return document.getElementById(overlayId);
     const wrap = document.createElement('div');
     wrap.id = overlayId;
     wrap.setAttribute('hidden', '');
-    wrap.innerHTML = '<div class="sinavm-post-overlay-backdrop"></div><div class="sinavm-post-overlay-sheet" role="dialog" aria-modal="true"><button type="button" class="sinavm-post-overlay-close" aria-label="بستن">×</button><div class="sinavm-post-overlay-media"></div><div class="sinavm-post-overlay-text"></div><div class="sinavm-post-overlay-actions"></div></div>';
+    wrap.innerHTML = '<div class="sinavm-post-overlay-backdrop"></div><div class="sinavm-post-overlay-sheet" role="dialog" aria-modal="true"><button type="button" class="sinavm-post-overlay-close" aria-label="بستن">×</button><div class="sinavm-post-overlay-media"></div><div class="sinavm-post-overlay-text"></div><div class="sinavm-post-overlay-pass">رمز عبور: <b dir="ltr">@sinavm</b></div><div class="sinavm-post-overlay-actions"></div></div>';
     document.body.appendChild(wrap);
     if (!document.getElementById('sinavm-post-overlay-style')) {
       const style = document.createElement('style');
       style.id = 'sinavm-post-overlay-style';
-      style.textContent = '#' + overlayId + '{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;padding:18px}#' + overlayId + '[hidden]{display:none}#' + overlayId + ' .sinavm-post-overlay-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(10px)}#' + overlayId + ' .sinavm-post-overlay-sheet{position:relative;width:min(420px,100%);max-height:82vh;overflow:auto;background:rgba(15,23,42,.96);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px 16px 16px;z-index:1}#' + overlayId + ' .sinavm-post-overlay-close{position:absolute;top:8px;left:10px;background:transparent;border:0;color:#e2e8f0;font-size:22px;cursor:pointer}#' + overlayId + ' .sinavm-post-overlay-text{white-space:pre-wrap;line-height:1.8;font-size:.92rem;color:#e2e8f0;margin-top:12px}#' + overlayId + ' .sinavm-post-overlay-media img{width:100%;max-height:220px;object-fit:cover;border-radius:14px;display:block}#' + overlayId + ' .sinavm-post-overlay-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}#' + overlayId + ' .sinavm-post-overlay-actions a{flex:1;text-align:center;text-decoration:none;color:#0f172a;background:#f8fafc;border-radius:12px;padding:10px;font-weight:700;font-size:.85rem}';
+      style.textContent = '#' + overlayId + '{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;padding:18px}#' + overlayId + '[hidden]{display:none}#' + overlayId + ' .sinavm-post-overlay-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(10px)}#' + overlayId + ' .sinavm-post-overlay-sheet{position:relative;width:min(420px,100%);max-height:82vh;overflow:auto;background:rgba(15,23,42,.96);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px 16px 16px;z-index:1}#' + overlayId + ' .sinavm-post-overlay-close{position:absolute;top:8px;left:10px;background:transparent;border:0;color:#e2e8f0;font-size:22px;cursor:pointer}#' + overlayId + ' .sinavm-post-overlay-text{white-space:pre-wrap;line-height:1.8;font-size:.92rem;color:#e2e8f0;margin-top:12px}#' + overlayId + ' .sinavm-post-overlay-pass{margin-top:12px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.35);border-radius:12px;padding:10px 12px;color:#fde68a;font-weight:700}#' + overlayId + ' .sinavm-post-overlay-pass b{color:#fff;unicode-bidi:isolate}#' + overlayId + ' .sinavm-post-overlay-media img{width:100%;max-height:220px;object-fit:cover;border-radius:14px;display:block}#' + overlayId + ' .sinavm-post-overlay-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}#' + overlayId + ' .sinavm-post-overlay-actions a,#' + overlayId + ' .sinavm-post-overlay-actions button{flex:1;text-align:center;text-decoration:none;color:#0f172a;background:#f8fafc;border:0;border-radius:12px;padding:10px;font-weight:700;font-size:.85rem;font-family:inherit;cursor:pointer}';
       document.head.appendChild(style);
     }
     wrap.querySelector('.sinavm-post-overlay-backdrop').addEventListener('click', closeOverlay);
@@ -35,6 +51,22 @@
     document.body.style.overflow = '';
   }
 
+  function downloadNamed(url, name) {
+    fetch(url).then(function (r) { return r.blob(); }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        URL.revokeObjectURL(a.href);
+        a.remove();
+      }, 1500);
+    }).catch(function () {
+      window.location.href = url;
+    });
+  }
+
   function openOverlay(post) {
     const el = ensureOverlay();
     const media = el.querySelector('.sinavm-post-overlay-media');
@@ -47,15 +79,18 @@
       img.src = absUrl(m.download_url || m.url);
       media.appendChild(img);
     }
-    text.textContent = post.text || '';
+    text.textContent = cleanText(post.text || '');
+    el.querySelector('.sinavm-post-overlay-pass').innerHTML = 'رمز عبور: <b dir="ltr">' + (post.password || PASSWORD) + '</b>';
     const bits = [];
     const fileUrl = absUrl(m.download_url || m.url);
+    const name = m.original_name || m.filename || ('SiNAVM-NV-' + (post.id || 'file') + '.npvs');
     if (m.type === 'document' && fileUrl) {
-      const name = m.filename || m.original_name || ('SiNAVM-NV-' + (post.id || 'file') + '.npvs');
-      bits.push('<a href="' + fileUrl + '" download="' + name + '">دانلود فایل NV</a>');
+      bits.push('<button type="button" id="sinavm-nv-download">دانلود فایل NV</button>');
     }
     bits.push('<a href="' + (post.link || 'https://t.me/sinavm') + '" target="_blank" rel="noopener">باز کردن در تلگرام</a>');
     actions.innerHTML = bits.join('');
+    var btn = el.querySelector('#sinavm-nv-download');
+    if (btn) btn.addEventListener('click', function () { downloadNamed(fileUrl, name); });
     el.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
   }
