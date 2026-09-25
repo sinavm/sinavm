@@ -1,0 +1,30 @@
+name: Apply post overlay hook
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch index.html safely
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+          if 'post-overlay.js' not in t:
+              t = t.replace('</body>', '    <script src="post-overlay.js" defer></script>\n</body>', 1)
+          old = "postsContainer.innerHTML = html;"
+          new = "postsContainer.innerHTML = html; if (window.sinavmBindPostOverlay) window.sinavmBindPostOverlay();"
+          if old in t and 'sinavmBindPostOverlay' not in t.split(old)[-1][:80]:
+              t = t.replace(old, new, 1)
+          p.write_text(t, encoding='utf-8')
+          print('patched', t.count('post-overlay.js'))
+          PY
+          git config user.name sinavm
+          git config user.email sina.bb2006@gmail.com
+          git add index.html telegram_script.py post-overlay.js
+          git commit -m "feat: hook post overlay without changing news cards" || echo nochange
+          git push
