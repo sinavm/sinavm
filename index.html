@@ -540,7 +540,7 @@
 
             const postsContainer = document.getElementById('telegram-posts');
             if (postsContainer) {
-                fetch('telegram-posts.html').then(response => { if (!response.ok) throw new Error('Network response was not ok.'); return response.text(); }).then(html => { postsContainer.innerHTML = html; }).catch(error => { postsContainer.innerHTML = `<p style="width: 100%; text-align: center; color: var(--red);">خطا در بارگذاری اخبار</p>`; console.error('Error fetching telegram posts:', error); });
+                fetch('telegram-posts.html').then(response => { if (!response.ok) throw new Error('Network response was not ok.'); return response.text(); }).then(html => { postsContainer.innerHTML = html; if (window.sinavmBindPostOverlay) window.sinavmBindPostOverlay(); }).catch(error => { postsContainer.innerHTML = `<p style="width: 100%; text-align: center; color: var(--red);">خطا در بارگذاری اخبار</p>`; console.error('Error fetching telegram posts:', error); });
             }
             
 
@@ -554,5 +554,6 @@
             }
         });
     </script>
+    <script src="post-overlay.js" defer></script>
 </body>
 </html>
