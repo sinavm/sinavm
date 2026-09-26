@@ -85,7 +85,7 @@
     const fileUrl = absUrl(m.download_url || m.url);
     const name = m.original_name || m.filename || ('SiNAVM-NV-' + (post.id || 'file') + '.npvs');
     if (m.type === 'document' && fileUrl) {
-      bits.push('<button type="button" id="sinavm-nv-download">دانلود فایل NV</button>');
+      bits.push('<button type="button" id="sinavm-nv-download">دانلود فایل</button>');
     }
     bits.push('<a href="' + (post.link || 'https://t.me/sinavm') + '" target="_blank" rel="noopener">باز کردن در تلگرام</a>');
     actions.innerHTML = bits.join('');
