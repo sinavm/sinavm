@@ -9,21 +9,6 @@
     "media": null
   },
   {
-    "id": 5197,
-    "text": "",
-    "preview": "پست رسانه‌ای",
-    "date": 1792342278,
-    "link": "https://t.me/sinavm/5197",
-    "password": "@sinavm",
-    "media": {
-      "type": "document",
-      "filename": "sticker.npvs",
-      "original_name": "sticker.webm",
-      "url": "media/sticker.npvs",
-      "download_url": "https://sinavm.github.io/sinavm/media/sticker.npvs"
-    }
-  },
-  {
     "id": 5196,
     "text": "بامداد کازرونی، سلطانِ چاخان،\nگنده‌گوزِ بی‌مدرک، خالی‌بندِ نادان! 😂\n\nاتهام و فحش، با کامنتِ بسته،\nمدرکت کجاست، ای کون‌گشادِ خسته؟! 🤡✌️",
     "preview": "بامداد کازرونی، سلطانِ چاخان، گنده‌گوزِ...",
@@ -61,5 +46,14 @@
       "url": "media/🔂@SiNAVM کانال تلگرام.npvs",
       "download_url": "https://sinavm.github.io/sinavm/media/🔂@SiNAVM کانال تلگرام.npvs"
     }
+  },
+  {
+    "id": 5191,
+    "text": "وصل شدید ری اکشن هم بدید",
+    "preview": "وصل شدید ری اکشن هم...",
+    "date": 1792087335,
+    "link": "https://t.me/sinavm/5191",
+    "password": "@sinavm",
+    "media": null
   }
 ]
