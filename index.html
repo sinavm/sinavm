@@ -287,6 +287,19 @@
             opacity: 1;
             transform: translateX(-50%) translateY(-5px);
         }
+        .atlas-promo{display:grid;grid-template-columns:62px minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px 24px;border:1px solid rgba(199,243,107,.3);border-radius:24px;background:linear-gradient(115deg,rgba(199,243,107,.15),rgba(15,23,42,.92) 62%),#142019;color:#f8fafc;text-decoration:none;position:relative;overflow:hidden;box-shadow:0 14px 36px rgba(0,0,0,.2);transition:transform .25s,border-color .25s,box-shadow .25s}
+        .atlas-promo:hover{transform:translateY(-3px);border-color:rgba(199,243,107,.65);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+        .atlas-promo:focus-visible{outline:3px solid #c7f36b;outline-offset:4px}
+        .atlas-promo-icon{width:62px;height:62px;border-radius:18px;background:#c7f36b;color:#172018;display:grid;place-items:center;font-size:27px;box-shadow:0 8px 24px rgba(199,243,107,.18)}
+        .atlas-promo-copy{min-width:0}
+        .atlas-promo-kicker{display:block;color:#c7f36b;font-size:.68rem;font-weight:800;letter-spacing:1.2px;margin-bottom:5px}
+        .atlas-promo-title{display:block;color:#fff;font-size:1.18rem;font-weight:900;line-height:1.6}
+        .atlas-promo-desc{display:block;color:#cbd5d1;font-size:.82rem;line-height:1.9;margin-top:3px}
+        .atlas-promo-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+        .atlas-promo-tags span{border:1px solid rgba(199,243,107,.22);background:rgba(199,243,107,.07);color:#e4f3c9;border-radius:30px;padding:4px 9px;font-size:.65rem}
+        .atlas-promo-cta{display:flex;align-items:center;gap:10px;color:#172018;background:#c7f36b;border-radius:12px;padding:12px 15px;font-size:.8rem;font-weight:900;white-space:nowrap}
+        .atlas-promo-cta i{font-size:.9rem}
+        @media(max-width:560px){.atlas-promo{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:17px}.atlas-promo-icon{width:48px;height:48px;border-radius:14px;font-size:21px}.atlas-promo-title{font-size:1rem}.atlas-promo-desc{font-size:.75rem}.atlas-promo-cta{grid-column:1/-1;justify-content:center;padding:11px}}
     </style>
 </head>
 <body>
@@ -356,6 +369,17 @@
                 </div>
             </div>
         </div>
+
+        <a class="atlas-promo" href="https://sinavm.github.io/ir-net-atlas/" aria-label="ورود به IR Net Atlas، رادار وضعیت اینترنت ایران">
+            <span class="atlas-promo-icon"><i class="fas fa-satellite-dish" aria-hidden="true"></i></span>
+            <span class="atlas-promo-copy">
+                <span class="atlas-promo-kicker">IR NET ATLAS · NETWORK RADAR</span>
+                <span class="atlas-promo-title">وضعیت اینترنتت رو زنده بررسی کن</span>
+                <span class="atlas-promo-desc">تست سرعت، بررسی پینگ و ببین با اینترنت فعلیت کدوم سرویس‌های ایرانی و جهانی در دسترسن.</span>
+                <span class="atlas-promo-tags"><span>تست سرعت</span><span>رادار دسترسی</span><span>پایش اینترنت ایران</span></span>
+            </span>
+            <span class="atlas-promo-cta">ورود به رادار <i class="fas fa-arrow-left" aria-hidden="true"></i></span>
+        </a>
 
         <div class="card vip-card">
             <span class="vip-badge">PREMIUM</span>
