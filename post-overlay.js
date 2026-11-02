@@ -23,14 +23,14 @@
 
   function appendFormattedText(container, value) {
     const text = cleanText(value);
-    const urlPattern = /https?:\/\/[^\s<>()]+/g;
+    const urlPattern = /(?:https?:\/\/|www\.)[^\s<>()]+|(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})(?:\/[^\s<>()]*)?/gi;
     let lastIndex = 0;
     let match;
     while ((match = urlPattern.exec(text)) !== null) {
       container.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
       const anchor = document.createElement('a');
       const url = match[0].replace(/[.,!?،؛؟]+$/, '');
-      anchor.href = url;
+      anchor.href = /^https?:\/\//i.test(url) ? url : 'https://' + url.replace(/^www\./i, 'www.');
       anchor.textContent = url;
       anchor.target = '_blank';
       anchor.rel = 'noopener noreferrer';
