@@ -4,26 +4,26 @@
 
   function absUrl(url) {
     if (!url) return '';
-    if (/^https?:\\/\\//i.test(url)) return url;
-    return pages + url.replace(/^\\/+/, '');
+    if (/^https?:\/\//i.test(url)) return url;
+    return pages + url.replace(/^\/+/, '');
   }
 
   function cleanText(text) {
     return (text || '')
-      .split('\\n')
+      .split('\n')
       .filter(function (line) {
         const value = line.trim();
-        return !/^رمز(?:\\s+عبور)?\\s*[:：=]/i.test(value) &&
-          !/^(?:password|pass)\\s*[:：=]/i.test(value);
+        return !/^رمز(?:\s+عبور)?\s*[:：=]/i.test(value) &&
+          !/^(?:password|pass)\s*[:：=]/i.test(value);
       })
-      .join('\\n')
-      .replace(/\\n{3,}/g, '\\n\\n')
+      .join('\n')
+      .replace(/\n{3,}/g, '\n\n')
       .trim();
   }
 
   function appendFormattedText(container, value) {
     const text = cleanText(value);
-    const urlPattern = /https?:\\/\\/[^\\s<>()]+/g;
+    const urlPattern = /https?:\/\/[^\s<>()]+/g;
     let lastIndex = 0;
     let match;
     while ((match = urlPattern.exec(text)) !== null) {
@@ -122,7 +122,7 @@
     }
 
     const fileUrl = mediaUrl;
-    if (attachment.type === 'document' && fileUrl) {
+    if ((attachment.type === 'document' || attachment.type === 'video') && fileUrl) {
       fileBox.hidden = false;
       const icon = document.createElement('span');
       icon.className = 'sinavm-post-overlay-file-icon';
