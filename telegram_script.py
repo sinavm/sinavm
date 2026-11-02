@@ -141,12 +141,13 @@ async def save_document(message):
             shutil.copyfile(path, id_copy)
         except Exception:
             pass
+    public_path = id_copy if os.path.exists(id_copy) else path
     return {
         "type": "video" if getattr(message, 'video', None) or os.path.splitext(raw_name)[1].lower() in ('.mp4', '.mov', '.webm', '.mkv') else "photo" if os.path.splitext(raw_name)[1].lower() in ('.jpg', '.jpeg', '.png', '.gif', '.webp') else "document",
         "filename": os.path.basename(path),
         "original_name": raw_name,
-        "url": path,
-        "download_url": f'{PAGES}/{path}',
+        "url": public_path,
+        "download_url": f'{PAGES}/{public_path}',
         "size": getattr(message.document, 'size', None),
         "kind": classify_document(raw_name, path)
     }
