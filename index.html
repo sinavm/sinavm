@@ -91,6 +91,8 @@
             width: 90px; height: 90px;
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
             box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
             padding: 3px;
             background: var(--glass);
@@ -332,7 +334,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" role="main">
 
         <header>
             <div class="logo-wrapper">
@@ -429,31 +431,31 @@
             <ul class="app-list">
                  <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--yellow);"><i class="fas fa-laugh-beam"></i></div><div><div style="font-weight: bold;">Happ</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید و پرسرعت</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" title="Android & Android TV" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" title="Windows & Linux" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" title="Android & Android TV" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="Windows & Linux" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                  <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--primary);"><i class="fas fa-rocket"></i></div><div><div style="font-weight: bold;">V2RayTun</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6476628951" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://storage.v2raytun.com/v2RayTun_Setup.exe" class="dl-btn dl-desktop" title="Windows" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6476628951" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://storage.v2raytun.com/v2RayTun_Setup.exe" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="Windows" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #f97316;"><i class="fas fa-box"></i></div><div><div style="font-weight: bold;">Sing-Box</div><div style="font-size: 0.75rem; color: var(--text-mute);">بهترین عملکرد</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6673731168" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6673731168" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #06b6d4;"><i class="fas fa-shield-virus"></i></div><div><div style="font-weight: bold;">Hiddify</div><div style="font-size: 0.75rem; color: var(--text-mute);">همه پلتفرم‌ها</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6596777532" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/app/id6596777532" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--green);"><i class="fas fa-fingerprint"></i></div><div><div style="font-weight: bold;">Amnezia</div><div style="font-size: 0.75rem; color: var(--text-mute);">امنیت بالا</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/amneziavpn/id1600529900" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://github.com/amnezia-vpn/amnezia-client/releases" class="dl-btn dl-desktop" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/amneziavpn/id1600529900" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a><a href="https://github.com/amnezia-vpn/amnezia-client/releases" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="نسخه کامپیوتر" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--purple);"><i class="fas fa-shield-alt"></i></div><div><div style="font-weight: bold;">AnyConnect</div><div style="font-size: 0.75rem; color: var(--text-mute);">سرویس سیسکو</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf" class="dl-btn dl-android" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
                 <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: #8b5cf6;"><i class="fas fa-mask"></i></div><div><div style="font-weight: bold;">Streisand</div><div style="font-size: 0.75rem; color: var(--text-mute);">مخصوص iOS</div></div></div>
-                    <div class="dl-group"><a href="https://apps.apple.com/app/id6450534064" class="dl-btn dl-ios" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
+                    <div class="dl-group"><a href="https://apps.apple.com/app/id6450534064" class="dl-btn dl-ios" aria-label="دانلود نسخه iOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a></div>
                 </li>
             </ul>
         </div>
@@ -481,8 +483,8 @@
     </div>
     
 
-    <a href="#" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا"><i class="fas fa-angle-double-up"></i></a>
-    <a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام"><i class="fab fa-telegram-plane"></i></a>
+    <a href="#" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا" aria-label="بازگشت به بالای صفحه"><i class="fas fa-angle-double-up"></i></a>
+    <a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM"><i class="fab fa-telegram-plane"></i></a>
 
     <script>
 
