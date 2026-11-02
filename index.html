@@ -178,14 +178,15 @@
             background: var(--yellow);
             color: #000;
         }
-        .telegram-posts { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
-        #telegram-posts { min-height: 112px; }
-        #telegram-posts > .telegram-posts { min-height: 112px; }
-        .telegram-posts::-webkit-scrollbar { display: none; }
-        .telegram-post { flex: 0 0 280px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px; font-size: 0.85rem; color: var(--text-mute); line-height: 1.6; transition: background 0.3s; }
-        .telegram-post:hover { background: rgba(255, 255, 255, 0.08); }
-        .telegram-post p { margin: 0 0 10px 0; }
-        .telegram-post a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        .telegram-posts-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
+        #telegram-posts { min-height: 112px; min-width: 0; }
+        .telegram-post { min-width: 0; background: rgba(255, 255, 255, 0.035); border: 1px solid var(--glass-border); border-radius: 16px; padding: 14px; font-size: 0.85rem; color: var(--text-mute); line-height: 1.8; transition: background 0.2s, border-color 0.2s; }
+        .telegram-post:hover { background: rgba(255, 255, 255, 0.075); border-color: rgba(34, 158, 217, 0.4); }
+        .telegram-post .post-link { display: flex; flex-direction: column; gap: 10px; min-width: 0; color: var(--text-main); text-decoration: none; font-weight: 500; }
+        .telegram-post .post-preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; overflow-wrap: anywhere; word-break: normal; min-height: 4.6em; }
+        .telegram-post .post-open-label { color: var(--accent); font-size: 0.76rem; font-weight: 700; }
+        .telegram-post small { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.07); color: var(--text-mute); font-size: .72rem; direction: ltr; text-align: right; }
+        @media (max-width: 420px) { .telegram-posts-grid { grid-template-columns: minmax(0, 1fr); } }
         .vip-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); text-align: center; }
         .vip-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-25deg); animation: shine 6s infinite; }
         @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
