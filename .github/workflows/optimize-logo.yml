@@ -7,6 +7,9 @@ on:
       - "index.html"
 permissions:
   contents: write
+concurrency:
+  group: optimize-homepage-logo
+  cancel-in-progress: false
 jobs:
   optimize:
     runs-on: ubuntu-latest
@@ -31,5 +34,15 @@ jobs:
           git add logo/sinavm_logo_1.webp
           if ! git diff --cached --quiet; then
             git commit -m "Optimize homepage logo for mobile"
-            git push
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              git rebase --abort || true
+              sleep $((attempt * 2))
+            done
+            echo "Unable to push optimized logo after 5 attempts"
+            exit 1
           fi
