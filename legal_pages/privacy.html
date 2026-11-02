@@ -592,6 +592,20 @@
             .footer a { display: inline-block; margin: 2px 3px; }
         }
 
+        /* Final navigation and compact home button adjustments */
+        .home-button {
+            width: min(100%, 170px);
+            max-width: 170px;
+            min-height: 44px;
+            padding: 10px 14px;
+            align-self: center;
+            flex: 0 0 auto;
+            white-space: normal;
+        }
+        .home-button::before { font-size: 1.15rem; }
+        @media (max-width: 360px) {
+            .home-button { width: min(100%, 155px); max-width: 155px; }
+        }
     </style>
 </head>
 <body>
@@ -605,7 +619,7 @@
             </div>
         </div>
 
-        <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">خانه</a>
+        <a class="home-button" href="https://sinavm.github.io/sinavm/">صفحه اصلی</a>
 
         <div class="privacy-content">
             <p>در SiNAVM، حریم خصوصی کاربران اولویت اصلی ماست. ما هیچ‌گونه اطلاعات شخصی یا داده‌های شبکه‌ای کاربران را جمع‌آوری، ذخیره یا به اشتراک نمی‌گذاریم. تمامی ابزارها و کانفیگ‌های ارائه‌شده توسط SiNAVM به‌صورت محلی روی دستگاه شما اجرا می‌شوند و هیچ اطلاعاتی به سرورهای ما ارسال نمی‌شود.</p>
