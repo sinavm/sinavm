@@ -178,6 +178,8 @@
             color: #000;
         }
         .telegram-posts { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
+        #telegram-posts { min-height: 112px; }
+        #telegram-posts > .telegram-posts { min-height: 112px; }
         .telegram-posts::-webkit-scrollbar { display: none; }
         .telegram-post { flex: 0 0 280px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px; font-size: 0.85rem; color: var(--text-mute); line-height: 1.6; transition: background 0.3s; }
         .telegram-post:hover { background: rgba(255, 255, 255, 0.08); }
