@@ -100,7 +100,7 @@ async def save_document(message):
         except Exception:
             pass
     return {
-        "type": "video" if getattr(message, 'video', None) else "document",
+        "type": "video" if getattr(message, 'video', None) or os.path.splitext(raw_name)[1].lower() in ('.mp4', '.mov', '.webm', '.mkv') else "document",
         "filename": os.path.basename(path),
         "original_name": raw_name,
         "url": path,
