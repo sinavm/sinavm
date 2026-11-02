@@ -9,13 +9,16 @@
   }
 
   function cleanText(text) {
-    return (text || '')
+    return (text || '').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}\u{20E3}\u{1F1E6}-\u{1F1FF}]/gu, '')
       .split('\n')
       .filter(function (line) {
         const value = line.trim();
         return !/^رمز(?:\s+عبور)?\s*[:：=]/i.test(value) &&
-          !/^(?:password|pass)\s*[:：=]/i.test(value);
+          !/^(?:password|pass)\s*[:：=]/i.test(value) &&
+          !/زحمت\s+(?:ری.?اکشن|حمایت|boost)|channel\s*:/i.test(value) &&
+          !/^[-_=—–\s]+$/.test(value);
       })
+      .map(function (line) { return line.replace(/(?<!\w)#[\w\u200c-]+/g, '').trimEnd(); })
       .join('\n')
       .replace(/\n{3,}/g, '\n\n')
       .trim();
@@ -103,7 +106,7 @@
     fileBox.replaceChildren();
     passBox.hidden = !post.password;
     passBox.textContent = post.password ? 'رمز عبور: ' + post.password : '';
-    element.querySelector('.sinavm-post-overlay-heading').textContent = post.date_label || '';
+    element.querySelector('.sinavm-post-overlay-heading').textContent = [post.title || post.preview, post.date_label].filter(Boolean).join(' · ');
     appendFormattedText(text, post.text || '');
 
     const mediaUrl = absUrl(attachment.download_url || attachment.url);
