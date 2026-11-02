@@ -9,7 +9,7 @@
   }
 
   function cleanText(text) {
-    return (text || '').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}\u{20E3}\u{1F1E6}-\u{1F1FF}]/gu, '')
+    return (text || '').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{00A9}\u{00AE}\u{2122}\u{FE0F}\u{200D}\u{20E3}\u{1F1E6}-\u{1F1FF}]/gu, '')
       .split('\n')
       .filter(function (line) {
         const value = line.trim();
