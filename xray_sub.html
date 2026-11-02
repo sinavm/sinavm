@@ -33,8 +33,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
         body {text-align:center;font-family:'Vazirmatn',Arial,sans-serif;direction:rtl;background:linear-gradient(135deg,#0d0d0d,#121212);color:#fff;margin:0;padding:20px;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;}
         .content {flex:1;display:flex;flex-direction:column;align-items:center;}
@@ -96,12 +98,14 @@
         @keyframes pulseGradient {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         @media (max-width:768px){.header{font-size:20px}.logo{max-width:60px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:120px;font-size:13px}.telegram-box img,.github-box img{width:18px;height:18px}.download-button{font-size:13px}.home-button{font-size:16px;width:180px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
         @media (max-width:480px){body{padding:10px}.header{font-size:18px}.logo{max-width:50px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:110px;font-size:12px;padding:6px}.download-button{font-size:12px}.home-button{font-size:14px;width:160px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
+    
+        header,.header,.header-container,.logo,.logo-wrapper,.telegram-link{animation:none!important;opacity:1!important;transform:none!important}
     </style>
 </head>
 <body onclick="closeDropdown(event)">
     <div class="content">
         <div class="header-container">
-            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM">
+            <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM" width="80" height="80" fetchpriority="high" decoding="async">
             <div class="header">دریافت کانفیگ V2Ray</div>
             <div class="separator"></div>
             <div class="telegram-link">
