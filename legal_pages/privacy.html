@@ -481,6 +481,117 @@
             .telegram-box, .github-box, .visit-box { min-width: 0; padding: 9px 10px; }
         }
 
+    
+        /* Responsive content layout: prevent overflow on narrow screens */
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        body {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            overflow-x: clip;
+            align-items: center;
+        }
+        body, body * { box-sizing: border-box; }
+        .content {
+            display: flex;
+            width: 100%;
+            max-width: 540px;
+            min-width: 0;
+            flex: 1 0 auto;
+            margin-inline: auto;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 16px;
+        }
+        .header-container, .home-button, .about-content, .privacy-content, .terms-content {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            margin-inline: 0;
+        }
+        .about-content, .privacy-content, .terms-content {
+            overflow-wrap: anywhere;
+            word-break: normal;
+            hyphens: auto;
+            text-align: right;
+            text-align: start;
+            line-height: 1.95;
+            font-size: clamp(.9rem, 2.5vw, .98rem);
+            padding: clamp(14px, 4vw, 22px);
+        }
+        .about-content p, .privacy-content p, .terms-content p {
+            max-width: 100%;
+            min-width: 0;
+            margin-block: 0 1rem;
+            text-align: start;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+        .about-content p:last-child, .privacy-content p:last-child, .terms-content p:last-child {
+            margin-block-end: 0;
+        }
+        .about-content a, .privacy-content a, .terms-content a {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .terms-content ul {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 100%;
+            margin: 12px 0 18px;
+            padding-inline-start: 0 !important;
+            padding-inline-end: clamp(18px, 5vw, 26px) !important;
+            text-align: start !important;
+        }
+        .terms-content li {
+            max-width: 100%;
+            padding-inline: 0;
+            margin-block: 0 12px;
+            overflow-wrap: anywhere;
+            word-break: normal;
+            text-align: start;
+        }
+        .left-container {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 540px;
+            min-width: 0;
+            padding-inline: 0;
+        }
+        .telegram-box, .github-box, .visit-box { min-width: 0; max-width: 100%; }
+        .footer {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+        img, video, iframe { max-width: 100%; }
+        @media (max-width: 360px) {
+            body { padding: 10px; }
+            .content { gap: 12px; }
+            .header { font-size: 1.2rem; }
+            .about-content, .privacy-content, .terms-content {
+                padding: 13px;
+                font-size: .88rem;
+                line-height: 1.9;
+                border-radius: 17px;
+            }
+            .left-container { gap: 6px; }
+            .telegram-box, .github-box, .visit-box {
+                flex: 1 1 auto;
+                padding: 8px;
+                font-size: .74rem;
+            }
+            .footer a { display: inline-block; margin: 2px 3px; }
+        }
+
     </style>
 </head>
 <body>
