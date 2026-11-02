@@ -31,14 +31,11 @@ def safe_filename(name, fallback):
     name = os.path.basename(name or '') or fallback
     name = name.replace('/', '-').replace('\\', '-').replace('..', '.')
     name = re.sub(r'[\x00-\x1f]', '', name).strip() or fallback
-    root, ext = os.path.splitext(name)
-    if ext.lower() not in ('.npvs', '.nvps', '.conf', '.txt', '.json'):
-        name = root + '.npvs'
     return name
 
 def looks_like_nv(message, filename):
-    blob = ((message.message or '') + ' ' + (filename or '')).lower()
-    return any(token in blob for token in ('nv', 'npvs', 'nvps', 'کانفیگ'))
+    ext = os.path.splitext(filename or '')[1].lower()
+    return ext in ('.npvs', '.nvps', '.npv', '.npvt')
 
 async def save_document(message):
     os.makedirs('media', exist_ok=True)
