@@ -44,7 +44,7 @@ def extract_password(text):
     return match.group(1).strip() if match else None
 
 def remove_emoji(value):
-    return re.sub(r'[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0000FE0F\U0000200D\U000020E3\U0001F1E6-\U0001F1FF]', '', value or '')
+    return re.sub(r'[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U00002B00-\U00002BFF\U000000A9\U000000AE\U00002122\U0000FE0F\U0000200D\U000020E3\U0001F1E6-\U0001F1FF]', '', value or '')
 
 def clean_post_text(value):
     cleaned = remove_emoji(value)
@@ -55,7 +55,7 @@ def clean_post_text(value):
             continue
         if re.search(r'زحمت\s+(?:ری.?اکشن|حمایت|boost)|channel\s*:', line, re.I):
             continue
-        if re.fullmatch(r'@sinavm', line, re.I):
+        if re.search(r'@sinavm', line, re.I):
             continue
         lines.append(re.sub(r'[ \t]{2,}', ' ', line))
     return re.sub(r'\n{3,}', '\n\n', '\n'.join(lines)).strip()
