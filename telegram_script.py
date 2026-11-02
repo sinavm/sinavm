@@ -47,7 +47,8 @@ async def save_document(message):
         return None
     path = path.replace('\\', '/')
     # also keep id copy for stability
-    id_copy = f'media/{message.id}.npvs'
+    extension = os.path.splitext(filename)[1].lower() or '.bin'
+    id_copy = f'media/{message.id}{extension}'
     if os.path.abspath(path) != os.path.abspath(id_copy):
         try:
             shutil.copyfile(path, id_copy)
