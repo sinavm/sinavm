@@ -115,7 +115,7 @@ async def main():
         print("Connected to Telegram successfully")
         os.makedirs('media', exist_ok=True)
 
-        posts_html = '<div class="telegram-posts-grid">\n'
+        posts_html = '<div class="telegram-posts">\n'
         posts_json = []
         nv_files = []
 
