@@ -10,6 +10,8 @@
     <meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
     
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -68,13 +70,15 @@
         footer a:hover { color: var(--accent); }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
         @keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
+    
+        header,.header,.header-container,.logo,.logo-wrapper,.telegram-link{animation:none!important;opacity:1!important;transform:none!important}
     </style>
 </head>
 <body>
     <div class="top-bar"><a href="https://sinavm.github.io/sinavm/" class="home-link"><i class="fas fa-home"></i><span>صفحه اصلی SiNAVM</span></a></div>
     <div class="container">
         <header>
-            <div class="logo-wrapper"><img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM" class="logo" loading="lazy"><div class="status-dot"></div></div>
+            <div class="logo-wrapper"><img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM" class="logo" width="90" height="90" fetchpriority="high" decoding="async"><div class="status-dot"></div></div>
             <h1>WireGuard <span style="color:var(--primary)">SiNAVM</span></h1>
             <div class="subtitle">برای استفاده، ابتدا برنامه Amnezia را نصب کنید</div>
         </header>
