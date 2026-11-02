@@ -110,7 +110,7 @@
     appendFormattedText(text, post.text || '');
 
     const mediaUrl = absUrl(attachment.download_url || attachment.url);
-    if (attachment.type === 'photo' && mediaUrl) {
+    if ((attachment.type === 'photo' || /\.(?:jpe?g|png|gif|webp)$/i.test(attachment.original_name || attachment.filename || '')) && mediaUrl) {
       const image = document.createElement('img');
       image.src = mediaUrl;
       image.alt = 'تصویر پیوست‌شده به پست';
