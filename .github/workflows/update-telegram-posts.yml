@@ -9,6 +9,10 @@ on:
       - "telegram_script.py"
       - ".github/workflows/update-telegram-posts.yml"
 
+concurrency:
+  group: update-telegram-posts
+  cancel-in-progress: false
+
 jobs:
   update-posts:
     runs-on: ubuntu-latest
@@ -38,9 +42,23 @@ jobs:
           git config --global user.name 'sinavm'
           git config --global user.email 'sinabb.2006@gmail.com'
           git add telegram-posts.html posts_formatted.json media || true
-          git commit -m "Update Telegram posts and channels configs/proxies" || echo "No changes to commit"
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Telegram posts and media"
+            git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              git rebase --abort || true
+              sleep $((attempt * 2))
+            done
+            echo "Unable to push Telegram updates after 5 attempts"
+            exit 1
+          else
+            echo "No Telegram changes to commit"
+          fi
 
       - name: Trigger melishekan sync
         if: always()
