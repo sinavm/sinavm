@@ -183,12 +183,12 @@
         #telegram-posts { min-height: 112px; }
         #telegram-posts > .telegram-posts { min-height: 112px; }
         .telegram-posts::-webkit-scrollbar { display: none; }
-        .telegram-post { flex: 0 0 190px; min-width: 0; background: rgba(255, 255, 255, 0.035); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px; font-size: 0.85rem; color: var(--text-mute); line-height: 1.8; transition: background 0.3s; }
+        .telegram-post { flex: 0 0 190px; min-width: 0; background: rgba(255, 255, 255, 0.035); border: 1px solid var(--glass-border); border-radius: 12px; padding: 7px 9px; font-size: 0.78rem; color: var(--text-mute); line-height: 1.35; transition: background 0.3s; }
         .telegram-post:hover { background: rgba(255, 255, 255, 0.08); }
-        .telegram-post .post-link { display: flex; flex-direction: column; gap: 10px; min-width: 0; color: var(--text-main); text-decoration: none; font-weight: 500; }
-        .telegram-post .post-preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; overflow-wrap: anywhere; word-break: normal; min-height: 4.6em; }
+        .telegram-post .post-link { display: flex; flex-direction: column; gap: 4px; min-width: 0; color: var(--text-main); text-decoration: none; font-weight: 500; }
+        .telegram-post .post-preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; word-break: normal; min-height: 0; }
         .telegram-post .post-open-label { color: var(--accent); font-size: 0.76rem; font-weight: 700; }
-        .telegram-post small { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.07); color: var(--text-mute); font-size: .72rem; direction: ltr; text-align: right; }
+        .telegram-post small { display: block; margin-top: 5px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.07); color: var(--text-mute); font-size: .65rem; direction: ltr; text-align: right; }
         .vip-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); text-align: center; }
         .vip-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-25deg); animation: shine 6s infinite; }
         @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
