@@ -30,17 +30,12 @@
 
 | پروژه | کار | وضعیت |
 | :--- | :--- | :--- |
-| **[SVM](https://github.com/sinavm/SVM)** | جمع‌آوری و تبدیل اشتراک | فعال |
-| **[sinavm](https://github.com/sinavm/sinavm)** | هاب + GitHub Pages | فعال |
-| **[net-status-ir](https://github.com/sinavm/net-status-ir)** | وضعیت دسترسی سرویس‌های عمومی | جدید |
-| **[fa-devtools](https://github.com/sinavm/fa-devtools)** | آینه و ابزار مفید برای نت محدود | جدید |
-| **[channel-mirror](https://github.com/sinavm/channel-mirror)** | آرشیو کانال روی Pages | جدید |
-| **[php-actions-kit](https://github.com/sinavm/php-actions-kit)** | قالب Actions برای PHP | جدید |
-| **[fa-readme](https://github.com/sinavm/fa-readme)** | قالب README فارسی | جدید |
-| **[sing-box-docs-fa](https://github.com/sinavm/sing-box-docs-fa)** | مستند فارسی کلاینت | جدید |
-| **[ir-oss-list](https://github.com/sinavm/ir-oss-list)** | فهرست پروژه‌های متن‌باز ایرانی | جدید |
-| **[melishekan](https://github.com/sinavm/melishekan)** | بک‌آپ کلاینت | نگهداری |
-| **[sing-box](https://github.com/sinavm/sing-box)** | صفحه قدیمی کلاینت | نگهداری |
+| **[SVM](https://github.com/sinavm/SVM)** | جمع‌آوری و تبدیل اشتراک | در حال اجرا |
+| **[sinavm](https://github.com/sinavm/sinavm)** | هاب + GitHub Pages | در حال اجرا |
+| **[net-status-ir](https://github.com/sinavm/net-status-ir)** | وضعیت دسترسی سرویس‌های عمومی | در حال اجرا |
+| **[channel-mirror](https://github.com/sinavm/channel-mirror)** | آرشیو کانال روی Pages | در حال اجرا |
+| **[melishekan](https://github.com/sinavm/melishekan)** | بک‌آپ کلاینت | در حال اجرا |
+| **[sing-box](https://github.com/sinavm/sing-box)** | صفحه قدیمی کلاینت | در حال اجرا |
 
 ---
 
