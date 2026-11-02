@@ -253,6 +253,235 @@
         }
     
         header,.header,.header-container,.logo,.logo-wrapper,.telegram-link{animation:none!important;opacity:1!important;transform:none!important}
+    
+        /* SiNAVM home-page theme */
+        :root {
+            --bg-color: #0f172a;
+            --primary: #3b82f6;
+            --accent: #06b6d4;
+            --glass: rgba(255,255,255,.08);
+            --glass-border: rgba(255,255,255,.1);
+            --text-main: #f8fafc;
+            --text-mute: #94a3b8;
+        }
+        html { min-height: 100%; background: var(--bg-color); }
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            padding: 20px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        .content {
+            width: 100%;
+            max-width: 500px;
+            min-height: 100vh;
+            flex: 1 0 auto;
+            justify-content: flex-start;
+            align-items: stretch;
+            gap: 18px;
+            z-index: 1;
+        }
+        .header-container {
+            width: 100%;
+            margin: 0;
+            padding: 20px 20px 8px;
+            animation: fadeInDown .7s ease both;
+        }
+        .logo {
+            width: 90px;
+            height: auto;
+            aspect-ratio: 550 / 554;
+            max-width: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,.2);
+            padding: 3px;
+            background: var(--glass);
+            box-shadow: 0 0 30px rgba(6,182,212,.35);
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+        .header {
+            font-size: 1.65rem;
+            font-weight: 900;
+            margin-top: 12px;
+            color: var(--text-main);
+            background: linear-gradient(135deg,#fff 0%,#94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 1;
+            transform: none;
+            animation: none;
+            line-height: 1.5;
+        }
+        .telegram-link {
+            font-size: .9rem;
+            color: var(--accent);
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+        .telegram-link a { color: var(--accent); text-decoration: none; }
+        .telegram-link a:hover { color: #fff; }
+        .separator {
+            width: 72px;
+            height: 2px;
+            border: 0;
+            border-radius: 5px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 12px auto;
+        }
+        .about-content, .privacy-content, .terms-content {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 22px;
+            text-align: right;
+            font-size: .95rem;
+            line-height: 2;
+            color: var(--text-main);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 12px 32px rgba(0,0,0,.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+        .about-content p, .privacy-content p, .terms-content p { margin: 0 0 14px; }
+        .about-content p:last-child, .privacy-content p:last-child, .terms-content p:last-child { margin-bottom: 0; }
+        .about-content a, .privacy-content a, .terms-content a {
+            color: var(--accent);
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+        .about-content a:hover, .privacy-content a:hover, .terms-content a:hover { color: #fff; text-decoration: underline; }
+        .terms-content ul { padding-right: 22px !important; margin: 10px 0 16px; }
+        .terms-content li { padding-right: 2px; margin: 8px 0; }
+        .home-button {
+            order: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            min-height: 52px;
+            margin: 0;
+            padding: 14px 18px;
+            border: 1px solid rgba(59,130,246,.35);
+            border-radius: 18px;
+            background: linear-gradient(135deg,rgba(59,130,246,.16),rgba(6,182,212,.08));
+            color: var(--text-main);
+            font-size: .95rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: none;
+            opacity: 1;
+            transform: none;
+            animation: none;
+            transition: border-color .2s, background .2s, transform .2s;
+        }
+        .home-button::before { content: "⌂"; font-size: 1.3rem; color: var(--accent); line-height: 1; }
+        .home-button:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(6,182,212,.13);
+            box-shadow: 0 8px 24px rgba(6,182,212,.12);
+            text-shadow: none;
+        }
+        .left-container {
+            position: static;
+            transform: none;
+            width: 100%;
+            max-width: 500px;
+            margin: 8px auto 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            z-index: 1;
+        }
+        .telegram-box, .github-box, .visit-box {
+            box-sizing: border-box;
+            width: auto;
+            min-width: 110px;
+            margin: 0;
+            padding: 10px 13px;
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            background: var(--glass);
+            color: var(--text-main);
+            box-shadow: none;
+            animation: none;
+            font-size: .8rem;
+        }
+        .telegram-box, .github-box { text-decoration: none; }
+        .telegram-box:hover, .github-box:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,.18); }
+        .telegram-box { border-color: rgba(34,158,217,.3); }
+        .github-box { border-color: rgba(139,92,246,.3); }
+        .visit-box { color: var(--text-mute); }
+        .follow-telegram {
+            margin: 12px 0 0;
+            opacity: 1;
+            transform: none;
+            animation: none;
+            text-align: center;
+        }
+        .follow-telegram a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-mute);
+            text-decoration: none;
+            font-size: .8rem;
+        }
+        .follow-telegram img { width: 20px; height: 20px; margin: 0; }
+        .footer {
+            width: 100%;
+            margin: 8px 0 28px;
+            padding: 14px 10px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-mute);
+            font-size: .78rem;
+            line-height: 2;
+        }
+        .footer a { color: var(--text-mute); text-decoration: none; margin: 0 5px; transition: color .2s; }
+        .footer a:hover { color: var(--accent); }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .content { gap: 14px; }
+            .header-container { padding: 16px 10px 6px; }
+            .logo { width: 78px; max-width: 78px; }
+            .header { font-size: 1.4rem; }
+            .about-content, .privacy-content, .terms-content { padding: 18px; font-size: .9rem; }
+            .home-button { min-height: 48px; }
+            .left-container { gap: 8px; }
+            .telegram-box, .github-box, .visit-box { min-width: 0; padding: 9px 10px; }
+        }
+
     </style>
 </head>
 <body>
@@ -266,15 +495,14 @@
             </div>
         </div>
 
+        <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">خانه</a>
+
         <div class="privacy-content">
             <p>در SiNAVM، حریم خصوصی کاربران اولویت اصلی ماست. ما هیچ‌گونه اطلاعات شخصی یا داده‌های شبکه‌ای کاربران را جمع‌آوری، ذخیره یا به اشتراک نمی‌گذاریم. تمامی ابزارها و کانفیگ‌های ارائه‌شده توسط SiNAVM به‌صورت محلی روی دستگاه شما اجرا می‌شوند و هیچ اطلاعاتی به سرورهای ما ارسال نمی‌شود.</p>
             <p>ما به‌عنوان یک پروژه متن‌باز، متعهد به شفافیت هستیم. کدهای ما در <a href="https://github.com/sinavm" target="_blank">گیت‌هاب</a> قابل بررسی هستند. اپلیکیشن‌هایی مانند V2ray و Sing-box و Hiddify و Streisand و Amnezia که پشتیبانی می‌کنیم، به‌گونه‌ای طراحی شده‌اند که هیچ داده‌ای جمع‌آوری نمی‌کنند، همان‌طور که در سیاست‌های حریم خصوصی آن‌ها ذکر شده است.</p>
             <p>اگر سوالی درباره حریم خصوصی دارید، می‌توانید از طریق <a href="https://t.me/SiNA_TEC" target="_blank">گروه تلگرام</a> با ما در تماس باشید.</p>
         </div>
-
-        <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">خانه</a>
-
-        <div class="follow-telegram">
+<div class="follow-telegram">
             <a href="https://t.me/sinavm" target="_blank">
                 <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
                 کاری از کانال تلگرام sinavm
