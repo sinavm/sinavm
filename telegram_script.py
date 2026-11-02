@@ -127,7 +127,7 @@ def classify_document(filename, path):
 
 async def save_document(message):
     os.makedirs('media', exist_ok=True)
-    raw_name = original_name(message) or f'{message.id}.bin'
+    raw_name = original_name(message) or (f'{message.id}.mp4' if getattr(message, 'video', None) else f'{message.id}.bin')
     filename = safe_filename(raw_name, f'{message.id}.bin')
     local = os.path.join('media', filename)
     path = await message.download_media(file=local)
@@ -166,7 +166,9 @@ async def main():
             filename = original_name(message)
             media_info = None
 
-            if message.document and getattr(message.document, 'size', 0) and message.document.size <= 12_000_000:
+            document_size = getattr(message.document, 'size', 0) if message.document else 0
+            is_video = bool(getattr(message, 'video', None))
+            if message.document and document_size and (document_size <= 12_000_000 or (is_video and document_size <= 90_000_000)):
                 try:
                     media_info = await save_document(message)
                     if media_info and looks_like_nv(message, filename):
