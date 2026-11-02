@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '0 */2 * * *'
   workflow_dispatch:
+  push:
+    paths:
+      - "telegram_script.py"
+      - ".github/workflows/update-telegram-posts.yml"
 
 jobs:
   update-posts:
