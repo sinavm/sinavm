@@ -588,6 +588,20 @@
             .footer a { display: inline-block; margin: 2px 3px; }
         }
 
+        /* Final navigation and compact home button adjustments */
+        .home-button {
+            width: min(100%, 170px);
+            max-width: 170px;
+            min-height: 44px;
+            padding: 10px 14px;
+            align-self: center;
+            flex: 0 0 auto;
+            white-space: normal;
+        }
+        .home-button::before { font-size: 1.15rem; }
+        @media (max-width: 360px) {
+            .home-button { width: min(100%, 155px); max-width: 155px; }
+        }
     </style>
 </head>
 <body>
@@ -601,13 +615,15 @@
             </div>
         </div>
 
-        <a class="home-button" href="https://sinavm.github.io/sinavm/" target="_blank">خانه</a>
+        <a class="home-button" href="https://sinavm.github.io/sinavm/">صفحه اصلی</a>
 
         <div class="terms-content">
             <p>استفاده از خدمات و ابزارهای SiNAVM به معنای پذیرش شرایط زیر است:</p>
             <ul style="text-align: right; padding-right: 20px;">
                 <li>کاربران مسئول استفاده قانونی از کانفیگ‌ها و اپلیکیشن‌های ارائه‌شده هستند و باید قوانین محلی کشور خود را رعایت کنند.</li>
-                <li>SiNAVM هیچ سرویسی برای فروش ارائه نمی‌دهد. کاربران باید سرورهای خود را ایجاد یا از منابع مورد اعتماد استفاده کنند.</li>
+                <li>درآمد حاصل از فروش اشتراک‌های VIP صرف تأمین هزینه‌های توسعه، ساخت و نگهداری و تولید اشتراک‌های رایگان SiNAVM می‌شود.</li>
+                <li>کاربران باید سرورهای خود را ایجاد کنند یا از منابع مورد اعتماد استفاده کنند.</li>
+                <li>علاقه‌مندان به فروش کانفیگ می‌توانند به‌صورت مستقل فعالیت کنند؛ مسئولیت کیفیت، پشتیبانی و رعایت قوانین مربوط به فروش بر عهده خود فروشنده است و SiNAVM مسئولیتی در قبال معاملات مستقل ندارد.</li>
                 <li>ابزارها و کانفیگ‌های ما به‌صورت رایگان و متن‌باز ارائه می‌شوند. هرگونه سوءاستفاده از آن‌ها بر عهده کاربر است.</li>
                 <li>ما هیچ‌گونه مسئولیتی در قبال مشکلات ناشی از استفاده نادرست از ابزارها یا قطعی سرورها نداریم.</li>
             </ul>
