@@ -73,6 +73,8 @@ def make_post_title(value, media_info=None):
         return 'کانفیگ V2Ray'
     if re.search(r'\bNV\b|ملی.?شکن', normalized, re.I):
         return 'کانفیگ NV'
+    if re.search(r'http\s*[-_]?\s*custom|اچ\s*تی\s*تی\s*پی\s*کاستوم', normalized, re.I):
+        return 'کانفیگ HTTP Custom'
     for line in source.splitlines():
         candidate = re.sub(r'\s+', ' ', line).strip(' .،؛:-')
         if candidate and not re.search(r'^(?:نصب|آموزش|روی\s+\()', candidate):
@@ -92,6 +94,8 @@ def classify_document(filename, path):
             sample = ''
     if ext in ('.npvs', '.nvps', '.npv', '.npvt'):
         return 'NPV / NapsternetV'
+    if ext in ('.hc', '.hct', '.hcconf') or re.search(r'http\s*[-_]?\s*custom', sample, re.I):
+        return 'HTTP Custom'
     if ext == '.ovpn' or '<client>' in sample or 'remote ' in sample and 'proto ' in sample:
         return 'OpenVPN'
     if ext in ('.conf', '.wg') and ('[Interface]' in sample or '[Peer]' in sample):
@@ -138,7 +142,7 @@ async def save_document(message):
         except Exception:
             pass
     return {
-        "type": "video" if getattr(message, 'video', None) or os.path.splitext(raw_name)[1].lower() in ('.mp4', '.mov', '.webm', '.mkv') else "document",
+        "type": "video" if getattr(message, 'video', None) or os.path.splitext(raw_name)[1].lower() in ('.mp4', '.mov', '.webm', '.mkv') else "photo" if os.path.splitext(raw_name)[1].lower() in ('.jpg', '.jpeg', '.png', '.gif', '.webp') else "document",
         "filename": os.path.basename(path),
         "original_name": raw_name,
         "url": path,
