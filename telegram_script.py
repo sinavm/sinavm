@@ -31,8 +31,8 @@ def original_name(message):
 
 def safe_filename(name, fallback):
     name = os.path.basename(name or '') or fallback
-    name = name.replace('/', '-').replace('\\\\', '-').replace('..', '.')
-    name = re.sub(r'[\\x00-\\x1f]', '', name).strip() or fallback
+    name = name.replace('/', '-').replace('\\', '-').replace('..', '.')
+    name = re.sub(r'[\x00-\x1f]', '', name).strip() or fallback
     return name
 
 def looks_like_nv(message, filename):
@@ -40,7 +40,7 @@ def looks_like_nv(message, filename):
     return ext in ('.npvs', '.nvps', '.npv', '.npvt')
 
 def extract_password(text):
-    match = re.search(r'(?im)^\\s*(?:رمز(?:\\s+عبور)?|password|pass)\\s*[:：=]\\s*(.+?)\\s*$', text or '')
+    match = re.search(r'(?im)^\s*(?:رمز(?:\s+عبور)?|password|pass)\s*[:：=]\s*(.+?)\s*$', text or '')
     return match.group(1).strip() if match else None
 
 def classify_document(filename, path):
@@ -91,7 +91,7 @@ async def save_document(message):
     path = await message.download_media(file=local)
     if not path:
         return None
-    path = path.replace('\\\\', '/')
+    path = path.replace('\\', '/')
     extension = os.path.splitext(filename)[1].lower() or '.bin'
     id_copy = f'media/{message.id}{extension}'
     if os.path.abspath(path) != os.path.abspath(id_copy):
@@ -100,7 +100,7 @@ async def save_document(message):
         except Exception:
             pass
     return {
-        "type": "document",
+        "type": "video" if getattr(message, 'video', None) else "document",
         "filename": os.path.basename(path),
         "original_name": raw_name,
         "url": path,
@@ -115,7 +115,7 @@ async def main():
         print("Connected to Telegram successfully")
         os.makedirs('media', exist_ok=True)
 
-        posts_html = '<div class="telegram-posts-grid">\\n'
+        posts_html = '<div class="telegram-posts-grid">\n'
         posts_json = []
         nv_files = []
 
@@ -140,7 +140,7 @@ async def main():
                 try:
                     path = await message.download_media(file=f'media/{message.id}.jpg')
                     if path:
-                        path = path.replace('\\\\', '/')
+                        path = path.replace('\\', '/')
                         media_info = {
                             "type": "photo",
                             "filename": f'{message.id}.jpg',
@@ -152,7 +152,7 @@ async def main():
 
             if len(posts_json) < POST_LIMIT and (text_raw or media_info):
                 password = extract_password(text_raw)
-                visible_text = re.sub(r'(?im)^\\s*(?:رمز(?:\\s+عبور)?|password|pass)\\s*[:：=]\\s*.+?\\s*$', '', text_raw).strip()
+                visible_text = re.sub(r'(?im)^\s*(?:رمز(?:\s+عبور)?|password|pass)\s*[:：=]\s*.+?\s*$', '', text_raw).strip()
                 preview = ' '.join(visible_text.split())
                 if len(preview) > 150:
                     preview = preview[:147].rstrip() + '...'
@@ -165,7 +165,7 @@ async def main():
                     f'<a href="{link}" target="_blank" rel="noopener noreferrer" class="post-link">'
                     f'<span class="post-preview">{html.escape(preview)}</span>'
                     f'<span class="post-open-label">مشاهده پست <span aria-hidden="true">←</span></span>'
-                    f'</a><small>{date_str}</small></article>\\n'
+                    f'</a><small>{date_str}</small></article>\n'
                 )
                 post = {
                     "id": message.id,
@@ -184,7 +184,7 @@ async def main():
                 break
 
         if not posts_json:
-            posts_html += '<div class="telegram-post">در حال حاضر پستی برای نمایش پیدا نشد.</div>\\n'
+            posts_html += '<div class="telegram-post">در حال حاضر پستی برای نمایش پیدا نشد.</div>\n'
         posts_html += '</div>'
 
         latest = nv_files[:3]
