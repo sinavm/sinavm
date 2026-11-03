@@ -75,5 +75,5 @@
 </div>
 
 <div align="center">
-  <img alt="contribution snake" src="https://github.com/sinavm/sinavm/raw/main/github-snake-dark.svg">
+  <img alt="contribution snake" src="https://github.com/sinavm/sinavm/raw/main/logo/github-snake-dark.svg">
 </div>
