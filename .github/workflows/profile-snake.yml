@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Generate snake
         uses: Platane/snk@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
