@@ -17,9 +17,16 @@ def check(condition: bool, message: str) -> None:
 
 
 def no_horizontal_overflow(page, label: str) -> None:
-    metrics = page.evaluate("({width: innerWidth, scroll: document.documentElement.scrollWidth})")
+    metrics = page.evaluate("""() => ({
+      width: innerWidth,
+      scroll: document.documentElement.scrollWidth,
+      offenders: [...document.querySelectorAll('body *')].map(el => {
+        const r = el.getBoundingClientRect();
+        return {tag: el.tagName, id: el.id, className: typeof el.className === 'string' ? el.className : '', left: Math.round(r.left), right: Math.round(r.right), scrollWidth: el.scrollWidth, clientWidth: el.clientWidth};
+      }).filter(x => x.right > innerWidth + 1 || x.left < -1).slice(0, 8)
+    })""")
     check(metrics["scroll"] <= metrics["width"] + 1,
-          f"{label}: horizontal overflow ({metrics['scroll']}px > {metrics['width']}px)")
+          f"{label}: horizontal overflow ({metrics['scroll']}px > {metrics['width']}px); elements={metrics['offenders']}")
 
 
 with sync_playwright() as p:
