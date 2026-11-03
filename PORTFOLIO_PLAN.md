@@ -1,53 +1,61 @@
-# SiNAVM — Portfolio & Portal Evolution
+# SiNAVM — Portfolio and Portal Roadmap
 
-## Product decision
+## دامنه کار
 
-- Keep the existing root website as the Internet Tools Portal.
-- Build the developer portfolio independently under `portfolio/`.
-- Support Persian (default, RTL) and English (LTR).
-- Use a modern, minimal, professional visual language.
-- Preserve existing service routes, Telegram publishing, downloads, legal pages and current workflows unless a separately reviewed change is approved.
+- پورتال ابزارها در صفحه اصلی ریشه مخزن به کار خود ادامه می‌دهد.
+- پورتفولیو و پرونده‌های فنی در `portfolio/` قرار دارند.
+- هیچ صفحه، سرویس، گردش‌کار یا فایل قدیمی صرفاً برای مرتب‌سازی حذف نمی‌شود.
+- فارسی زبان پیش‌فرض است؛ نسخه انگلیسی با همان کنترل زبان در دسترس است.
+- ظاهر صفحات ساده، خوانا، واکنش‌گرا و هماهنگ با هویت بصری SiNAVM است.
 
 ## Phase 1 — Identity and information architecture
 
-- [x] Define the two distinct audience journeys: developer portfolio and Internet Tools Portal.
-- [x] Create an independent bilingual portfolio entry point.
-- [x] Establish a concise developer positioning statement.
-- [x] Add selected project descriptions and links.
-- [x] Update the repository README to explain both experiences.
-- [ ] Add a discoverable link from the existing portal homepage after reviewing its DOM and automated patch workflows.
-- [ ] Verify all project descriptions and external destinations with the owner.
+- [x] مسیرهای جداگانه پورتفولیو و پورتال ابزارها در README و صفحات معرفی مشخص شدند.
+- [x] صفحه مستقل دوزبانه پورتفولیو و معرفی توسعه‌دهنده ایجاد شد.
+- [x] پروژه‌های منتخب و توضیحاتشان با README و مخازن عمومی تطبیق داده شدند.
+- [x] لینک قابل مشاهده از صفحه اصلی پورتال به پورتفولیو اضافه شد.
+- [x] مسیرهای تماس، گزارش اشکال و مشارکت برای هر پروژه مشخص شدند.
 
 ## Phase 2 — Visual system and project storytelling
 
-- [ ] Review desktop and mobile rendering.
-- [ ] Add dedicated case-study pages for SVM and IR Net Atlas.
-- [ ] Add architecture diagrams and carefully sourced project metrics.
-- [ ] Improve navigation, accessibility and language persistence.
-- [ ] Add a resume page only after owner-approved career details are supplied.
+- [x] ساختار واکنش‌گرا، منوی موبایل، پیوند پرش به محتوا و حالت‌های focus در CSS/HTML بازبینی و اصلاح شد.
+- [x] آزمون Chromium در عرض دسکتاپ، موبایل ۳۹۰ و ۳۲۰ پیکسل، منوی موبایل، تغییر زبان و ماندگاری آن در CI اضافه شد.
+- [x] پرونده‌های مستقل SVM و IR Net Atlas همراه با نمودارهای مفهومی و منابع ساخته شدند.
+- [x] دو یادداشت فنی دوزبانه با دستورهای قابل تکرار منتشر شد.
+- [x] انتخاب زبان بین صفحات با localStorage حفظ می‌شود و در صورت غیرفعال بودن storage، فارسی پیش‌فرض می‌ماند.
+- [ ] صفحه رزومه تا زمان دریافت سوابق شغلی/تحصیلی تأییدشده ساخته نمی‌شود؛ اطلاعاتی حدس زده نشده است.
 
 ## Phase 3 — Technical structure
 
-- [ ] Split reusable CSS and JavaScript into versioned assets where this does not conflict with existing automation.
-- [ ] Add HTML validation and link checks.
-- [ ] Establish a lightweight test workflow for portfolio pages.
-- [ ] Review canonical URLs, sitemap and structured metadata.
+- [x] CSS و JavaScript پورتفولیو در فایل‌های مستقل نسخه‌دار قرار گرفتند.
+- [x] اعتبارسنجی HTML، لینک‌های داخلی، شناسه‌ها، metadata و sitemap به اسکریپت آزمون اضافه شد.
+- [x] گردش‌کار کنترل کیفیت پورتفولیو برای تغییرات مرتبط اضافه شد.
+- [x] canonical، hreflang، داده ساخت‌یافته و sitemap صفحات پورتفولیو بازبینی شدند.
 
 ## Phase 4 — Security and operations
 
-- [ ] Audit GitHub Actions permissions and token scope.
-- [ ] Pin third-party Actions to verified full commit SHAs.
-- [ ] Pin Python dependencies.
-- [ ] Review Telegram archive publication rules and sensitive-data handling.
-- [ ] Remove or document obsolete workflows and scripts after confirming dependencies.
+- [x] مجوزهای GitHub Actions به سطح workflow/job محدود شدند.
+- [x] تمام Actionهای ثالث در workflowهای مخزن به SHA کاملِ تأییدشده pin شدند.
+- [x] وابستگی Telethon و وابستگی‌های انتقالی با نسخه و hash قفل شدند.
+- [x] انتشار آرشیو تلگرام و داده‌های عمومی/رمزهای درج‌شده در پست عمومی مستند شد.
+- [x] workflow بازیابی دستی index به تأیید صریح متنی نیاز دارد؛ هیچ workflow مخربی اجرا نشد.
+- [x] workflowهای YAML خارج از `.github/workflows/` به‌عنوان فایل‌های غیرفعال/الگو مستند شدند و حذف نشدند.
 
 ## Phase 5 — Credibility and ongoing publishing
 
-- [ ] Publish technical articles with reproducible details.
-- [ ] Add only verifiable project metrics with sources and update dates.
-- [ ] Document project ownership and contribution boundaries.
-- [ ] Add contact and collaboration guidance.
+- [x] یادداشت‌های فنی SVM و IR Net Atlas با منابع قابل بازبینی و روش اجرای مجدد منتشر شدند.
+- [x] فقط مشخصات قابل راستی‌آزمایی (زبان، مجوز و ساختار داده) نمایش داده شدند؛ آمار ستاره/سرعت/دسترس‌پذیری ساختگی اضافه نشد.
+- [x] مالکیت مخزن، مجوزهای موجود و تفاوت وضعیت راهنمای مشارکت پروژه‌ها شفاف شد.
+- [x] مسیر تماس و تفکیک گزارش اشکال از گفت‌وگوی همکاری مشخص شد.
 
-## Safety and rollout
+## Phase 6 — Release quality and maintenance
 
-All changes are developed on a feature branch and proposed through a pull request. The existing `main` branch and root portal remain unchanged until review and explicit merge approval.
+- [x] آزمون خودکار صفحات، پیوندهای داخلی، فراداده و sitemap اضافه شد.
+- [x] آزمون واقعی مرورگر Chromium برای رفتار دسکتاپ/موبایل و اجرای JavaScript اضافه شد.
+- [x] آزمون smoke برای صفحات منتشرشده و فایل‌های CSS/JS اضافه شد.
+- [x] روش انتشار، بررسی پس از انتشار و بازگشت امن با revert مستند شد.
+- [x] پس از انتشار، صفحات اصلی، پرونده‌ها، یادداشت‌ها و assetها با درخواست HTTP بررسی می‌شوند.
+
+## تصمیم انتشار
+
+تغییرات روی همان شاخه کاری موجود انجام می‌شوند و در صورت عبور از آزمون‌ها مستقیماً به `main` فرستاده می‌شوند. برای بازگشت، کامیت اصلاحی با `git revert` ساخته می‌شود؛ workflow بازیابی قدیمی index ابزار rollback عمومی نیست.

@@ -1,13 +1,23 @@
 name: Restore original index
 on:
   workflow_dispatch:
+    inputs:
+      confirm_restore:
+        description: Type RESTORE-INDEX to replace index.html with the historical version
+        required: true
+        type: string
+        default: NO
 permissions:
-  contents: write
+  contents: read
 jobs:
   restore:
+    if: github.ref == 'refs/heads/main' && inputs.confirm_restore == 'RESTORE-INDEX'
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Restore original homepage design
         run: |
           set -euo pipefail

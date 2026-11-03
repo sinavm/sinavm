@@ -17,8 +17,6 @@
 
 سینا هستم؛ توسعه‌دهنده‌ای مستقل که روی ابزارهای متن‌باز در نقطهٔ تلاقی نرم‌افزار و زیرساخت اینترنت کار می‌کند. تمرکز فعلی من اتوماسیون، سنجش شبکه، دسترسی‌پذیری و ساخت ابزارهایی است که داده و وضعیت اینترنت را قابل‌فهم‌تر کنند.
 
-این مخزن دو مسیر جدا اما مرتبط دارد:
-
 - **پورتفولیوی توسعه‌دهنده:** معرفی من، پروژه‌های منتخب و رویکرد مهندسی — [مشاهده پورتفولیو](https://sinavm.github.io/sinavm/portfolio/)
 - **پورتال ابزارهای اینترنت:** سرویس‌ها، راهنماها، دانلودها و محتوای کانال — [ورود به پورتال](https://sinavm.github.io/sinavm/)
 
@@ -63,16 +61,6 @@
 - [Telegram](https://t.me/sinavm)
 - [Developer portfolio](https://sinavm.github.io/sinavm/portfolio/)
 - [Internet tools portal](https://sinavm.github.io/sinavm/)
-
----
-
-<div dir="rtl">
-
-## درباره این مخزن
-
-پورتال فعلی خدمات و ابزارها در ریشهٔ مخزن حفظ شده است. پورتفولیوی حرفه‌ای به‌صورت مستقل در مسیر `portfolio/` توسعه داده می‌شود تا به قابلیت‌های موجود آسیبی وارد نشود.
-
-</div>
 
 <div align="center">
   <img alt="contribution snake" src="https://github.com/sinavm/sinavm/raw/main/logo/svg/github-snake-dark.svg">

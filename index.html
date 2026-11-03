@@ -35,7 +35,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&amp;display=swap" rel="stylesheet"></noscript>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <style>
         :root {
@@ -110,6 +110,9 @@
         h1 { font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
         .subtitle { font-size: 0.9rem; color: var(--accent); margin-top: 5px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .subtitle::before, .subtitle::after { content: ""; display: block; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+        .portfolio-entry { display:inline-flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; padding:9px 14px; border:1px solid rgba(6,182,212,.32); border-radius:999px; color:#c7f9ff; background:rgba(6,182,212,.07); font-size:.82rem; font-weight:700; transition:background .2s,border-color .2s,transform .2s; }
+        .portfolio-entry:hover { background:rgba(6,182,212,.14); border-color:var(--accent); transform:translateY(-2px); }
+        .portfolio-entry:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
         .card {
             background: var(--glass);
             backdrop-filter: blur(16px);
@@ -354,6 +357,9 @@
             </div>
             <h1>SiNAVM <span style="color:var(--primary)">P</span>anel</h1>
             <div class="subtitle"><span>سریع</span><span>•</span><span>امن</span><span>•</span><span>بدون محدودیت</span></div>
+            <a class="portfolio-entry" href="./portfolio/" aria-label="مشاهده پورتفولیوی توسعه‌دهنده سینا">
+                <span>پورتفولیوی توسعه‌دهنده</span><span aria-hidden="true">←</span>
+            </a>
         </header>
 <div class="card">
             <div class="section-title" style="border-color: #229ED9;">
@@ -441,7 +447,7 @@
             <ul class="app-list">
                  <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--yellow);"><i class="fas fa-laugh-beam"></i></div><div><div style="font-weight: bold;">Happ</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید و پرسرعت</div></div></div>
-                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" title="Android & Android TV" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" aria-label="دانلود Happ برای iOS از App Store" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple" aria-hidden="true"></i><span class="sr-only">دانلود Happ برای iOS از App Store</span></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="Windows & Linux" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
+                    <div class="dl-group"><a href="https://play.google.com/store/apps/details?id=com.happproxy" class="dl-btn dl-android" aria-label="دانلود نسخه اندروید" title="Android &amp; Android TV" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i></a><a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="dl-btn dl-ios" aria-label="دانلود Happ برای iOS از App Store" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple" aria-hidden="true"></i><span class="sr-only">دانلود Happ برای iOS از App Store</span></a><a href="https://www.happ.su/main" class="dl-btn dl-desktop" aria-label="دانلود نسخه کامپیوتر" title="Windows &amp; Linux" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i></a></div>
                 </li>
                  <li class="app-item">
                     <div class="app-info"><div class="app-icon" style="color: var(--primary);"><i class="fas fa-rocket"></i></div><div><div style="font-weight: bold;">V2RayTun</div><div style="font-size: 0.75rem; color: var(--text-mute);">جدید</div></div></div>
