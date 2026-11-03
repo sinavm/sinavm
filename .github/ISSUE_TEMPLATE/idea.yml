@@ -1,0 +1,10 @@
+name: پیشنهاد
+description: ایده برای پروفایل یا سایت
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: پیشنهاد
+    validations:
+      required: true

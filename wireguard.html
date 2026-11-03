@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>پنل WireGuard SiNAVM | کانفیگ رایگان با Amnezia VPN</title>
+    <meta name="description" content="کانفیگ‌های رایگان و امن WireGuard با استفاده از برنامه Amnezia VPN.">
+    <meta property="og:title" content="پنل WireGuard SiNAVM">
+    <meta property="og:description" content="کانفیگ‌های رایگان WireGuard با Amnezia VPN">
+    <meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg">
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a; --primary: #3b82f6; --accent: #06b6d4; --purple: #8b5cf6;
+            --gold: #fbbf24; --red: #ef4444; --green: #10b981; --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1); --text-main: #f8fafc; --text-mute: #94a3b8;
+        }
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding-top: 70px; font-family: 'Vazirmatn', sans-serif; background-color: var(--bg-color); background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%); color: var(--text-main); min-height: 100vh; display: flex; justify-content: center; overflow-x: hidden; position: relative; }
+        .container { width: 100%; max-width: 500px; padding: 20px; display: flex; flex-direction: column; gap: 20px; padding-bottom: 80px; }
+        .top-bar { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .home-link { color: var(--text-main); text-decoration: none; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .home-link:hover { color: var(--accent); }
+        header { text-align: center; margin-top: 0; }
+        .logo-wrapper { position: relative; display: inline-block; margin-bottom: 15px; }
+        .logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 0 30px rgba(6, 182, 212, 0.4); padding: 3px; background: var(--glass); }
+        .status-dot { position: absolute; bottom: 5px; right: 5px; width: 18px; height: 18px; background: #10b981; border: 3px solid var(--bg-color); border-radius: 50%; box-shadow: 0 0 10px #10b981; animation: pulse 2s infinite; }
+        h1 { font-size: 1.8rem; font-weight: 900; margin: 0; background: linear-gradient(135deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+        .subtitle { font-size: 0.9rem; color: var(--accent); margin-top: 5px; font-weight: 500; }
+        .card { background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 20px; position: relative; overflow: hidden; }
+        .section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; padding-right: 12px; border-right: 4px solid var(--primary); display: flex; align-items: center; gap: 10px; }
+        .app-list { list-style: none; padding: 0; margin: 0; }
+        .app-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .app-item:last-child { border-bottom: none; }
+        .app-info { display: flex; align-items: center; gap: 12px; font-weight: bold; }
+        .app-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .dl-btn { padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; text-decoration: none; font-weight: bold; transition: 0.2s; display: flex; align-items: center; justify-content: center; background: var(--glass); color: var(--text-mute); }
+        .dl-btn:hover { background: var(--primary); color: var(--text-main); }
+        .server-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; }
+        .server-card { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 16px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+        .server-card:not(.disabled):hover { transform: translateY(-5px); background: var(--primary); border-color: var(--primary); }
+        .server-card.disabled { opacity: 0.5; cursor: not-allowed; }
+        .server-card.active { transform: translateY(-5px) scale(1.05) !important; box-shadow: 0 0 20px var(--primary); border-color: var(--primary); }
+        .server-flag { font-size: 2.5rem; display: block; margin-bottom: 10px; pointer-events: none; }
+        .server-name { font-weight: 700; font-size: 0.9rem; pointer-events: none; }
+        #cooldown-timer { display: none; text-align: center; font-size: 1rem; font-weight: bold; color: var(--gold); margin-top: -10px; margin-bottom: 20px; }
+        .warning-box { display: flex; align-items: center; gap: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; font-size: 0.9rem; line-height: 1.7; }
+        .warning-box i { font-size: 1.5rem; color: #ef4444; }
+        .instructions ol { padding-right: 20px; margin: 0; font-size: 0.95rem; line-height: 2; }
+        .instructions code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 5px; font-size: 0.9em; }
+        .vip-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); text-align: center; }
+        .vip-btn { background: var(--text-main); color: #000; width: 100%; padding: 14px; border-radius: 14px; font-weight: 800; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
+        .vip-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+        .toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: var(--green); color: var(--text-main); padding: 12px 25px; border-radius: 14px; z-index: 2000; font-weight: 700; font-size: 0.9rem; box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3); transition: bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .toast.show { bottom: 30px; }
+        .floating-tg-btn { position: fixed; left: 25px; bottom: 25px; background: linear-gradient(135deg, #229ED9, #1da1f2); color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 5px 20px rgba(34, 158, 217, 0.4); z-index: 999; transition: all 0.3s ease; animation: pulse-telegram 2.5s infinite; }
+        .floating-tg-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(34, 158, 217, 0.6); animation: none; }
+        .scroll-top-btn { position: fixed; right: 25px; bottom: 25px; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--glass-border); color: var(--text-main); width: 55px; height: 55px; border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); z-index: 999; transition: all 0.3s ease; opacity: 0; }
+        .scroll-top-btn.visible { display: flex; opacity: 1; }
+        .scroll-top-btn:hover { transform: scale(1.1); background: var(--primary); }
+        footer { text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--text-mute); }
+        footer a { color: var(--text-mute); margin: 0 8px; text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: var(--accent); }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        @keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><a href="https://sinavm.github.io/sinavm/" class="home-link"><i class="fas fa-home"></i><span>صفحه اصلی SiNAVM</span></a></div>
+    <div class="container">
+        <header>
+            <div class="logo-wrapper"><img src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM" class="logo" loading="lazy"><div class="status-dot"></div></div>
+            <h1>WireGuard <span style="color:var(--primary)">SiNAVM</span></h1>
+            <div class="subtitle">برای استفاده، ابتدا برنامه Amnezia را نصب کنید</div>
+        </header>
+        <div id="downloads" class="card">
+            <div class="section-title"><i class="fas fa-download" style="color: var(--accent);"></i>۱. دانلود برنامه Amnezia</div>
+            <ul class="app-list">
+                <li class="app-item"><div class="app-info"><div class="app-icon" style="color: #94a3b8;"><i class="fab fa-apple"></i></div><div>آیفون</div></div><a href="https://apps.apple.com/us/app/amneziavpn/id1600529900" target="\_blank" class="dl-btn">App Store</a></li>
+                <li class="app-item"><div class="app-info"><div class="app-icon" style="color: var(--green);"><i class="fab fa-android"></i></div><div>اندروید</div></div><a href="https://play.google.com/store/apps/details?id=org.amnezia.vpn" target="\_blank" class="dl-btn">Google Play</a></li>
+                <li class="app-item"><div class="app-info"><div class="app-icon" style="color: var(--primary);"><i class="fab fa-windows"></i></div><div>ویندوز</div></div><a href="https://github.com/amnezia-vpn/amnezia-client/releases/download/4.7.0.0/AmneziaVPN_4.7.0.0_x64.exe" target="\_blank" class="dl-btn">دانلود</a></li>
+                <li class="app-item"><div class="app-info"><div class="app-icon" style="color: #eee;"><i class="fab fa-apple"></i></div><div>مک</div></div><a href="https://github.com/amnezia-vpn/amnezia-client/releases/download/4.7.0.0/AmneziaVPN_4.7.0.0.dmg" target="\_blank" class="dl-btn">دانلود</a></li>
+            </ul>
+        </div>
+        
+        <div id="servers" class="card">
+            <div class="section-title" style="border-color: var(--gold);"><i class="fas fa-server" style="color: var(--gold);"></i>۲. انتخاب سرور</div>
+            <p id="server-instruction" style="text-align: center; color: var(--text-mute); margin-top:-10px; margin-bottom: 20px; font-size: 0.9rem;">روی پرچم کشور مورد نظر کلیک کنید تا کانفیگ کپی شود.</p>
+            <p id="cooldown-timer"></p>
+            <div class="server-grid">
+                  <div class="server-card" onclick="copyConfig(event, 'Turkey')"><span class="server-flag">🇹🇷</span><span class="server-name">Turkey</span></div>
+                  <div class="server-card" onclick="copyConfig(event, 'United Kingdom')"><span class="server-flag">🇬🇧</span><span class="server-name">United Kingdom</span></div>
+                  <div class="server-card" onclick="copyConfig(event, 'Germany')"><span class="server-flag">🇩🇪</span><span class="server-name">Germany</span></div>
+                  <div class="server-card" onclick="copyConfig(event, 'France')"><span class="server-flag">🇫🇷</span><span class="server-name">France</span></div>
+                  <div class="server-card" onclick="copyConfig(event, 'Switzerland')"><span class="server-flag">🇨🇭</span><span class="server-name">Switzerland</span></div>
+            </div>
+        </div>
+        <div class="card warning-box"><i class="fas fa-exclamation-triangle"></i><div><strong>توجه:</strong> کانفیگ‌های رایگان به دلیل استفاده عمومی، تضمین سرعت و پایداری دائمی ندارند. برای بهترین کیفیت، از سرویس VIP استفاده کنید.</div></div>
+        <div id="instructions" class="card instructions">
+            <div class="section-title" style="border-color: var(--purple);"><i class="fas fa-book-open" style="color: var(--purple);"></i>۳. آموزش استفاده</div>
+            <ol>
+                <li>داخل برنامه Amnezia، روی آیکون <strong>+</strong> بزنید.</li>
+                <li>کانفیگ کپی شده را در قسمت <code>Insert Key</code> جای‌گذاری (Paste) کنید.</li>
+                <li>بعد از وارد کردن، دکمه <strong>Continue</strong> را بزنید.</li>
+                <li>سپس <strong>حتماً</strong> تیک گزینه زیر را برای مقابله با فیلترینگ فعال کنید: <br>✅ <strong style="color: var(--gold);">Enable WireGuard obfuscation</strong></li>
+            </ol>
+        </div>
+        <div class="card vip-card"><h2 style="margin: 0; font-size: 1.4rem;">سرویس VIP اختصاصی</h2><p style="color: var(--text-mute); font-size: 0.9rem; margin: 10px 0;">تجربه اینترنت بدون مرز با آی‌پی ثابت و سرعت پایدار</p><a href="https://t.me/sinvt" target="\_blank" class="vip-btn" style="margin-top: 15px;"><span>خرید اشتراک VIP</span><i class="fas fa-arrow-left"></i></a></div>
+        <footer><div style="margin-bottom: 10px;"><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" target="\_blank">درباره ما</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" target="\_blank">حریم خصوصی</a>|<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" target="\_blank">شرایط استفاده</a></div><div><a href="https://t.me/sinavm">Design & Config by SiNAVM</a><br><div style="margin-top: 5px; font-size: 0.7rem;">بازدید کل: <span id="visit-count">...</span></div></div></footer>
+    </div>
+    
+    <a href="https://t.me/sinavm" target="\_blank" class="floating-tg-btn" title="کانال تلگرام"><i class="fab fa-telegram-plane"></i></a>
+    <a href="#" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا"><i class="fas fa-angle-double-up"></i></a>
+    <div id="toast" class="toast"></div>
+    <script>
+        const configs = {
+            'Netherlands': ['[Interface]\nPrivateKey = cLHba4Lv1zqvIZCI8EEZNN+HbjbNpZdg8lw4c5oYjHM=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n# sinavm\nPublicKey = jSrxQTLrvNPkljpa+F0OZT53mgTTwQA65oTMkqf382A=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 46.29.25.4:51820'],
+            'Turkey': ['[Interface]\nPrivateKey = uMqxwhec6x75fmypG6SwwmyTHxMHk+27VbP/CtI9qXI=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n#sinavm\nPublicKey = QtI8q0njcsux4dz6dflWE9t+0LIGACDrxUx3iGApY1k=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 130.195.216.66:51820'],
+            'United Kingdom': ['[Interface]\nPrivateKey = iFb4tRwZ4l5UfdwJo7/QvQXnmc1ulu5JDbLG+Chcs3s=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n#sinavm\nPublicKey = HX/4IL6C4iz2i2NGLb6OeOb+qYJHFejbYn7/oTmHDmg=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 188.240.57.226:51820'],
+            'Germany': ['[Interface]\nPrivateKey = 2BkqB4E/t6BQ0c/7zwtAdQSfZv225Pw7BLNJqTDDm0M=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n#sinavm\nPublicKey = 9+CorlxrTsQR7qjIOVKsEkk8Z7UUS5WT3R1ccF7a0ic=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 194.126.177.14:51820'],
+            'France': ['[Interface]\nPrivateKey = YBSWd9joJxzpztkYknlKabTl03SbUUgN6h88qsMsO30=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n# sinavm\nPublicKey = 73brgycS3YnRLfa2pZCHiXjIDJv6L091uSEDzFW88UI=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 79.127.169.1:51820'],
+            'Switzerland': ['[Interface]\nPrivateKey = aDsOW4bEAUUMeOUOKAE0ZrNR/B2bMqD+xGCxzd5uN1k=\nAddress = 10.2.0.2/32\nDNS = 10.2.0.1\n[Peer]\n# sinavm\nPublicKey = gTQp+FBWOlQc6zqsZj8mT5qDZfDv688UY5RnUoBgIlo=\nAllowedIPs = 0.0.0.0/0, ::/0\nEndpoint = 66.234.146.98:51820']
+        };
+        let cooldownInterval = null;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerHTML = `<i class="fas fa-check-circle" style="margin-left: 8px;"></i> ${message}`;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 2500);
+        }
+        
+        function updateCooldownDisplay() {
+            const cooldownEndTime = parseInt(localStorage.getItem('cooldownEndTime') || '0');
+            const remainingTime = Math.ceil((cooldownEndTime - Date.now()) / 1000);
+            const serverCards = document.querySelectorAll('.server-card');
+            const instructionEl = document.getElementById('server-instruction');
+            const timerEl = document.getElementById('cooldown-timer');
+            if (remainingTime > 0) {
+                serverCards.forEach(card => card.classList.add('disabled'));
+                instructionEl.style.display = 'none';
+                timerEl.style.display = 'block';
+                const minutes = Math.floor(remainingTime / 60);
+                let seconds = remainingTime % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                timerEl.innerHTML = `⏳ <b>${minutes}:${seconds}</b> ثانیه تا دریافت کانفیگ بعدی`;
+                if (!cooldownInterval) {
+                    cooldownInterval = setInterval(updateCooldownDisplay, 1000);
+                }
+            } else {
+                if (cooldownInterval) {
+                    clearInterval(cooldownInterval);
+                    cooldownInterval = null;
+                }
+                instructionEl.style.display = 'block';
+                timerEl.style.display = 'none';
+                serverCards.forEach(card => card.classList.remove('disabled'));
+            }
+        }
+        function copyConfig(event, country) {
+            if (document.querySelector('.server-card.disabled')) return;
+            const countryConfigs = configs[country];
+            const configToCopy = countryConfigs[Math.floor(Math.random() * countryConfigs.length)];
+            const clickedCard = event.currentTarget;
+            const copySuccess = () => {
+                clickedCard.classList.add('active');
+                setTimeout(() => clickedCard.classList.remove('active'), 600);
+                showToast(`کانفیگ ${country} کپی شد!`);
+                localStorage.setItem('cooldownEndTime', Date.now() + 30 * 1000); // 30 seconds
+                updateCooldownDisplay();
+            };
+            const fallbackCopy = () => {
+                try {
+                    const textarea = document.createElement("textarea");
+                    textarea.value = configToCopy;
+                    textarea.style.position = "fixed"; textarea.style.opacity = "0";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(textarea);
+                    copySuccess();
+                } catch (err) { showToast('خطا در کپی کردن!'); }
+            };
+            if (navigator.clipboard?.writeText) {
+                navigator.clipboard.writeText(configToCopy).then(copySuccess).catch(fallbackCopy);
+            } else {
+                fallbackCopy();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://page-views.count1.workers.dev').then(r => r.text()).then(d => {
+                const el = document.getElementById('visit-count');
+                if (el) el.innerText = new Intl.NumberFormat('fa-IR').format(d);
+            }).catch(() => { if(document.getElementById('visit-count')) document.getElementById('visit-count').innerText = 'N/A'; });
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            const triggerElement = document.getElementById('servers');
+            if (scrollTopBtn && triggerElement) {
+                window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > triggerElement.offsetTop));
+                scrollTopBtn.addEventListener('click', e => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); });
+            }
+            updateCooldownDisplay();
+        });
+    </script>
+</body>
+</html>
