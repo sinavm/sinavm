@@ -67,3 +67,6 @@
 .contribution-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
 .contribution-links a{color:var(--accent);font-size:.86rem;font-weight:700}
 @media(max-width:760px){.note-grid,.contribution-grid{grid-template-columns:1fr}.article-hero{padding:54px 0 24px}}
+
+/* Project showcase: live GitHub stars and richer repository cards. */
+.project-stats{display:flex;align-items:center;min-height:24px;margin:-8px 0 14px}.project-stats img{display:block;max-width:100%;height:20px}.project{min-height:280px}.project-link+.project-link{margin-top:8px}
