@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sinavm.github.io/sinavm/sitemap.xml
