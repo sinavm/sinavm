@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1224">
+<title>HTTP Custom | کانفیگ‌های SiNAVM</title>
+<meta name="description" content="دریافت مستقیم کانفیگ‌های HTTP Custom از SiNAVM به همراه آموزش نصب و راه‌اندازی.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{color-scheme:dark;--bg:#0b1224;--panel:rgba(20,31,54,.78);--line:rgba(255,255,255,.09);--muted:#9aa9c2;--text:#f5f8ff;--blue:#60a5fa;--cyan:#22d3ee;--green:#34d399;--purple:#a78bfa}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,rgba(59,130,246,.22),transparent 38%),radial-gradient(ellipse at 95% 12%,rgba(139,92,246,.16),transparent 34%),var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif}
+a{color:inherit;text-decoration:none}.top{height:58px;position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:center;background:rgba(11,18,36,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.top a{font-weight:800;display:flex;gap:9px;align-items:center}.top i{color:var(--cyan)}
+main{width:min(100% - 28px,680px);margin:34px auto 70px;display:grid;gap:20px}
+.hero{text-align:center;padding:16px 12px 8px}.logo{width:82px;height:82px;border-radius:24px;object-fit:cover;border:1px solid var(--line);box-shadow:0 12px 45px #2563eb35}.eyebrow{color:var(--cyan);font-size:.82rem;font-weight:800;margin:15px 0 4px}h1{font-size:clamp(1.7rem,6vw,2.35rem);line-height:1.5;margin:0;font-weight:900;letter-spacing:-.7px}.hero p{color:var(--muted);line-height:2;margin:8px auto 0;max-width:500px;font-size:.94rem}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:25px;padding:20px;box-shadow:0 18px 60px #02061730;backdrop-filter:blur(14px)}.section-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}.section-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#0891b226;color:var(--cyan);font-size:1.1rem}.section-head h2{font-size:1.08rem;margin:0;font-weight:900}.section-head p{font-size:.78rem;color:var(--muted);margin:2px 0 0}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px}.step{border:1px solid var(--line);background:#ffffff06;border-radius:16px;padding:13px;display:flex;align-items:center;gap:10px;min-height:68px;transition:.2s}.step:hover{border-color:#60a5fa66;transform:translateY(-2px)}.step i{font-size:1.2rem;color:var(--blue);width:24px;text-align:center}.step b{display:block;font-size:.85rem}.step small{color:var(--muted);font-size:.72rem}
+.notice{border:1px solid #f59e0b40;background:#f59e0b0d;color:#fcd38d;border-radius:15px;padding:12px 14px;font-size:.82rem;line-height:1.9;display:flex;gap:10px;align-items:flex-start}.notice i{margin-top:5px;color:#fbbf24}
+.config-list{display:grid;gap:12px}.config{border:1px solid var(--line);background:linear-gradient(135deg,#ffffff09,#ffffff03);border-radius:19px;padding:15px;display:grid;gap:13px}.config-top{display:flex;align-items:center;gap:11px}.file-icon{width:44px;height:44px;border-radius:14px;background:#3b82f622;color:var(--blue);display:grid;place-items:center;font-size:1.15rem}.file-info{min-width:0;flex:1}.file-info strong{display:block;font-size:.9rem;overflow-wrap:anywhere}.file-info small{color:var(--muted);font-size:.73rem}.tag{font-size:.67rem;color:#86efac;background:#10b9811a;border:1px solid #10b98135;padding:4px 8px;border-radius:30px;white-space:nowrap}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:12px;padding:11px 12px;font:700 .82rem Vazirmatn,sans-serif;display:flex;justify-content:center;align-items:center;gap:8px;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}.download{background:linear-gradient(120deg,#2563eb,#0891b2);color:white}.copy{background:#ffffff0c;color:#dbeafe;border:1px solid var(--line)}.empty{padding:26px 12px;text-align:center;color:var(--muted);line-height:2}.empty i{display:block;font-size:1.8rem;color:var(--blue);margin-bottom:9px}
+.password{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;background:#00000024;border:1px dashed #64748b66;border-radius:12px;font-size:.8rem}.password span{color:var(--muted)}.password code{font:800 .88rem Vazirmatn,sans-serif;direction:ltr;color:#e0f2fe}
+.footer{text-align:center;color:var(--muted);font-size:.75rem;line-height:2;padding:6px}.footer a{color:var(--cyan)}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#059669;color:#fff;padding:11px 18px;border-radius:13px;font-size:.82rem;font-weight:700;transition:.25s;z-index:20;box-shadow:0 8px 30px #0006}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){main{width:min(100% - 20px,680px);margin-top:22px}.panel{padding:15px}.steps{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}.tag{font-size:.61rem}}
+</style>
+</head>
+<body>
+<nav class="top"><a href="https://sinavm.github.io/sinavm/"><i class="fa-solid fa-house"></i> صفحه اصلی SiNAVM</a></nav>
+<main>
+<header class="hero">
+<img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo_1.jpg" alt="SiNAVM">
+<div class="eyebrow">دریافت آسان و مستقیم فایل‌ها</div>
+<h1>کانفیگ‌های <span style="color:var(--cyan)">HTTP Custom</span> SiNAVM</h1>
+<p>فایل موردنظرت را انتخاب کن، دانلود کن و طبق آموزش وارد برنامه کن. نیازی به کار با GitHub نداری.</p>
+</header>
+<section class="panel">
+<div class="section-head"><div class="section-icon"><i class="fa-solid fa-mobile-screen-button"></i></div><div><h2>۱. برنامه و آموزش</h2><p>اگر برنامه را نداری، ابتدا نصبش کن</p></div></div>
+<div class="steps">
+<a class="step" href="https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom" target="_blank" rel="noopener"><i class="fa-brands fa-google-play"></i><span><b>دانلود HTTP Custom</b><small>Google Play · اندروید</small></span></a>
+<a class="step" href="https://t.me/sinavm/5165" target="_blank" rel="noopener"><i class="fa-solid fa-circle-play"></i><span><b>مشاهده آموزش تصویری</b><small>راهنمای وارد کردن فایل</small></span></a>
+</div>
+</section>
+<section class="panel">
+<div class="section-head"><div class="section-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div><div><h2>۲. انتخاب و دانلود کانفیگ</h2><p id="count">در حال دریافت فهرست فایل‌ها…</p></div></div>
+<div class="notice"><i class="fa-solid fa-lock"></i><div>رمز فایل‌ها را هنگام باز کردن وارد کن. برای فایل‌های این بخش، رمز عبور <bdi dir="ltr">@sinavm</bdi> است.</div></div>
+<div style="height:13px"></div>
+<div id="configs" class="config-list"><div class="empty"><i class="fa-solid fa-spinner fa-spin"></i>در حال بارگذاری کانفیگ‌ها…</div></div>
+</section>
+<div class="footer">ساخته‌شده با ❤️ توسط <a href="https://t.me/sinavm" target="_blank" rel="noopener">@SiNAVM</a><br>در صورت بروز مشکل، آموزش تصویری را مشاهده کن.</div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const list=document.getElementById('configs'),count=document.getElementById('count'),toast=document.getElementById('toast');
+function notify(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2300)}
+function safeText(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function formatSize(n){if(!n)return 'حجم نامشخص';return n>1048576?(n/1048576).toFixed(1)+' مگابایت':Math.max(1,Math.round(n/1024))+' کیلوبایت'}
+async function loadConfigs(){
+ try{
+  const response=await fetch('./media/latest-hc.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw new Error('manifest unavailable');
+  const items=await response.json();
+  if(!Array.isArray(items))throw new Error('invalid manifest');
+  items.sort((a,b)=>(Number(b.date)||Number(b.id)||0)-(Number(a.date)||Number(a.id)||0));
+  count.textContent=items.length+' فایل آماده دانلود';
+  if(!items.length){list.innerHTML='<div class="empty"><i class="fa-regular fa-folder-open"></i>هنوز فایلی منتشر نشده است.<br>بعداً دوباره سر بزن.</div>';return}
+  list.innerHTML=items.map((item,i)=>{
+   const url=item.stable_url||item.download_url||'';
+   const name=safeText(item.original_name||item.filename||('HTTP-Custom-'+(i+1)));
+   const date=item.date_label?safeText(item.date_label):'فایل آماده دریافت';
+   const size=formatSize(Number(item.size)||0);
+   return '<article class="config"><div class="config-top"><div class="file-icon"><i class="fa-solid fa-file-arrow-down"></i></div><div class="file-info"><strong>'+name+'</strong><small>'+date+' · '+size+'</small></div><span class="tag">HTTP CUSTOM</span></div><div class="password"><span>رمز فایل</span><code>@sinavm</code></div><div class="actions"><a class="btn download" href="'+safeText(url)+'" download><i class="fa-solid fa-download"></i> دانلود فایل</a><button class="btn copy" type="button" data-copy="@sinavm"><i class="fa-regular fa-copy"></i> کپی رمز</button></div></article>'
+  }).join('');
+  list.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.copy);notify('رمز کپی شد')}catch(e){notify('کپی خودکار در دسترس نیست؛ رمز را دستی وارد کن')}}));
+ }catch(e){count.textContent='بارگذاری فهرست با مشکل روبه‌رو شد';list.innerHTML='<div class="empty"><i class="fa-solid fa-cloud-arrow-down"></i>در حال حاضر دریافت فهرست ممکن نیست.<br>صفحه را دوباره بارگذاری کن.</div>'}
+}
+loadConfigs();
+</script>
+</body>
+</html>
