@@ -185,6 +185,8 @@ async def main():
                             "id": message.id,
                             "text": text_raw,
                             "password": extract_password(text_raw),
+                            "date": int(message.date.timestamp()),
+                            "date_label": message.date.strftime('%Y-%m-%d %H:%M'),
                             "link": f'https://t.me/{channel_username}/{message.id}',
                             **media_info
                         })
