@@ -8,12 +8,12 @@
   const year = document.getElementById('year');
   const description = document.querySelector('meta[name="description"]');
   const titles = {
-    fa: document.documentElement.dataset.titleFa || 'سینا — پورتفولیوی توسعه‌دهنده | SiNAVM',
-    en: document.documentElement.dataset.titleEn || 'Sina — Developer Portfolio | SiNAVM'
+    fa: document.documentElement.dataset.titleFa || 'پروژه‌ها و دستاوردها | SiNAVM',
+    en: document.documentElement.dataset.titleEn || 'Projects & Work | SiNAVM'
   };
   const descriptions = {
-    fa: 'سینا؛ توسعه‌دهنده مستقل و سازنده ابزارهای متن‌باز در حوزه زیرساخت اینترنت، سنجش شبکه و اتوماسیون.',
-    en: 'Sina is an independent developer building open-source tools for internet infrastructure, network measurement and automation.'
+    fa: 'پروژه‌ها و دستاوردهای SiNAVM؛ ابزارهای متن‌باز، اتوماسیون شبکه، کانفیگ‌های اینترنت و سنجش دسترسی.',
+    en: 'Explore SiNAVM open-source projects for internet infrastructure, network automation and network measurement.'
   };
   if (year) year.textContent = String(new Date().getFullYear());
 
