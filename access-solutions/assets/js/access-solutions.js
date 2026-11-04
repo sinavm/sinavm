@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".shot-frame img").forEach(img=>{const frame=img.closest(".shot-frame");const reveal=()=>frame.classList.add("has-image");img.addEventListener("load",reveal,{once:true});if(img.complete&&img.naturalWidth>0)reveal();});});
