@@ -161,6 +161,7 @@ async def main():
         posts_html = '<div class="telegram-posts">\n'
         posts_json = []
         nv_files = []
+        hc_files = []
 
         async for message in client.iter_messages(channel_username, limit=HISTORY_LIMIT):
             text_raw = (message.message or '').strip()
@@ -176,6 +177,14 @@ async def main():
                         nv_files.append({
                             "id": message.id,
                             "text": text_raw,
+                            "link": f'https://t.me/{channel_username}/{message.id}',
+                            **media_info
+                        })
+                    elif media_info and media_info.get('kind') == 'HTTP Custom':
+                        hc_files.append({
+                            "id": message.id,
+                            "text": text_raw,
+                            "password": extract_password(text_raw),
                             "link": f'https://t.me/{channel_username}/{message.id}',
                             **media_info
                         })
@@ -222,7 +231,7 @@ async def main():
                     post["password"] = password
                 posts_json.append(post)
 
-            if len(posts_json) >= POST_LIMIT and len(nv_files) >= 3:
+            if len(posts_json) >= POST_LIMIT and len(nv_files) >= 3 and len(hc_files) >= 5:
                 break
 
         if not posts_json:
@@ -237,13 +246,26 @@ async def main():
                 shutil.copyfile(src, dest)
                 item['stable_url'] = f'{PAGES}/{dest}'
 
+        latest_hc = hc_files[:5]
+        for i, item in enumerate(latest_hc, 1):
+            src = item.get('url')
+            ext = os.path.splitext(item.get('original_name') or item.get('filename') or '')[1].lower()
+            if ext not in ('.hc', '.hct', '.hcconf'):
+                ext = '.hc'
+            dest = f'media/hc-latest-{i}{ext}'
+            if src and os.path.isfile(src):
+                shutil.copyfile(src, dest)
+                item['stable_url'] = f'{PAGES}/{dest}'
+
         with open('telegram-posts.html', 'w', encoding='utf-8') as file:
             file.write(posts_html)
         with open('posts_formatted.json', 'w', encoding='utf-8') as file:
             json.dump(posts_json, file, ensure_ascii=False, indent=2)
         with open('media/latest-nv.json', 'w', encoding='utf-8') as file:
             json.dump(latest, file, ensure_ascii=False, indent=2)
-        print(f"saved posts={len(posts_json)} nv_files={len(latest)}")
+        with open('media/latest-hc.json', 'w', encoding='utf-8') as file:
+            json.dump(latest_hc, file, ensure_ascii=False, indent=2)
+        print(f"saved posts={len(posts_json)} nv_files={len(latest)} hc_files={len(latest_hc)}")
 
     except FloodWaitError as error:
         print(f"Flood wait error: Please wait {error.seconds} seconds")
