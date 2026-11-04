@@ -174,3 +174,5 @@ footer a:hover{color:var(--home-cyan)}
   .scroll-top-btn{right:14px;bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.container>.telegram-news-card:not(#app-downloads-card){grid-column:1/-1}
