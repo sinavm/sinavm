@@ -162,6 +162,7 @@ async def main():
         posts_json = []
         nv_files = []
         hc_files = []
+        openvpn_files = []
 
         async for message in client.iter_messages(channel_username, limit=HISTORY_LIMIT):
             text_raw = (message.message or '').strip()
@@ -185,6 +186,15 @@ async def main():
                             "id": message.id,
                             "text": text_raw,
                             "password": extract_password(text_raw),
+                            "date": int(message.date.timestamp()),
+                            "date_label": message.date.strftime('%Y-%m-%d %H:%M'),
+                            "link": f'https://t.me/{channel_username}/{message.id}',
+                            **media_info
+                        })
+                    elif media_info and media_info.get('kind') == 'OpenVPN':
+                        openvpn_files.append({
+                            "id": message.id,
+                            "text": text_raw,
                             "date": int(message.date.timestamp()),
                             "date_label": message.date.strftime('%Y-%m-%d %H:%M'),
                             "link": f'https://t.me/{channel_username}/{message.id}',
@@ -233,7 +243,7 @@ async def main():
                     post["password"] = password
                 posts_json.append(post)
 
-            if len(posts_json) >= POST_LIMIT and len(nv_files) >= 3 and len(hc_files) >= 5:
+            if len(posts_json) >= POST_LIMIT and len(nv_files) >= 3 and len(hc_files) >= 5 and len(openvpn_files) >= 3:
                 break
 
         if not posts_json:
@@ -265,9 +275,19 @@ async def main():
             json.dump(posts_json, file, ensure_ascii=False, indent=2)
         with open('media/latest-nv.json', 'w', encoding='utf-8') as file:
             json.dump(latest, file, ensure_ascii=False, indent=2)
+        latest_openvpn = openvpn_files[:5]
+        for i, item in enumerate(latest_openvpn, 1):
+            src = item.get('url')
+            if src and os.path.isfile(src):
+                dest = f'media/openvpn-latest-{i}.ovpn'
+                shutil.copyfile(src, dest)
+                item['stable_url'] = f'{PAGES}/{dest}'
+
         with open('media/latest-hc.json', 'w', encoding='utf-8') as file:
             json.dump(latest_hc, file, ensure_ascii=False, indent=2)
-        print(f"saved posts={len(posts_json)} nv_files={len(latest)} hc_files={len(latest_hc)}")
+        with open('media/latest-openvpn.json', 'w', encoding='utf-8') as file:
+            json.dump(latest_openvpn, file, ensure_ascii=False, indent=2)
+        print(f"saved posts={len(posts_json)} nv_files={len(latest)} hc_files={len(latest_hc)} openvpn_files={len(latest_openvpn)}")
 
     except FloodWaitError as error:
         print(f"Flood wait error: Please wait {error.seconds} seconds")
