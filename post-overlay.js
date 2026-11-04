@@ -35,7 +35,6 @@
       const url = match[0].replace(/[.,!?،؛؟]+$/, '');
       anchor.href = /^https?:\/\//i.test(url) ? url : 'https://' + url.replace(/^www\./i, 'www.');
       anchor.textContent = url;
-      anchor.target = '_blank';
       anchor.rel = 'noopener noreferrer';
       container.appendChild(anchor);
       container.appendChild(document.createTextNode(match[0].slice(url.length)));
@@ -87,7 +86,7 @@
         anchor.remove();
       }, 1500);
     }).catch(function () {
-      window.open(url, '_blank', 'noopener');
+      window.location.href = url;
     });
   }
 
@@ -151,7 +150,6 @@
     if (post.link) {
       const telegram = document.createElement('a');
       telegram.href = post.link;
-      telegram.target = '_blank';
       telegram.rel = 'noopener noreferrer';
       telegram.textContent = 'باز کردن در تلگرام';
       if (actions.children.length) telegram.className = 'secondary';
