@@ -224,7 +224,7 @@ async def main():
                 date_str = message.date.strftime('%Y-%m-%d %H:%M')
                 posts_html += (
                     f'<article class="telegram-post">'
-                    f'<a href="{link}" target="_blank" rel="noopener noreferrer" class="post-link">'
+                    f'<a href="{link}" rel="noopener noreferrer" class="post-link">'
                     f'<span class="post-preview">{html.escape(preview)}</span>'
                     f'<span class="post-open-label">مشاهده پست <span aria-hidden="true">←</span></span>'
                     f'</a><small>{date_str}</small></article>\n'
