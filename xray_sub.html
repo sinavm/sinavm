@@ -176,7 +176,7 @@ body{padding:0;background:radial-gradient(ellipse at 10% 0%,rgba(59,130,246,.22)
             const subLinks = document.getElementById(id);
             const allSubLinks = document.querySelectorAll('.install-sub-links');
             allSubLinks.forEach(link => { if (link.id !== id) link.style.display = 'none'; });
-            subLinks.style.display = subLinks.style.display === 'none' ? 'flex' : 'none';
+            subLinks.style.display = getComputedStyle(subLinks).display === 'none' ? 'flex' : 'none';
         }
         function closeDropdown(event) {
             const dropdown = document.getElementById('installDropdown');
