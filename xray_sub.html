@@ -96,93 +96,57 @@
         @keyframes pulseGradient {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         @media (max-width:768px){.header{font-size:20px}.logo{max-width:60px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:120px;font-size:13px}.telegram-box img,.github-box img{width:18px;height:18px}.download-button{font-size:13px}.home-button{font-size:16px;width:180px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
         @media (max-width:480px){body{padding:10px}.header{font-size:18px}.logo{max-width:50px}.telegram-box,.github-box,.install-box,.visit-box,.install-link{width:110px;font-size:12px;padding:6px}.download-button{font-size:12px}.home-button{font-size:14px;width:160px}.install-dropdown,.install-sub-links{flex-direction:column;top:100%}}
-    </style>
+    /* Shared SiNAVM visual system */
+:root{--bg:#0b1224;--panel:rgba(20,31,54,.78);--line:rgba(255,255,255,.09);--muted:#9aa9c2;--cyan:#22d3ee;--green:#34d399}
+body{padding:0;background:radial-gradient(ellipse at 10% 0%,rgba(59,130,246,.22),transparent 38%),radial-gradient(ellipse at 95% 12%,rgba(139,92,246,.16),transparent 34%),var(--bg);color:#f5f8ff}
+.top{height:58px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:center;background:rgba(11,18,36,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.home-link{font-weight:700;display:flex;gap:8px;align-items:center;font-size:1rem;color:#f5f8ff;text-decoration:none}.home-link i{color:var(--cyan);font-size:1rem}
+.page-shell{width:min(100% - 28px,680px);margin:30px auto 50px;display:grid;gap:18px}.hero{text-align:center;padding:20px 14px 10px}
+.logo{width:82px;height:82px;border-radius:24px;object-fit:cover;border:1px solid var(--line);box-shadow:0 12px 45px #2563eb35}
+.eyebrow{color:var(--cyan);font-size:.84rem;font-weight:800;margin:15px 0 5px}.hero h1{font-size:clamp(1.45rem,5vw,2.05rem);line-height:1.6;margin:0;font-weight:900}.hero h1 span{color:var(--cyan)}.hero p{max-width:570px;margin:12px auto 0;color:var(--muted);line-height:2;font-size:.96rem}
+.telegram-cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 16px;border:1px solid #22d3ee40;border-radius:14px;background:#22d3ee12;color:#a5f3fc;font-weight:700;font-size:.88rem;text-decoration:none}
+.panel{padding:20px;border:1px solid var(--line);border-radius:24px;background:var(--panel);box-shadow:0 16px 40px #0002;backdrop-filter:blur(14px)}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;text-align:right}.section-icon{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:15px;background:#22d3ee1f;color:var(--cyan);font-size:1.15rem}
+.section-head h2{font-size:1.05rem;margin:0;font-weight:800}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.8rem}.update-note{margin:0 0 14px;color:var(--muted);font-size:.85rem}.update-note i{color:var(--green);margin-left:5px}
+.config-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.download-button{min-height:86px;border:1px solid transparent;border-radius:17px;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-family:inherit;font-size:1rem;transition:transform .2s,filter .2s}
+.download-button strong{font-size:1.02rem}.download-button small{font-size:.72rem;opacity:.85}.download-button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.download-button.vless{background:linear-gradient(135deg,#1e90ff,#087fca)}.download-button.vmess{background:linear-gradient(135deg,#d946a5,#a21caf)}.download-button.reality{background:linear-gradient(135deg,#16a34a,#15803d)}.download-button.ss{background:linear-gradient(135deg,#f59e0b,#c2410c)}
+.popup{position:fixed;top:18px;left:50%;transform:translateX(-50%);padding:12px 18px;border-radius:12px;color:white;font-size:14px;opacity:0;transition:opacity .3s;z-index:1001;max-width:calc(100% - 24px);text-align:center}.popup.vless{background:#1e90ff}.popup.vmess{background:#a21caf}.popup.reality{background:#15803d}.popup.ss{background:#c2410c}.popup.show{opacity:1}
+.vip-card{text-align:center;background:linear-gradient(135deg,#8b5cf626,#ec48991a);border-color:#a78bfa40}.vip-badge{display:inline-block;margin-bottom:10px;padding:5px 12px;border-radius:20px;background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#171717;font-size:.75rem;font-weight:900}
+.vip-card h2{margin:0;font-size:1.25rem}.vip-card>p{margin:9px 0;color:var(--muted);font-size:.9rem}.vip-features{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 18px;margin:15px 0;color:var(--muted);font-size:.82rem}.vip-features i{color:#fbbf24;margin-left:4px}
+.vip-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px;border-radius:14px;background:#f8fafc;color:#111827;font-weight:900;text-decoration:none}
+.dashboard-card{display:flex;align-items:center;gap:14px;padding:17px 18px;border:1px solid #34d39955;border-radius:20px;background:linear-gradient(120deg,#10b98124,#22d3ee12);color:#f5f8ff;text-decoration:none}
+.dashboard-icon{width:48px;height:48px;flex:0 0 48px;border-radius:15px;display:grid;place-items:center;background:#10b98129;color:var(--green);font-size:1.25rem}.dashboard-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}.dashboard-copy strong{font-size:.98rem}.dashboard-copy small{font-size:.76rem;color:var(--muted);line-height:1.7}.dashboard-arrow{color:var(--green)}
+.install-panel{text-align:center}.install-box{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:12px;border-radius:14px;background:linear-gradient(110deg,#0e7490,#2563eb);color:#fff;font-weight:800;cursor:pointer}
+.install-dropdown{display:none;position:static;flex-wrap:wrap;gap:9px;margin-top:12px;padding:0;background:transparent;box-shadow:none}.install-dropdown.show{display:flex}
+.install-link{flex:1 1 120px;min-height:42px;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;border-radius:12px;color:#fff;font-size:.82rem;font-weight:700;background:#263650;text-decoration:none}
+.install-link.android{background:#166534}.install-link.iphone{background:#1d4ed8}.install-link.windows{background:#6d28d9}.install-link.mac{background:#9a3412}.install-link img{width:20px;height:20px;object-fit:contain}
+.install-sub-links{display:none;position:static;flex:1 1 100%;flex-wrap:wrap;gap:8px;padding:9px;border:1px solid var(--line);border-radius:14px;background:#0002;box-shadow:none}.install-sub-links[style*="flex"]{display:flex}
+.site-footer{display:grid;gap:10px;justify-items:center;padding:18px 8px 26px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.78rem}.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}.footer-links a:hover,.footer-credit:hover{color:var(--cyan)}.footer-credit{color:#67d9f5;font-weight:800;text-decoration:none}.footer-views{font-size:.75rem}.footer-views span{color:var(--green);font-weight:800;font-variant-numeric:tabular-nums}
+@media(max-width:480px){.page-shell{width:min(100% - 20px,680px);margin:20px auto 32px;gap:14px}.panel{padding:16px;border-radius:20px}.hero{padding:14px 8px 6px}.hero p{font-size:.88rem}.config-grid{gap:9px}.download-button{min-height:78px}.vip-features{gap:8px 12px}.dashboard-card{padding:14px}.dashboard-copy strong{font-size:.9rem}.logo{max-width:50px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
 </head>
 <body onclick="closeDropdown(event)">
-    <div class="content">
-        <div class="header-container">
-            <img class="logo" src="https://sinavm.github.io/SVM/SEO_Logo.svg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM">
-            <div class="header">دریافت کانفیگ V2Ray</div>
-            <div class="separator"></div>
-            <div class="telegram-link">
-                کانال تلگرام <a href="https://t.me/sinavm">SiNAVM</a>
-            </div>
-        </div>
-
-        <div class="config-container">
-            <p>کانفیگ‌ها به‌ صورت ساب لینک ارائه و هر ۳ ساعت بروز می‌شوند</p>
-
-            <button class="download-button vless" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vless', 'vless')">کپی VLESS</button>
-            <button class="download-button vmess" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vmess', 'vmess')">کپی VMess</button>
-            <button class="download-button reality" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/reality', 'reality')">کپی Reality</button>
-            <button class="download-button ss" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/ss', 'ss')">کپی Shadowsocks</button>
-
-            <a class="home-button" href="https://sinavm.github.io/sinavm/">صفحه اصلی</a>
-        </div>
-
-        <div class="follow-telegram">
-            <a href="https://t.me/sinavm">
-                <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="لوگو تلگرام">
-                کاری از کانال تلگرام SiNAVM
-            </a>
-        </div>
-
-        <div class="footer">
-            <a href="https://sinavm.github.io/sinavm/legal_pages/about.html">درباره ما</a> |
-            <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html">سیاست حریم خصوصی</a> |
-            <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html">شرایط استفاده</a>
-        </div>
-    </div>
-
-    <div class="left-container">
-        <a class="telegram-box" href="https://t.me/sinavm">
-            <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="کانال تلگرام SiNAVM"> کانال تلگرام
-        </a>
-        <a class="github-box" href="https://github.com/sinavm">
-            <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="گیت‌هاب سینا وی ام"> Github
-        </a>
-        <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
-    </div>
-
-    <div class="right-container">
-        <div class="install-box" onclick="toggleDropdown(event)">نصب برنامه</div>
-        <div class="install-dropdown" id="installDropdown">
-            <a class="install-link android" href="#" onclick="toggleAppLinks('androidLinks', event)">اندروید</a>
-            <a class="install-link iphone" href="#" onclick="toggleAppLinks('iphoneLinks', event)">آیفون</a>
-            <a class="install-link windows" href="#" onclick="toggleAppLinks('windowsLinks', event)">ویندوز</a>
-            <a class="install-link mac" href="#" onclick="toggleAppLinks('macLinks', event)">مک</a>
-            <div class="install-sub-links" id="androidLinks">
-                <a class="install-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com&hl=en">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
-                </a>
-                <a class="install-link android" href="https://github.com/2dust/v2rayNG/releases/tag/1.10.23">
-                    <img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray"> برنامه V2RayNG
-                </a>
-            </div>
-            <div class="install-sub-links" id="iphoneLinks">
-                <a class="install-link iphone" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
-                </a>
-                <a class="install-link iphone" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand
-                </a>
-            </div>
-            <div class="install-sub-links" id="windowsLinks">
-                <a class="install-link windows" href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/#_2">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
-                </a>
-            </div>
-            <div class="install-sub-links" id="macLinks">
-                <a class="install-link mac" href="https://apps.apple.com/app/id6596777532">
-                    <img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify
-                </a>
-                <a class="install-link mac" href="https://apps.apple.com/app/id6450534064">
-                    <img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand
-                </a>
-            </div>
-        </div>
-    </div>
-
+<nav class="top"><a href="https://sinavm.github.io/sinavm/" class="home-link"><i class="fas fa-home" aria-hidden="true"></i><span>صفحه اصلی</span></a></nav>
+<main class="page-shell">
+<header class="hero"><img class="logo" src="https://sinavm.github.io/SVM/SEO_Logo.svg" alt="لوگو سینا وی ام - کانال تلگرام SiNAVM"><div class="eyebrow">اشتراک‌های به‌روز و رایگان</div><h1>دریافت کانفیگ <span>V2Ray و Xray</span></h1><p>لینک اشتراک پروتکل‌های VLESS، VMess، Reality و Shadowsocks را مستقیم کپی کن و در کلاینت دلخواهت وارد کن.</p><a class="telegram-cta" href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> کانال تلگرام SiNAVM</a></header>
+<section class="panel config-panel" aria-labelledby="config-title"><div class="section-head"><span class="section-icon"><i class="fas fa-link"></i></span><div><h2 id="config-title">دریافت اشتراک بر اساس پروتکل</h2><p>برای کپی لینک، پروتکل موردنظرت را انتخاب کن</p></div></div><p class="update-note"><i class="fas fa-rotate"></i> اشتراک‌ها به‌صورت خودکار هر ۳ ساعت به‌روزرسانی می‌شوند.</p><div class="config-grid">
+<button class="download-button vless" type="button" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vless', 'vless')"><strong>VLESS</strong><small>کپی لینک اشتراک</small></button>
+<button class="download-button vmess" type="button" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/vmess', 'vmess')"><strong>VMess</strong><small>کپی لینک اشتراک</small></button>
+<button class="download-button reality" type="button" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/reality', 'reality')"><strong>Reality</strong><small>کپی لینک اشتراک</small></button>
+<button class="download-button ss" type="button" onclick="copyConfig('https://sinavm.github.io/SVM/subscriptions/xray/normal/ss', 'ss')"><strong>Shadowsocks</strong><small>کپی لینک اشتراک</small></button>
+</div></section>
+<section class="panel vip-card" aria-labelledby="vip-title"><span class="vip-badge">PREMIUM</span><h2 id="vip-title">سرویس VIP اختصاصی</h2><p>تجربه اینترنت بدون مرز با آی‌پی ثابت و سرعت بالا</p><div class="vip-features"><span><i class="fas fa-check-circle"></i> IP ثابت</span><span><i class="fas fa-check-circle"></i> ۶۰ سرور</span><span><i class="fas fa-check-circle"></i> پینگ پایین</span></div><a href="https://t.me/sinavmbot?start=channel" class="vip-btn" target="_blank" rel="noopener noreferrer"><span>خرید اشتراک ویژه</span><i class="fas fa-arrow-left"></i></a></section>
+<a class="dashboard-card" href="https://sinavm.github.io/SVM/" rel="noopener noreferrer"><span class="dashboard-icon"><i class="fas fa-gauge-high"></i></span><span class="dashboard-copy"><strong>داشبورد مدیریت اشتراک‌ها</strong><small>مشاهده وضعیت زنده و مدیریت اشتراک‌های SiNAVM</small></span><i class="fas fa-arrow-left dashboard-arrow"></i></a>
+<section class="panel install-panel" aria-labelledby="install-title"><div class="section-head"><span class="section-icon"><i class="fas fa-mobile-screen-button"></i></span><div><h2 id="install-title">دریافت برنامه‌های اتصال</h2><p>برنامه مناسب دستگاهت را انتخاب کن</p></div></div><div class="install-box" onclick="toggleDropdown(event)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDropdown(event)}"><i class="fas fa-download"></i> انتخاب سیستم‌عامل</div>
+<div class="install-dropdown" id="installDropdown"><a class="install-link android" href="#" onclick="toggleAppLinks('androidLinks', event)">اندروید</a><a class="install-link iphone" href="#" onclick="toggleAppLinks('iphoneLinks', event)">آیفون</a><a class="install-link windows" href="#" onclick="toggleAppLinks('windowsLinks', event)">ویندوز</a><a class="install-link mac" href="#" onclick="toggleAppLinks('macLinks', event)">مک</a>
+<div class="install-sub-links" id="androidLinks"><a class="install-link android" href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify</a><a class="install-link android" href="https://github.com/2dust/v2rayNG/releases/tag/1.10.23" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/v2ray.png" alt="V2Ray"> برنامه V2RayNG</a></div>
+<div class="install-sub-links" id="iphoneLinks"><a class="install-link iphone" href="https://apps.apple.com/app/id6596777532" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify</a><a class="install-link iphone" href="https://apps.apple.com/app/id6450534064" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand</a></div>
+<div class="install-sub-links" id="windowsLinks"><a class="install-link windows" href="https://hiddify.com/fa/app/How-to-install-Hiddify-app/" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify</a></div>
+<div class="install-sub-links" id="macLinks"><a class="install-link mac" href="https://apps.apple.com/app/id6596777532" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/hiddify.png" alt="Hiddify"> برنامه Hiddify</a><a class="install-link mac" href="https://apps.apple.com/app/id6450534064" target="_blank" rel="noopener"><img src="https://sinavm.github.io/sinavm/logo/streisand.png" alt="Streisand"> برنامه Streisand</a></div></div></section>
+<footer class="site-footer"><div class="footer-links"><a href="https://sinavm.github.io/sinavm/legal_pages/about.html">درباره ما</a><span>|</span><a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html">سیاست حریم خصوصی</a><span>|</span><a href="https://sinavm.github.io/sinavm/legal_pages/terms.html">شرایط استفاده</a></div><a class="footer-credit" href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer">Design &amp; Config by SiNAVM</a><div class="footer-views">بازدید کل: <span id="total-visit-count">...</span></div></footer>
+</main>
     <script>
         function copyConfig(url, type) {
             navigator.clipboard.writeText(url).then(() => {
