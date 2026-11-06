@@ -108,7 +108,12 @@
     "date": 1793370927,
     "date_label": "2026-10-30 14:35",
     "link": "https://t.me/sinavm/5258",
-    "media": null
+    "media": {
+      "type": "photo",
+      "filename": "5258.jpg",
+      "url": "media/5258.jpg",
+      "download_url": "https://sinavm.github.io/sinavm/media/5258.jpg"
+    }
   },
   {
     "id": 5256,
