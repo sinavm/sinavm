@@ -71,10 +71,10 @@ def make_post_title(value, media_info=None):
         return 'کانفیگ WireGuard'
     if re.search(r'\b(?:v2ray|xray|vless|vmess)\b', normalized, re.I):
         return 'کانفیگ V2Ray'
-    if re.search(r'\bNV\b|ملی.?شکن', normalized, re.I):
-        return 'کانفیگ NV'
     if re.search(r'http\s*[-_]?\s*custom|اچ\s*تی\s*تی\s*پی\s*کاستوم', normalized, re.I):
         return 'کانفیگ HTTP Custom'
+    if re.search(r'\bNV\b|ملی.?شکن', normalized, re.I):
+        return 'کانفیگ NV'
     for line in source.splitlines():
         candidate = re.sub(r'\s+', ' ', line).strip(' .،؛:-')
         if candidate and not re.search(r'^(?:نصب|آموزش|روی\s+\()', candidate):
