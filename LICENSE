@@ -1,0 +1,76 @@
+SiNAVM PROPRIETARY SOURCE CODE AND CONTENT LICENSE
+Version 1.0 — 8 November 2026
+
+Copyright (c) 2026 SiNAVM. All rights reserved.
+
+NOTICE
+This repository is NOT open source and is NOT offered under the MIT, Apache,
+GPL, BSD, Creative Commons, or any other public license unless a particular
+file or component expressly states otherwise.
+
+1. OWNERSHIP AND SCOPE
+This license applies only to original source code, documentation, configuration
+files, designs, text, and other materials in this repository that are owned by
+SiNAVM or that SiNAVM is legally authorized to license ("Protected Materials").
+It does not claim ownership of third-party materials, trademarks, names,
+protocols, or components.
+
+2. NO GENERAL LICENSE
+All rights in the Protected Materials are reserved. No license or other
+permission is granted by implication, estoppel, publication, repository
+visibility, or access to this repository.
+
+Without prior written permission signed by SiNAVM, you may not, to the extent
+permitted by applicable law:
+
+  a. copy, reproduce, download for republication, mirror, or otherwise
+     duplicate any Protected Materials, in whole or in substantial part;
+  b. modify, adapt, translate, merge, or create derivative works from them;
+  c. publish, distribute, sublicense, sell, rent, lease, or make them available
+     to any third party, whether commercially or non-commercially;
+  d. use them to provide a commercial service, product, hosted offering, or
+     competing or substantially similar offering;
+  e. remove, alter, or obscure copyright, attribution, or proprietary notices;
+  f. use SiNAVM's name, logos, or marks in a way that suggests endorsement,
+     affiliation, or authorization.
+
+3. LIMITED ACCESS
+Repository access is provided for inspection and evaluation only. It does not
+grant permission to reuse, incorporate, deploy, or redistribute Protected
+Materials. Any additional use requires a separate written license from SiNAVM.
+
+4. THIRD-PARTY MATERIALS
+Materials identified as third-party, or otherwise owned by someone other than
+SiNAVM, remain subject to their respective owners' licenses and terms. This
+license does not replace, narrow, or override those terms. Where a component
+has its own license or notice, that license or notice governs that component.
+You are responsible for identifying and complying with applicable third-party
+terms.
+
+5. NO WARRANTY
+To the maximum extent permitted by law, the Protected Materials are provided
+"AS IS", without warranties or conditions of any kind, express or implied,
+including merchantability, fitness for a particular purpose, and
+non-infringement. SiNAVM is not liable for any claim, damages, or other
+liability arising from use of the Protected Materials, except where liability
+cannot lawfully be excluded.
+
+6. TERMINATION
+Any permission granted under a separate written agreement may be terminated
+according to that agreement. Unauthorized use is not made lawful by stopping
+that use after notice; all rights and remedies available under applicable law
+are reserved.
+
+7. PERMISSIONS AND CONTACT
+Requests for written permission or commercial licensing must be made directly
+to the SiNAVM repository owner through the contact details published in the
+owner's GitHub profile. No permission is effective unless granted in writing
+by an authorized rights holder.
+
+8. GOVERNING LAW
+This notice does not select a governing law or court. Applicable law and
+mandatory legal protections remain unaffected.
+
+For clarity: this license governs only rights that SiNAVM actually owns or is
+authorized to license. It cannot remove permissions already granted by
+third-party licenses or override rights that cannot legally be restricted.
