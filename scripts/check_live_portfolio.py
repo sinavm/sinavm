@@ -9,7 +9,14 @@ import urllib.request
 BASE = os.environ.get("SITE_BASE_URL", "https://sinavm.github.io/sinavm/").rstrip("/") + "/"
 checks = {
     "": ["SiNAVM", "./portfolio/"],
-    "portfolio/": ["Developer Portfolio", "portfolio.v1.css", "portfolio.v1.js", "#notes", "#contribute"],
+    "portfolio/": [
+        "Selected Works — SiNAVM",
+        "assets/css/portfolio.v1.css",
+        "INDEPENDENT DIGITAL WORKS",
+        "SVM — V2Ray",
+        "IR Net",
+        "کارهای بیشتر در GitHub",
+    ],
     "portfolio/projects/svm.html": ["SVM", "AGPL-3.0", "svm-subscriptions.html"],
     "portfolio/projects/ir-net-atlas.html": ["IR Net Atlas", "MIT", "ir-net-atlas-measurement.html"],
     "portfolio/notes/svm-subscriptions.html": ["alive-fast", "alive-stable", "mix"],
