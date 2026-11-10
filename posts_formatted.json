@@ -1,5 +1,20 @@
 [
   {
+    "id": 5281,
+    "text": "مدت زمان اشتراک رایگان سه ماهه تمدید شد\nفیلترچی میلیون‌ها دلار خرج محدودیت و فیلترینگ می‌کنه\nما هم درآمد فروش این ماه رو گذاشتیم برای تأمین سرویس رایگان شما\nالبته یه دونه هندزفری هم خریدم، دو و نیم میلیون ناقابل\nگفتم فاکتور خرید سرویس‌ها رو هم بذارم که همه‌چی شفاف باشه.\nاین تازه ادامه ماجراست",
+    "preview": "مدت زمان اشتراک رایگان سه ماهه تمدید شد",
+    "title": "مدت زمان اشتراک رایگان سه ماهه تمدید شد",
+    "date": 1794318156,
+    "date_label": "2026-11-10 13:42",
+    "link": "https://t.me/sinavm/5281",
+    "media": {
+      "type": "photo",
+      "filename": "5281.jpg",
+      "url": "media/5281.jpg",
+      "download_url": "https://sinavm.github.io/sinavm/media/5281.jpg"
+    }
+  },
+  {
     "id": 5280,
     "text": "کانفیگ کاستوم http custom\nیکار کردم فیلترچی افسرده شد\nملی شکن و ضد فیلتر\nلطفاً آموزش‌ها رو با دقت\nببینید و از کنارشون ساده نگذرید\nنصب:   اندروید آموزش\nبرنامه رو بروزرسانی کنید\nنسخه آیفون موجود نمی‌باشد",
     "preview": "کانفیگ HTTP Custom",
@@ -153,24 +168,6 @@
       "filename": "5267.jpg",
       "url": "media/5267.jpg",
       "download_url": "https://sinavm.github.io/sinavm/media/5267.jpg"
-    }
-  },
-  {
-    "id": 5261,
-    "text": "Open VPN کانفیگ\n1برنامه رو نصب و یکبار اجرا کنید\nAndroid  IOS  WinMac\n2فایلبالا رو باز کرده،وارد برنامه کنید",
-    "preview": "OpenVPN کانفیگ",
-    "title": "OpenVPN کانفیگ",
-    "date": 1793464512,
-    "date_label": "2026-10-31 16:35",
-    "link": "https://t.me/sinavm/5261",
-    "media": {
-      "type": "document",
-      "filename": "@SiNAVMBOT.ovpn",
-      "original_name": "@SiNAVMBOT.ovpn",
-      "url": "media/5261.ovpn",
-      "download_url": "https://sinavm.github.io/sinavm/media/5261.ovpn",
-      "size": 6179,
-      "kind": "OpenVPN"
     }
   }
 ]
