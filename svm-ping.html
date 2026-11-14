@@ -43,6 +43,8 @@ h1{font-size:clamp(1.65rem,6vw,2.35rem);line-height:1.5;margin:0;font-weight:900
 .section-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#0891b226;color:var(--cyan);font-size:1.1rem;flex:none}
 .section-head h2{font-size:1.04rem;margin:0;font-weight:900}
 .section-head p{font-size:.75rem;color:var(--muted);margin:2px 0 0;line-height:1.8}
+.refresh-btn{margin-right:auto;flex:none;border:1px solid #22d3ee40;background:#0891b218;color:#a5f3fc;border-radius:11px;padding:8px 11px;font-size:.7rem;font-weight:800;cursor:pointer}
+.refresh-btn:disabled{opacity:.55;cursor:wait}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .stat{border:1px solid var(--line);background:#ffffff06;border-radius:17px;padding:13px 10px;text-align:center;min-width:0}
 .stat i{display:block;color:var(--cyan);font-size:1.05rem;margin-bottom:6px}
@@ -147,6 +149,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div class="section-head">
 <div class="section-icon"><i class="fa-solid fa-satellite-dish"></i></div>
 <div><h2 id="nodes-title">فهرست کانفیگ‌های تست‌شده</h2><p id="count">در حال دریافت کانفیگ‌های SVM…</p></div>
+<button class="refresh-btn" id="refreshData" type="button"><i class="fa-solid fa-rotate"></i> تازه‌سازی</button>
 </div>
 <div class="tabs" role="tablist" aria-label="نوع فهرست کانفیگ">
 <button class="tab active" type="button" data-feed="fast" role="tab" aria-selected="true">⚡ سریع (Fast)<small>انتخاب جمع‌وجور SVM</small></button>
@@ -443,7 +446,8 @@ async function copyText(value){
  }catch(e){notify("کپی خودکار در دسترس نیست؛ کانفیگ را از بخش نمایش انتخاب کن.")}
 }
 async function loadData(){
- const refresh=$("refresh");
+ const refresh=$("refreshData");
+ if(refresh)refresh.disabled=true;
  setText("count","در حال دریافت فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+"…");
  $("configs").replaceChildren(make("div","empty","در حال دریافت اطلاعات از SVM…"));
  try{
@@ -473,8 +477,11 @@ async function loadData(){
   $("health").dataset.state="bad";
   setText("health-text","اتصال به منابع داده SVM برقرار نشد.");
   setText("feed-meta","منبع داده: مخزن رسمی SVM");
+ }finally{
+  if(refresh)refresh.disabled=false;
  }
 }
+$("refreshData").addEventListener("click",loadData);
 document.querySelectorAll("[data-feed]").forEach(button=>{
  button.addEventListener("click",()=>{
   if(activeFeed===button.dataset.feed)return;
