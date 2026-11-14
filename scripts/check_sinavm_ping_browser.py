@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import sys
+from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 BASE = os.environ.get("SITE_BASE_URL", "http://127.0.0.1:8766/").rstrip("/") + "/"
@@ -30,6 +31,10 @@ with sync_playwright() as p:
         has_touch=True,
     )
     page = context.new_page()
+    home_html = Path("index.html").read_text(encoding="utf-8")
+    sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+    check(home_html.find("sinavm-ping.html") < home_html.find("https://sinavm.github.io/SVM/"), "Homepage should place SiNAVM Ping before the live dashboard")
+    check("sinavm-ping.html" in sitemap and "svm-ping.html" not in sitemap, "Sitemap should use the renamed canonical page only")
     page_errors: list[str] = []
     page.on("pageerror", lambda error: page_errors.append(str(error)))
 
@@ -130,6 +135,8 @@ with sync_playwright() as p:
     page.set_viewport_size({"width": 320, "height": 740})
     no_horizontal_overflow(page, "320px Android layout")
     check(not page_errors, "JavaScript runtime errors: " + "; ".join(page_errors))
+    legacy = page.goto(BASE + "svm-ping.html", wait_until="domcontentloaded")
+    check(page.url.endswith("/sinavm-ping.html"), "Legacy URL should redirect to the new SiNAVM Ping URL")
     context.close()
     browser.close()
 
