@@ -34,8 +34,10 @@ with sync_playwright() as p:
     page_errors: list[str] = []
     page.on("pageerror", lambda error: page_errors.append(str(error)))
     fast_feed = (
-        "#announce: nodes=1 updated=2026-11-14T10:00:00Z\n"
+        "#announce: nodes=3 updated=2026-11-14T10:00:00Z\n"
         "vless://11111111-1111-4111-8111-111111111111@203.0.113.10:443?security=tls#Test%20Node\n"
+        "vmess://eyJ2IjoiMiIsInBzIjoiVGVzdCBWTWVzcyIsImFkZCI6IjIwMy4wLjExMy4xMSIsInBvcnQiOiI4NDQzIiwiaWQiOiIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLCJhaWQiOiIwIiwibmV0IjoidGNwIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiIiwicGF0aCI6IiIsInRscyI6IiJ9\n"
+        "ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@198.51.100.30:443#Test%20SS\n"
     )
     stable_feed = (
         "#announce: nodes=1 updated=2026-11-14T10:00:00Z\n"
@@ -69,15 +71,19 @@ with sync_playwright() as p:
     response = page.goto(BASE + "svm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SVM ping: page did not return HTTP 200")
     page.locator("#configs .config").first.wait_for(timeout=10000)
-    check(page.locator("#configs .config").count() == 1, "SVM ping: fast feed was not rendered")
+    check(page.locator("#configs .config").count() == 3, "SVM ping: fast feed or protocol parsing was not rendered")
     page.wait_for_function(
         "document.querySelector('.tag.country')?.textContent === 'Germany'",
         timeout=10000,
     )
     check("ms" in page.locator(".ping").first.inner_text(), "SVM ping: published delay was not displayed")
     check(page.locator(".flag").first.inner_text() == "🇩🇪", "SVM ping: country flag was not displayed")
+    page.locator("#search").fill("203.0.113.11")
+    check(page.locator("#configs .config").count() == 1, "SVM ping: VMess IP parsing or search did not work")
+    page.locator("#search").fill("198.51.100.30")
+    check(page.locator("#configs .config").count() == 1, "SVM ping: Shadowsocks IP parsing or search did not work")
     page.locator("#search").fill("203.0.113.10")
-    check(page.locator("#configs .config").count() == 1, "SVM ping: IP search did not filter results")
+    check(page.locator("#configs .config").count() == 1, "SVM ping: VLESS IP search did not filter results")
     no_horizontal_overflow(page, "SVM ping mobile 390px")
     page.locator('[data-feed="stable"]').click()
     page.locator("#configs .config").first.wait_for(timeout=10000)
