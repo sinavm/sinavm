@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "svm-ping.html"
+      - "scripts/check_browser.py"
       - "portfolio/**"
       - "scripts/check_browser.py"
       - "requirements-browser.txt"
