@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "svm-ping.html"
       - "portfolio/**"
       - "sitemap.xml"
       - "scripts/check_portfolio.py"
