@@ -426,7 +426,6 @@ function render(){
    return a.index-b.index;
   });
  }else filtered=filtered.slice().sort((a,b)=>a.index-b.index);
- setText("visible-count",numberFormat.format(filtered.length)+" مورد");
  list.replaceChildren();
  if(!filtered.length){
   const empty=make("div","empty");
@@ -435,6 +434,7 @@ function render(){
   list.append(empty);return;
  }
  const shown=filtered.slice(0,visibleLimit);
+ setText("visible-count","نمایش "+numberFormat.format(shown.length)+" از "+numberFormat.format(filtered.length));
  shown.forEach(node=>{
   const card=make("article","config");
   const top=make("div","config-top");
