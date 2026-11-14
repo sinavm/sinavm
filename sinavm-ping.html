@@ -117,6 +117,15 @@ h1{font-size:clamp(1.65rem,6vw,2.35rem);line-height:1.5;margin:0;font-weight:900
 .network-btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(120deg,#2563eb,#0891b2);color:#fff;font:800 .78rem Vazirmatn,sans-serif;cursor:pointer}
 .network-btn:disabled{opacity:.55;cursor:wait}
 .network-note{color:var(--muted);font-size:.68rem;line-height:1.9;margin-top:10px}
+.user-probe-status{border:1px solid #60a5fa35;background:#3b82f20d;color:#bfdbfe;border-radius:13px;padding:11px 13px;font-size:.76rem;line-height:1.9;min-height:44px}
+.user-probe-status[data-state="ok"]{border-color:#10b98140;background:#10b9810d;color:#a7f3d0}
+.user-probe-status[data-state="bad"]{border-color:#fb718540;background:#fb71850d;color:#fecdd3}
+.user-probe-status[data-state="running"]{border-color:#22d3ee45;background:#0891b20d;color:#a5f3fc}
+.user-probe-progress{display:flex;align-items:center;gap:12px;margin-top:12px;color:var(--muted);font-size:.7rem}
+.user-probe-progress progress{height:9px;flex:1;min-width:0;accent-color:var(--cyan)}
+.user-probe-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.probe-cancel{border:1px solid #fb718550;background:#fb718510;color:#fecdd3;border-radius:12px;padding:11px 15px;font:800 .78rem Vazirmatn,sans-serif;cursor:pointer}
+.probe-cancel[hidden]{display:none}
 .load-more-wrap{display:flex;justify-content:center;padding-top:5px}
 .load-more{width:100%;border:1px solid #22d3ee55;background:#0891b21a;color:#cffafe;border-radius:13px;padding:12px 16px;font:800 .78rem Vazirmatn,sans-serif;cursor:pointer}
 .site-footer{text-align:center;color:var(--muted);font-size:.76rem;line-height:2.2;padding:15px 8px 24px;border-top:1px solid var(--line)}
@@ -167,6 +176,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div class="test-meta"><span id="feed-meta">فهرست کانفیگ‌ها: —</span><a href="https://raw.githubusercontent.com/sinavm/SVM/main/lite/reports/test.json" rel="noopener noreferrer">مشاهده گزارش کامل ↗</a></div>
 </section>
 
+<section class="panel" aria-labelledby="user-probe-title">
+<div class="section-head"><div class="section-icon"><i class="fa-solid fa-satellite-dish"></i></div><div><h2 id="user-probe-title">تست کانفیگ‌ها با اینترنت من</h2><p>بررسی مستقیم مقصد هر کانفیگ از همین مرورگر و مرتب‌سازی نتایج قابل‌اندازه‌گیری</p></div></div>
+<div class="user-probe-status" id="user-probe-status" data-state="idle" role="status" aria-live="polite">برای بررسی کانفیگ‌های فهرست‌شده با اینترنت فعلی خودت، شروع تست را بزن.</div>
+<div class="user-probe-progress"><progress id="user-probe-progress" max="100" value="0"></progress><span id="user-probe-count">آمادهٔ تست</span></div>
+<div class="user-probe-actions"><button class="network-btn" id="start-node-test" type="button"><i class="fa-solid fa-play"></i> تست با اینترنت من</button><button class="probe-cancel" id="cancel-node-test" type="button" hidden><i class="fa-solid fa-stop"></i> توقف تست</button></div>
+<p class="network-note">تست از اینترنت و مسیر فعلی همین دستگاه انجام می‌شود و مقصدهای تکراری فقط یک‌بار بررسی می‌شوند. مرورگر فقط می‌تواند پاسخ HTTPS سرور را بسنجد؛ این کار اجرای واقعی پروتکل VLESS/VMess/Trojan یا پینگ ICMP نیست. اگر پورت مخصوص پروکسی پاسخ HTTP ندهد، نتیجه «قابل‌اندازه‌گیری نیست» ثبت می‌شود، نه اینکه سرور قطعاً خراب باشد. کانفیگ یا رمز آن به جایی ارسال نمی‌شود.</p>
+</section>
+
 <section class="panel" aria-labelledby="nodes-title">
 <div class="section-head">
 <div class="section-icon"><i class="fa-solid fa-satellite-dish"></i></div>
@@ -188,22 +205,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 </div>
 </section>
 
-<section class="panel" aria-labelledby="client-test-title">
-<div class="section-head">
-<div class="section-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-<div><h2 id="client-test-title">تست اینترنت همین دستگاه</h2><p>اندازه‌گیری از مرورگر و مسیر اتصال فعلی گوشی یا کامپیوتر</p></div>
-</div>
-<div class="network-status" id="network-status" data-state="idle" role="status" aria-live="polite">برای سنجش تأخیر و سرعت اتصال فعلی خودت، دکمهٔ شروع تست را بزن.</div>
-<div class="network-grid">
-<div class="network-stat"><strong id="client-latency">—</strong><small>میانهٔ تأخیر تا Cloudflare (ms)</small></div>
-<div class="network-stat"><strong id="client-download">—</strong><small>سرعت دانلود تقریبی (Mbps)</small></div>
-</div>
-<div class="network-actions">
-<button class="network-btn" id="start-client-test" type="button"><i class="fa-solid fa-play"></i> شروع تست اینترنت من</button>
-<span id="client-network-type" class="network-note"></span>
-</div>
-<div class="network-note">این تست از مسیر اینترنتی استفاده می‌کند که همین مرورگر در حال حاضر دارد؛ اگر VPN گوشی روشن باشد، درخواست‌ها از همان مسیر VPN عبور می‌کنند. این نتیجه، تست تک‌تک کانفیگ‌های فهرست نیست و فقط کیفیت اتصال فعلی دستگاه به نقطهٔ تست Cloudflare را می‌سنجد. هیچ کانفیگ، رمز یا اطلاعات شخصی ارسال نمی‌شود.</div>
-</section>
+
 
 <section class="panel">
 <div class="section-head">
@@ -267,14 +269,14 @@ function parseNode(line,index){
  const split=line.indexOf("://");
  if(split<1)return null;
  const protocol=line.slice(0,split).toLowerCase();
- let host="",port="",remark="";
+ let host="",port="",remark="",security="",network="tcp";
  try{
   if(protocol==="vmess"){
    const raw=line.slice(split+3).split("#")[0];
    const data=JSON.parse(decodeBase64(raw));
    host=String(data.add||data.address||"");
    port=String(data.port||"");
-   remark=String(data.ps||data.name||"");
+   remark=String(data.ps||data.name||"");\n   security=data.tls?"tls":String(data.security||"");\n   network=String(data.net||"tcp").toLowerCase();
   }else{
    let uri;
    try{uri=new URL(line)}catch(e){uri=null}
@@ -418,7 +420,14 @@ function render(){
   const haystack=(node.name+" "+node.host+" "+node.port+" "+node.country+" "+node.protocol).toLocaleLowerCase();
   return matchesProtocol&&(!query||haystack.includes(query));
  });
- if(sortFastest){
+ if(localSortActive){
+  filtered=filtered.slice().sort((a,b)=>{
+   const av=a.clientProbe&&a.clientProbe.state==="ok"?a.clientProbe.ms:Infinity;
+   const bv=b.clientProbe&&b.clientProbe.state==="ok"?b.clientProbe.ms:Infinity;
+   if(av!==bv)return av-bv;
+   return a.index-b.index;
+  });
+ }else if(sortFastest){
   filtered=filtered.slice().sort((a,b)=>{
    if(a.ping!==null&&b.ping!==null)return a.ping-b.ping;
    if(a.ping!==null)return -1;
@@ -443,18 +452,33 @@ function render(){
   const info=make("div","file-info");
   info.append(make("strong","",node.name));
   info.append(make("small","",node.host+":"+node.port));
-  const ping=make("div","ping"+(node.ping===null?" unknown":""));
-  if(node.ping===null){
-   ping.append(document.createTextNode("—"));
-   ping.append(make("small","", "پینگ منتشر نشده"));
-  }else{
+  const probe=node.clientProbe;
+  const ping=make("div","ping"+(!(probe&&probe.state==="ok")?" unknown":""));
+  if(probe&&probe.state==="ok"){
+   ping.append(document.createTextNode(numberFormat.format(Math.round(probe.ms))+" ms"));
+   ping.append(make("small","","زمان پاسخ HTTPS شما"));
+  }else if(probe&&probe.state==="testing"){
+   ping.append(document.createTextNode("…"));ping.append(make("small","","در حال تست"));
+  }else if(probe&&probe.state==="unsupported"){
+   ping.append(document.createTextNode("—"));ping.append(make("small","","پروتکل مرورگرپذیر نیست"));
+  }else if(probe&&probe.state==="inconclusive"){
+   ping.append(document.createTextNode("—"));ping.append(make("small","","پاسخ قابل‌اندازه‌گیری نیست"));
+  }else if(probe&&probe.state==="cancelled"){
+   ping.append(document.createTextNode("—"));ping.append(make("small","","تست متوقف شد"));
+  }else if(node.ping!==null){
    ping.append(document.createTextNode(numberFormat.format(node.ping)+" ms"));
-   ping.append(make("small","",node.pingCount>1?"بهترین تأخیر میزبان":"تأخیر ثبت‌شده میزبان"));
+   ping.append(make("small","",node.pingCount>1?"بهترین تأخیر منتشرشده SVM":"تأخیر منتشرشده SVM"));
+  }else{
+   ping.append(document.createTextNode("—"));ping.append(make("small","", "هنوز تست نشده"));
   }
   top.append(flag,info,ping);
   const meta=make("div","config-meta");
   meta.append(make("span","tag protocol",node.protocol.toUpperCase()));
   meta.append(make("span","tag status","✓ تأییدشده در خروجی SVM"));
+  if(node.ping!==null)meta.append(make("span","tag protocol","پینگ SVM: "+numberFormat.format(node.ping)+" ms"));
+  if(probe&&probe.state==="ok")meta.append(make("span","tag status","پاسخ HTTPS از مسیر شما"));
+  else if(probe&&probe.state==="unsupported")meta.append(make("span","tag country","نیازمند کلاینت برای تست واقعی"));
+  else if(probe&&probe.state==="inconclusive")meta.append(make("span","tag country","نتیجه نامشخص؛ نه لزوماً آفلاین"));
   meta.append(make("span","tag country",node.country||"کشور در حال شناسایی"));
   const actions=make("div","actions");
   const copy=make("button","btn primary","کپی کانفیگ");
@@ -528,7 +552,7 @@ async function loadData(){
   updateProtocolFilters();
   const feedDate=parsed.announce&&parsed.announce.updated?formatDate(parsed.announce.updated):"نامشخص";
   visibleLimit=7;
-  setText("count",numberFormat.format(nodes.length)+" کانفیگ در فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+" SVM");
+  localResultsAvailable=false;localSortActive=false;setText("sortLabel","مرتب‌سازی: کمترین تأخیر SVM");\n  setText("count",numberFormat.format(nodes.length)+" کانفیگ در فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+" SVM");
   setText("feed-meta","آخرین به‌روزرسانی فهرست: "+feedDate+" · "+(parsed.announce?numberFormat.format(parsed.announce.count)+" نود اعلام‌شده":"تعداد اعلام‌نشده"));
   setText("list-title",activeFeed==="fast"?"کانفیگ‌های سریع":"کانفیگ‌های پایدار");
   render();
@@ -576,46 +600,53 @@ $("configs").addEventListener("click",event=>{
   if(box){const open=box.classList.toggle("open");detail.lastChild.textContent=open?"بستن کانفیگ":"نمایش کانفیگ"}
  }
 });
-$("sortBtn").addEventListener("click",()=>{sortFastest=!sortFastest;setText("sortLabel",sortFastest?"مرتب‌سازی: کمترین تأخیر":"مرتب‌سازی: ترتیب SVM");render()});
-async function runClientTest(){
- const button=$("start-client-test"),status=$("network-status");
- button.disabled=true;
- $("client-latency").textContent="…";$("client-download").textContent="…";
- status.dataset.state="idle";status.textContent="در حال اندازه‌گیری مسیر اتصال فعلی…";
- const endpoint="https://speed.cloudflare.com/__down?bytes=";
- const controller=new AbortController();
- const timeout=setTimeout(()=>controller.abort(),25000);
- try{
-  const samples=[];
-  for(let i=0;i<5;i++){
-   const started=performance.now();
-   const response=await fetch(endpoint+"1000&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit",signal:controller.signal});
-   if(!response.ok)throw new Error("probe failed");
-   await response.arrayBuffer();
-   samples.push(performance.now()-started);
-  }
-  samples.sort((a,b)=>a-b);
-  const median=samples[Math.floor(samples.length/2)];
-  $("client-latency").textContent=numberFormat.format(Math.round(median));
-  status.textContent="تأخیر اتصال اندازه‌گیری شد؛ در حال سنجش سرعت دانلود…";
-  const bytes=1000000,started=performance.now();
-  const response=await fetch(endpoint+bytes+"&sinavm="+Date.now(),{mode:"cors",cache:"no-store",credentials:"omit"});
-  if(!response.ok)throw new Error("download test failed");
-  const payload=await response.arrayBuffer();
-  const seconds=(performance.now()-started)/1000;
-  const mbps=(payload.byteLength*8/1000000)/Math.max(seconds,.001);
-  $("client-download").textContent=numberFormat.format(Number(mbps.toFixed(2)));
-  status.dataset.state="ok";
-  status.textContent="تست اتصال دستگاه کامل شد؛ تأخیر، میانهٔ ۵ درخواست و سرعت دانلود، برآورد مرورگری است.";
- }catch(error){
-  status.dataset.state="bad";
-  status.textContent="تست کامل نشد؛ ممکن است شبکه، VPN یا محدودیت CORS دسترسی به سرور تست را مسدود کرده باشد. دوباره تلاش کن.";
-  $("client-latency").textContent="—";$("client-download").textContent="—";
- }finally{clearTimeout(timeout);button.disabled=false}
+$("sortBtn").addEventListener("click",()=>{
+ if(localResultsAvailable){localSortActive=!localSortActive;setText("sortLabel",localSortActive?"مرتب‌سازی: تأخیر اینترنت شما":"مرتب‌سازی: تأخیر منتشرشده SVM")}
+ else{sortFastest=!sortFastest;setText("sortLabel",sortFastest?"مرتب‌سازی: کمترین تأخیر SVM":"مرتب‌سازی: ترتیب SVM")}
+ render();
+});
+function median(values){const sorted=values.slice().sort((a,b)=>a-b);return sorted.length?sorted[Math.floor(sorted.length/2)]:null}
+function probeEligibility(node){if(node.security==="reality")return false;return node.protocol==="trojan"||node.security==="tls"}
+function probeURL(node){const raw=String(node.host||"");const host=raw.includes(":")&&!raw.startsWith("[")?"["+raw+"]":raw;return "https://"+host+":"+encodeURIComponent(node.port||"443")+"/?__sinavm_probe="+Date.now()+"-"+Math.random().toString(36).slice(2)}
+async function probeOneEndpoint(node,signal){
+ if(!probeEligibility(node))return {state:"unsupported"};
+ const url=probeURL(node),samples=[];
+ for(let attempt=0;attempt<2;attempt++){
+  if(signal.aborted)return {state:"cancelled"};
+  const requestController=new AbortController(),abortParent=()=>requestController.abort();
+  signal.addEventListener("abort",abortParent,{once:true});
+  const timer=setTimeout(()=>requestController.abort(),3200),started=performance.now();
+  try{await fetch(url,{method:"GET",mode:"no-cors",cache:"no-store",credentials:"omit",redirect:"manual",signal:requestController.signal});samples.push(performance.now()-started)}
+  catch(error){if(signal.aborted)return {state:"cancelled"};return {state:"inconclusive"}}
+  finally{clearTimeout(timer);signal.removeEventListener("abort",abortParent)}
+  if(attempt===0)await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ return {state:"ok",ms:median(samples),samples:samples.length,method:"https-response"};
 }
-$("start-client-test").addEventListener("click",runClientTest);
-const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
-$("client-network-type").textContent=connection&&connection.effectiveType?"نوع اتصال گزارش‌شده توسط مرورگر: "+connection.effectiveType:"نوع شبکه توسط مرورگر گزارش نمی‌شود.";
+async function runUserRouteTest(){
+ if(activeProbeController)return;
+ const button=$("start-node-test"),cancel=$("cancel-node-test"),status=$("user-probe-status"),controller=new AbortController();
+ activeProbeController=controller;button.disabled=true;cancel.hidden=false;status.dataset.state="running";
+ status.textContent="در حال آماده‌سازی مقصدهای یکتا و بررسی مسیر اینترنت شما…";$("user-probe-progress").value=0;
+ const uniqueMap=new Map();
+ nodes.forEach(node=>{const key=String(node.host).toLowerCase()+"|"+String(node.port||"443");if(!uniqueMap.has(key))uniqueMap.set(key,node);node.clientProbe=probeEligibility(node)?{state:"testing"}:{state:"unsupported"}});
+ const endpoints=[...uniqueMap.entries()];let completed=0,ok=0,inconclusive=0,unsupported=0,cursor=0;
+ setText("user-probe-count","۰ از "+numberFormat.format(endpoints.length)+" مقصد");render();
+ const worker=async()=>{while(!controller.signal.aborted){const index=cursor++;if(index>=endpoints.length)return;const [key,node]=endpoints[index],result=await probeOneEndpoint(node,controller.signal);endpoints[index].result=result;
+  nodes.filter(item=>String(item.host).toLowerCase()+"|"+String(item.port||"443")===key).forEach(item=>item.clientProbe=result);
+  completed++;if(result.state==="ok")ok++;else if(result.state==="unsupported")unsupported++;else if(result.state==="cancelled"){}else inconclusive++;
+  $("user-probe-progress").value=endpoints.length?Math.round(completed/endpoints.length*100):100;setText("user-probe-count",numberFormat.format(completed)+" از "+numberFormat.format(endpoints.length)+" مقصد");
+ }};
+ try{
+  await Promise.all(Array.from({length:5},worker));const stopped=controller.signal.aborted;
+  localResultsAvailable=ok>0;localSortActive=ok>0;if(localSortActive)setText("sortLabel","مرتب‌سازی: تأخیر اینترنت شما");render();
+  if(stopped){status.dataset.state="bad";status.textContent="تست به درخواست شما متوقف شد؛ "+numberFormat.format(ok)+" پاسخ HTTPS دریافت شد و بقیه نتیجه قطعی ندارند."}
+  else if(ok){status.dataset.state="ok";status.textContent="بررسی تمام شد: "+numberFormat.format(ok)+" مقصد پاسخ HTTPS داد؛ "+numberFormat.format(inconclusive)+" مقصد پاسخ قابل‌اندازه‌گیری نداد و "+numberFormat.format(unsupported)+" مورد با روش مرورگر قابل تست نبود. نتایج قابل‌اندازه‌گیری در ابتدا مرتب شده‌اند."}
+  else{status.dataset.state="bad";status.textContent="پاسخ HTTPS قابل‌اندازه‌گیری دریافت نشد. این به معنی آفلاین بودن کانفیگ‌ها نیست؛ بیشتر سرویس‌های پروکسی به درخواست عادی مرورگر پاسخ نمی‌دهند و برای تست واقعی به کلاینت محلی نیاز است."}
+ }finally{activeProbeController=null;button.disabled=false;cancel.hidden=true}
+}
+$("start-node-test").addEventListener("click",runUserRouteTest);
+$("cancel-node-test").addEventListener("click",()=>{if(activeProbeController)activeProbeController.abort()});
 const visit=$("visit-count");
 fetch("https://page-views.count1.workers.dev",{mode:"cors",cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("counter");return r.text()}).then(v=>{visit.textContent=numberFormat.format(Number(v)||0)}).catch(()=>{visit.textContent="—"});
 const scrollButton=$("scrollTopBtn");let scrollQueued=false;
