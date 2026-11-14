@@ -89,7 +89,13 @@ with sync_playwright() as p:
             body=body,
         )
 
-    page.route("https://203.0.113.*/**", lambda route: route.fulfill(status=200, headers={"cache-control":"no-store"}, body="probe-ok"))
+    def user_route_probe(route):
+        if route.request.url.startswith("https://203.0.113."):
+            route.fulfill(status=200, headers={"cache-control": "no-store"}, body="probe-ok")
+        else:
+            route.fallback()
+
+    page.route("**/*", user_route_probe)
 
     response = page.goto(BASE + "sinavm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SiNAVM Ping page did not return HTTP 200")
@@ -115,10 +121,13 @@ with sync_playwright() as p:
 
     page.locator("#start-node-test").click()
     page.wait_for_function(
-        "document.querySelector('#user-probe-status')?.dataset.state === 'ok'",
+        "['ok', 'bad'].includes(document.querySelector('#user-probe-status')?.dataset.state)",
         timeout=15000,
     )
-    check("پاسخ HTTPS" in page.locator("#user-probe-status").inner_text(), "User-route probe did not report HTTPS reachability")
+    probe_status = page.locator("#user-probe-status").inner_text()
+    check(page.locator("#user-probe-status").get_attribute("data-state") == "ok",
+          "User-route probe did not complete successfully: " + probe_status + "; page errors: " + "; ".join(page_errors))
+    check("پاسخ HTTPS" in probe_status, "User-route probe did not report HTTPS reachability")
     check(page.locator("#user-probe-progress").evaluate("(el) => el.value") == 100, "User-route probe progress did not complete")
     check("زمان پاسخ HTTPS شما" in page.locator(".ping").first.inner_text(), "User-route latency was not shown on the config card")
     check("تأخیر اینترنت شما" in page.locator("#sortLabel").inner_text(), "Results were not switched to user-route latency sorting")
