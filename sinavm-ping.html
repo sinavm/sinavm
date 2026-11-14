@@ -195,7 +195,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 </div>
 <div class="network-status" id="network-status" data-state="idle" role="status" aria-live="polite">برای سنجش تأخیر و سرعت اتصال فعلی خودت، دکمهٔ شروع تست را بزن.</div>
 <div class="network-grid">
-<div class="network-stat"><strong id="client-latency">—</strong><small>میانگین تأخیر تا Cloudflare (ms)</small></div>
+<div class="network-stat"><strong id="client-latency">—</strong><small>میانهٔ تأخیر تا Cloudflare (ms)</small></div>
 <div class="network-stat"><strong id="client-download">—</strong><small>سرعت دانلود تقریبی (Mbps)</small></div>
 </div>
 <div class="network-actions">
@@ -583,11 +583,13 @@ async function runClientTest(){
  $("client-latency").textContent="…";$("client-download").textContent="…";
  status.dataset.state="idle";status.textContent="در حال اندازه‌گیری مسیر اتصال فعلی…";
  const endpoint="https://speed.cloudflare.com/__down?bytes=";
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),25000);
  try{
   const samples=[];
   for(let i=0;i<5;i++){
    const started=performance.now();
-   const response=await fetch(endpoint+"0&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit"});
+   const response=await fetch(endpoint+"0&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit",signal:controller.signal});
    if(!response.ok)throw new Error("probe failed");
    await response.arrayBuffer();
    samples.push(performance.now()-started);
@@ -609,7 +611,7 @@ async function runClientTest(){
   status.dataset.state="bad";
   status.textContent="تست کامل نشد؛ ممکن است شبکه، VPN یا محدودیت CORS دسترسی به سرور تست را مسدود کرده باشد. دوباره تلاش کن.";
   $("client-latency").textContent="—";$("client-download").textContent="—";
- }finally{button.disabled=false}
+ }finally{clearTimeout(timeout);button.disabled=false}
 }
 $("start-client-test").addEventListener("click",runClientTest);
 const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
