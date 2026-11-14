@@ -9,15 +9,16 @@ on:
       - "scripts/check_browser.py"
       - "scripts/check_svm_ping_browser.py"
       - "portfolio/**"
-      - "scripts/check_browser.py"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
   pull_request:
     branches: [main]
     paths:
       - "index.html"
-      - "portfolio/**"
+      - "svm-ping.html"
       - "scripts/check_browser.py"
+      - "scripts/check_svm_ping_browser.py"
+      - "portfolio/**"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
   workflow_dispatch:
