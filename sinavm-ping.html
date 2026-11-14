@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1224">
+<meta name="color-scheme" content="dark">
+<title>تست پینگ کانفیگ‌های SVM | SiNAVM</title>
+<meta name="description" content="مشاهده وضعیت کانفیگ‌های فعال SVM، تأخیر ثبت‌شده با sing-box، کشور سرور، پروتکل و کپی سریع کانفیگ‌ها در داشبورد تست SiNAVM.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://sinavm.github.io/sinavm/sinavm-ping.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:site_name" content="SiNAVM">
+<meta property="og:title" content="تست پینگ کانفیگ‌های SVM | SiNAVM">
+<meta property="og:description" content="وضعیت کانفیگ‌های تأییدشده SVM و تأخیر واقعی ثبت‌شده در تست sing-box.">
+<meta property="og:url" content="https://sinavm.github.io/sinavm/sinavm-ping.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{color-scheme:dark;--bg:#0b1224;--panel:rgba(20,31,54,.78);--line:rgba(255,255,255,.09);--muted:#9aa9c2;--text:#f5f8ff;--blue:#60a5fa;--cyan:#22d3ee;--green:#34d399;--purple:#a78bfa;--amber:#fbbf24;--red:#fb7185}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:auto}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,rgba(59,130,246,.22),transparent 38%),radial-gradient(ellipse at 95% 12%,rgba(139,92,246,.16),transparent 34%),var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{color:inherit}
+.top{height:58px;position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:center;gap:22px;background:rgba(11,18,36,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.top a{font-weight:800;display:flex;gap:9px;align-items:center;font-size:.86rem}
+.top i{color:var(--cyan)}
+main{width:min(100% - 28px,760px);margin:30px auto 60px;display:grid;gap:18px}
+.hero{text-align:center;padding:14px 12px 8px}
+.logo{width:78px;height:78px;border-radius:23px;object-fit:cover;border:1px solid var(--line);box-shadow:0 12px 45px #2563eb35}
+.eyebrow{color:var(--cyan);font-size:.82rem;font-weight:800;margin:13px 0 4px}
+h1{font-size:clamp(1.65rem,6vw,2.35rem);line-height:1.5;margin:0;font-weight:900;letter-spacing:-.7px}
+.hero p{color:var(--muted);line-height:2;margin:8px auto 0;max-width:590px;font-size:.91rem}
+.hero .hero-links{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:13px}
+.hero-links a{font-size:.76rem;color:#c7f9ff;border:1px solid #22d3ee35;background:#22d3ee0c;padding:7px 12px;border-radius:30px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:25px;padding:19px;box-shadow:0 18px 60px #02061730;backdrop-filter:blur(14px)}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.section-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#0891b226;color:var(--cyan);font-size:1.1rem;flex:none}
+.section-head h2{font-size:1.04rem;margin:0;font-weight:900}
+.section-head p{font-size:.75rem;color:var(--muted);margin:2px 0 0;line-height:1.8}
+.refresh-btn{margin-right:auto;flex:none;border:1px solid #22d3ee40;background:#0891b218;color:#a5f3fc;border-radius:11px;padding:8px 11px;font-size:.7rem;font-weight:800;cursor:pointer}
+.refresh-btn:disabled{opacity:.55;cursor:wait}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{border:1px solid var(--line);background:#ffffff06;border-radius:17px;padding:13px 10px;text-align:center;min-width:0}
+.stat i{display:block;color:var(--cyan);font-size:1.05rem;margin-bottom:6px}
+.stat strong{display:block;font-size:1.25rem;font-weight:900;direction:ltr}
+.stat small{display:block;color:var(--muted);font-size:.7rem;margin-top:3px}
+.health{display:flex;align-items:center;gap:9px;margin-top:13px;padding:10px 12px;border-radius:13px;background:#10b9810d;border:1px solid #10b98130;color:#a7f3d0;font-size:.77rem;line-height:1.8}
+.health[data-state="stale"]{background:#f59e0b0d;border-color:#f59e0b35;color:#fde68a}
+.health[data-state="bad"]{background:#fb71850d;border-color:#fb718535;color:#fecdd3}
+.health-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #34d399;flex:none}
+.health[data-state="stale"] .health-dot{background:var(--amber);box-shadow:0 0 12px #fbbf24}
+.health[data-state="bad"] .health-dot{background:var(--red);box-shadow:0 0 12px #fb7185}
+.test-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.7rem;margin-top:10px}
+.test-meta a{color:var(--cyan)}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.tab{border:1px solid var(--line);background:#ffffff06;border-radius:13px;padding:11px 12px;cursor:pointer;font-weight:800;font-size:.82rem;transition:.2s}
+.tab.active{background:linear-gradient(120deg,#2563eb55,#0891b255);border-color:#22d3ee70;color:#e0faff}
+.tab small{display:block;color:var(--muted);font-size:.66rem;font-weight:500;margin-top:2px}
+.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 155px;gap:9px;margin-bottom:12px}
+.search-wrap{position:relative}
+.search-wrap i{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem}
+.search-wrap input,.toolbar select{width:100%;height:44px;border:1px solid var(--line);background:#080f20a8;color:var(--text);border-radius:12px;padding:0 38px 0 12px;outline:none;font-size:.78rem}
+.toolbar select{padding:0 12px}
+.search-wrap input:focus,.toolbar select:focus{border-color:#22d3ee88}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px}
+.filter-chip{border:1px solid var(--line);background:#ffffff06;color:#cbd5e1;padding:6px 11px;border-radius:30px;font-size:.7rem;cursor:pointer}
+.filter-chip.active{background:#0891b226;border-color:#22d3ee75;color:#cffafe}
+.list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 12px}
+.list-head strong{font-size:.82rem}
+.list-head span{font-size:.69rem;color:var(--muted)}
+.list-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.sort-btn{border:1px solid #22d3ee40;background:#0891b218;color:#a5f3fc;border-radius:10px;padding:6px 9px;font-size:.66rem;cursor:pointer}
+.config-list{display:grid;gap:10px}
+.config{border:1px solid var(--line);background:linear-gradient(135deg,#ffffff09,#ffffff03);border-radius:18px;padding:13px;display:grid;gap:11px;min-width:0}
+.config-top{display:flex;align-items:center;gap:10px;min-width:0}
+.flag{width:44px;height:44px;border-radius:14px;background:#3b82f622;display:grid;place-items:center;font-size:1.55rem;flex:none;border:1px solid #60a5fa22}
+.file-info{min-width:0;flex:1}
+.file-info strong{display:block;font-size:.86rem;overflow-wrap:anywhere;line-height:1.7}
+.file-info small{display:block;color:var(--muted);font-size:.69rem;direction:ltr;text-align:right;overflow-wrap:anywhere;margin-top:2px}
+.ping{direction:ltr;text-align:center;min-width:82px;border:1px solid #10b98140;background:#10b98113;color:#86efac;border-radius:12px;padding:7px 8px;font-weight:900;font-size:.82rem;flex:none}
+.ping small{display:block;font-size:.58rem;font-weight:600;color:#a7f3d0;direction:rtl;margin-top:2px}
+.ping.unknown{background:#ffffff06;border-color:var(--line);color:var(--muted);font-size:.66rem;min-width:90px}
+.ping.unknown small{color:var(--muted)}
+.config-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tag{font-size:.65rem;padding:4px 8px;border-radius:30px;white-space:nowrap}
+.tag.protocol{color:#bfdbfe;background:#3b82f622;border:1px solid #60a5fa35}
+.tag.status{color:#86efac;background:#10b9811a;border:1px solid #10b98135}
+.tag.country{color:#c4b5fd;background:#8b5cf61a;border:1px solid #a78bfa35}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:0;border-radius:11px;padding:10px 11px;font:700 .76rem Vazirmatn,sans-serif;display:flex;justify-content:center;align-items:center;gap:7px;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.btn.primary{background:linear-gradient(120deg,#2563eb,#0891b2);color:#fff}
+.btn.secondary{background:#ffffff0c;color:#dbeafe;border:1px solid var(--line)}
+.details{display:none;background:#050b18a8;border:1px solid var(--line);border-radius:12px;padding:11px;direction:ltr;text-align:left}
+.details.open{display:block}
+.details code{display:block;color:#cbd5e1;font: .68rem/1.9 ui-monospace,monospace;overflow-wrap:anywhere;white-space:pre-wrap;user-select:text}
+.empty{padding:27px 12px;text-align:center;color:var(--muted);line-height:2;font-size:.82rem}
+.empty i{display:block;font-size:1.7rem;color:var(--blue);margin-bottom:9px}
+.notice{border:1px solid #f59e0b40;background:#f59e0b0d;color:#fcd38d;border-radius:15px;padding:12px 14px;font-size:.76rem;line-height:2;display:flex;gap:10px;align-items:flex-start}
+.notice i{margin-top:5px;color:#fbbf24}
+.footer{text-align:center;color:var(--muted);font-size:.73rem;line-height:2;padding:5px}
+.footer a{color:var(--cyan)}
+.network-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}
+.network-stat{border:1px solid var(--line);background:#ffffff06;border-radius:15px;padding:13px;text-align:center;min-width:0}
+.network-stat strong{display:block;font-size:1.25rem;font-weight:900;direction:ltr}
+.network-stat small{display:block;color:var(--muted);font-size:.68rem;margin-top:4px}
+.network-status{border:1px solid #60a5fa35;background:#3b82f20d;color:#bfdbfe;border-radius:13px;padding:11px 13px;font-size:.76rem;line-height:1.9;min-height:44px}
+.network-status[data-state="ok"]{border-color:#10b98140;background:#10b9810d;color:#a7f3d0}
+.network-status[data-state="bad"]{border-color:#fb718540;background:#fb71850d;color:#fecdd3}
+.network-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.network-btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(120deg,#2563eb,#0891b2);color:#fff;font:800 .78rem Vazirmatn,sans-serif;cursor:pointer}
+.network-btn:disabled{opacity:.55;cursor:wait}
+.network-note{color:var(--muted);font-size:.68rem;line-height:1.9;margin-top:10px}
+.load-more-wrap{display:flex;justify-content:center;padding-top:5px}
+.load-more{width:100%;border:1px solid #22d3ee55;background:#0891b21a;color:#cffafe;border-radius:13px;padding:12px 16px;font:800 .78rem Vazirmatn,sans-serif;cursor:pointer}
+.site-footer{text-align:center;color:var(--muted);font-size:.76rem;line-height:2.2;padding:15px 8px 24px;border-top:1px solid var(--line)}
+.site-footer a{color:var(--cyan);margin:0 5px}
+.floating-tg-btn,.scroll-top-btn{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;text-decoration:none}
+.floating-tg-btn{left:20px;background:linear-gradient(135deg,#229ED9,#1da1f2);color:#fff;font-size:1.6rem;box-shadow:0 5px 20px #229ed966}
+.scroll-top-btn{right:20px;background:#ffffff18;border:1px solid var(--line);color:var(--text);font-size:1.4rem;z-index:999;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s ease}
+.scroll-top-btn.visible{opacity:1;visibility:visible}
+@media(max-width:700px){.panel{-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 10px 28px #02061725}.top{-webkit-backdrop-filter:none;backdrop-filter:none}.btn:hover{transform:none}.floating-tg-btn{animation:none}.config{content-visibility:auto;contain-intrinsic-size:220px}}
+@media(max-width:420px){.floating-tg-btn,.scroll-top-btn{width:49px;height:49px;bottom:calc(14px + env(safe-area-inset-bottom))}.floating-tg-btn{left:14px}.scroll-top-btn{right:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#059669;color:#fff;padding:11px 18px;border-radius:13px;font-size:.8rem;font-weight:700;transition:.25s;z-index:20;box-shadow:0 8px 30px #0006;max-width:calc(100% - 24px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+@media(max-width:520px){main{width:min(100% - 20px,760px);margin-top:20px;gap:14px}.panel{padding:15px;border-radius:21px}.stats{gap:7px}.stat{padding:11px 6px}.stat strong{font-size:1.05rem}.stat small{font-size:.62rem}.toolbar{grid-template-columns:1fr 118px}.config{padding:11px}.flag{width:40px;height:40px}.ping{min-width:70px;padding:6px}.actions{grid-template-columns:1fr 1fr}.hero p{font-size:.84rem}}
+@media(max-width:360px){.config-top{flex-wrap:wrap}.ping{margin-right:auto}.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<nav class="top">
+<a href="https://sinavm.github.io/sinavm/"><i class="fa-solid fa-house"></i> صفحه اصلی</a>
+<a href="https://sinavm.github.io/SVM/" rel="noopener noreferrer"><i class="fa-solid fa-gauge-high"></i> داشبورد SVM</a>
+</nav>
+<main>
+<header class="hero">
+<img class="logo" src="https://sinavm.github.io/SVM/SEO_Logo.svg" alt="لوگوی SiNAVM" width="78" height="78">
+<div class="eyebrow">SVM · LIVE CONFIG DIAGNOSTICS</div>
+<h1>تست و پینگ <span style="color:var(--cyan)">کانفیگ‌های SVM</span></h1>
+<p>وضعیت کانفیگ‌های تأییدشده، کشور سرور و تأخیر ثبت‌شده در آخرین اجرای تست SVM را یک‌جا ببین؛ کانفیگ‌ها را جست‌وجو و با یک لمس کپی کن.</p>
+<div class="hero-links">
+<a href="https://github.com/sinavm/SVM" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> مخزن SVM</a>
+<a href="https://raw.githubusercontent.com/sinavm/SVM/main/lite/reports/test.json" rel="noopener noreferrer"><i class="fa-solid fa-file-waveform"></i> گزارش تست خام</a>
+</div>
+</header>
+
+<section class="panel" aria-labelledby="overview-title">
+<div class="section-head">
+<div class="section-icon"><i class="fa-solid fa-chart-line"></i></div>
+<div><h2 id="overview-title">وضعیت آخرین اجرای تست</h2><p>آمار مستقیماً از گزارش منتشرشده SVM خوانده می‌شود</p></div>
+</div>
+<div class="stats">
+<div class="stat"><i class="fa-solid fa-server"></i><strong id="stat-kept">—</strong><small>کانفیگ‌های سالم</small></div>
+<div class="stat"><i class="fa-solid fa-stopwatch"></i><strong id="stat-pings">—</strong><small>پینگ‌های برتر منتشرشده</small></div>
+<div class="stat"><i class="fa-solid fa-list-check"></i><strong id="stat-input">—</strong><small>ورودی‌های بررسی‌شده</small></div>
+</div>
+<div class="health" id="health" data-state="stale" role="status" aria-live="polite"><span class="health-dot"></span><strong id="health-text">در حال دریافت گزارش تست…</strong></div>
+<div class="test-meta"><span id="tested-at">آخرین تست: در حال بررسی</span><span id="engine">موتور تست: —</span></div>
+<div class="test-meta"><span id="feed-meta">فهرست کانفیگ‌ها: —</span><a href="https://raw.githubusercontent.com/sinavm/SVM/main/lite/reports/test.json" rel="noopener noreferrer">مشاهده گزارش کامل ↗</a></div>
+</section>
+
+<section class="panel" aria-labelledby="nodes-title">
+<div class="section-head">
+<div class="section-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+<div><h2 id="nodes-title">فهرست کانفیگ‌های تست‌شده</h2><p id="count">در حال دریافت کانفیگ‌های SVM…</p></div>
+<button class="refresh-btn" id="refreshData" type="button"><i class="fa-solid fa-rotate"></i> تازه‌سازی</button>
+</div>
+<div class="tabs" role="tablist" aria-label="نوع فهرست کانفیگ">
+<button class="tab active" type="button" data-feed="fast" role="tab" aria-selected="true">⚡ سریع (Fast)<small>انتخاب جمع‌وجور SVM</small></button>
+<button class="tab" type="button" data-feed="stable" role="tab" aria-selected="false">🛡 پایدار (Stable)<small>فهرست گسترده‌تر SVM</small></button>
+</div>
+<div class="toolbar">
+<label class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" placeholder="جست‌وجوی کشور، IP یا نام کانفیگ…" autocomplete="off" aria-label="جست‌وجوی کانفیگ"></label>
+<select id="protocolFilter" aria-label="فیلتر پروتکل"><option value="all">همه پروتکل‌ها</option></select>
+</div>
+<div class="filters" id="protocolChips" aria-label="فیلتر سریع پروتکل‌ها"></div>
+<div class="list-head"><strong id="list-title">کانفیگ‌های سریع</strong><div class="list-controls"><span id="visible-count">—</span><button class="sort-btn" id="sortBtn" type="button"><i class="fa-solid fa-arrow-down-short-wide"></i> <span id="sortLabel">مرتب‌سازی: کمترین تأخیر</span></button></div></div>
+<div class="config-list" id="configs" aria-live="polite">
+<div class="empty"><i class="fa-solid fa-spinner fa-spin"></i>در حال دریافت فهرست و گزارش تست…</div>
+</div>
+</section>
+
+<section class="panel" aria-labelledby="client-test-title">
+<div class="section-head">
+<div class="section-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+<div><h2 id="client-test-title">تست اینترنت همین دستگاه</h2><p>اندازه‌گیری از مرورگر و مسیر اتصال فعلی گوشی یا کامپیوتر</p></div>
+</div>
+<div class="network-status" id="network-status" data-state="idle" role="status" aria-live="polite">برای سنجش تأخیر و سرعت اتصال فعلی خودت، دکمهٔ شروع تست را بزن.</div>
+<div class="network-grid">
+<div class="network-stat"><strong id="client-latency">—</strong><small>میانگین تأخیر تا Cloudflare (ms)</small></div>
+<div class="network-stat"><strong id="client-download">—</strong><small>سرعت دانلود تقریبی (Mbps)</small></div>
+</div>
+<div class="network-actions">
+<button class="network-btn" id="start-client-test" type="button"><i class="fa-solid fa-play"></i> شروع تست اینترنت من</button>
+<span id="client-network-type" class="network-note"></span>
+</div>
+<div class="network-note">این تست از مسیر اینترنتی استفاده می‌کند که همین مرورگر در حال حاضر دارد؛ اگر VPN گوشی روشن باشد، درخواست‌ها از همان مسیر VPN عبور می‌کنند. این نتیجه، تست تک‌تک کانفیگ‌های فهرست نیست و فقط کیفیت اتصال فعلی دستگاه به نقطهٔ تست Cloudflare را می‌سنجد. هیچ کانفیگ، رمز یا اطلاعات شخصی ارسال نمی‌شود.</div>
+</section>
+
+<section class="panel">
+<div class="section-head">
+<div class="section-icon"><i class="fa-solid fa-circle-info"></i></div>
+<div><h2>روش اندازه‌گیری و دقت نتایج</h2><p>شفافیت درباره معنی پینگ و وضعیت هر کانفیگ</p></div>
+</div>
+<div class="notice"><i class="fa-solid fa-shield-halved"></i><div>تأخیرهای عددی از تست واقعی پروتکل با موتور <b>sing-box</b> و درخواست HTTP از مسیر تونل استخراج شده‌اند؛ این عدد <b>ICMP ping</b> نیست. SVM در گزارش عمومی فقط ۱۵ نتیجهٔ سریع‌تر را با زمان دقیق منتشر می‌کند. برای سایر کانفیگ‌های موجود در فهرست Fast/Stable، وضعیت تأییدشدن نمایش داده می‌شود و از ساختن عدد پینگ غیرواقعی خودداری شده است.</div></div>
+<div style="height:10px"></div>
+<div class="notice" style="border-color:#60a5fa35;background:#3b82f20d;color:#bfdbfe"><i class="fa-solid fa-flag"></i><div>پرچم کشور بر اساس اطلاعات جغرافیایی IP سرور به‌صورت تقریبی نمایش داده می‌شود؛ IPهای CDN و Anycast ممکن است کشوری متفاوت از محل واقعی اپراتور نشان دهند. برای تعیین کشور، فقط IP یا نام میزبان عمومی سرور به سرویس ipwho.is فرستاده می‌شود؛ اطلاعات محرمانه کانفیگ ارسال نمی‌شود.</div></div>
+</section>
+
+<footer class="site-footer">
+<div><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a> · <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" rel="noopener noreferrer">سیاست حریم خصوصی</a> · <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a></div>
+<div><a href="https://github.com/sinavm/sinavm" rel="noopener noreferrer">مخزن GitHub</a> · <a href="https://t.me/sinavm" rel="noopener noreferrer">Design & Config by SiNAVM</a></div>
+<div>بازدید کل: <span id="visit-count">...</span></div>
+</footer>
+</main>
+<a href="#" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا" aria-label="بازگشت به بالای صفحه"><i class="fa-solid fa-angle-double-up"></i></a>
+<a href="https://t.me/sinavm" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM"><i class="fa-brands fa-telegram"></i></a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+(function(){
+const BASE="https://raw.githubusercontent.com/sinavm/SVM/main/";
+const FEEDS={
+ fast:BASE+"lite/subscriptions/xray/normal/alive-fast",
+ stable:BASE+"lite/subscriptions/xray/normal/alive-stable"
+};
+const REPORT=BASE+"lite/reports/test.json";
+const GEO="https://ipwho.is/";
+const $=id=>document.getElementById(id);
+const numberFormat=new Intl.NumberFormat("fa-IR");
+let activeFeed="fast";
+let nodes=[];
+let report=null;
+let geoCache={};
+let sortFastest=true;
+let visibleLimit=7;
+const geoInFlight=new Set();
+let toastTimer=null;
+try{geoCache=JSON.parse(sessionStorage.getItem("svmPingGeoCache")||"{}")}catch(e){geoCache={}}
+
+function notify(message){
+ const el=$("toast");el.textContent=message;el.classList.add("show");
+ clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
+}
+function safeDate(value){
+ if(typeof value!=="string")return null;
+ const d=new Date(value);return Number.isNaN(d.getTime())?null:d;
+}
+function decodeBase64(value){
+ let s=String(value||"").replace(/-/g,"+").replace(/_/g,"/");
+ s=s.replace(/[^A-Za-z0-9+/=]/g,"");
+ while(s.length%4)s+="=";
+ const binary=atob(s);
+ const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));
+ return new TextDecoder().decode(bytes);
+}
+function parseNode(line,index){
+ const split=line.indexOf("://");
+ if(split<1)return null;
+ const protocol=line.slice(0,split).toLowerCase();
+ let host="",port="",remark="";
+ try{
+  if(protocol==="vmess"){
+   const raw=line.slice(split+3).split("#")[0];
+   const data=JSON.parse(decodeBase64(raw));
+   host=String(data.add||data.address||"");
+   port=String(data.port||"");
+   remark=String(data.ps||data.name||"");
+  }else{
+   let uri;
+   try{uri=new URL(line)}catch(e){uri=null}
+   if(uri){
+    host=uri.hostname||"";
+    port=uri.port||"";
+    try{remark=decodeURIComponent(uri.hash.slice(1))}catch(e){remark=uri.hash.slice(1)}
+   }
+   if(!host && protocol==="ss"){
+    const payload=line.slice(split+3).split("#")[0];
+    const decoded=decodeBase64(payload);
+    const match=decoded.match(/@(\[[^\]]+\]|[^:/?#]+):(\d+)/);
+    if(match){host=match[1].replace(/^\[|\]$/g,"");port=match[2]}
+   }
+  }
+ }catch(e){return null}
+ if(!host)return null;
+ if(!port)port="443";
+ const flagMatch=remark.match(/(?:\uD83C[\uDDE6-\uDDFF]){2}/);
+ return {
+  id:"node-"+index,
+  index:index,
+  line:line,
+  protocol:protocol,
+  host:host,
+  port:port,
+  remark:remark,
+  name:remark||protocol.toUpperCase()+" · "+host,
+  flag:flagMatch?flagMatch[0]:"",
+  country:"",
+  ping:null,
+  pingCount:0
+ };
+}
+function hostKey(host){return String(host||"").toLowerCase().replace(/^\[|\]$/g,"")}
+function attachPings(items,data){
+ const map=new Map();
+ const fastest=Array.isArray(data&&data.fastest)?data.fastest:[];
+ fastest.forEach(entry=>{
+  if(!entry||!entry.host||!entry.type||!Number.isFinite(Number(entry.delay)))return;
+  const key=String(entry.type).toLowerCase()+"|"+hostKey(entry.host);
+  if(!map.has(key))map.set(key,[]);
+  map.get(key).push(Number(entry.delay));
+ });
+ items.forEach(node=>{
+  const key=node.protocol+"|"+hostKey(node.host);
+  const matches=map.get(key)||[];
+  if(matches.length){
+   node.ping=Math.min.apply(null,matches);
+   node.pingCount=matches.length;
+  }
+ });
+}
+function parseFeed(text){
+ const lines=String(text||"").split(/\r?\n/);
+ const announce=lines.find(line=>line.startsWith("#announce:"))||"";
+ const match=announce.match(/nodes=(\d+).*updated=([^\s]+)/);
+ const data=lines.map((line,index)=>parseNode(line.trim(),index)).filter(Boolean);
+ return {items:data,announce:match?{count:Number(match[1]),updated:match[2]}:null};
+}
+function flagFromCode(code){
+ if(!/^[A-Z]{2}$/.test(String(code||"")))return "";
+ return String.fromCodePoint(127397+code.charCodeAt(0),127397+code.charCodeAt(1));
+}
+async function lookupGeo(host){
+ const target=String(host||"").replace(/^\[|\]$/g,"");
+ const cached=geoCache[target];
+ if(cached&&Date.now()-cached.time<7*24*60*60*1000)return cached.data;
+ if(!/^[0-9a-f:.]+$/i.test(target)&&!/^[a-z0-9.-]+$/i.test(target))return null;
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),5500);
+ try{
+  const response=await fetch(GEO+encodeURIComponent(target),{signal:controller.signal,cache:"no-store"});
+  if(!response.ok)throw new Error("geo "+response.status);
+  const data=await response.json();
+  if(!data||data.success!==true||!data.country_code)return null;
+  const result={flag:(data.flag&&data.flag.emoji)||flagFromCode(data.country_code),country:data.country||data.country_code};
+  geoCache[target]={time:Date.now(),data:result};
+  try{sessionStorage.setItem("svmPingGeoCache",JSON.stringify(geoCache))}catch(e){}
+  return result;
+ }catch(e){return null}
+ finally{clearTimeout(timer)}
+}
+async function enrichCountries(items){
+ const unique=[...new Set(items.filter(n=>!n.country&&n.host).map(n=>n.host))]
+  .filter(host=>!geoInFlight.has(host));
+ if(!unique.length)return;
+ unique.forEach(host=>geoInFlight.add(host));
+ let cursor=0;
+ const workers=Array.from({length:2},async()=>{
+  while(cursor<unique.length){
+   const host=unique[cursor++];
+   const result=await lookupGeo(host);
+   nodes.filter(n=>n.host===host).forEach(n=>{
+    if(result){n.flag=n.flag||result.flag||"";n.country=result.country||"نامشخص"}
+    else{n.country=n.country||"نامشخص"}
+   });
+   geoInFlight.delete(host);
+  }
+ });
+ await Promise.all(workers);
+ render();
+}
+function formatDate(value){
+ const d=safeDate(value);
+ return d?new Intl.DateTimeFormat("fa-IR",{dateStyle:"medium",timeStyle:"short"}).format(d):"نامشخص";
+}
+function setText(id,value){$(id).textContent=value}
+function updateReport(data){
+ report=data||null;
+ if(!data){
+  $("health").dataset.state="bad";
+  setText("health-text","گزارش تست SVM در دسترس نیست؛ وضعیت فهرست به‌تنهایی نمایش داده می‌شود.");
+  setText("tested-at","آخرین تست: نامشخص");setText("engine","موتور تست: —");
+  setText("stat-kept","—");setText("stat-pings","—");setText("stat-input","—");
+  return;
+ }
+ setText("stat-kept",numberFormat.format(Number(data.kept)||0));
+ setText("stat-pings",numberFormat.format(Array.isArray(data.fastest)?data.fastest.length:0));
+ setText("stat-input",numberFormat.format(Number(data.input)||0));
+ const tested=safeDate(data.tested_at);
+ const age=tested?Date.now()-tested.getTime():Infinity;
+ const stale=age>24*60*60*1000;
+ $("health").dataset.state=data.infra_ok===true?(stale?"stale":"fresh"):"bad";
+ setText("health-text",data.infra_ok===true?(stale?"آخرین تست موفق است، اما گزارش بیش از ۲۴ ساعت قدمت دارد.":"زیرساخت تست SVM سالم است؛ گزارش معتبر دریافت شد."):"زیرساخت تست در آخرین گزارش نیازمند بررسی است.");
+ setText("tested-at","آخرین تست: "+formatDate(data.tested_at));
+ setText("engine","موتور تست: "+String(data.engine||"نامشخص"));
+}
+function make(tag,className,text){
+ const el=document.createElement(tag);
+ if(className)el.className=className;
+ if(text!==undefined)el.textContent=text;
+ return el;
+}
+function render(){
+ const list=$("configs");
+ const query=$("search").value.trim().toLocaleLowerCase();
+ const protocol=$("protocolFilter").value;
+ let filtered=nodes.filter(node=>{
+  const matchesProtocol=protocol==="all"||node.protocol===protocol;
+  const haystack=(node.name+" "+node.host+" "+node.port+" "+node.country+" "+node.protocol).toLocaleLowerCase();
+  return matchesProtocol&&(!query||haystack.includes(query));
+ });
+ if(sortFastest){
+  filtered=filtered.slice().sort((a,b)=>{
+   if(a.ping!==null&&b.ping!==null)return a.ping-b.ping;
+   if(a.ping!==null)return -1;
+   if(b.ping!==null)return 1;
+   return a.index-b.index;
+  });
+ }else filtered=filtered.slice().sort((a,b)=>a.index-b.index);
+ setText("visible-count",numberFormat.format(filtered.length)+" مورد");
+ list.replaceChildren();
+ if(!filtered.length){
+  const empty=make("div","empty");
+  const icon=make("i","fa-regular fa-folder-open");
+  empty.append(icon,document.createTextNode("موردی با این فیلتر پیدا نشد."));
+  list.append(empty);return;
+ }
+ const shown=filtered.slice(0,visibleLimit);
+ shown.forEach(node=>{
+  const card=make("article","config");
+  const top=make("div","config-top");
+  const flag=make("div","flag",node.flag||"🌐");
+  flag.setAttribute("aria-label",node.country||"کشور نامشخص");
+  const info=make("div","file-info");
+  info.append(make("strong","",node.name));
+  info.append(make("small","",node.host+":"+node.port));
+  const ping=make("div","ping"+(node.ping===null?" unknown":""));
+  if(node.ping===null){
+   ping.append(document.createTextNode("—"));
+   ping.append(make("small","", "پینگ منتشر نشده"));
+  }else{
+   ping.append(document.createTextNode(numberFormat.format(node.ping)+" ms"));
+   ping.append(make("small","",node.pingCount>1?"بهترین تأخیر میزبان":"تأخیر ثبت‌شده میزبان"));
+  }
+  top.append(flag,info,ping);
+  const meta=make("div","config-meta");
+  meta.append(make("span","tag protocol",node.protocol.toUpperCase()));
+  meta.append(make("span","tag status","✓ تأییدشده در خروجی SVM"));
+  meta.append(make("span","tag country",node.country||"کشور در حال شناسایی"));
+  const actions=make("div","actions");
+  const copy=make("button","btn primary","کپی کانفیگ");
+  copy.type="button";copy.dataset.copyId=node.id;
+  copy.prepend(make("i","fa-regular fa-copy"));
+  const detailsBtn=make("button","btn secondary","نمایش کانفیگ");
+  detailsBtn.type="button";detailsBtn.dataset.detailsId=node.id;
+  detailsBtn.prepend(make("i","fa-solid fa-code"));
+  actions.append(copy,detailsBtn);
+  const details=make("div","details");
+  details.dataset.detailBox=node.id;
+  const code=make("code","",node.line);
+  details.append(code);
+  card.append(top,meta,actions,details);
+  list.append(card);
+ });
+ if(filtered.length>shown.length){
+  const wrap=make("div","load-more-wrap");
+  const more=make("button","load-more","نمایش بیشتر · "+numberFormat.format(filtered.length-shown.length)+" کانفیگ دیگر");
+  more.type="button";more.dataset.more="true";
+  wrap.append(more);list.append(wrap);
+ }
+ enrichCountries(shown);
+}
+function updateProtocolFilters(){
+ const select=$("protocolFilter");
+ const selected=select.value;
+ const types=[...new Set(nodes.map(n=>n.protocol))].sort();
+ select.replaceChildren();
+ const all=document.createElement("option");all.value="all";all.textContent="همه پروتکل‌ها";select.append(all);
+ types.forEach(type=>{const option=document.createElement("option");option.value=type;option.textContent=type.toUpperCase();select.append(option)});
+ select.value=types.includes(selected)?selected:"all";
+ const chips=$("protocolChips");chips.replaceChildren();
+ const addChip=(value,label)=>{
+  const b=make("button","filter-chip"+(select.value===value?" active":""),label);
+  b.type="button";b.dataset.protocol=value;chips.append(b);
+ };
+ addChip("all","همه");
+ types.forEach(type=>addChip(type,type.toUpperCase()));
+}
+async function copyText(value){
+ try{
+  if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value)}
+  else{
+   const area=document.createElement("textarea");area.value=value;area.style.position="fixed";area.style.opacity="0";
+   document.body.append(area);area.select();
+   const ok=document.execCommand("copy");area.remove();if(!ok)throw new Error("copy failed");
+  }
+  notify("کانفیگ با موفقیت کپی شد");
+ }catch(e){notify("کپی خودکار در دسترس نیست؛ کانفیگ را از بخش نمایش انتخاب کن.")}
+}
+async function loadData(){
+ const refresh=$("refreshData");
+ if(refresh)refresh.disabled=true;
+ setText("count","در حال دریافت فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+"…");
+ $("configs").replaceChildren(make("div","empty","در حال دریافت اطلاعات از SVM…"));
+ try{
+  const results=await Promise.allSettled([
+   fetch(FEEDS[activeFeed]+"?ts="+Date.now(),{cache:"no-store"}),
+   fetch(REPORT+"?ts="+Date.now(),{cache:"no-store"})
+  ]);
+  if(results[0].status!=="fulfilled"||!results[0].value.ok)throw new Error("فهرست کانفیگ دریافت نشد");
+  const feedText=await results[0].value.text();
+  const parsed=parseFeed(feedText);
+  if(!parsed.items.length)throw new Error("فهرست خالی یا نامعتبر است");
+  nodes=parsed.items;
+  if(results[1].status==="fulfilled"&&results[1].value.ok){
+   try{updateReport(await results[1].value.json())}catch(e){updateReport(null)}
+  }else updateReport(null);
+  attachPings(nodes,report);
+  updateProtocolFilters();
+  const feedDate=parsed.announce&&parsed.announce.updated?formatDate(parsed.announce.updated):"نامشخص";
+  visibleLimit=7;
+  setText("count",numberFormat.format(nodes.length)+" کانفیگ در فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+" SVM");
+  setText("feed-meta","آخرین به‌روزرسانی فهرست: "+feedDate+" · "+(parsed.announce?numberFormat.format(parsed.announce.count)+" نود اعلام‌شده":"تعداد اعلام‌نشده"));
+  setText("list-title",activeFeed==="fast"?"کانفیگ‌های سریع":"کانفیگ‌های پایدار");
+  render();
+  enrichCountries(nodes);
+ }catch(error){
+  setText("count","دریافت اطلاعات با مشکل روبه‌رو شد");
+  $("configs").replaceChildren(make("div","empty","دریافت فهرست کانفیگ‌ها ممکن نشد. اتصال اینترنت را بررسی کن و دوباره تازه‌سازی کن."));
+  $("health").dataset.state="bad";
+  setText("health-text","اتصال به منابع داده SVM برقرار نشد.");
+  setText("feed-meta","منبع داده: مخزن رسمی SVM");
+ }finally{
+  if(refresh)refresh.disabled=false;
+ }
+}
+$("refreshData").addEventListener("click",loadData);
+document.querySelectorAll("[data-feed]").forEach(button=>{
+ button.addEventListener("click",()=>{
+  if(activeFeed===button.dataset.feed)return;
+  activeFeed=button.dataset.feed;
+  document.querySelectorAll("[data-feed]").forEach(b=>{const active=b.dataset.feed===activeFeed;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active))});
+  $("search").value="";$("protocolFilter").value="all";
+  loadData();
+ });
+});
+$("search").addEventListener("input",()=>{visibleLimit=7;render()});
+$("protocolFilter").addEventListener("change",()=>{
+ visibleLimit=7;
+ document.querySelectorAll("[data-protocol]").forEach(b=>b.classList.toggle("active",b.dataset.protocol===$("protocolFilter").value));
+ render();
+});
+$("protocolChips").addEventListener("click",event=>{
+ const button=event.target.closest("[data-protocol]");if(!button)return;
+ visibleLimit=7;
+ $("protocolFilter").value=button.dataset.protocol;
+ document.querySelectorAll("[data-protocol]").forEach(b=>b.classList.toggle("active",b===button));
+ render();
+});
+$("configs").addEventListener("click",event=>{
+ const more=event.target.closest("[data-more]");
+ if(more){visibleLimit+=7;render();return}
+ const copy=event.target.closest("[data-copy-id]");
+ if(copy){const node=nodes.find(n=>n.id===copy.dataset.copyId);if(node)copyText(node.line);return}
+ const detail=event.target.closest("[data-details-id]");
+ if(detail){
+  const box=$("configs").querySelector('[data-detail-box="'+detail.dataset.detailsId+'"]');
+  if(box){const open=box.classList.toggle("open");detail.lastChild.textContent=open?"بستن کانفیگ":"نمایش کانفیگ"}
+ }
+});
+$("sortBtn").addEventListener("click",()=>{sortFastest=!sortFastest;setText("sortLabel",sortFastest?"مرتب‌سازی: کمترین تأخیر":"مرتب‌سازی: ترتیب SVM");render()});
+async function runClientTest(){
+ const button=$("start-client-test"),status=$("network-status");
+ button.disabled=true;
+ $("client-latency").textContent="…";$("client-download").textContent="…";
+ status.dataset.state="idle";status.textContent="در حال اندازه‌گیری مسیر اتصال فعلی…";
+ const endpoint="https://speed.cloudflare.com/__down?bytes=";
+ try{
+  const samples=[];
+  for(let i=0;i<5;i++){
+   const started=performance.now();
+   const response=await fetch(endpoint+"0&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit"});
+   if(!response.ok)throw new Error("probe failed");
+   await response.arrayBuffer();
+   samples.push(performance.now()-started);
+  }
+  samples.sort((a,b)=>a-b);
+  const median=samples[Math.floor(samples.length/2)];
+  $("client-latency").textContent=numberFormat.format(Math.round(median));
+  status.textContent="تأخیر اتصال اندازه‌گیری شد؛ در حال سنجش سرعت دانلود…";
+  const bytes=1000000,started=performance.now();
+  const response=await fetch(endpoint+bytes+"&sinavm="+Date.now(),{mode:"cors",cache:"no-store",credentials:"omit"});
+  if(!response.ok)throw new Error("download test failed");
+  const payload=await response.arrayBuffer();
+  const seconds=(performance.now()-started)/1000;
+  const mbps=(payload.byteLength*8/1000000)/Math.max(seconds,.001);
+  $("client-download").textContent=numberFormat.format(Number(mbps.toFixed(2)));
+  status.dataset.state="ok";
+  status.textContent="تست اتصال دستگاه کامل شد؛ تأخیر، میانهٔ ۵ درخواست و سرعت دانلود، برآورد مرورگری است.";
+ }catch(error){
+  status.dataset.state="bad";
+  status.textContent="تست کامل نشد؛ ممکن است شبکه، VPN یا محدودیت CORS دسترسی به سرور تست را مسدود کرده باشد. دوباره تلاش کن.";
+  $("client-latency").textContent="—";$("client-download").textContent="—";
+ }finally{button.disabled=false}
+}
+$("start-client-test").addEventListener("click",runClientTest);
+const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+$("client-network-type").textContent=connection&&connection.effectiveType?"نوع اتصال گزارش‌شده توسط مرورگر: "+connection.effectiveType:"نوع شبکه توسط مرورگر گزارش نمی‌شود.";
+const visit=$("visit-count");
+fetch("https://page-views.count1.workers.dev",{mode:"cors",cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("counter");return r.text()}).then(v=>{visit.textContent=numberFormat.format(Number(v)||0)}).catch(()=>{visit.textContent="—"});
+const scrollButton=$("scrollTopBtn");let scrollQueued=false;
+window.addEventListener("scroll",()=>{
+ if(scrollQueued)return;scrollQueued=true;
+ requestAnimationFrame(()=>{scrollButton.classList.toggle("visible",window.scrollY>300);scrollQueued=false});
+},{passive:true});
+scrollButton.addEventListener("click",event=>{event.preventDefault();window.scrollTo({top:0,behavior:"auto"})});
+loadData();
+})();
+</script>
+</body>
+</html>
