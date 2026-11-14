@@ -293,18 +293,19 @@ function flagFromCode(code){
  return String.fromCodePoint(127397+code.charCodeAt(0),127397+code.charCodeAt(1));
 }
 async function lookupGeo(host){
- const cached=geoCache[host];
+ const target=String(host||"").replace(/^\[|\]$/g,"");
+ const cached=geoCache[target];
  if(cached&&Date.now()-cached.time<7*24*60*60*1000)return cached.data;
- if(!/^[0-9a-f:.]+$/i.test(host))return null;
+ if(!/^[0-9a-f:.]+$/i.test(target)&&!/^[a-z0-9.-]+$/i.test(target))return null;
  const controller=new AbortController();
  const timer=setTimeout(()=>controller.abort(),5500);
  try{
-  const response=await fetch(GEO+encodeURIComponent(host),{signal:controller.signal,cache:"no-store"});
+  const response=await fetch(GEO+encodeURIComponent(target),{signal:controller.signal,cache:"no-store"});
   if(!response.ok)throw new Error("geo "+response.status);
   const data=await response.json();
   if(!data||data.success!==true||!data.country_code)return null;
   const result={flag:(data.flag&&data.flag.emoji)||flagFromCode(data.country_code),country:data.country||data.country_code};
-  geoCache[host]={time:Date.now(),data:result};
+  geoCache[target]={time:Date.now(),data:result};
   try{sessionStorage.setItem("svmPingGeoCache",JSON.stringify(geoCache))}catch(e){}
   return result;
  }catch(e){return null}
