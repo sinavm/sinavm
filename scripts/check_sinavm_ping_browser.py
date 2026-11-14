@@ -89,13 +89,16 @@ with sync_playwright() as p:
             body=body,
         )
 
-    def user_route_probe(route):
-        if route.request.url.startswith("https://203.0.113."):
-            route.fulfill(status=200, headers={"cache-control": "no-store"}, body="probe-ok")
-        else:
-            route.fallback()
-
-    page.route("**/*", user_route_probe)
+    page.add_init_script("""() => {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = (input, init) => {
+            const url = typeof input === "string" ? input : input.url;
+            if (url.startsWith("https://203.0.113.")) {
+                return Promise.resolve(new Response(null, {status: 200}));
+            }
+            return nativeFetch(input, init);
+        };
+    }""")
 
     response = page.goto(BASE + "sinavm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SiNAVM Ping page did not return HTTP 200")
