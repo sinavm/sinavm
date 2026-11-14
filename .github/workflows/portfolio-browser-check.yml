@@ -6,8 +6,10 @@ on:
     paths:
       - "index.html"
       - "svm-ping.html"
+      - "sinavm-ping.html"
       - "scripts/check_browser.py"
       - "scripts/check_svm_ping_browser.py"
+      - "scripts/check_sinavm_ping_browser.py"
       - "portfolio/**"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
@@ -16,8 +18,10 @@ on:
     paths:
       - "index.html"
       - "svm-ping.html"
+      - "sinavm-ping.html"
       - "scripts/check_browser.py"
       - "scripts/check_svm_ping_browser.py"
+      - "scripts/check_sinavm_ping_browser.py"
       - "portfolio/**"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
@@ -47,10 +51,10 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8766/svm-ping.html >/dev/null 2>&1; then break; fi
+            if curl -fsS http://127.0.0.1:8766/sinavm-ping.html >/dev/null 2>&1; then break; fi
             sleep 1
           done
-          SITE_BASE_URL=http://127.0.0.1:8766/ python scripts/check_svm_ping_browser.py
+          SITE_BASE_URL=http://127.0.0.1:8766/ python scripts/check_sinavm_ping_browser.py
       - name: Serve static site and run browser checks
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/portfolio-http.log 2>&1 &
