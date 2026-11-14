@@ -39,8 +39,6 @@ jobs:
           python-version: "3.12"
       - name: Install locked checker dependencies
         run: python -m pip install --require-hashes -r requirements-checks.txt
-      - name: Validate HTML, links and metadata
-        run: python scripts/check_portfolio.py
       - name: Check portfolio JavaScript syntax
         run: node --check portfolio/assets/js/portfolio.v1.js
       - name: Check SVM ping dashboard JavaScript syntax
@@ -55,3 +53,5 @@ jobs:
           Path("/tmp/svm-ping.js").write_text(scripts[0], encoding="utf-8")
           PY
           node --check /tmp/svm-ping.js
+      - name: Validate HTML, links and metadata
+        run: python scripts/check_portfolio.py
