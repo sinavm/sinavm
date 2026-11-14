@@ -36,7 +36,7 @@ with sync_playwright() as p:
     page.on("pageerror", lambda error: page_errors.append(str(error)))
     response = page.goto(PORTFOLIO, wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "desktop: portfolio did not return HTTP 200")
-    page.locator("#main-content h1").wait_for()
+    page.locator("main h1").wait_for()
     check(page.locator("#primary-navigation").is_visible(), "desktop: primary navigation should be visible")
     check(not page.locator("#menu-toggle").is_visible(), "desktop: mobile menu toggle should be hidden")
     check(page.locator("#lang-toggle").is_visible(), "desktop: language toggle should be visible")

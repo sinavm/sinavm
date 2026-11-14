@@ -47,7 +47,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8766/svm-ping.html >/dev/null; then break; fi
+            if curl -fsS http://127.0.0.1:8766/svm-ping.html >/dev/null 2>&1; then break; fi
             sleep 1
           done
           SITE_BASE_URL=http://127.0.0.1:8766/ python scripts/check_svm_ping_browser.py
@@ -57,7 +57,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8765/ >/dev/null; then break; fi
+            if curl -fsS http://127.0.0.1:8765/ >/dev/null 2>&1; then break; fi
             sleep 1
           done
           SITE_BASE_URL=http://127.0.0.1:8765/ python scripts/check_browser.py
