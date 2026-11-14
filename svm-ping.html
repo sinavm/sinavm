@@ -72,6 +72,8 @@ h1{font-size:clamp(1.65rem,6vw,2.35rem);line-height:1.5;margin:0;font-weight:900
 .list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 12px}
 .list-head strong{font-size:.82rem}
 .list-head span{font-size:.69rem;color:var(--muted)}
+.list-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.sort-btn{border:1px solid #22d3ee40;background:#0891b218;color:#a5f3fc;border-radius:10px;padding:6px 9px;font-size:.66rem;cursor:pointer}
 .config-list{display:grid;gap:10px}
 .config{border:1px solid var(--line);background:linear-gradient(135deg,#ffffff09,#ffffff03);border-radius:18px;padding:13px;display:grid;gap:11px;min-width:0}
 .config-top{display:flex;align-items:center;gap:10px;min-width:0}
@@ -155,7 +157,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <select id="protocolFilter" aria-label="فیلتر پروتکل"><option value="all">همه پروتکل‌ها</option></select>
 </div>
 <div class="filters" id="protocolChips" aria-label="فیلتر سریع پروتکل‌ها"></div>
-<div class="list-head"><strong id="list-title">کانفیگ‌های سریع</strong><span id="visible-count">—</span></div>
+<div class="list-head"><strong id="list-title">کانفیگ‌های سریع</strong><div class="list-controls"><span id="visible-count">—</span><button class="sort-btn" id="sortBtn" type="button"><i class="fa-solid fa-arrow-down-short-wide"></i> <span id="sortLabel">مرتب‌سازی: کمترین تأخیر</span></button></div></div>
 <div class="config-list" id="configs" aria-live="polite">
 <div class="empty"><i class="fa-solid fa-spinner fa-spin"></i>در حال دریافت فهرست و گزارش تست…</div>
 </div>
@@ -502,7 +504,7 @@ $("configs").addEventListener("click",event=>{
   if(box){const open=box.classList.toggle("open");detail.lastChild.textContent=open?"بستن کانفیگ":"نمایش کانفیگ"}
  }
 });
-$("sortBtn")?.addEventListener("click",()=>{sortFastest=!sortFastest;render()});
+$("sortBtn").addEventListener("click",()=>{sortFastest=!sortFastest;setText("sortLabel",sortFastest?"مرتب‌سازی: کمترین تأخیر":"مرتب‌سازی: ترتیب SVM");render()});
 loadData();
 })();
 </script>
