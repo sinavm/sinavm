@@ -395,7 +395,7 @@ function render(){
    ping.append(make("small","", "پینگ منتشر نشده"));
   }else{
    ping.append(document.createTextNode(numberFormat.format(node.ping)+" ms"));
-   ping.append(make("small","",node.pingCount>1?"بهترین تأخیر میزبان":"تأخیر گزارش‌شده"));
+   ping.append(make("small","",node.pingCount>1?"بهترین تأخیر میزبان":"تأخیر ثبت‌شده میزبان"));
   }
   top.append(flag,info,ping);
   const meta=make("div","config-meta");
