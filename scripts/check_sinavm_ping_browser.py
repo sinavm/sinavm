@@ -80,7 +80,7 @@ with sync_playwright() as p:
     )
 
     def cloudflare(route):
-        body = b"" if "bytes=0" in route.request.url else b"x" * 1_000_000
+        body = b"x" * 1000 if "bytes=1000" in route.request.url else b"x" * 1_000_000
         route.fulfill(
             status=200,
             headers={"access-control-allow-origin": "*", "cache-control": "no-store"},
