@@ -284,6 +284,8 @@ function parseNode(line,index){
     host=uri.hostname||"";
     port=uri.port||"";
     try{remark=decodeURIComponent(uri.hash.slice(1))}catch(e){remark=uri.hash.slice(1)}
+    security=String(uri.searchParams.get("security")||"").toLowerCase();
+    network=String(uri.searchParams.get("type")||uri.searchParams.get("network")||"tcp").toLowerCase();
    }
    if(!host && protocol==="ss"){
     const payload=line.slice(split+3).split("#")[0];
@@ -304,11 +306,14 @@ function parseNode(line,index){
   host:host,
   port:port,
   remark:remark,
+  security:security,
+  network:network,
   name:remark||protocol.toUpperCase()+" · "+host,
   flag:flagMatch?flagMatch[0]:"",
   country:"",
   ping:null,
-  pingCount:0
+  pingCount:0,
+  clientProbe:null
  };
 }
 function hostKey(host){return String(host||"").toLowerCase().replace(/^\[|\]$/g,"")}
