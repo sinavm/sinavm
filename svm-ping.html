@@ -318,9 +318,10 @@ async function enrichCountries(items){
   while(cursor<unique.length){
    const host=unique[cursor++];
    const result=await lookupGeo(host);
-   if(result){
-    items.filter(n=>n.host===host&&!n.flag).forEach(n=>{n.flag=n.flag||result.flag||"";n.country=result.country||""});
-   }
+   items.filter(n=>n.host===host).forEach(n=>{
+    if(result){n.flag=n.flag||result.flag||"";n.country=result.country||"نامشخص"}
+    else{n.country=n.country||"نامشخص"}
+   });
    render();
   }
  });
