@@ -89,7 +89,7 @@ with sync_playwright() as p:
             body=body,
         )
 
-    page.route("https://speed.cloudflare.com/**", cloudflare)
+    page.route("https://203.0.113.*/**", lambda route: route.fulfill(status=200, headers={"cache-control":"no-store"}, body="probe-ok"))
 
     response = page.goto(BASE + "sinavm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SiNAVM Ping page did not return HTTP 200")
@@ -113,13 +113,15 @@ with sync_playwright() as p:
     check(page.locator("#configs .config").count() == 1, "IP search did not filter results")
     page.locator("#search").fill("")
 
-    page.locator("#start-client-test").click()
+    page.locator("#start-node-test").click()
     page.wait_for_function(
-        "document.querySelector('#network-status')?.dataset.state === 'ok'",
-        timeout=10000,
+        "document.querySelector('#user-probe-status')?.dataset.state === 'ok'",
+        timeout=15000,
     )
-    check(page.locator("#client-latency").inner_text() != "—", "Client latency test did not return a result")
-    check(page.locator("#client-download").inner_text() != "—", "Client download test did not return a result")
+    check("پاسخ HTTPS" in page.locator("#user-probe-status").inner_text(), "User-route probe did not report HTTPS reachability")
+    check(page.locator("#user-probe-progress").evaluate("(el) => el.value") == 100, "User-route probe progress did not complete")
+    check("زمان پاسخ HTTPS شما" in page.locator(".ping").first.inner_text(), "User-route latency was not shown on the config card")
+    check("تأخیر اینترنت شما" in page.locator("#sortLabel").inner_text(), "Results were not switched to user-route latency sorting")
 
     no_horizontal_overflow(page, "390px Android layout")
     check(
