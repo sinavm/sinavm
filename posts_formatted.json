@@ -1,5 +1,20 @@
 [
   {
+    "id": 5288,
+    "text": "",
+    "preview": "پست جدید",
+    "title": "پست جدید",
+    "date": 1794642477,
+    "date_label": "2026-11-14 07:47",
+    "link": "https://t.me/sinavm/5288",
+    "media": {
+      "type": "photo",
+      "filename": "5288.jpg",
+      "url": "media/5288.jpg",
+      "download_url": "https://sinavm.github.io/sinavm/media/5288.jpg"
+    }
+  },
+  {
     "id": 5285,
     "text": "پایان پروژه ملی‌شکن تقدیم به تمام هموطنان\nدانلود مستقیم و بدون واسطه\nبدون نیاز به تلگرام و داشتن قندشکن\nهمراه با آموزش تصویری\nروی (لینک) بزنید وارد میشید\nhttps://sinavm.github.io/sinavm/melishekan.html\nGithub",
     "preview": "کانفیگ NV",
@@ -140,24 +155,6 @@
       "filename": "5275.jpg",
       "url": "media/5275.jpg",
       "download_url": "https://sinavm.github.io/sinavm/media/5275.jpg"
-    }
-  },
-  {
-    "id": 5274,
-    "text": "کانفیگ کاستوم http custom\nملی شکن و ضدفیلتر\nنصب:   اندروید آموزش\nبرنامه رو بروزرسانی کنید\nنسخه آیفون موجود نمی‌باشد",
-    "preview": "کانفیگ HTTP Custom",
-    "title": "کانفیگ HTTP Custom",
-    "date": 1793808946,
-    "date_label": "2026-11-04 16:15",
-    "link": "https://t.me/sinavm/5274",
-    "media": {
-      "type": "document",
-      "filename": "@SiNAVM کانال تلگرام.hc",
-      "original_name": "@SiNAVM کانال تلگرام.hc",
-      "url": "media/5274.hc",
-      "download_url": "https://sinavm.github.io/sinavm/media/5274.hc",
-      "size": 85231,
-      "kind": "HTTP Custom"
     }
   }
 ]
