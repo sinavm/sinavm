@@ -33,7 +33,9 @@ with sync_playwright() as p:
     page = context.new_page()
     home_html = Path("index.html").read_text(encoding="utf-8")
     sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
-    check(home_html.find("sinavm-ping.html") < home_html.find("https://sinavm.github.io/SVM/"), "Homepage should place SiNAVM Ping before the live dashboard")
+    ping_card_pos = home_html.find('href="https://sinavm.github.io/sinavm/sinavm-ping.html"')
+    live_card_pos = home_html.find('href="https://sinavm.github.io/SVM/" class="action-btn httpcustom-btn"')
+    check(ping_card_pos >= 0 and live_card_pos >= 0 and ping_card_pos < live_card_pos, "Homepage should place SiNAVM Ping before the live dashboard")
     check("sinavm-ping.html" in sitemap and "svm-ping.html" not in sitemap, "Sitemap should use the renamed canonical page only")
     page_errors: list[str] = []
     page.on("pageerror", lambda error: page_errors.append(str(error)))
