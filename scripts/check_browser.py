@@ -47,7 +47,7 @@ with sync_playwright() as p:
     portal.on("pageerror", lambda error: page_errors.append("portal: " + str(error)))
     portal_response = portal.goto(BASE, wait_until="domcontentloaded")
     check(portal_response is not None and portal_response.status == 200, "portal: homepage did not return HTTP 200")
-    check(portal.locator(".portfolio-entry").is_visible(), "portal: portfolio entry link is missing or hidden")
+    check(portal.locator('a.portfolio-entry[href="./portfolio/"]').is_visible(), "portal: portfolio entry link is missing or hidden")
     check(portal.locator(".portfolio-entry").get_attribute("href") == "./portfolio/", "portal: portfolio entry has the wrong destination")
     no_horizontal_overflow(portal, "portal mobile 390px")
     portal.close()
