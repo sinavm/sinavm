@@ -306,14 +306,14 @@ async function lookupGeo(host){
  finally{clearTimeout(timer)}
 }
 async function enrichCountries(items){
- const unique=[...new Set(items.filter(n=>!n.flag&&n.host).map(n=>n.host))];
+ const unique=[...new Set(items.filter(n=>!n.country&&n.host).map(n=>n.host))];
  let cursor=0;
  const workers=Array.from({length:4},async()=>{
   while(cursor<unique.length){
    const host=unique[cursor++];
    const result=await lookupGeo(host);
    if(result){
-    items.filter(n=>n.host===host&&!n.flag).forEach(n=>{n.flag=result.flag||"";n.country=result.country||""});
+    items.filter(n=>n.host===host&&!n.flag).forEach(n=>{n.flag=n.flag||result.flag||"";n.country=result.country||""});
    }
    render();
   }
