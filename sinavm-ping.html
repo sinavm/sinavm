@@ -589,7 +589,7 @@ async function runClientTest(){
   const samples=[];
   for(let i=0;i<5;i++){
    const started=performance.now();
-   const response=await fetch(endpoint+"0&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit",signal:controller.signal});
+   const response=await fetch(endpoint+"1000&sinavm="+Date.now()+"-"+i,{mode:"cors",cache:"no-store",credentials:"omit",signal:controller.signal});
    if(!response.ok)throw new Error("probe failed");
    await response.arrayBuffer();
    samples.push(performance.now()-started);
