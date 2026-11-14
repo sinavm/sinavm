@@ -532,7 +532,6 @@ async function loadData(){
   setText("feed-meta","آخرین به‌روزرسانی فهرست: "+feedDate+" · "+(parsed.announce?numberFormat.format(parsed.announce.count)+" نود اعلام‌شده":"تعداد اعلام‌نشده"));
   setText("list-title",activeFeed==="fast"?"کانفیگ‌های سریع":"کانفیگ‌های پایدار");
   render();
-  enrichCountries(nodes);
  }catch(error){
   setText("count","دریافت اطلاعات با مشکل روبه‌رو شد");
   $("configs").replaceChildren(make("div","empty","دریافت فهرست کانفیگ‌ها ممکن نشد. اتصال اینترنت را بررسی کن و دوباره تازه‌سازی کن."));
