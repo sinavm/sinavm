@@ -45,8 +45,10 @@ with sync_playwright() as p:
     )
     report_body = (
         '{"engine":"sing-box-test","tested_at":"2026-11-14T10:00:00Z",'
-        '"input":2,"kept":1,"infra_ok":true,'
-        '"fastest":[{"tag":"n0001","type":"vless","delay":42,"host":"203.0.113.10"}]}'
+        '"input":3,"kept":3,"infra_ok":true,'
+        '"fastest":[{"tag":"n0001","type":"vless","delay":42,"host":"203.0.113.10"},'
+        '{"tag":"n0002","type":"vmess","delay":55,"host":"203.0.113.11"},'
+        '{"tag":"n0003","type":"ss","delay":61,"host":"198.51.100.30"}]}'
     )
     geo_body = (
         '{"success":true,"country":"Germany","country_code":"DE",'
