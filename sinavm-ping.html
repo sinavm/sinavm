@@ -276,7 +276,9 @@ function parseNode(line,index){
    const data=JSON.parse(decodeBase64(raw));
    host=String(data.add||data.address||"");
    port=String(data.port||"");
-   remark=String(data.ps||data.name||"");\n   security=data.tls?"tls":String(data.security||"");\n   network=String(data.net||"tcp").toLowerCase();
+   remark=String(data.ps||data.name||"");
+   security=(data.tls===true||String(data.tls||"").toLowerCase()==="tls")?"tls":String(data.security||data.tls||"").toLowerCase();
+   network=String(data.net||"tcp").toLowerCase();
   }else{
    let uri;
    try{uri=new URL(line)}catch(e){uri=null}
