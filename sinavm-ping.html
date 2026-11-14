@@ -559,7 +559,8 @@ async function loadData(){
   updateProtocolFilters();
   const feedDate=parsed.announce&&parsed.announce.updated?formatDate(parsed.announce.updated):"نامشخص";
   visibleLimit=7;
-  localResultsAvailable=false;localSortActive=false;setText("sortLabel","مرتب‌سازی: کمترین تأخیر SVM");\n  setText("count",numberFormat.format(nodes.length)+" کانفیگ در فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+" SVM");
+  localResultsAvailable=false;localSortActive=false;setText("sortLabel","مرتب‌سازی: کمترین تأخیر SVM");
+  setText("count",numberFormat.format(nodes.length)+" کانفیگ در فهرست "+(activeFeed==="fast"?"سریع":"پایدار")+" SVM");
   setText("feed-meta","آخرین به‌روزرسانی فهرست: "+feedDate+" · "+(parsed.announce?numberFormat.format(parsed.announce.count)+" نود اعلام‌شده":"تعداد اعلام‌نشده"));
   setText("list-title",activeFeed==="fast"?"کانفیگ‌های سریع":"کانفیگ‌های پایدار");
   render();
