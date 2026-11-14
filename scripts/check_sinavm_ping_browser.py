@@ -89,7 +89,16 @@ with sync_playwright() as p:
             body=body,
         )
 
-    page.route("https://speed.cloudflare.com/**", cloudflare)
+    page.add_init_script("""(() => {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = (input, init) => {
+            const url = typeof input === "string" ? input : input.url;
+            if (url.startsWith("https://203.0.113.")) {
+                return Promise.resolve(new Response(null, {status: 200}));
+            }
+            return nativeFetch(input, init);
+        };
+    })();""")
 
     response = page.goto(BASE + "sinavm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SiNAVM Ping page did not return HTTP 200")
@@ -113,13 +122,18 @@ with sync_playwright() as p:
     check(page.locator("#configs .config").count() == 1, "IP search did not filter results")
     page.locator("#search").fill("")
 
-    page.locator("#start-client-test").click()
+    page.locator("#start-node-test").click()
     page.wait_for_function(
-        "document.querySelector('#network-status')?.dataset.state === 'ok'",
-        timeout=10000,
+        "['ok', 'bad'].includes(document.querySelector('#user-probe-status')?.dataset.state)",
+        timeout=15000,
     )
-    check(page.locator("#client-latency").inner_text() != "—", "Client latency test did not return a result")
-    check(page.locator("#client-download").inner_text() != "—", "Client download test did not return a result")
+    probe_status = page.locator("#user-probe-status").inner_text()
+    check(page.locator("#user-probe-status").get_attribute("data-state") == "ok",
+          "User-route probe did not complete successfully: " + probe_status + "; page errors: " + "; ".join(page_errors))
+    check("پاسخ HTTPS" in probe_status, "User-route probe did not report HTTPS reachability")
+    check(page.locator("#user-probe-progress").evaluate("(el) => el.value") == 100, "User-route probe progress did not complete")
+    check("زمان پاسخ HTTPS شما" in page.locator(".ping").first.inner_text(), "User-route latency was not shown on the config card")
+    check("تأخیر اینترنت شما" in page.locator("#sortLabel").inner_text(), "Results were not switched to user-route latency sorting")
 
     no_horizontal_overflow(page, "390px Android layout")
     check(
