@@ -5,16 +5,20 @@ on:
     branches: [main]
     paths:
       - "index.html"
-      - "portfolio/**"
+      - "svm-ping.html"
       - "scripts/check_browser.py"
+      - "scripts/check_svm_ping_browser.py"
+      - "portfolio/**"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
   pull_request:
     branches: [main]
     paths:
       - "index.html"
-      - "portfolio/**"
+      - "svm-ping.html"
       - "scripts/check_browser.py"
+      - "scripts/check_svm_ping_browser.py"
+      - "portfolio/**"
       - "requirements-browser.txt"
       - ".github/workflows/portfolio-browser-check.yml"
   workflow_dispatch:
@@ -37,6 +41,16 @@ jobs:
         run: python -m pip install --require-hashes -r requirements-browser.txt
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
+      - name: Serve static site and run SVM ping browser checks
+        run: |
+          python -m http.server 8766 --bind 127.0.0.1 >/tmp/svm-ping-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8766/svm-ping.html >/dev/null; then break; fi
+            sleep 1
+          done
+          SITE_BASE_URL=http://127.0.0.1:8766/ python scripts/check_svm_ping_browser.py
       - name: Serve static site and run browser checks
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/portfolio-http.log 2>&1 &
