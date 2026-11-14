@@ -42,3 +42,15 @@ jobs:
         run: python scripts/check_portfolio.py
       - name: Check portfolio JavaScript syntax
         run: node --check portfolio/assets/js/portfolio.v1.js
+      - name: Check SVM ping dashboard JavaScript syntax
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("svm-ping.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script>([\\s\\S]*?)</script>", html)
+          if len(scripts) != 1:
+              raise SystemExit("Expected exactly one inline script in svm-ping.html")
+          Path("/tmp/svm-ping.js").write_text(scripts[0], encoding="utf-8")
+          PY
+          node --check /tmp/svm-ping.js
