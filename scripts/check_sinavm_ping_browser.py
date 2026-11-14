@@ -89,7 +89,7 @@ with sync_playwright() as p:
             body=body,
         )
 
-    page.add_init_script("""() => {
+    page.add_init_script("""(() => {
         const nativeFetch = window.fetch.bind(window);
         window.fetch = (input, init) => {
             const url = typeof input === "string" ? input : input.url;
@@ -98,7 +98,7 @@ with sync_playwright() as p:
             }
             return nativeFetch(input, init);
         };
-    }""")
+    })();""")
 
     response = page.goto(BASE + "sinavm-ping.html", wait_until="domcontentloaded")
     check(response is not None and response.status == 200, "SiNAVM Ping page did not return HTTP 200")
