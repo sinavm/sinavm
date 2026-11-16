@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const top=document.getElementById("scrollTopBtn");if(!top)return;const update=()=>top.classList.toggle("visible",window.scrollY>280);update();window.addEventListener("scroll",update,{passive:true});top.addEventListener("click",event=>{event.preventDefault();window.scrollTo({top:0,behavior:"smooth"});});});
