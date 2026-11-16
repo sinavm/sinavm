@@ -32,58 +32,111 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@graph":[
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type":"WebSite",
-      "@id":"https://sinavm.github.io/sinavm/melishekan.html#website",
-      "url":"https://sinavm.github.io/sinavm/melishekan.html",
-      "name":"ملی‌شکن",
-      "alternateName":"SiNAVM",
-      "inLanguage":"fa-IR",
-      "publisher":{"@id":"https://sinavm.github.io/sinavm/melishekan.html#organization"}
+      "@type": "WebSite",
+      "@id": "https://sinavm.github.io/sinavm/melishekan.html#website",
+      "url": "https://sinavm.github.io/sinavm/melishekan.html",
+      "name": "ملی‌شکن",
+      "alternateName": "SiNAVM",
+      "inLanguage": "fa-IR",
+      "publisher": {
+        "@id": "https://sinavm.github.io/sinavm/melishekan.html#organization"
+      }
     },
     {
-      "@type":"Organization",
-      "@id":"https://sinavm.github.io/sinavm/melishekan.html#organization",
-      "name":"SiNAVM",
-      "url":"https://sinavm.github.io/sinavm/",
-      "sameAs":["https://t.me/sinavm"]
+      "@type": "Organization",
+      "@id": "https://sinavm.github.io/sinavm/melishekan.html#organization",
+      "name": "SiNAVM",
+      "url": "https://sinavm.github.io/sinavm/",
+      "sameAs": [
+        "https://t.me/sinavm"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg",
+        "width": 711,
+        "height": 713
+      }
     },
     {
-      "@type":"WebPage",
-      "@id":"https://sinavm.github.io/sinavm/melishekan.html#webpage",
-      "url":"https://sinavm.github.io/sinavm/melishekan.html",
-      "name":"دانلود کانفیگ HTTP Custom",
-      "description":"دانلود مستقیم فایل‌های کانفیگ HTTP Custom و مشاهده آموزش تصویری فارسی.",
-      "isPartOf":{"@id":"https://sinavm.github.io/sinavm/melishekan.html#website"},
-      "inLanguage":"fa-IR",
-      "about":{"@type":"SoftwareApplication","name":"HTTP Custom","operatingSystem":"Android","applicationCategory":"UtilitiesApplication","url":"https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom"}
+      "@type": "WebPage",
+      "@id": "https://sinavm.github.io/sinavm/melishekan.html#webpage",
+      "url": "https://sinavm.github.io/sinavm/melishekan.html",
+      "name": "دانلود کانفیگ HTTP Custom",
+      "description": "دانلود مستقیم فایل‌های کانفیگ HTTP Custom و مشاهده آموزش تصویری فارسی.",
+      "isPartOf": {
+        "@id": "https://sinavm.github.io/sinavm/melishekan.html#website"
+      },
+      "inLanguage": "fa-IR",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "HTTP Custom",
+        "operatingSystem": "Android",
+        "applicationCategory": "UtilitiesApplication",
+        "url": "https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom"
+      }
     },
     {
-      "@type":"VideoObject",
-      "@id":"https://sinavm.github.io/sinavm/melishekan.html#tutorial-video",
-      "name":"آموزش تصویری استفاده از کانفیگ‌های HTTP Custom در ملی‌شکن",
-      "description":"ویدئوی آموزشی فارسی برای راهنمایی کاربران در استفاده از فایل‌های HTTP Custom. ویدیو به‌صورت مستقیم از همین صفحه قابل مشاهده و دانلود است.",
-      "contentUrl":"https://sinavm.github.io/sinavm/melishekan.htmlsinavm_telegram_melishekan_video.mp4",
-      "inLanguage":"fa-IR",
-      "publisher":{"@id":"https://sinavm.github.io/sinavm/melishekan.html#organization"}
-    },
-    {
-      "@type":"BreadcrumbList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"SiNAVM","item":"https://sinavm.github.io/sinavm/"},
-        {"@type":"ListItem","position":2,"name":"ملی‌شکن و دانلود HTTP Custom","item":"https://sinavm.github.io/sinavm/melishekan.html"}
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SiNAVM",
+          "item": {
+            "@id": "https://sinavm.github.io/sinavm/",
+            "name": "SiNAVM"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ملی‌شکن و دانلود HTTP Custom",
+          "item": {
+            "@id": "https://sinavm.github.io/sinavm/melishekan.html",
+            "name": "ملی‌شکن و دانلود HTTP Custom"
+          }
+        }
       ]
-    }    ,
+    },
     {
-      "@type":"FAQPage",
-      "@id":"https://sinavm.github.io/sinavm/melishekan.html#faq",
-      "mainEntity":[
-        {"@type":"Question","name":"چطور فایل کانفیگ HTTP Custom را دانلود کنم؟","acceptedAnswer":{"@type":"Answer","text":"از بخش کانفیگ‌ها، فایل موردنظرت را انتخاب و روی دانلود فایل بزن. فایل با فرمت HC روی دستگاهت ذخیره می‌شود."}},
-        {"@type":"Question","name":"برای باز کردن فایل HC به چه برنامه‌ای نیاز دارم؟","acceptedAnswer":{"@type":"Answer","text":"برنامه HTTP Custom برای اندروید لازم است. لینک دریافت آن از Google Play در بخش نصب برنامه قرار دارد."}},
-        {"@type":"Question","name":"رمز فایل‌های کانفیگ چیست؟","acceptedAnswer":{"@type":"Answer","text":"رمز فایل‌های منتشرشده در این صفحه @sinavm است."}},
-        {"@type":"Question","name":"اگر تلگرام یا VPN نداشته باشم، چطور آموزش را ببینم؟","acceptedAnswer":{"@type":"Answer","text":"ویدئوی آموزشی در همین صفحه به‌صورت آنلاین پخش می‌شود و از دکمه دانلود مستقیم نیز می‌توان آن را روی گوشی ذخیره کرد."}}
+      "@type": "FAQPage",
+      "@id": "https://sinavm.github.io/sinavm/melishekan.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "چطور فایل کانفیگ HTTP Custom را دانلود کنم؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "از بخش کانفیگ‌ها، فایل موردنظرت را انتخاب و روی دانلود فایل بزن. فایل با فرمت HC روی دستگاهت ذخیره می‌شود."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "برای باز کردن فایل HC به چه برنامه‌ای نیاز دارم؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "برنامه HTTP Custom برای اندروید لازم است. لینک دریافت آن از Google Play در بخش نصب برنامه قرار دارد."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "رمز فایل‌های کانفیگ چیست؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "رمز فایل‌های منتشرشده در این صفحه @sinavm است."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "اگر تلگرام یا VPN نداشته باشم، چطور آموزش را ببینم؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ویدئوی آموزشی در همین صفحه به‌صورت آنلاین پخش می‌شود و از دکمه دانلود مستقیم نیز می‌توان آن را روی گوشی ذخیره کرد."
+          }
+        }
       ]
     }
   ]
