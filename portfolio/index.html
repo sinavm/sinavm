@@ -33,7 +33,19 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"پورتفولیو سینا | پروژه‌های متن‌باز و دستاوردهای SiNAVM","description":"مجموعه پروژه‌های متن‌باز SiNAVM در زمینه ابزارهای شبکه و اینترنت آزاد و پایش دسترسی اینترنت و حقوق کاربران.","url":"https://sinavm.github.io/sinavm/portfolio/","inLanguage":"fa-IR","author":{"@type":"Person","name":"Sina","url":"https://sinavm.github.io/sinavm/portfolio/"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"SVM","url":"https://github.com/sinavm/SVM"},{"@type":"ListItem","position":2,"name":"SiNAVM","url":"https://github.com/sinavm/sinavm"},{"@type":"ListItem","position":3,"name":"sing-box","url":"https://github.com/sinavm/sing-box"},{"@type":"ListItem","position":4,"name":"melishekan","url":"https://github.com/sinavm/melishekan"},{"@type":"ListItem","position":5,"name":"Hiddify","url":"https://github.com/sinavm/Hiddify"},{"@type":"ListItem","position":6,"name":"IR Net Atlas","url":"https://github.com/sinavm/ir-net-atlas"},{"@type":"ListItem","position":7,"name":"منشور حقوق کاربران","url":"https://sinavm.github.io/sinavm/user-rights.html"}]}}
 </script>
-</head>
+<style id="sinavm-shared-floating-telegram">
+.floating-tg-btn {
+    position: fixed; left: 25px; bottom: 25px;
+    background: linear-gradient(135deg, #229ED9, #1da1f2); color: #fff;
+    width: 55px; height: 55px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; text-decoration: none;
+    box-shadow: 0 5px 20px rgba(34, 158, 217, 0.4); z-index: 998;
+    transition: all 0.3s ease; animation: pulse-telegram 2.5s infinite;
+}
+.floating-tg-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(34, 158, 217, 0.6); animation: none; }
+@keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head>
 <body>
 <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
 <header class="topbar">
@@ -104,11 +116,15 @@
 </main>
 <footer class="wrap footer">
 <a class="brand" href="../"><img src="../logo/sinavm_logo.jpg" alt="SiNAVM" width="48" height="48"><span class="brand-copy"><strong>SiNAVM</strong><small>DESIGN & CONFIG</small></span></a>
-<div class="footer-links"><a href="../legal_pages/about.html">درباره ما</a><a href="../legal_pages/privacy.html">حریم خصوصی</a><a href="../legal_pages/terms.html">شرایط استفاده</a><a href="../user-rights.html">منشور حقوق کاربران</a></div>
-<span>© SiNAVM · طراحی و توسعه مستقل</span>
-</footer>
-<a href="https://t.me/sinavm" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM" target="_blank" rel="noopener noreferrer">➤</a>
+<div class="footer-links"></div>
+<span>© SiNAVM طراحی و توسعه مستقل</span>
+<nav class="sinavm-legal-footer" aria-label="پیوندهای حقوقی" style="margin:12px auto 0;padding:12px 8px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.85rem;line-height:2;">
+<a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a> |
+<a href="https://sinavm.github.io/sinavm/user-rights.html" rel="noopener noreferrer">منشور حقوق کاربران</a> |
+<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a>
+</nav></footer>
+
 <a href="#main" class="scroll-top-btn" id="scrollTopBtn" title="بازگشت به بالا" aria-label="بازگشت به بالای صفحه">⇧</a>
 <script src="assets/js/portfolio.v2.js" defer></script>
-</body>
+<a href="https://t.me/sinavm" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM"><i class="fab fa-telegram-plane"></i></a></body>
 </html>
