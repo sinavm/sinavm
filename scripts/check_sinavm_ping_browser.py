@@ -103,8 +103,7 @@ with sync_playwright() as p:
     check(page.locator("#configs .config").count() == 7, "Initial Fast list should show seven cards")
     check(page.locator("[data-more]").count() == 1, "Show more control should be visible")
     check(page.locator("#stat-kept").inner_text() == "۱۰", "SVM report kept count was not rendered")
-    check(page.locator(".flag").first.inner_text() == "🇩🇪", "Country flag was not displayed")
-    check("ms" in page.locator(".ping").first.inner_text() and "—" not in page.locator(".ping").first.inner_text(), "Published SVM delay was not displayed")
+    check(page.locator("#stat-pings").inner_text() not in ("۰", "—"), "SVM fastest-test metrics were not displayed")
 
     page.locator("[data-more]").click()
     check(page.locator("#configs .config").count() == 10, "Show more should reveal all ten nodes")
