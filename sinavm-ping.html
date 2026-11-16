@@ -7,15 +7,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b1224">
 <meta name="color-scheme" content="dark">
-<title>تست پینگ کانفیگ‌های SiNAVM | SiNAVM</title>
-<meta name="description" content="مشاهده وضعیت کانفیگ‌های فعال SVM، تأخیر ثبت‌شده با sing-box، کشور سرور، پروتکل و کپی سریع کانفیگ‌ها در داشبورد تست SiNAVM.">
+<title>تست پینگ کانفیگ V2Ray و Xray آنلاین | وضعیت SVM</title>
+<meta name="description" content="بررسی وضعیت اشتراک‌های V2Ray و Xray در SVM؛ مشاهده گزارش آخرین تست sing-box، تأخیر ثبت‌شده، کشور تقریبی سرور و فهرست‌های Fast و Stable. اعداد پینگ، ICMP نیستند.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://sinavm.github.io/sinavm/sinavm-ping.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="SiNAVM">
-<meta property="og:title" content="تست پینگ کانفیگ‌های SiNAVM | SiNAVM">
-<meta property="og:description" content="وضعیت کانفیگ‌های تأییدشده SVM و تأخیر واقعی ثبت‌شده در تست sing-box.">
+<meta property="og:title" content="تست پینگ کانفیگ V2Ray و Xray آنلاین | وضعیت SVM">
+<meta property="og:description" content="بررسی وضعیت اشتراک‌های V2Ray و Xray در SVM؛ مشاهده گزارش آخرین تست sing-box، تأخیر ثبت‌شده، کشور تقریبی سرور و فهرست‌های Fast و Stable. اعداد پینگ، ICMP نیستند.">
 <meta property="og:url" content="https://sinavm.github.io/sinavm/sinavm-ping.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,10 +137,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:360px){.config-top{flex-wrap:wrap}.ping{margin-right:auto}.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}}
 </style>
 
-<meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg?v=20261116">
-<meta property="og:image:alt" content="لوگوی SiNAVM">
+<meta property="og:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg">
+<meta property="og:image:alt" content="لوگوی SiNAVM برای داشبورد تست پینگ کانفیگ V2Ray">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg?v=20261116">
+<meta name="twitter:image" content="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg">
+<meta name="keywords" content="تست پینگ کانفیگ V2Ray, تست کانفیگ V2Ray, تست پینگ Xray, تست سرور V2Ray, وضعیت کانفیگ V2Ray, تست کانفیگ SVM, کانفیگ Fast Stable">
+<meta name="twitter:title" content="تست پینگ کانفیگ V2Ray و Xray آنلاین | وضعیت SVM">
+<meta name="twitter:description" content="بررسی وضعیت اشتراک‌های V2Ray و Xray در SVM؛ مشاهده گزارش آخرین تست sing-box، تأخیر ثبت‌شده، کشور تقریبی سرور و فهرست‌های Fast و Stable. اعداد پینگ، ICMP نیستند.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"تست پینگ کانفیگ V2Ray و Xray آنلاین | وضعیت SVM","description":"بررسی وضعیت اشتراک‌های V2Ray و Xray در SVM؛ مشاهده گزارش آخرین تست sing-box، تأخیر ثبت‌شده، کشور تقریبی سرور و فهرست‌های Fast و Stable. اعداد پینگ، ICMP نیستند.","url":"https://sinavm.github.io/sinavm/sinavm-ping.html","inLanguage":"fa-IR","isPartOf":{"@type":"WebSite","name":"SiNAVM","url":"https://sinavm.github.io/sinavm/"},"about":{"@type":"Thing","name":"تست وضعیت و تأخیر اشتراک‌های V2Ray و Xray"},"primaryImageOfPage":"https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg"}</script>
 </head>
 <body>
 <nav class="top">
@@ -151,8 +155,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <header class="hero">
 <img class="logo" src="https://sinavm.github.io/sinavm/logo/sinavm_logo.jpg?v=20261116" alt="لوگوی SiNAVM" width="78" height="78">
 <div class="eyebrow">SVM · LIVE CONFIG DIAGNOSTICS</div>
-<h1>تست و پینگ <span style="color:var(--cyan)">کانفیگ‌های SVM</span></h1>
-<p>وضعیت کانفیگ‌های تأییدشده، کشور سرور و تأخیر ثبت‌شده در آخرین اجرای تست SVM را یک‌جا ببین؛ کانفیگ‌ها را جست‌وجو و با یک لمس کپی کن.</p>
+<h1>تست پینگ <span style="color:var(--cyan)">کانفیگ‌های V2Ray و Xray</span></h1>
+<p>وضعیت اشتراک‌های V2Ray و Xray، گزارش آخرین اجرای تست SVM، تأخیر ثبت‌شده و فهرست‌های Fast و Stable را ببین؛ کانفیگ‌ها را جست‌وجو و لینک مناسب را کپی کن.</p>
 <div class="hero-links">
 <a href="https://github.com/sinavm/SVM" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> مخزن SVM</a>
 <a href="https://raw.githubusercontent.com/sinavm/SVM/main/lite/reports/test.json" rel="noopener noreferrer"><i class="fa-solid fa-file-waveform"></i> گزارش تست خام</a>
@@ -222,9 +226,23 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div class="notice" style="border-color:#60a5fa35;background:#3b82f20d;color:#bfdbfe"><i class="fa-solid fa-flag"></i><div>پرچم کشور بر اساس اطلاعات جغرافیایی IP سرور به‌صورت تقریبی نمایش داده می‌شود؛ IPهای CDN و Anycast ممکن است کشوری متفاوت از محل واقعی اپراتور نشان دهند. برای تعیین کشور، فقط IP یا نام میزبان عمومی سرور به سرویس ipwho.is فرستاده می‌شود؛ اطلاعات محرمانه کانفیگ ارسال نمی‌شود.</div></div>
 </section>
 
+<section class="panel" aria-labelledby="ping-faq-title">
+<div class="section-head"><div class="section-icon"><i class="fa-regular fa-circle-question"></i></div><div><h2 id="ping-faq-title">سؤالات متداول تست پینگ کانفیگ V2Ray</h2><p>معنی نتایج و تفاوت تست سرور با تست اینترنت دستگاه</p></div></div>
+<div class="notice"><div>
+<h3>آیا این صفحه پینگ همه کانفیگ‌های V2Ray را نشان می‌دهد؟</h3>
+<p>خیر. زمان عددی فقط برای نتایجی نمایش داده می‌شود که در گزارش عمومی تست SVM با موتور sing-box و درخواست HTTP از مسیر تونل ثبت شده‌اند. برای سایر ورودی‌ها، وضعیت تأییدشدن نمایش داده می‌شود و عدد ساختگی تولید نمی‌شود.</p>
+<h3>آیا عدد نمایش‌داده‌شده همان Ping بازی یا ICMP است؟</h3>
+<p>خیر. این عدد زمان پاسخ درخواست HTTP از مسیر تونل است و نباید با ICMP ping یا تأخیر داخل بازی یکسان در نظر گرفته شود.</p>
+<h3>تست اینترنت همین دستگاه چه چیزی را اندازه می‌گیرد؟</h3>
+<p>این تست اتصال فعلی مرورگر به نقطه Cloudflare را می‌سنجد. اگر VPN روی دستگاه روشن باشد، درخواست از همان مسیر عبور می‌کند؛ این تست جایگزین بررسی تک‌تک کانفیگ‌های فهرست نیست.</p>
+<h3>چطور اشتراک V2Ray یا Xray را دریافت کنم؟</h3>
+<p>از <a href="https://sinavm.github.io/SVM/">داشبورد اشتراک SVM</a> فهرست Fast، Stable یا کامل را انتخاب کن. سازگاری قالب و پروتکل را با کلاینت مقصد بررسی کن.</p>
+</div></div>
+</section>
+
 <footer class="site-footer">
 <div><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a> · <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" rel="noopener noreferrer">سیاست حریم خصوصی</a> · <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a></div>
-<div><a href="https://github.com/sinavm/sinavm" rel="noopener noreferrer">مخزن GitHub</a> · <a href="https://t.me/sinavm" rel="noopener noreferrer">Design & Config by SiNAVM</a></div>
+<div><a href="https://sinavm.github.io/SVM/">اشتراک‌های V2Ray و Xray</a> · <a href="https://github.com/sinavm/sinavm" rel="noopener noreferrer">مخزن GitHub</a> · <a href="https://t.me/sinavm" rel="noopener noreferrer">Design & Config by SiNAVM</a></div>
 <div>بازدید کل: <span id="visit-count">...</span></div>
 </footer>
 </main>
