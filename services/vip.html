@@ -22,7 +22,19 @@
 {"@type":"Question","name":"آیا سرویس VIP آی‌پی ثابت دارد؟","acceptedAnswer":{"@type":"Answer","text":"در معرفی سرویس VIP در صفحه اصلی SiNAVM قابلیت آی‌پی ثابت ذکر شده است. پیش از خرید، نوع آی‌پی، اختصاصی یا اشتراکی بودن و موقعیت جغرافیایی آن را از پشتیبانی تأیید کنید."}},
 {"@type":"Question","name":"آیا خرید آی‌پی استاتیک به‌تنهایی از SiNAVM ممکن است؟","acceptedAnswer":{"@type":"Answer","text":"این صفحه فروش مستقل آی‌پی استاتیک را اعلام نمی‌کند. آی‌پی ثابت در معرفی سرویس VIP ذکر شده و امکان ارائه مستقل باید از ربات رسمی استعلام شود."}},
 {"@type":"Question","name":"برای خرید کانفیگ V2Ray یا WireGuard باید از همین صفحه اقدام کنم؟","acceptedAnswer":{"@type":"Answer","text":"خیر. دریافت کانفیگ‌های رایگان V2Ray و WireGuard در صفحات راهنمای جداگانه ارائه شده است. سرویس VIP با دریافت کانفیگ رایگان یکی نیست."}}
-]}]}</script></head><body>
+]}]}</script><style id="sinavm-shared-floating-telegram">
+.floating-tg-btn {
+    position: fixed; left: 25px; bottom: 25px;
+    background: linear-gradient(135deg, #229ED9, #1da1f2); color: #fff;
+    width: 55px; height: 55px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; text-decoration: none;
+    box-shadow: 0 5px 20px rgba(34, 158, 217, 0.4); z-index: 998;
+    transition: all 0.3s ease; animation: pulse-telegram 2.5s infinite;
+}
+.floating-tg-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(34, 158, 217, 0.6); animation: none; }
+@keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head><body>
 <nav class="nav"><div class="wrap"><a href="../">SiNAVM</a>　/　<a href="./">خدمات</a></div></nav>
 <header class="wrap hero"><div class="eyebrow">SINAVM · VIP ACCESS</div><h1>خرید اشتراک VIP با آی‌پی ثابت</h1>
 <p>اگر به‌دنبال اشتراک ویژه با آی‌پی ثابت هستی، این صفحه مسیر رسمی بررسی شرایط و خرید سرویس VIP معرفی‌شده در SiNAVM را نشان می‌دهد. جزئیات قابل تغییر مثل قیمت، مدت اعتبار و ظرفیت باید پیش از پرداخت از ربات رسمی تأیید شوند.</p>
@@ -39,4 +51,8 @@
 <section><h2>پرسش‌های متداول خرید اشتراک VIP</h2><h3>قیمت خرید اشتراک VIP چقدر است؟</h3><p>قیمت در این صفحه درج نشده است؛ مبلغ و مدت طرح فعال را در ربات رسمی استعلام کن.</p>
 <h3>آیا آی‌پی ثابت به‌صورت مستقل فروخته می‌شود؟</h3><p>فروش مستقل IP در اطلاعات فعلی تأیید نشده است. فقط وجود قابلیت آی‌پی ثابت در معرفی VIP ذکر شده؛ ارائه مستقل را از پشتیبانی بپرس.</p>
 <h3>برای خرید V2Ray یا کانفیگ نت ملی کجا بروم؟</h3><p>صفحه کانفیگ V2Ray و Xray برای دریافت فهرست‌ها و لینک‌های اشتراک در دسترس است. این صفحه VIP را با آن صفحه یکی نمی‌داند.</p></section></main>
-<footer class="wrap footer"><a href="../">صفحه اصلی SiNAVM</a><a href="../portfolio/">پروژه‌ها و پورتفولیو</a><a href="https://t.me/sinavm">کانال رسمی</a></footer></body></html>
+<footer class="wrap footer"><a href="../">صفحه اصلی SiNAVM</a><a href="../portfolio/">پروژه‌ها و پورتفولیو</a><a href="https://t.me/sinavm">کانال رسمی</a><nav class="sinavm-legal-footer" aria-label="پیوندهای حقوقی" style="margin:12px auto 0;padding:12px 8px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.85rem;line-height:2;">
+<a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a> |
+<a href="https://sinavm.github.io/sinavm/user-rights.html" rel="noopener noreferrer">منشور حقوق کاربران</a> |
+<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a>
+</nav></footer><a href="https://t.me/sinavm" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM"><i class="fab fa-telegram-plane"></i></a></body></html>
