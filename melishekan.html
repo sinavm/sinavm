@@ -170,7 +170,19 @@ main{width:min(100% - 28px,680px);margin:34px auto 70px;display:grid;gap:20px}
 @media(max-width:420px){main{width:min(100% - 20px,680px);margin-top:22px}.panel{padding:15px}.steps{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}.tag{font-size:.61rem}}
 .tutorial-panel{border:1px solid #22d3ee55;background:linear-gradient(145deg,rgba(8,145,178,.16),rgba(37,99,235,.09) 55%,rgba(20,31,54,.88));box-shadow:0 18px 60px #0891b226,0 18px 60px #02061730}.tutorial-panel .section-icon{background:#22d3ee22;color:#67e8f9}.video-wrap{overflow:hidden;border-radius:17px;border:1px solid #67e8f944;background:#020617;box-shadow:0 12px 36px #02061766}.video-wrap video{display:block;width:100%;max-height:430px;aspect-ratio:16/9;object-fit:contain;background:#020617}.video-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.video-download{background:linear-gradient(120deg,#0891b2,#2563eb);color:#fff}.video-hint{color:var(--muted);font-size:.76rem;line-height:1.9;margin:11px 2px 0}@media(max-width:420px){.video-actions{grid-template-columns:1fr}}
 </style>
-</head>
+<style id="sinavm-shared-floating-telegram">
+.floating-tg-btn {
+    position: fixed; left: 25px; bottom: 25px;
+    background: linear-gradient(135deg, #229ED9, #1da1f2); color: #fff;
+    width: 55px; height: 55px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; text-decoration: none;
+    box-shadow: 0 5px 20px rgba(34, 158, 217, 0.4); z-index: 998;
+    transition: all 0.3s ease; animation: pulse-telegram 2.5s infinite;
+}
+.floating-tg-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(34, 158, 217, 0.6); animation: none; }
+@keyframes pulse-telegram { 0% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 158, 217, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 158, 217, 0); } }
+</style></head>
 <body>
 <nav class="top"><a href="https://sinavm.github.io/sinavm/"><i class="fa-solid fa-house"></i> صفحه اصلی</a></nav>
 <main>
@@ -216,10 +228,14 @@ main{width:min(100% - 28px,680px);margin:34px auto 70px;display:grid;gap:20px}
 </div>
 </section>
 <footer class="site-footer">
-<div class="footer-legal"><a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a><span aria-hidden="true">|</span><a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html" rel="noopener noreferrer">سیاست حریم خصوصی</a><span aria-hidden="true">|</span><a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a></div>
+<div class="footer-legal"><span aria-hidden="true"> </span><span aria-hidden="true"> </span></div>
 <div class="footer-credit"><a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer">Design &amp; Config by SiNAVM</a></div>
 <div class="footer-views">بازدید کل: <span id="visit-count" aria-live="polite">...</span></div>
-</footer>
+<nav class="sinavm-legal-footer" aria-label="پیوندهای حقوقی" style="margin:12px auto 0;padding:12px 8px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.85rem;line-height:2;">
+<a href="https://sinavm.github.io/sinavm/legal_pages/about.html" rel="noopener noreferrer">درباره ما</a> |
+<a href="https://sinavm.github.io/sinavm/user-rights.html" rel="noopener noreferrer">منشور حقوق کاربران</a> |
+<a href="https://sinavm.github.io/sinavm/legal_pages/terms.html" rel="noopener noreferrer">شرایط استفاده</a>
+</nav></footer>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
@@ -252,5 +268,5 @@ fetch('https://page-views.count1.workers.dev')
  .then(value=>{const el=document.getElementById('visit-count');if(el)el.textContent=new Intl.NumberFormat('fa-IR').format(Number(value))})
  .catch(()=>{const el=document.getElementById('visit-count');if(el)el.textContent='—'});
 </script>
-</body>
+<a href="https://t.me/sinavm" rel="noopener noreferrer" class="floating-tg-btn" title="کانال تلگرام" aria-label="ورود به کانال تلگرام SiNAVM"><i class="fab fa-telegram-plane"></i></a></body>
 </html>
