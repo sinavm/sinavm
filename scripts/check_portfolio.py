@@ -89,6 +89,8 @@ for page in PAGES:
             local_path = ROOT / unquote(parsed.path).lstrip("/")
             if parsed.path.endswith("/") or (local_path.exists() and local_path.is_dir()):
                 local_path = local_path / "index.html"
+            if not local_path.exists() and not local_path.suffix and local_path.with_suffix(".html").exists():
+                local_path = local_path.with_suffix(".html")
             if not local_path.exists():
                 fail(f"{rel}: broken local {attr}={value!r}")
                 continue
@@ -110,9 +112,14 @@ for page in PAGES:
         canonicals = [n.get("href") for n in doc.iter() if n.tag == "link" and "canonical" in (n.get("rel") or "").split()]
         if len(canonicals) != 1 or not canonicals[0].startswith("https://sinavm.github.io/sinavm/portfolio/"):
             fail(f"{rel}: expected one canonical URL under /portfolio/")
-        hreflangs = {n.get("hreflang") for n in doc.iter() if n.tag == "link" and "alternate" in (n.get("rel") or "").split()}
-        if not {"fa", "en", "x-default"}.issubset(hreflangs):
-            fail(f"{rel}: missing fa/en/x-default alternate links")
+        hreflang_nodes = [n for n in doc.iter() if n.tag == "link" and "alternate" in (n.get("rel") or "").split() and n.get("hreflang")]
+        hreflangs = {n.get("hreflang") for n in hreflang_nodes}
+        hreflang_urls = [n.get("href") for n in hreflang_nodes]
+        # A client-side language toggle on one URL is not a set of separately
+        # indexable language pages. Only publish hreflang when each language has
+        # its own URL; repeated URLs would be misleading to search engines.
+        if hreflang_nodes and (not {"fa", "en", "x-default"}.issubset(hreflangs) or len(set(hreflang_urls)) != len(hreflang_urls)):
+            fail(f"{rel}: hreflang alternates must be complete and use distinct URLs")
         descriptions = [n.get("content", "") for n in doc.iter() if n.tag == "meta" and n.get("name") == "description"]
         if len(descriptions) != 1 or not descriptions[0].strip():
             fail(f"{rel}: expected one non-empty meta description")
@@ -145,6 +152,8 @@ try:
         local = ROOT / site_path.lstrip("/")
         if site_path.endswith("/") or (local.exists() and local.is_dir()):
             local = local / "index.html"
+        if not local.exists() and not local.suffix and local.with_suffix(".html").exists():
+            local = local.with_suffix(".html")
         if not local.exists():
             fail(f"sitemap.xml: URL does not map to a local file: {location}")
     for page in sorted((ROOT / "portfolio").rglob("*.html")):
