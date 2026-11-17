@@ -1,5 +1,3 @@
-ریپوها رو ستاره‌دار کنید ،تا از بروزرسانی‌ها با خبر بشید
-
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=800&color=8B8CF8&center=true&vCenter=true&width=560&lines=sinavm;Open-source+builder;Internet+infrastructure+%26+automation" alt="sinavm" />
 
@@ -7,6 +5,10 @@
 
   [Developer portfolio](https://sinavm.github.io/sinavm/portfolio/) · [Internet tools portal](https://sinavm.github.io/sinavm/) · [Telegram](https://t.me/sinavm)
 
+
+  <a href="https://t.me/sinavm"><img src="https://img.shields.io/badge/Telegram-@sinavm-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram"></a>
+  <a href="https://sinavm.github.io/sinavm/"><img src="https://img.shields.io/badge/Website-sinavm.github.io-8B8CF8?style=flat-square&logo=github&logoColor=white" alt="Website"></a>
+  <a href="https://instagram.com/sinavmx"><img src="https://img.shields.io/badge/Instagram-sinavmx-E4405F?style=flat-square&logo=instagram&logoColor=white" alt="Instagram"></a>
   <a href="https://github.com/sinavm?tab=followers"><img src="https://img.shields.io/github/followers/sinavm?style=flat-square&logo=github&color=7A7ADB&label=followers" alt="Followers"></a>
   <a href="https://github.com/sinavm?tab=repositories"><img src="https://img.shields.io/github/stars/sinavm?affiliations=OWNER&style=flat-square&color=8B8CF8&label=stars" alt="Stars"></a>
 </div>
@@ -14,6 +16,10 @@
 ---
 
 <div dir="rtl">
+<div dir="rtl">
+  ریپوها رو ستاره‌دار کنید ،تا از بروزرسانی‌ها با خبر بشید
+  
+  ---
 
 ## درباره من
 
