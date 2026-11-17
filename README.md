@@ -1,4 +1,4 @@
-ریپوها رو ستاره دار کنید ، تا از بروزرسانی با خبر بشید
+ریپوها رو ستاره‌دار کنید ،تا از بروزرسانی‌ها با خبر بشید
 
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=800&color=8B8CF8&center=true&vCenter=true&width=560&lines=sinavm;Open-source+builder;Internet+infrastructure+%26+automation" alt="sinavm" />
