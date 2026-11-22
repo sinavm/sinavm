@@ -63,6 +63,26 @@
 - **Maintainability:** build workflows that can be understood, monitored and recovered.
 - **Privacy:** collect only what is needed and avoid exposing unnecessary information.
 
+
+## Infrastructure Partner
+
+<div align="center">
+  <a href="https://ufo.host" target="_blank" rel="noopener noreferrer">
+    <img src="https://raw.githubusercontent.com/sinavm/sinavm/main/logo/svg/ufo_hosting.svg" width="220" alt="UFO.HOST — Animated logo">
+  </a>
+
+  **<a href="https://ufo.host">UFO.HOST — Official Infrastructure Partner</a>**
+
+  Reliable infrastructure. Exceptional support.
+
+  UFO.HOST delivers outstanding hosting infrastructure with reliable performance, stability, and the quality you can count on.
+
+  Their exceptionally responsive support team makes every step of the hosting experience smooth, helpful, and hassle-free.
+
+  <a href="https://ufo.host"><img src="https://img.shields.io/badge/Visit-UFO.HOST-20f796?style=for-the-badge&logo=rocket&logoColor=1e203d" alt="Visit UFO.HOST"></a>
+</div>
+
+
 ## Connect
 
 - [GitHub](https://github.com/sinavm)
