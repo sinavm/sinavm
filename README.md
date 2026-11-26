@@ -5,7 +5,6 @@
 
   [Developer portfolio](https://sinavm.github.io/sinavm/portfolio/) · [Internet tools portal](https://sinavm.github.io/sinavm/) · [Telegram](https://t.me/sinavm)
 
-
   <a href="https://t.me/sinavm"><img src="https://img.shields.io/badge/Telegram-@sinavm-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram"></a>
   <a href="https://sinavm.github.io/sinavm/"><img src="https://img.shields.io/badge/Website-sinavm.github.io-8B8CF8?style=flat-square&logo=github&logoColor=white" alt="Website"></a>
   <a href="https://instagram.com/sinavmx"><img src="https://img.shields.io/badge/Instagram-sinavmx-E4405F?style=flat-square&logo=instagram&logoColor=white" alt="Instagram"></a>
@@ -68,18 +67,18 @@
 
 <div align="center">
   <a href="https://ufo.hosting" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/sinavm/sinavm/main/logo/svg/ufo_hosting.svg" width="220" alt="UFO.HOST — Animated logo">
+    <img src="https://raw.githubusercontent.com/sinavm/sinavm/main/logo/svg/ufo_hosting.svg" width="220" alt="UFO.Hosting — Animated logo">
   </a>
 
-  **<a href="https://ufo.hosting">UFO.HOST — Official Infrastructure Partner</a>**
+  **<a href="https://ufo.hosting">UFO.Hosting — Official Infrastructure Partner</a>**
 
   Reliable infrastructure. Exceptional support.
 
-  UFO.HOST delivers outstanding hosting infrastructure with reliable performance, stability, and the quality you can count on.
+  UFO.Hosting delivers outstanding hosting infrastructure with reliable performance, stability, and the quality you can count on.
 
   Their exceptionally responsive support team makes every step of the hosting experience smooth, helpful, and hassle-free.
 
-  <a href="https://ufo.hosting"><img src="https://img.shields.io/badge/Visit-UFO.HOST-20f796?style=for-the-badge&logo=rocket&logoColor=1e203d" alt="Visit UFO.HOST"></a>
+  <a href="https://ufo.hosting"><img src="https://img.shields.io/badge/Visit-UFO.Hosting-20f796?style=for-the-badge&logo=rocket&logoColor=1e203d" alt="Visit UFO.Hosting"></a>
 </div>
 
 
